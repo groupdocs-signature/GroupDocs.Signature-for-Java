@@ -4,7 +4,7 @@ This package contains Java Example Projects for [GroupDocs.Signature for Java](#
 
 <p align="center">
 <<<<<<< HEAD
-  <a title="Download complete GroupDocs.Signature for Java Example source code" href="https://codeload.github.com/groupdocs-signature/GroupDocs.Signature-forJava/zip/master">
+  <a title="Download complete GroupDocs.Signature for Java Example source code" href="#">
 =======
   <a title="Download complete GroupDocs.Signature for Java Example source code" href="">
 >>>>>>> 68e4b8dc56711b86f6eddded00a33eb14c46ab1d
