@@ -1,9 +1,9 @@
-##GroupDocs.Signature for .Java Examples
+##GroupDocs.Signature for Java Examples
 
-This package contains C# and VB.Java Example Projects for [GroupDocs.Signature for .Java](#) and sample input templates used in the examples.
+This package contains Java Example Projects for [GroupDocs.Signature for Java](#) and sample input templates used in the examples.
 
 <p align="center">
-  <a title="Download complete GroupDocs.Signature for .Java Example source code" href="https://codeload.github.com/groupdocs-signature/GroupDocs.Signature-for.Java/zip/master">
+  <a title="Download complete GroupDocs.Signature for Java Example source code" href="">
 	<img src="https://raw.github.com/AsposeExamples/java-examples-dashboard/master/images/downloadZip-Button-Large.png" />
   </a>
 </p>
@@ -23,6 +23,6 @@ You may find following resources helpful:
 
 Follow below steps if you have product license
 
-1. Open CommonUtilities.java.
+1. Open CommonUtilitiesjava.
 2. Set "licensePath" variable to your license path.
 3. Call applyLicense method from MainClass
