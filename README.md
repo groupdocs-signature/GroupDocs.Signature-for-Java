@@ -14,7 +14,7 @@ GroupDocs.Signature for Java allows developers to write applications with abilit
 Directory | Description
 --------- | -----------
 [Examples]()  | Contains the package of all Java examples and sample files that will help you learn how to use product features. 
-[Showcases]()  | GroupDocs.Signature for Java front end projects are the open source web based projects. These projects demonstrate the salient features of GroupDocs.Signature. 
+[Showcases]()  | GroupDocs.Signature for Java front end projects are the open source web based projects. These projects demonstrate the salient features of GroupDocs.Signature for Java. 
 
 ## Resources
 
