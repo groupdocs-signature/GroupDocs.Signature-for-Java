@@ -32,7 +32,7 @@ public class TextSignature {
 		signOptions.setSheetNumber(1); // sign second sheet
 		final SaveOptions saveOptions = new SaveOptions();
 		saveOptions.setOutputType(OutputType.String);
-		saveOptions.setOutputFileName("to_testSignCellsDocumentWithTextSignature.xlsx");
+		saveOptions.setOutputFileName("signed_output.xlsx");
 		// sign document
 		String signedPath = handler.<String> sign(CommonUtilities.getStoragePath(fileName), signOptions, saveOptions);
 		System.out.println("Signed file path is: " + signedPath);
@@ -52,7 +52,7 @@ public class TextSignature {
 		signOptions.setTop(15);
 		final SaveOptions saveOptions = new SaveOptions();
 		saveOptions.setOutputType(OutputType.String);
-		saveOptions.setOutputFileName("to_testSignPdfDocumentWithTextSignature.pdf");
+		saveOptions.setOutputFileName("signed_output.pdf");
 		// sign document
 		String signedPath = handler.<String> sign(CommonUtilities.getStoragePath(fileName), signOptions,
 				saveOptions);
@@ -76,7 +76,7 @@ public class TextSignature {
 		signOptions.setDocumentPageNumber(1);
 		final SaveOptions saveOptions = new SaveOptions();
 		saveOptions.setOutputType(OutputType.String);
-		saveOptions.setOutputFileName("to_testSignSlidesDocumentWithTextSignature.pptx");
+		saveOptions.setOutputFileName("signed_output.pptx");
 		// sign document
 		String signedPath = handler.<String> sign(CommonUtilities.getStoragePath(fileName), signOptions,
 				saveOptions);
@@ -99,7 +99,7 @@ public class TextSignature {
 		signOptions.setDocumentPageNumber(1);
 		final SaveOptions saveOptions = new SaveOptions();
 		saveOptions.setOutputType(OutputType.String);
-		saveOptions.setOutputFileName("to_testSignWordsDocumentWithTextSignature.docx");
+		saveOptions.setOutputFileName("signed_output.docx");
 		// sign document
 		String signedPath = handler.<String>sign(CommonUtilities.getStoragePath(fileName), signOptions, saveOptions);
 		System.out.println("Signed file path is: " + signedPath);
@@ -120,7 +120,7 @@ public class TextSignature {
 		signOptions.setDocumentPageNumber(1);
 		final SaveOptions saveOptions = new SaveOptions();
 		saveOptions.setOutputType(OutputType.String);
-		saveOptions.setOutputFileName("to_testTextVerificationOfPDFDocument.pdf");
+		saveOptions.setOutputFileName("signed_output.pdf");
 		// sign document
 		String signedPath = handler.<String>sign(CommonUtilities.getStoragePath(fileName), signOptions, saveOptions);
 		// setup digital verification options

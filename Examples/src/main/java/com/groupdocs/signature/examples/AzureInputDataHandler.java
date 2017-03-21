@@ -17,9 +17,9 @@ import com.microsoft.azure.storage.blob.BlobInputStream;
 import com.microsoft.azure.storage.blob.CloudBlobClient;
 import com.microsoft.azure.storage.blob.CloudBlobContainer;
 import com.microsoft.azure.storage.blob.CloudBlockBlob;
-
-public class SampleAzureInputDataHandler extends SampleAzureDataHandler implements IInputDataHandler {
-	public SampleAzureInputDataHandler(String endpoint, String accountName, String accountKey, String containerName)
+//ExStart:SampleAzureInputDataHandler
+public class AzureInputDataHandler extends AzureDataHandler implements IInputDataHandler {
+	public AzureInputDataHandler(String endpoint, String accountName, String accountKey, String containerName)
 			throws URISyntaxException, StorageException {
 		super(endpoint, accountName, accountKey, containerName);
 	}
@@ -57,3 +57,4 @@ public class SampleAzureInputDataHandler extends SampleAzureDataHandler implemen
 		return container;
 	}
 }
+//ExEnd:SampleAzureInputDataHandler

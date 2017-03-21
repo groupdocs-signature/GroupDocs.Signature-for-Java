@@ -14,9 +14,9 @@ import com.microsoft.azure.storage.StorageException;
 import com.microsoft.azure.storage.blob.CloudAppendBlob;
 import com.microsoft.azure.storage.blob.CloudBlobContainer;
 import com.microsoft.azure.storage.blob.CloudBlockBlob;
-
-public class SampleAzureOutputDataHandler extends SampleAzureDataHandler implements IOutputDataHandler {
-	public SampleAzureOutputDataHandler(String endpoint, String accountName, String accountKey, String containerName)
+//ExStart:SampleAzureOutputDataHandler
+public class AzureOutputDataHandler extends AzureDataHandler implements IOutputDataHandler {
+	public AzureOutputDataHandler(String endpoint, String accountName, String accountKey, String containerName)
 			throws URISyntaxException, StorageException {
 		super(endpoint, accountName, accountKey, containerName);
 	}
@@ -53,3 +53,4 @@ public class SampleAzureOutputDataHandler extends SampleAzureDataHandler impleme
 		return container;
 	}
 }
+//ExEnd:SampleAzureOutputDataHandler
