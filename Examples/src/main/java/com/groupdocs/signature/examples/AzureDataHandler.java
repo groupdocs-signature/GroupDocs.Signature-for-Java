@@ -9,12 +9,12 @@ import com.microsoft.azure.storage.StorageCredentialsAccountAndKey;
 import com.microsoft.azure.storage.StorageException;
 import com.microsoft.azure.storage.blob.CloudBlobClient;
 import com.microsoft.azure.storage.blob.CloudBlobContainer;
-
-public class SampleAzureDataHandler {
+//ExStart:SampleAzureDataHandler
+public class AzureDataHandler {
 	public CloudBlobClient _remoteStorage;
 	public String _containerName;
-
-	public SampleAzureDataHandler(String endpoint, String accountName, String accountKey, String containerName)
+ 
+	public AzureDataHandler(String endpoint, String accountName, String accountKey, String containerName)
 			throws URISyntaxException, StorageException {
 		StorageCredentials credentials = new StorageCredentialsAccountAndKey(accountName, accountKey);
 		CloudStorageAccount account = new CloudStorageAccount(credentials, new URI(endpoint), null, null, null);
@@ -27,3 +27,4 @@ public class SampleAzureDataHandler {
 		_remoteStorage.getDefaultRequestOptions().setTimeoutIntervalInMs(defTimeout);
 	}
 }
+//ExEnd:SampleAzureDataHandler
