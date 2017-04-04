@@ -3,12 +3,9 @@
 This package contains Java Example Projects for [GroupDocs.Signature for Java](#) and sample input templates used in the examples.
 
 <p align="center">
-<<<<<<< HEAD
-  <a title="Download complete GroupDocs.Signature for Java Example source code" href="#">
-=======
-  <a title="Download complete GroupDocs.Signature for Java Example source code" href="">
->>>>>>> 68e4b8dc56711b86f6eddded00a33eb14c46ab1d
-	<img src="https://raw.github.com/AsposeExamples/java-examples-dashboard/master/images/downloadZip-Button-Large.png" />
+
+  <a title="Download complete GroupDocs.Signature for Java source code" href="#"> 
+    <img src="https://camo.githubusercontent.com/11839cd752a2d367f3149c7bee1742b68e4a4d37/68747470733a2f2f7261772e6769746875622e636f6d2f4173706f73654578616d706c65732f6a6176612d6578616d706c65732d64617368626f6172642f6d61737465722f696d616765732f646f776e6c6f61645a69702d427574746f6e2d4c617267652e706e67" data-canonical-src="https://raw.github.com/AsposeExamples/java-examples-dashboard/master/images/downloadZip-Button-Large.png" style="max-width:100%;">
   </a>
 </p>
 
@@ -25,12 +22,8 @@ You may find following resources helpful:
 
 # Apply License
 
-Follow below steps if you have product license
+Follow below steps if you have product license 
 
-<<<<<<< HEAD
-1. Open CommonUtilities Java.
-=======
-1. Open CommonUtilitiesjava.
->>>>>>> 68e4b8dc56711b86f6eddded00a33eb14c46ab1d
+1. Open Utilities.java.
 2. Set "licensePath" variable to your license path.
-3. Call applyLicense method from MainClass
+3. Call applyLicenseFromFile method from MainClass
