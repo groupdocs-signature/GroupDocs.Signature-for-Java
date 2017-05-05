@@ -15,7 +15,7 @@ import com.microsoft.azure.storage.blob.CloudAppendBlob;
 import com.microsoft.azure.storage.blob.CloudBlobContainer;
 import com.microsoft.azure.storage.blob.CloudBlockBlob;
 //ExStart:SampleAzureOutputDataHandler
-public class AzureOutputDataHandler extends AzureDataHandler implements IOutputDataHandler {
+/*public class AzureOutputDataHandler extends AzureDataHandler implements IOutputDataHandler {
 	public AzureOutputDataHandler(String endpoint, String accountName, String accountKey, String containerName)
 			throws URISyntaxException, StorageException {
 		super(endpoint, accountName, accountKey, containerName);
@@ -30,7 +30,7 @@ public class AzureOutputDataHandler extends AzureDataHandler implements IOutputD
 			try {
 				CloudAppendBlob appendBlob = container.getAppendBlobReference(name);
 				appendBlob.createOrReplace();
-				return appendBlob.openWriteNew()/* OpenWrite(true) */;
+				return appendBlob.openWriteNew() OpenWrite(true) ;
 			} catch (Exception exception) {
 				// Azure Storage Emulator does not support append BLOBs,
 				// so we emulate appending
@@ -53,4 +53,4 @@ public class AzureOutputDataHandler extends AzureDataHandler implements IOutputD
 		return container;
 	}
 }
-//ExEnd:SampleAzureOutputDataHandler
+//ExEnd:SampleAzureOutputDataHandler*/

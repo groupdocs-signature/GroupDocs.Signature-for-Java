@@ -1,6 +1,11 @@
 package com.groupdocs.signature.examples;
 
+import java.awt.Color;
+
 import com.groupdocs.signature.config.SignatureConfig;
+import com.groupdocs.signature.domain.PdfTextAnnotationBorderEffect;
+import com.groupdocs.signature.domain.PdfTextAnnotationBorderStyle;
+import com.groupdocs.signature.domain.PdfTextSignatureImplementation;
 import com.groupdocs.signature.domain.VerificationResult;
 import com.groupdocs.signature.handler.SignatureHandler;
 import com.groupdocs.signature.options.CellsSignTextOptions;
@@ -10,6 +15,7 @@ import com.groupdocs.signature.options.PdfSignTextOptions;
 import com.groupdocs.signature.options.SaveOptions;
 import com.groupdocs.signature.options.SlidesSignTextOptions;
 import com.groupdocs.signature.options.WordsSignTextOptions;
+import com.groupdocs.signature.options.appearances.PdfTextAnnotationAppearance;
 
 public class TextSignature {
 
@@ -60,6 +66,52 @@ public class TextSignature {
 		//ExEnd:signPdfDocWithText
 	}
 
+	public static void textSignatureAsAnnotation(String fileName){
+		//ExStart:textSignatureAsAnnotation
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup image signature options with relative path - image file stores in config.ImagesPath folder
+		PdfSignTextOptions signOptions = new PdfSignTextOptions("John Smith");
+		signOptions.setLeft(100);
+		signOptions.setTop(100);
+		signOptions.setHeight(200);
+		signOptions.setWidth(200);
+		// setup colors settings
+		signOptions.setBackgroundColor(Color.GRAY);
+		// setup text color
+		signOptions.setForeColor(Color.RED);
+		// setup Font options
+		signOptions.getFont().setBold(true);
+		signOptions.getFont().setItalic(true);
+		signOptions.getFont().setUnderline(true);
+		signOptions.getFont().setFontFamily("Arial");
+		signOptions.getFont().setFontSize(15);
+		//type of implementation
+		signOptions.setSignatureImplementation(PdfTextSignatureImplementation.Annotation);
+		// specify extended appearance options
+		PdfTextAnnotationAppearance appearance = new PdfTextAnnotationAppearance();
+		appearance.setBorderColor(Color.BLUE);
+		appearance.setBorderEffect(PdfTextAnnotationBorderEffect.Cloudy);
+		appearance.setBorderEffectIntensity(2);
+		appearance.setBorderStyle(PdfTextAnnotationBorderStyle.Dashed);
+		appearance.setHCornerRadius(10);
+		appearance.setBorderWidth(5);
+		appearance.setContents(signOptions.getText() + " content description");
+		appearance.setSubject("Appearance Subject");
+		appearance.setTitle("MrJohn Signature");
+		signOptions.setAppearance(appearance);
+		final SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output.pdf");
+		// sign document
+		String signedPath = handler.<String> sign(CommonUtilities.getStoragePath(fileName), signOptions,
+				saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:textSignatureAsAnnotation
+	}
+	
 	public static void signSlideDocWithText(String fileName) {
 		//ExStart:signSlideDocWithText
 		//setup Signature configuration
