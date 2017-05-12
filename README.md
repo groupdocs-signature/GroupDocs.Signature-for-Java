@@ -1,6 +1,6 @@
 # GroupDocs.Signature for Java
 
-This package contains [Examples](https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java) and [Showcases](#) for [GroupDocs.Signature for Java](#) that will help you in understanding the API's working and writing your own applications.
+This package contains [Examples](https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java) and [Showcases](#) for GroupDocs.Signature for Java that will help you in understanding the API's working and writing your own applications.
 
 GroupDocs.Signature for Java allows developers to write applications with ability to significantly sign electronic docs. Signatures can be of different types. API supports multitude of file formats. The quite captivating fact about the API is, its UI less and independent calls can be made. It also provides useful features to manipulate documents and signatures.
 
@@ -23,4 +23,4 @@ Directory | Description
 + **Download:** [Download GroupDocs.Signature for Java](https://downloads.groupdocs.com/signature/java)
 + **Documentation:** [GroupDocs.Signature for Java Documentation](https://docs.groupdocs.com/display/signaturejava/Home)
 + **Forum:** [GroupDocs.Signature for Java Forum](http://www.groupdocs.com/Community/forums/groupdocs.signature-product-family/6/showforum.aspx)
-+ **Blog:** [GroupDocs.Signature for Java Blog](http://www.groupdocs.com/blog/category/groupdocs-signature-product-family)
++ **Blog:** [GroupDocs.Signature for Java Blog](https://blog.groupdocs.com/)
