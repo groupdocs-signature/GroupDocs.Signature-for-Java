@@ -2,13 +2,28 @@ package com.groupdocs.signature.examples;
 
 public class MainClass {
 	public static void main(String[] args) throws Throwable {
-		CommonUtilities.applyLicense();
+		//CommonUtilities.applyLicense();
 		//Text Signatures 
 		//TextSignature.signCellDocWithText("pie chart.xlsx");
 		//TextSignature.signPdfDocWithText("digital signatures.pdf");
 		//TextSignature.signSlideDocWithText("butterfly effect.pptx");
 		//TextSignature.signWordDocWithText("getting started.docx");
 		//TextSignature.validatePdfTextSignatures("digital signatures.pdf");
+		
+		//TextSignature.verifyCellWithTextSignature("pie chart.xlsx");
+		//TextSignature.verifyPDFWithTextSignatureAnnotation("digital signatures.pdf");
+		//TextSignature.verifyPDFWithTextSignatureSticker("digital signatures.pdf");
+		//TextSignature.verifySlidesWithTextSignature("butterfly effect.pptx");
+		//TextSignature.verifyWordWithTextSignature("getting started.docx");	
+		//TextSignature.signPDFWithFontAndColorOptions("digital signatures.pdf");
+		//TextSignature.signPDFWithDifferentOutputFileType("digital signatures.pdf");
+		//TextSignature.addOpacityOptionsToTextSignatureAppearance("digital signatures.pdf");
+		//TextSignature.signPdfDocumentWithTextSignatureAsImage("digital signatures.pdf");
+		//TextSignature.signPdfWithTextSignatureAsSticker("digital signatures.pdf");
+		//TextSignature.usingDefaultAppearanceSignPdfWithTextSignatureSticker("digital signatures.pdf");
+		//TextSignature.addTransperanceAndRotationToTextSignatureAppearance("butterfly effect.pptx");
+		//TextSignature.signPasswordProtectedDocWithTextSignature("pie chart.xlsx");
+		
 		
 		//Image Signatures
 		//ImageSignature.signCellDocWithImage("pie chart.xlsx");
@@ -22,7 +37,10 @@ public class MainClass {
 		//ImageSignature.signWordDocWithImage("getting started.docx");
 		//ImageSignature.signWordDocWithImageSpecifyMargins("getting started.docx");
 		//ImageSignature.signWordDocWithImageSpecifyIntents("getting started.docx");
-		 
+		
+		//ImageSignature.extendedOptionInImageSignature("digital signatures.pdf");
+		//ImageSignature.signArbitraryPagesOfDocumentWithImageSignature("digital signatures.pdf");
+		
 		//Digital Signatures
 		//DigitalSignature.signCellDocsWithDigitalSignature("pie chart.xlsx");
 		//DigitalSignature.signPdfDocsWithDigitalSignature("digital signatures.pdf");
@@ -41,7 +59,7 @@ public class MainClass {
 		//OtherOperations.setUpBackgroundAndBorderOptions("getting started.docx");
 		//OtherOperations.setUpBackgroundAndBorderOptions("getting started.docx");
 		//OtherOperations.setUpImageSignatureArea("digital signatures.pdf");
-		//OtherOperations.alignSignatureOnDocPage("digital signatures.pdf");
+		//OtherOperations.alignSignatureOnDocPage("digital signatures.pdf");		
 		
 		//CommonOperations
 		//CommonOperations.getSourceDocFromUri();

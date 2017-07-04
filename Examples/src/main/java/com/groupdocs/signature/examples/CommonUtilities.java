@@ -66,6 +66,7 @@ public class CommonUtilities {
 			signConfig.setStoragePath(storagePath);
 			signConfig.setOutputPath(outputPath);
 			signConfig.setImagesPath(outputImagePath);
+			signConfig.setCertificatesPath(certificatePath);
 			return signConfig;
 
 		} catch (Exception exp) {

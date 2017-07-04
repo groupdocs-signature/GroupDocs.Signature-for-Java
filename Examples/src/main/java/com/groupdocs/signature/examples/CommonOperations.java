@@ -22,7 +22,7 @@ import com.groupdocs.signature.options.SignatureOptionsCollection;
 
 public class CommonOperations {
 
-	public static void getSourceDocFromAbsolutePath(String fileName){
+	public static void getSourceDocFromAbsolutePath(String fileName) throws Exception{
 		//ExStarat:getSourceDocFromAbsolutePath
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
@@ -38,7 +38,7 @@ public class CommonOperations {
 		System.out.println("Signed file path is: " + signedPath);
 		//ExEnd:getSourceDocFromAbsolutePath
 	}
-	public static void getSourceDocFromRelativePath(String fileName){
+	public static void getSourceDocFromRelativePath(String fileName) throws Exception{
 		//ExStart:getSourceDocFromRelativePath
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
@@ -54,7 +54,7 @@ public class CommonOperations {
 		System.out.println("Signed file path is: " + signedPath);
 		//ExEnd:getSourceDocFromRelativePath
 	}
-	public static void getSourceDocFromUri(){
+	public static void getSourceDocFromUri() throws Exception{
 		//ExStart:getSourceDocFromUri
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
@@ -85,7 +85,7 @@ public class CommonOperations {
 		System.out.println("Signed file path is: " + signedPath);
 		//ExEnd:getSourceDocFromStream
 	}
-	public static void passwordProtectedDoc(String fileName){
+	public static void passwordProtectedDoc(String fileName) throws Exception{
 		//ExStart:passwordProtectedDoc
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
@@ -105,7 +105,7 @@ public class CommonOperations {
 		System.out.println("Signed file path is: " + signedPath);
 		//ExEnd:passwordProtectedDoc
 	}
-	public static void signDocWithDifferentFileFormat(String fileName){
+	public static void signDocWithDifferentFileFormat(String fileName) throws Exception{
 		//ExStart:signDocWithDifferentFileFormat
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
@@ -125,7 +125,7 @@ public class CommonOperations {
 		System.out.println("Signed file path is: " + signedPath);
 		//ExEnd:signDocWithDifferentFileFormat
 	}
-	public static void signDocWithDifferentFileName(String fileName){
+	public static void signDocWithDifferentFileName(String fileName) throws Exception{
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
 		// instantiating the conversion handler
