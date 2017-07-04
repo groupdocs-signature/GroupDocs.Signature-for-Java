@@ -17,7 +17,7 @@ import com.groupdocs.signature.options.SaveOptions;
 import com.groupdocs.signature.options.WordsSignTextOptions;
 
 public class OtherOperations {
-	public static void setUpFontAndColorOptions(String fileName) {
+	public static void setUpFontAndColorOptions(String fileName) throws Exception {
 		//ExStart:setUpFontAndColorOptions
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
@@ -43,7 +43,7 @@ public class OtherOperations {
 		//ExEnd:setUpFontAndColorOptions
 	}
 	
-	public static void setUpBackgroundAndBorderOptions(String fileName){
+	public static void setUpBackgroundAndBorderOptions(String fileName) throws Exception{
 		//ExStart:setUpBackgroundAndBorderOptions
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
@@ -67,7 +67,7 @@ public class OtherOperations {
 		//ExEnd:setUpBackgroundAndBorderOptions
 	}
 
-	public static void setUpSignatureMargins(String fileName){
+	public static void setUpSignatureMargins(String fileName) throws Exception{
 		//ExStart:setUpImageSignatureMargins
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
@@ -92,7 +92,7 @@ public class OtherOperations {
 		//ExEnd:setUpImageSignatureMargins
 	}
 
-	public static void setUpImageSignatureArea(String fileName){
+	public static void setUpImageSignatureArea(String fileName) throws Exception{
 		//ExStart:setUpImageSignatureArea
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
@@ -136,5 +136,4 @@ public class OtherOperations {
 		//ExStart:alignSignatureOnDocPage
 	}
 
-	
 }
