@@ -1,21 +1,27 @@
 package com.groupdocs.signature.examples;
 
+import java.awt.Color;
+
 import com.groupdocs.signature.config.SignatureConfig;
+import com.groupdocs.signature.domain.ExtendedDashStyle;
 import com.groupdocs.signature.domain.HorizontalAlignment;
 import com.groupdocs.signature.domain.MeasureType;
 import com.groupdocs.signature.domain.Padding;
 import com.groupdocs.signature.domain.VerticalAlignment;
 import com.groupdocs.signature.handler.SignatureHandler;
+import com.groupdocs.signature.options.CellsSaveOptions;
 import com.groupdocs.signature.options.CellsSignImageOptions;
+import com.groupdocs.signature.options.LoadOptions;
 import com.groupdocs.signature.options.OutputType;
 import com.groupdocs.signature.options.PdfSignImageOptions;
 import com.groupdocs.signature.options.SaveOptions;
 import com.groupdocs.signature.options.SlidesSignImageOptions;
 import com.groupdocs.signature.options.WordsSignImageOptions;
+import com.groupdocs.signature.options.appearances.ImageAppearance;
 
 public class ImageSignature {
 	
-	public static void signCellDocWithImage(String fileName) {
+	public static void signCellDocWithImage(String fileName) throws Exception {
 		//ExStart:signCellDocWithImage
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
@@ -37,7 +43,7 @@ public class ImageSignature {
 		//ExEnd:signCellDocWithImage
 	}
 	
-	public static void signCellDocWithImageSpecifyMargins(String fileName){
+	public static void signCellDocWithImageSpecifyMargins(String fileName) throws Exception{
 	//ExStart:signCellDocWithImageSpecifyMargins
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
@@ -62,7 +68,7 @@ public class ImageSignature {
 	//ExEnd:signCellDocWithImageSpecifyMargins
 	}
 	
-	public static void signPdfDocWithImage(String fileName){
+	public static void signPdfDocWithImage(String fileName) throws Exception{
 		//ExStart:signPdfDocWithImage
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
@@ -85,7 +91,7 @@ public class ImageSignature {
 		//ExEnd:signPdfDocWithImage
 	}
 	
-	public static void signPdfDocWithImageSpecifyMargins(String fileName){
+	public static void signPdfDocWithImageSpecifyMargins(String fileName) throws Exception{
 		//ExStart:signPdfDocWithImageSpecifyMargins
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
@@ -110,7 +116,7 @@ public class ImageSignature {
 		//ExEnd:signPdfDocWithImageSpecifyMargins
 	}
 	
-	public static void signPdfDocWithImageSpecifyIntents(String fileName){
+	public static void signPdfDocWithImageSpecifyIntents(String fileName) throws Exception{
 		//ExStart:signPdfDocWithImageSpecifyIntents
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
@@ -138,7 +144,7 @@ public class ImageSignature {
 		//ExEnd:signPdfDocWithImageSpecifyIntents
 	}
 
-	public static void signSlideDocWithImage(String fileName){
+	public static void signSlideDocWithImage(String fileName) throws Exception{
 		//ExStart:signSlideDocWithImage
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
@@ -160,7 +166,7 @@ public class ImageSignature {
 		//ExEnd:signSlideDocWithImage
 	}
 
-	public static void signSlideDocWithImageWithSpecifyMargins(String fileName){
+	public static void signSlideDocWithImageWithSpecifyMargins(String fileName) throws Exception{
 		//ExStart:signSlideDocWithImageWithSpecifyMargins
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
@@ -185,7 +191,7 @@ public class ImageSignature {
 		//ExEnd:signSlideDocWithImageWithSpecifyMargins
 	}
 
-	public static void signSlideDocWithImageSpecifyIntents(String fileName){
+	public static void signSlideDocWithImageSpecifyIntents(String fileName) throws Exception{
 		//ExStart:signSlideDocWithImageSpecifyIntents
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
@@ -213,7 +219,7 @@ public class ImageSignature {
 		//ExEnd:signSlideDocWithImageSpecifyIntents
 	}
 
-	public static void signWordDocWithImage(String fileName){
+	public static void signWordDocWithImage(String fileName) throws Exception{
 		//ExStart:signWordDocWithImage
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
@@ -235,7 +241,7 @@ public class ImageSignature {
 		//ExEnd:signWordDocWithImage
 	}
 
-	public static void signWordDocWithImageSpecifyMargins(String fileName){
+	public static void signWordDocWithImageSpecifyMargins(String fileName) throws Exception{
 		//ExStart:signWordDocWithImageSpecifyMargins
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
@@ -259,7 +265,7 @@ public class ImageSignature {
 		System.out.println("Signed file path is: " + signedPath);
 	}
 
-	public static void signWordDocWithImageSpecifyIntents(String fileName){
+	public static void signWordDocWithImageSpecifyIntents(String fileName) throws Exception{
 		//ExStart:signWordDocWithImageSpecifyIntents
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
@@ -286,4 +292,62 @@ public class ImageSignature {
 		System.out.println("Signed file path is: " + signedPath);
 		//ExEnd:signWordDocWithImageSpecifyIntents
 	}
+	
+	public static void extendedOptionInImageSignature(String fileName) throws Exception{
+		//ExStart:extendedOptionInImageSignature
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();     
+        // instantiating the conversion handler
+	    SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+	    //setup size and position
+        PdfSignImageOptions signOptions = new PdfSignImageOptions(CommonUtilities.getImagesPath("sign.png"));
+        signOptions.setLeft(100);
+        signOptions.setTop(100);
+        signOptions.setWidth(200);
+        signOptions.setHeight(200);
+        // setup rotation
+        signOptions.setRotationAngle(48);
+        //setup additional image appearance
+        ImageAppearance imageAppearance = new ImageAppearance();
+        imageAppearance.setBrightness(1.2f);
+        imageAppearance.setGrayscale(true);
+        imageAppearance.setBorderDashStyle(ExtendedDashStyle.Dot);
+        imageAppearance.setBorderColor(Color.ORANGE);
+        imageAppearance.setBorderWeight(5);
+        signOptions.setAppearance(imageAppearance);
+	    final SaveOptions saveOptions = new SaveOptions();
+        saveOptions.setOutputType(OutputType.String);
+        saveOptions.setOutputFileName("signed_output");
+	    String signedPath = handler.sign(CommonUtilities.getStoragePath(fileName), signOptions, saveOptions);
+	    System.out.println("Signed file path is: " + signedPath);
+	    //ExEnd:extendedOptionInImageSignature
+	}
+	
+	public static void signArbitraryPagesOfDocumentWithImageSignature(String fileName) throws Exception{
+		//ExStart:signArbitraryPagesOfDocumentWithImageSignature
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();     
+        // instantiating the conversion handler
+	    SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+	    //setup size and position
+        PdfSignImageOptions signOptions = new PdfSignImageOptions(CommonUtilities.getImagesPath("sign.png"));
+        // setup image size
+        signOptions.setWidth(100);
+        signOptions.setHeight(100);
+        // setup pages to sign
+        signOptions.getPagesSetup().setFirstPage(true);
+        signOptions.getPagesSetup().setEvenPages(true);
+        signOptions.getPagesSetup().getPageNumbers().add(7);
+        signOptions.getPagesSetup().getPageNumbers().add(9);
+        signOptions.getPagesSetup().setLastPage(true);
+        // specify load options
+        LoadOptions loadOptions = new LoadOptions();
+        // specify save options
+        final CellsSaveOptions saveOptions = new CellsSaveOptions();
+        saveOptions.setOutputType(OutputType.String);
+        saveOptions.setOutputFileName("signed_output");
+        // sign document
+        String signedPath = handler.sign(CommonUtilities.getStoragePath(fileName), signOptions, loadOptions, saveOptions);
+	    System.out.println("Signed file path is: " + signedPath);
+	    //ExEnd:signArbitraryPagesOfDocumentWithImageSignature
+	}
+
 }

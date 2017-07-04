@@ -3,7 +3,9 @@ package com.groupdocs.signature.examples;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.groupdocs.signature.config.SignatureConfig;
 import com.groupdocs.signature.domain.FileDescription;
@@ -15,6 +17,7 @@ import com.groupdocs.signature.options.OutputType;
 import com.groupdocs.signature.options.PDFVerifyDigitalOptions;
 import com.groupdocs.signature.options.PdfSignDigitalOptions;
 import com.groupdocs.signature.options.SaveOptions;
+import com.groupdocs.signature.options.VerifyOptions;
 import com.groupdocs.signature.options.VerifyOptionsCollection;
 import com.groupdocs.signature.options.WordsSignDigitalOptions;
 import com.groupdocs.signature.options.WordsVerifyDigitalOptions;
@@ -45,30 +48,30 @@ public class DigitalSignature {
 	}
 	
 	public static void signPdfDocsWithDigitalSignature(String fileName) throws Throwable{
-	//ExStart:signPdfDocsWithDigitalSignature
-	// setup Signature configuration
-	SignatureConfig signConfig = CommonUtilities.getConfiguration();
-	// instantiating the conversion handler
-	SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
-	// setup digital signature options
-	PdfSignDigitalOptions signOptions = new PdfSignDigitalOptions(new FileDescription(CommonUtilities.getCertificatePath("acer.pfx")), CommonUtilities.getImagesPath("sign.png"));
-	signOptions.setReason("Test reason");
-	signOptions.setContact("Test contact");
-	signOptions.setLocation("Test location");
-	//signOptions.setPassword("1234567890");
-	// image position
-	signOptions.setLeft(100);
-	signOptions.setTop(100);
-	signOptions.setWidth(100);
-	signOptions.setHeight(100);
-	signOptions.setDocumentPageNumber(1);
-	final SaveOptions saveOptions = new SaveOptions();
-	saveOptions.setOutputType(OutputType.String);
-	saveOptions.setOutputFileName("signed_output.pdf");
-	// sign document
-	String signedPath = handler.<String>sign(CommonUtilities.getStoragePath(fileName), signOptions, saveOptions);
-	System.out.println("Signed file path is: " + signedPath);
-	//ExEnd:signPdfDocsWithDigitalSignature
+		//ExStart:signPdfDocsWithDigitalSignature
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup digital signature options
+		PdfSignDigitalOptions signOptions = new PdfSignDigitalOptions(new FileDescription(CommonUtilities.getCertificatePath("acer.pfx")), CommonUtilities.getImagesPath("sign.png"));
+		signOptions.setReason("Test reason");
+		signOptions.setContact("Test contact");
+		signOptions.setLocation("Test location");
+		//signOptions.setPassword("1234567890");
+		// image position
+		signOptions.setLeft(100);
+		signOptions.setTop(100);
+		signOptions.setWidth(100);
+		signOptions.setHeight(100);
+		signOptions.setDocumentPageNumber(1);
+		final SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output.pdf");
+		// sign document
+		String signedPath = handler.<String>sign(CommonUtilities.getStoragePath(fileName), signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:signPdfDocsWithDigitalSignature
 	}
 
 	public static void signSlideDocsWithDigitalSignature(String fileName){
@@ -97,7 +100,7 @@ public class DigitalSignature {
 	//ExEnd:signWordDocsWithDigitalSignature
 	}
 	
-	public static void signCellDocsWithCertificateContainer(String fileName){
+	public static void signCellDocsWithCertificateContainer(String fileName) throws Exception{
 	//ExStart:signCellDocsWithDigitalSignature
 	// setup Signature configuration
 	SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
@@ -114,7 +117,7 @@ public class DigitalSignature {
 	//ExStart:signCellDocsWithDigitalSignature
 	}
 	
-	public static void signCellDocsWithPfxCertificateContainer(String fileName){
+	public static void signCellDocsWithPfxCertificateContainer(String fileName) throws Exception{
 		//ExStart:signCellDocsWithPfxCertificateContainer
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
@@ -125,14 +128,19 @@ public class DigitalSignature {
 		//password is needed to open .pfx certificate
 		verifyOptions1.setPassword("1234567890");
 		CellsVerifyDigitalOptions verifyOptions2 = new CellsVerifyDigitalOptions(CommonUtilities.getCertificatePath("certificate.cer"));
-		VerifyOptionsCollection verifyOptionsCollection = new VerifyOptionsCollection(verifyOptions1, verifyOptions2);
+		//VerifyOptionsCollection verifyOptionsCollection = new VerifyOptionsCollection(verifyOptions1, verifyOptions2);
+		List<VerifyOptions> listOptions = new ArrayList<VerifyOptions>();
+		listOptions.add(verifyOptions1);
+		listOptions.add(verifyOptions2);
+	    VerifyOptionsCollection verifyOptionsCollection =
+	        new VerifyOptionsCollection(listOptions);
 		//verify document
 		VerificationResult result = handler.verify(CommonUtilities.getStoragePath(fileName), verifyOptionsCollection);
 		System.out.println("Signed file verification result: " + result.isValid());
 		//ExEnd:signCellDocsWithPfxCertificateContainer
 	}
 
-	public static void signPdfDocsWithCertificateContainer(String fileName){
+	public static void signPdfDocsWithCertificateContainer(String fileName) throws Exception{
 		//ExStart:signPdfDocsWithCertificateContainer
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
@@ -149,7 +157,7 @@ public class DigitalSignature {
 		//ExEnd:signPdfDocsWithCertificateContainer
 	}
 
-	public static void signPdfDocsWithPfxCertificateContainer(String fileName){
+	public static void signPdfDocsWithPfxCertificateContainer(String fileName) throws Exception{
 		//ExStart:signPdfDocsWithPfxCertificateContainer
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
@@ -160,8 +168,12 @@ public class DigitalSignature {
 		//password is needed to open .pfx certificate
 		verifyOptions1.setPassword("1234567890");
 		PDFVerifyDigitalOptions verifyOptions2 = new PDFVerifyDigitalOptions(CommonUtilities.getCertificatePath("certificate.cer"));
-		VerifyOptionsCollection verifyOptionsCollection =
-		        new VerifyOptionsCollection(verifyOptions1, verifyOptions2);
+		
+		List<VerifyOptions> listOptions = new ArrayList<VerifyOptions>();
+		listOptions.add(verifyOptions1);
+		listOptions.add(verifyOptions2);
+	    VerifyOptionsCollection verifyOptionsCollection =
+	        new VerifyOptionsCollection(listOptions);
 		//verify document
 		VerificationResult result = handler.verify(CommonUtilities.getStoragePath(fileName), verifyOptionsCollection);
 		System.out.println("Signed file verification result: " + result.isValid());
@@ -172,7 +184,7 @@ public class DigitalSignature {
 		//Feature will be available in new release of the API
 	}
 
-	public static void digitalVerificationOfWordDocWithCertificateContainer(String fileName){
+	public static void digitalVerificationOfWordDocWithCertificateContainer(String fileName) throws Exception{
 		//ExStart:digitalVerificationOfWordDocWithCertificateContainer
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
@@ -185,13 +197,14 @@ public class DigitalSignature {
 		verifyOptions.setComments("Test1");
 		verifyOptions.setSignDateTimeFrom(new Date(2017, 1, 26, 14, 55, 57));
 		verifyOptions.setSignDateTimeTo(new Date(2017, 1, 26, 14, 55, 59));
+		
 		//verify document
 		VerificationResult result = handler.verify(CommonUtilities.getStoragePath(fileName), verifyOptions);
 		System.out.println("Signed file verification result: " + result.isValid());
 		//ExEnd:digitalVerificationOfWordDocWithCertificateContainer
 	}
 
-	public static void digitalVerificationOfWordDocWithPfcCertificateContainer(String fileName){
+	public static void digitalVerificationOfWordDocWithPfcCertificateContainer(String fileName) throws Exception{
 		//ExStart:digitalVerificationOfWordDocWithPfcCertificateContainer
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
@@ -202,11 +215,17 @@ public class DigitalSignature {
 		//password is needed to open .pfx certificate
 		verifyOptions1.setPassword("1234567890");
 		WordsVerifyDigitalOptions verifyOptions2 = new WordsVerifyDigitalOptions(CommonUtilities.getCertificatePath("certificate.cer"));
-		VerifyOptionsCollection verifyOptionsCollection =
-		        new VerifyOptionsCollection(verifyOptions1, verifyOptions2);
+		
+		List<VerifyOptions> listOptions = new ArrayList<VerifyOptions>();
+		listOptions.add(verifyOptions1);
+		listOptions.add(verifyOptions2);
+	    VerifyOptionsCollection verifyOptionsCollection =
+	        new VerifyOptionsCollection(listOptions);
 		//verify document
 		VerificationResult result = handler.verify(CommonUtilities.getStoragePath(fileName), verifyOptionsCollection);
 		System.out.println("Signed file verification result: " + result.isValid());
 		//ExEnd:digitalVerificationOfWordDocWithPfcCertificateContainer
 	}
+	
+	
 }
