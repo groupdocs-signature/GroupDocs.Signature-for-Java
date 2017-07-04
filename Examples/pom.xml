@@ -10,11 +10,8 @@
 	</properties>
 
 	<dependencies>
-		<!-- <dependency>
-    		<groupId>com.groupdocs</groupId>
-   			<artifactId>groupdocs-signature</artifactId>
-    		<version>17.1.0</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>com.groupdocs</groupId> <artifactId>groupdocs-signature</artifactId> 
+			<version>17.1.0</version> </dependency> -->
 		<dependency>
 			<groupId>com.microsoft.azure</groupId>
 			<artifactId>azure-storage</artifactId>
@@ -24,6 +21,11 @@
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.groupdocs</groupId>
+			<artifactId>groupdocs-signature</artifactId>
+			<version>17.4.0</version>
 		</dependency>
 
 
