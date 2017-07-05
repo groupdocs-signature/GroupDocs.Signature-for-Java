@@ -5,9 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import com.groupdocs.signature.config.SignatureConfig;
-import com.groupdocs.signature.domain.CellsSaveFileFormat;
-import com.groupdocs.signature.domain.HorizontalAlignment;
-import com.groupdocs.signature.domain.VerticalAlignment;
+import com.groupdocs.signature.domain.enums.CellsSaveFileFormat;
+import com.groupdocs.signature.domain.enums.HorizontalAlignment;
+import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.handler.SignatureHandler;
 import com.groupdocs.signature.options.CellsSaveOptions;
 import com.groupdocs.signature.options.CellsSignTextOptions;

@@ -59,7 +59,9 @@ public class MainClass {
 		//OtherOperations.setUpBackgroundAndBorderOptions("getting started.docx");
 		//OtherOperations.setUpBackgroundAndBorderOptions("getting started.docx");
 		//OtherOperations.setUpImageSignatureArea("digital signatures.pdf");
-		//OtherOperations.alignSignatureOnDocPage("digital signatures.pdf");		
+		//OtherOperations.alignSignatureOnDocPage("digital signatures.pdf");	
+		//OtherOperations.specifyMeasurementUnits("digital signatures.pdf");
+		//OtherOperations.obtainInfoAboutDocument("digital signatures.pdf");
 		
 		//CommonOperations
 		//CommonOperations.getSourceDocFromUri();

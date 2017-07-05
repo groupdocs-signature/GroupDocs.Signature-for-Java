@@ -2,16 +2,16 @@ package com.groupdocs.signature.examples;
 
 import java.awt.Color;
 
-import com.groupdocs.signature.config.SignatureConfig;
-import com.groupdocs.signature.domain.HorizontalAlignment;
-import com.groupdocs.signature.domain.Padding;
-import com.groupdocs.signature.domain.PdfSaveFileFormat;
-import com.groupdocs.signature.domain.PdfTextAnnotationBorderEffect;
-import com.groupdocs.signature.domain.PdfTextAnnotationBorderStyle;
-import com.groupdocs.signature.domain.PdfTextSignatureImplementation;
-import com.groupdocs.signature.domain.PdfTextStickerIcon;
+import com.groupdocs.signature.config.SignatureConfig; 
+import com.groupdocs.signature.domain.Padding; 
 import com.groupdocs.signature.domain.VerificationResult;
-import com.groupdocs.signature.domain.VerticalAlignment;
+import com.groupdocs.signature.domain.enums.HorizontalAlignment;
+import com.groupdocs.signature.domain.enums.PdfSaveFileFormat;
+import com.groupdocs.signature.domain.enums.PdfTextAnnotationBorderEffect;
+import com.groupdocs.signature.domain.enums.PdfTextAnnotationBorderStyle;
+import com.groupdocs.signature.domain.enums.PdfTextSignatureImplementation;
+import com.groupdocs.signature.domain.enums.PdfTextStickerIcon;
+import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.handler.SignatureHandler;
 import com.groupdocs.signature.options.CellsSignTextOptions;
 import com.groupdocs.signature.options.CellsVerifyTextOptions;
