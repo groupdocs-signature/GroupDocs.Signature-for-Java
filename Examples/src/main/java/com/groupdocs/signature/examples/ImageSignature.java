@@ -3,11 +3,12 @@ package com.groupdocs.signature.examples;
 import java.awt.Color;
 
 import com.groupdocs.signature.config.SignatureConfig;
-import com.groupdocs.signature.domain.ExtendedDashStyle;
-import com.groupdocs.signature.domain.HorizontalAlignment;
-import com.groupdocs.signature.domain.MeasureType;
+ 
 import com.groupdocs.signature.domain.Padding;
-import com.groupdocs.signature.domain.VerticalAlignment;
+import com.groupdocs.signature.domain.enums.ExtendedDashStyle;
+import com.groupdocs.signature.domain.enums.HorizontalAlignment;
+import com.groupdocs.signature.domain.enums.MeasureType;
+import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.handler.SignatureHandler;
 import com.groupdocs.signature.options.CellsSaveOptions;
 import com.groupdocs.signature.options.CellsSignImageOptions;
