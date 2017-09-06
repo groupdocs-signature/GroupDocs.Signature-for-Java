@@ -11,16 +11,16 @@ import com.groupdocs.signature.config.SignatureConfig;
 import com.groupdocs.signature.domain.FileDescription;
 import com.groupdocs.signature.domain.VerificationResult;
 import com.groupdocs.signature.handler.SignatureHandler;
-import com.groupdocs.signature.options.CellsSignDigitalOptions;
-import com.groupdocs.signature.options.CellsVerifyDigitalOptions;
 import com.groupdocs.signature.options.OutputType;
-import com.groupdocs.signature.options.PDFVerifyDigitalOptions;
-import com.groupdocs.signature.options.PdfSignDigitalOptions;
-import com.groupdocs.signature.options.SaveOptions;
 import com.groupdocs.signature.options.VerifyOptions;
 import com.groupdocs.signature.options.VerifyOptionsCollection;
-import com.groupdocs.signature.options.WordsSignDigitalOptions;
-import com.groupdocs.signature.options.WordsVerifyDigitalOptions;
+import com.groupdocs.signature.options.digitalsignature.CellsSignDigitalOptions;
+import com.groupdocs.signature.options.digitalsignature.PdfSignDigitalOptions;
+import com.groupdocs.signature.options.digitalsignature.WordsSignDigitalOptions;
+import com.groupdocs.signature.options.digitalverification.CellsVerifyDigitalOptions;
+import com.groupdocs.signature.options.digitalverification.PDFVerifyDigitalOptions;
+import com.groupdocs.signature.options.digitalverification.WordsVerifyDigitalOptions;
+import com.groupdocs.signature.options.saveoptions.SaveOptions;
 
 public class DigitalSignature {
 

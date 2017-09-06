@@ -1,9 +1,8 @@
 package com.groupdocs.signature.examples;
 
 import java.awt.Color;
-
-import com.groupdocs.signature.config.SignatureConfig; 
-import com.groupdocs.signature.domain.Padding; 
+import com.groupdocs.signature.config.SignatureConfig;
+import com.groupdocs.signature.domain.Padding;
 import com.groupdocs.signature.domain.VerificationResult;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.PdfSaveFileFormat;
@@ -13,22 +12,22 @@ import com.groupdocs.signature.domain.enums.PdfTextSignatureImplementation;
 import com.groupdocs.signature.domain.enums.PdfTextStickerIcon;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.handler.SignatureHandler;
-import com.groupdocs.signature.options.CellsSignTextOptions;
-import com.groupdocs.signature.options.CellsVerifyTextOptions;
-import com.groupdocs.signature.options.LoadOptions;
 import com.groupdocs.signature.options.OutputType;
-import com.groupdocs.signature.options.PDFVerifyTextOptions;
-import com.groupdocs.signature.options.PdfSaveOptions;
-import com.groupdocs.signature.options.PdfSignTextOptions;
-import com.groupdocs.signature.options.SaveOptions;
 import com.groupdocs.signature.options.SignOptions;
 import com.groupdocs.signature.options.SignatureOptionsCollection;
-import com.groupdocs.signature.options.SlidesSignTextOptions;
-import com.groupdocs.signature.options.SlidesVerifyTextOptions;
-import com.groupdocs.signature.options.WordsSignTextOptions;
-import com.groupdocs.signature.options.WordsVerifyTextOptions;
 import com.groupdocs.signature.options.appearances.PdfTextAnnotationAppearance;
 import com.groupdocs.signature.options.appearances.PdfTextStickerAppearance;
+import com.groupdocs.signature.options.loadoptions.LoadOptions;
+import com.groupdocs.signature.options.saveoptions.PdfSaveOptions;
+import com.groupdocs.signature.options.saveoptions.SaveOptions;
+import com.groupdocs.signature.options.textsignature.CellsSignTextOptions;
+import com.groupdocs.signature.options.textsignature.PdfSignTextOptions;
+import com.groupdocs.signature.options.textsignature.SlidesSignTextOptions;
+import com.groupdocs.signature.options.textsignature.WordsSignTextOptions;
+import com.groupdocs.signature.options.textverification.CellsVerifyTextOptions;
+import com.groupdocs.signature.options.textverification.PDFVerifyTextOptions;
+import com.groupdocs.signature.options.textverification.SlidesVerifyTextOptions;
+import com.groupdocs.signature.options.textverification.WordsVerifyTextOptions;
 import com.groupdocs.signature.options.verifyextensions.PdfTextAnnotationVerifyExtensions;
 import com.groupdocs.signature.options.verifyextensions.PdfTextStickerVerifyExtensions;
 

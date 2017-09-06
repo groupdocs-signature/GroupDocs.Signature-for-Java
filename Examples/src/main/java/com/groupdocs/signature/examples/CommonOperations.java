@@ -9,16 +9,16 @@ import com.groupdocs.signature.domain.enums.CellsSaveFileFormat;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.handler.SignatureHandler;
-import com.groupdocs.signature.options.CellsSaveOptions;
-import com.groupdocs.signature.options.CellsSignTextOptions;
-import com.groupdocs.signature.options.LoadOptions;
 import com.groupdocs.signature.options.OutputType;
-import com.groupdocs.signature.options.PdfSignDigitalOptions;
-import com.groupdocs.signature.options.PdfSignImageOptions;
-import com.groupdocs.signature.options.PdfSignTextOptions;
-import com.groupdocs.signature.options.SaveOptions;
 import com.groupdocs.signature.options.SignOptions;
 import com.groupdocs.signature.options.SignatureOptionsCollection;
+import com.groupdocs.signature.options.digitalsignature.PdfSignDigitalOptions;
+import com.groupdocs.signature.options.imagesignature.PdfSignImageOptions;
+import com.groupdocs.signature.options.loadoptions.LoadOptions;
+import com.groupdocs.signature.options.saveoptions.CellsSaveOptions;
+import com.groupdocs.signature.options.saveoptions.SaveOptions;
+import com.groupdocs.signature.options.textsignature.CellsSignTextOptions;
+import com.groupdocs.signature.options.textsignature.PdfSignTextOptions;
 
 public class CommonOperations {
 
