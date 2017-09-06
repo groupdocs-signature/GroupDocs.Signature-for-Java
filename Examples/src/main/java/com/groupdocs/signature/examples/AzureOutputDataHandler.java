@@ -8,7 +8,7 @@ import org.apache.commons.lang3.NotImplementedException;
 
 import com.groupdocs.signature.domain.FileDescription;
 import com.groupdocs.signature.handler.output.IOutputDataHandler;
-import com.groupdocs.signature.options.SaveOptions;
+//import com.groupdocs.signature.options.SaveOptions;
 import com.groupdocs.signature.options.SignOptions;
 import com.microsoft.azure.storage.StorageException;
 import com.microsoft.azure.storage.blob.CloudAppendBlob;
