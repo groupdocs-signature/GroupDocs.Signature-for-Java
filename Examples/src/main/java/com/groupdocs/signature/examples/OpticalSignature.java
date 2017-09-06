@@ -29,8 +29,6 @@ import com.groupdocs.signature.options.qrcodeverification.SlidesVerifyQRCodeOpti
 import com.groupdocs.signature.options.qrcodeverification.WordsVerifyQRCodeOptions;
 import com.groupdocs.signature.options.saveoptions.SaveOptions;
 
-
-
 public class OpticalSignature {
 
 	public static void signCellDocWithBarcodeSignature(String fileName) throws Throwable{

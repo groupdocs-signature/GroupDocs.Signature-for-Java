@@ -20,22 +20,6 @@ import com.groupdocs.signature.options.saveoptions.SaveOptions;
 import com.groupdocs.signature.options.textsignature.CellsSignTextOptions;
 import com.groupdocs.signature.options.textsignature.PdfSignTextOptions;
 
-/*import com.groupdocs.signature.config.SignatureConfig;
-import com.groupdocs.signature.domain.CellsSaveFileFormat;
-import com.groupdocs.signature.domain.HorizontalAlignment;
-import com.groupdocs.signature.domain.VerticalAlignment;
-import com.groupdocs.signature.handler.SignatureHandler;
-import com.groupdocs.signature.options.CellsSaveOptions;
-import com.groupdocs.signature.options.CellsSignTextOptions;
-import com.groupdocs.signature.options.LoadOptions;
-import com.groupdocs.signature.options.OutputType;
-import com.groupdocs.signature.options.PdfSignDigitalOptions;
-import com.groupdocs.signature.options.PdfSignImageOptions;
-import com.groupdocs.signature.options.PdfSignTextOptions;
-import com.groupdocs.signature.options.SaveOptions;
-import com.groupdocs.signature.options.SignOptions;
-import com.groupdocs.signature.options.SignatureOptionsCollection;*/
-
 public class CommonOperations {
 
 	public static void getSourceDocFromAbsolutePath(String fileName) throws Exception{

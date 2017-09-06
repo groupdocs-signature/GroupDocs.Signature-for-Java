@@ -22,21 +22,6 @@ import com.groupdocs.signature.options.digitalverification.PDFVerifyDigitalOptio
 import com.groupdocs.signature.options.digitalverification.WordsVerifyDigitalOptions;
 import com.groupdocs.signature.options.saveoptions.SaveOptions;
 
-/*import com.groupdocs.signature.config.SignatureConfig;
-import com.groupdocs.signature.domain.FileDescription;
-import com.groupdocs.signature.domain.VerificationResult;
-import com.groupdocs.signature.handler.SignatureHandler;
-import com.groupdocs.signature.options.CellsSignDigitalOptions;
-import com.groupdocs.signature.options.CellsVerifyDigitalOptions;
-import com.groupdocs.signature.options.OutputType;
-import com.groupdocs.signature.options.PDFVerifyDigitalOptions;
-import com.groupdocs.signature.options.PdfSignDigitalOptions;
-import com.groupdocs.signature.options.SaveOptions;
-import com.groupdocs.signature.options.VerifyOptions;
-import com.groupdocs.signature.options.VerifyOptionsCollection;
-import com.groupdocs.signature.options.WordsSignDigitalOptions;
-import com.groupdocs.signature.options.WordsVerifyDigitalOptions;*/
-
 public class DigitalSignature {
 
 	public static void signCellDocsWithDigitalSignature(String fileName) throws Throwable{

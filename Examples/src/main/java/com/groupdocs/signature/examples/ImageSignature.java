@@ -19,23 +19,6 @@ import com.groupdocs.signature.options.loadoptions.LoadOptions;
 import com.groupdocs.signature.options.saveoptions.CellsSaveOptions;
 import com.groupdocs.signature.options.saveoptions.SaveOptions;
 
-/*import com.groupdocs.signature.config.SignatureConfig;
-import com.groupdocs.signature.domain.ExtendedDashStyle;
-import com.groupdocs.signature.domain.HorizontalAlignment;
-import com.groupdocs.signature.domain.MeasureType;
-import com.groupdocs.signature.domain.Padding;
-import com.groupdocs.signature.domain.VerticalAlignment;
-import com.groupdocs.signature.handler.SignatureHandler;
-import com.groupdocs.signature.options.CellsSaveOptions;
-import com.groupdocs.signature.options.CellsSignImageOptions;
-import com.groupdocs.signature.options.LoadOptions;
-import com.groupdocs.signature.options.OutputType;
-import com.groupdocs.signature.options.PdfSignImageOptions;
-import com.groupdocs.signature.options.SaveOptions;
-import com.groupdocs.signature.options.SlidesSignImageOptions;
-import com.groupdocs.signature.options.WordsSignImageOptions;
-import com.groupdocs.signature.options.appearances.ImageAppearance;*/
-
 public class ImageSignature {
 	
 	public static void signCellDocWithImage(String fileName) throws Exception {

@@ -31,35 +31,7 @@ import com.groupdocs.signature.options.textverification.SlidesVerifyTextOptions;
 import com.groupdocs.signature.options.textverification.WordsVerifyTextOptions;
 import com.groupdocs.signature.options.verifyextensions.PdfTextAnnotationVerifyExtensions;
 import com.groupdocs.signature.options.verifyextensions.PdfTextStickerVerifyExtensions;
-/*import com.groupdocs.signature.domain.HorizontalAlignment;
-import com.groupdocs.signature.domain.Padding;
-import com.groupdocs.signature.domain.PdfSaveFileFormat;
-import com.groupdocs.signature.domain.PdfTextAnnotationBorderEffect;
-import com.groupdocs.signature.domain.PdfTextAnnotationBorderStyle;
-import com.groupdocs.signature.domain.PdfTextSignatureImplementation;
-import com.groupdocs.signature.domain.PdfTextStickerIcon;
-import com.groupdocs.signature.domain.VerificationResult;
-import com.groupdocs.signature.domain.VerticalAlignment;
-import com.groupdocs.signature.handler.SignatureHandler;
-import com.groupdocs.signature.options.CellsSignTextOptions;
-import com.groupdocs.signature.options.CellsVerifyTextOptions;
-import com.groupdocs.signature.options.LoadOptions;
-import com.groupdocs.signature.options.OutputType;
-import com.groupdocs.signature.options.PDFVerifyTextOptions;
-import com.groupdocs.signature.options.PdfSaveOptions;
-import com.groupdocs.signature.options.PdfSignTextOptions;
-import com.groupdocs.signature.options.SaveOptions;
-import com.groupdocs.signature.options.SignOptions;
-import com.groupdocs.signature.options.SignatureOptionsCollection;
-import com.groupdocs.signature.options.SlidesSignTextOptions;
-import com.groupdocs.signature.options.SlidesVerifyTextOptions;
-import com.groupdocs.signature.options.WordsSignTextOptions;
-import com.groupdocs.signature.options.WordsVerifyTextOptions;
-import com.groupdocs.signature.options.appearances.PdfTextAnnotationAppearance;
-import com.groupdocs.signature.options.appearances.PdfTextStickerAppearance;
-import com.groupdocs.signature.options.verifyextensions.PdfTextAnnotationVerifyExtensions;
-import com.groupdocs.signature.options.verifyextensions.PdfTextStickerVerifyExtensions;
-*/
+
 public class TextSignature {
 
 	public static void signCellDocWithText(String fileName) throws Exception {
