@@ -1,7 +1,6 @@
 package com.groupdocs.signature.examples;
 
 import java.awt.Color;
-
 import com.groupdocs.signature.config.SignatureConfig;
 import com.groupdocs.signature.domain.Padding;
 import com.groupdocs.signature.domain.VerificationResult;
