@@ -3,6 +3,20 @@ package com.groupdocs.signature.examples;
 import java.awt.Color;
 
 import com.groupdocs.signature.config.SignatureConfig;
+import com.groupdocs.signature.domain.FileDescription;
+import com.groupdocs.signature.domain.Padding;
+import com.groupdocs.signature.domain.enums.ExtendedDashStyle;
+import com.groupdocs.signature.domain.enums.HorizontalAlignment;
+import com.groupdocs.signature.domain.enums.VerticalAlignment;
+import com.groupdocs.signature.handler.SignatureHandler;
+import com.groupdocs.signature.options.OutputType;
+import com.groupdocs.signature.options.digitalsignature.PdfSignDigitalOptions;
+import com.groupdocs.signature.options.imagesignature.PdfSignImageOptions;
+import com.groupdocs.signature.options.saveoptions.SaveOptions;
+import com.groupdocs.signature.options.textsignature.PdfSignTextOptions;
+import com.groupdocs.signature.options.textsignature.WordsSignTextOptions;
+
+/*import com.groupdocs.signature.config.SignatureConfig;
 import com.groupdocs.signature.domain.ExtendedDashStyle;
 import com.groupdocs.signature.domain.FileDescription;
 import com.groupdocs.signature.domain.HorizontalAlignment;
@@ -14,7 +28,9 @@ import com.groupdocs.signature.options.PdfSignDigitalOptions;
 import com.groupdocs.signature.options.PdfSignImageOptions;
 import com.groupdocs.signature.options.PdfSignTextOptions;
 import com.groupdocs.signature.options.SaveOptions;
-import com.groupdocs.signature.options.WordsSignTextOptions;
+import com.groupdocs.signature.options.WordsSignTextOptions;*/
+
+
 
 public class OtherOperations {
 	public static void setUpFontAndColorOptions(String fileName) throws Exception {

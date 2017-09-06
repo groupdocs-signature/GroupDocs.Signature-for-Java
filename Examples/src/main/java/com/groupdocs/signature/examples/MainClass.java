@@ -54,6 +54,24 @@ public class MainClass {
 		//DigitalSignature.digitalVerificationOfWordDocWithCertificateContainer("getting started.docx");
 		//DigitalSignature.digitalVerificationOfWordDocWithPfcCertificateContainer("getting started.docx");
 		
+		//Optical Signature
+		//OpticalSignature.signCellDocWithBarcodeSignature("pie chart.xlsx");
+		//OpticalSignature.signPDFDocWithBarcodeSignature("digital signatures.pdf");
+		//OpticalSignature.signSlidesDocWithBarcodeSignature("butterfly effect.pptx");
+		//OpticalSignature.signWordsDocWithBarcodeSignature("getting started.docx");		
+		//OpticalSignature.signCellDocWithQRCodeSignature("pie chart.xlsx");
+		//OpticalSignature.signPDFDocWithQRCodeSignature("digital signatures.pdf");
+		//OpticalSignature.signSlidesDocWithQRCodeSignature("butterfly effect.pptx");
+		//OpticalSignature.signWordsDocWithQRCodeSignature("getting started.docx");		
+		//OpticalSignature.verifyCellDocWithBarcodeSignature("pie chart.xlsx");
+		//OpticalSignature.verifyPDFDocWithBarcodeSignature("digital signatures.pdf");
+		//OpticalSignature.verifySlidesDocWithBarcodeSignature("butterfly effect.pptx");
+		//OpticalSignature.verifyWordsDocWithBarcodeSignature("getting started.docx");		
+		//OpticalSignature.verifyCellDocWithQRCodeSignature("pie chart.xlsx");
+		//OpticalSignature.verifyPDFDocWithQRCodeSignature("digital signatures.pdf");
+		//OpticalSignature.verifySlidesDocWithQRCodeSignature("butterfly effect.pptx");
+		//OpticalSignature.verifyWordsDocWithQRCodeSignature("getting started.docx");
+		
 		//Other Operations
 		//OtherOperations.setUpFontAndColorOptions("digital signatures.pdf");
 		//OtherOperations.setUpBackgroundAndBorderOptions("getting started.docx");
