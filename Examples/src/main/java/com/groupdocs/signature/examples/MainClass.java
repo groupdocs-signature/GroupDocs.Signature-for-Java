@@ -72,6 +72,12 @@ public class MainClass {
 		//OpticalSignature.verifySlidesDocWithQRCodeSignature("butterfly effect.pptx");
 		//OpticalSignature.verifyWordsDocWithQRCodeSignature("getting started.docx");
 		
+		//Stamp Signature
+		//StampSignature.signCellDocWithStampSignature("pie chart.xlsx");
+		//StampSignature.signPDFDocWithStampSignature("digital signatures.pdf");
+		//StampSignature.signSlidesDocWithStampSignature("butterfly effect.pptx");
+		//StampSignature.signWordsDocWithStampSignature("getting started.docx");
+		
 		//Other Operations
 		//OtherOperations.setUpFontAndColorOptions("digital signatures.pdf");
 		//OtherOperations.setUpBackgroundAndBorderOptions("getting started.docx");
