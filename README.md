@@ -22,5 +22,5 @@ Directory | Description
 + **Product Home:** [GroupDocs.Signature for Java](https://www.groupdocs.com/products/signature/java)
 + **Download:** [Download GroupDocs.Signature for Java](https://downloads.groupdocs.com/signature/java)
 + **Documentation:** [GroupDocs.Signature for Java Documentation](https://docs.groupdocs.com/display/signaturejava/Home)
-+ **Forum:** [GroupDocs.Signature for Java Forum](http://www.groupdocs.com/Community/forums/groupdocs.signature-product-family/6/showforum.aspx)
-+ **Blog:** [GroupDocs.Signature for Java Blog](https://blog.groupdocs.com/)
++ **Forum:** [GroupDocs.Signature for Java Forum](https://forum.groupdocs.com/c/signature)
++ **Blog:** [GroupDocs.Signature for Java Blog](https://blog.groupdocs.com/category/groupdocs-signature-product-family/)
