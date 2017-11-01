@@ -4,7 +4,10 @@ import java.awt.Color;
 import com.groupdocs.signature.config.SignatureConfig;
 import com.groupdocs.signature.domain.Padding;
 import com.groupdocs.signature.domain.VerificationResult;
+import com.groupdocs.signature.domain.enums.ExtendedDashStyle;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
+import com.groupdocs.signature.domain.enums.ImagesSaveFileFormat;
+import com.groupdocs.signature.domain.enums.ImagesTextSignatureImplementation;
 import com.groupdocs.signature.domain.enums.PdfSaveFileFormat;
 import com.groupdocs.signature.domain.enums.PdfTextAnnotationBorderEffect;
 import com.groupdocs.signature.domain.enums.PdfTextAnnotationBorderStyle;
@@ -20,7 +23,16 @@ import com.groupdocs.signature.options.appearances.PdfTextStickerAppearance;
 import com.groupdocs.signature.options.loadoptions.LoadOptions;
 import com.groupdocs.signature.options.saveoptions.PdfSaveOptions;
 import com.groupdocs.signature.options.saveoptions.SaveOptions;
+import com.groupdocs.signature.options.saveoptions.imagessaveoptions.BitmapCompression;
+import com.groupdocs.signature.options.saveoptions.imagessaveoptions.BmpSaveOptions;
+import com.groupdocs.signature.options.saveoptions.imagessaveoptions.ImagesSaveOptions;
+import com.groupdocs.signature.options.saveoptions.imagessaveoptions.JpegCompressionColorMode;
+import com.groupdocs.signature.options.saveoptions.imagessaveoptions.JpegCompressionMode;
+import com.groupdocs.signature.options.saveoptions.imagessaveoptions.JpegSaveOptions;
+import com.groupdocs.signature.options.saveoptions.imagessaveoptions.TiffFormat;
+import com.groupdocs.signature.options.saveoptions.imagessaveoptions.TiffSaveOptions;
 import com.groupdocs.signature.options.textsignature.CellsSignTextOptions;
+import com.groupdocs.signature.options.textsignature.ImagesSignTextOptions;
 import com.groupdocs.signature.options.textsignature.PdfSignTextOptions;
 import com.groupdocs.signature.options.textsignature.SlidesSignTextOptions;
 import com.groupdocs.signature.options.textsignature.WordsSignTextOptions;
@@ -584,5 +596,147 @@ public class TextSignature {
         //Sign document with removed password
         String signedDocumentWithRemovedPassword = handler.sign(signedDocumentWithAnotherPassword, signOptions, loadOptions, saveOptions);
 		//ExEnd:signPasswordProtectedDocWithTextSignature
+	}
+	
+	public static void signImageDocWithText(String fileName) throws Exception {
+		//ExStart:signImageDocWithText
+		//setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup image signature options with relative path - image file stores
+		// in config.ImagesPath folder
+		ImagesSignTextOptions signOptions = new ImagesSignTextOptions("John Smith");
+		signOptions.setLeft(10);
+		signOptions.setTop(10);
+		signOptions.setWidth(100);
+		signOptions.setHeight(100);
+		signOptions.setDocumentPageNumber(1);
+		  // setup background settings
+		signOptions.setBackgroundColor(Color.BLUE);
+		signOptions.setBackgroundTransparency(0.5);
+		  // setup border settings
+		signOptions.setBorderColor(Color.BLACK);
+		signOptions.setBorderDashStyle(ExtendedDashStyle.LongDash);
+		signOptions.setBorderWeight(1.2);
+		signOptions.setBorderTransparency(0.5);
+		  // setup text color
+		signOptions.setForeColor(Color.RED);
+		  // setup Font options
+		signOptions.getFont().setBold(true);
+		signOptions.getFont().setItalic(true);
+		signOptions.getFont().setUnderline(true);
+		signOptions.getFont().setFontFamily("Arial");
+		signOptions.getFont().setFontSize(15);
+		  // type of implementation
+		signOptions.setSignatureImplementation(ImagesTextSignatureImplementation.TextAsImage);
+		  
+		SaveOptions saveOptions =new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.<String> sign(CommonUtilities.getStoragePath(fileName), signOptions,
+				saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:signImageDocWithText
+	}
+	
+	public static void signImageWithDifferentOutputFileType(String fileName) throws Throwable{
+		//ExStart:signImageWithDifferentOutputFileType
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup text signature options
+		SignOptions signOptions = new ImagesSignTextOptions("John Smith");
+		//Webp
+		ImagesSaveOptions optionsWebp = new ImagesSaveOptions();
+		optionsWebp.setOutputType(OutputType.String);
+		optionsWebp.setFileFormat(ImagesSaveFileFormat.Webp);
+		optionsWebp.setOutputFileName("signed_output_Webp");
+		String signedPath = handler.sign(CommonUtilities.getStoragePath(fileName), signOptions, optionsWebp);
+		  
+		  // save to Jpeg format with specific options
+		JpegSaveOptions saveOptionsJpeg = new JpegSaveOptions();
+		saveOptionsJpeg.setOutputType(OutputType.String);
+		saveOptionsJpeg.setColorType(JpegCompressionColorMode.Cmyk);
+		saveOptionsJpeg.setCompressionType(JpegCompressionMode.Progressive);
+		saveOptionsJpeg.setOutputFileName("signed_output_Jpeg");
+		signedPath = handler.sign(CommonUtilities.getStoragePath(fileName), signOptions, saveOptionsJpeg);
+		  
+		  // save to Bmp format with specific options
+		BmpSaveOptions saveOptionsBmp = new BmpSaveOptions();
+		saveOptionsBmp.setOutputType(OutputType.String);
+		saveOptionsBmp.setCompression(BitmapCompression.Rgb);
+		saveOptionsBmp.setHorizontalResolution(120);
+		saveOptionsBmp.setVerticalResolution(120);
+		saveOptionsBmp.setOutputFileName("signed_output_Bmp");
+		signedPath = handler.sign(CommonUtilities.getStoragePath(fileName), signOptions, saveOptionsBmp);
+		  
+		  // save to Tiff format with specific options
+		TiffSaveOptions saveOptionsTiff = new TiffSaveOptions();
+		saveOptionsTiff.setOutputType(OutputType.String);
+		saveOptionsTiff.setExpectedTiffFormat(TiffFormat.TiffCcitRle);
+		saveOptionsTiff.setOutputFileName("signed_output_Tiff");
+		// sign document
+        signedPath = handler.sign(CommonUtilities.getStoragePath(fileName), signOptions, saveOptionsTiff);
+        System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:signImageWithDifferentOutputFileType
+	}
+	
+	public static void addTransperanceAndRotationToTextSignatureInImageDoc(String fileName) throws Throwable{
+		//ExStart:addTransperanceAndRotationToTextSignatureInImageDoc
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup appearance options
+		ImagesSignTextOptions signOptions = new ImagesSignTextOptions("John Smith");
+		  
+		signOptions.getFont().setFontSize(64);
+		signOptions.getFont().setBold(true);
+		signOptions.getFont().setItalic(true);
+		signOptions.getFont().setUnderline(true);
+		signOptions.setOpacity(0.7);
+		signOptions.setForeColor(Color.BLUE);
+		  
+		  // type of implementation
+		signOptions.setSignatureImplementation(ImagesTextSignatureImplementation.Watermark);
+		  
+		SaveOptions saveOptions =new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(CommonUtilities.getStoragePath(fileName), signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:addTransperanceAndRotationToTextSignatureInImageDoc
+	}
+	
+	public static void signImageDocsWithTextSignatureAsWatermark(String fileName) throws Throwable{
+		//ExStart:signImageDocsWithTextSignatureAsWatermark
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup appearance options
+		ImagesSignTextOptions signOptions = new ImagesSignTextOptions("John Smith");
+		  
+		signOptions.getFont().setFontSize(64);
+		signOptions.getFont().setBold(true);
+		signOptions.getFont().setItalic(true);
+		signOptions.getFont().setUnderline(true);
+		signOptions.setOpacity(0.7);
+		signOptions.setForeColor(Color.BLUE);
+		  
+		  // type of implementation
+		signOptions.setSignatureImplementation(ImagesTextSignatureImplementation.Watermark);
+		  
+		SaveOptions saveOptions =new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(CommonUtilities.getStoragePath(fileName), signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:signImageDocsWithTextSignatureAsWatermark
 	}
 }

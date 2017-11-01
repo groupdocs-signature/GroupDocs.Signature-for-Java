@@ -22,7 +22,11 @@ public class MainClass {
 		//TextSignature.signPdfWithTextSignatureAsSticker("digital signatures.pdf");
 		//TextSignature.usingDefaultAppearanceSignPdfWithTextSignatureSticker("digital signatures.pdf");
 		//TextSignature.addTransperanceAndRotationToTextSignatureAppearance("butterfly effect.pptx");
-		//TextSignature.signPasswordProtectedDocWithTextSignature("pie chart.xlsx");
+		//TextSignature.signPasswordProtectedDocWithTextSignature("pie chart.xlsx");		
+		//TextSignature.signImageDocWithText("sample.png");
+		//TextSignature.signImageWithDifferentOutputFileType("sample.png");
+		//TextSignature.addTransperanceAndRotationToTextSignatureInImageDoc("sample.png");
+		//TextSignature.signImageDocsWithTextSignatureAsWatermark("sample.png");
 		
 		
 		//Image Signatures
@@ -36,10 +40,13 @@ public class MainClass {
 		//ImageSignature.signSlideDocWithImageSpecifyIntents("butterfly effect.pptx");
 		//ImageSignature.signWordDocWithImage("getting started.docx");
 		//ImageSignature.signWordDocWithImageSpecifyMargins("getting started.docx");
-		//ImageSignature.signWordDocWithImageSpecifyIntents("getting started.docx");
-		
+		//ImageSignature.signWordDocWithImageSpecifyIntents("getting started.docx");		
 		//ImageSignature.extendedOptionInImageSignature("digital signatures.pdf");
-		//ImageSignature.signArbitraryPagesOfDocumentWithImageSignature("digital signatures.pdf");
+		//ImageSignature.signArbitraryPagesOfDocumentWithImageSignature("digital signatures.pdf");		
+		//ImageSignature.signImageDocWithImage("sample.png");
+		//ImageSignature.signImageDocWithMarginsAndAlignment("sample.png");
+		//ImageSignature.signImageDocWithSpecifiedAdjustmentSizeAndMargins("sample.png");
+		//ImageSignature.signImageWithExtendedOptionInImageSignature("sample.png");
 		
 		//Digital Signatures
 		//DigitalSignature.signCellDocsWithDigitalSignature("pie chart.xlsx");
@@ -70,13 +77,18 @@ public class MainClass {
 		//OpticalSignature.verifyCellDocWithQRCodeSignature("pie chart.xlsx");
 		//OpticalSignature.verifyPDFDocWithQRCodeSignature("digital signatures.pdf");
 		//OpticalSignature.verifySlidesDocWithQRCodeSignature("butterfly effect.pptx");
-		//OpticalSignature.verifyWordsDocWithQRCodeSignature("getting started.docx");
+		//OpticalSignature.verifyWordsDocWithQRCodeSignature("getting started.docx");		
+		//OpticalSignature.signImageDocWithBarcodeSignature("sample.png");
+		//OpticalSignature.signImageDocWithQRCodeSignature("sample.png");
+		//OpticalSignature.verifyImageDocWithBarcodeSignature("sample.png");
+		//OpticalSignature.verifyImageDocWithQRCodeSignature("sample.png");
 		
 		//Stamp Signature
 		//StampSignature.signCellDocWithStampSignature("pie chart.xlsx");
 		//StampSignature.signPDFDocWithStampSignature("digital signatures.pdf");
 		//StampSignature.signSlidesDocWithStampSignature("butterfly effect.pptx");
-		//StampSignature.signWordsDocWithStampSignature("getting started.docx");
+		//StampSignature.signWordsDocWithStampSignature("getting started.docx");		
+		//StampSignature.signImageDocWithStampSignature("sample.png");
 		
 		//Other Operations
 		//OtherOperations.setUpFontAndColorOptions("digital signatures.pdf");
