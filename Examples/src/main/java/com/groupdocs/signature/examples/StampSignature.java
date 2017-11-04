@@ -4,11 +4,14 @@ import java.awt.Color;
 
 import com.groupdocs.signature.config.SignatureConfig;
 import com.groupdocs.signature.domain.enums.ExtendedDashStyle;
+import com.groupdocs.signature.domain.stamps.StampBackgroundCropType;
 import com.groupdocs.signature.domain.stamps.StampLine;
+import com.groupdocs.signature.domain.stamps.StampTextRepeatType;
 import com.groupdocs.signature.handler.SignatureHandler;
 import com.groupdocs.signature.options.OutputType;
 import com.groupdocs.signature.options.saveoptions.SaveOptions;
 import com.groupdocs.signature.options.stampsignature.CellsStampSignOptions;
+import com.groupdocs.signature.options.stampsignature.ImagesStampSignOptions;
 import com.groupdocs.signature.options.stampsignature.PdfStampSignOptions;
 import com.groupdocs.signature.options.stampsignature.SlidesStampSignOptions;
 import com.groupdocs.signature.options.stampsignature.WordsStampSignOptions;
@@ -17,7 +20,6 @@ public class StampSignature {
 
 	public static void signCellDocWithStampSignature(String fileName) throws Throwable{
 		//ExStart:signCellDocWithStampSignature
-		// For complete examples and data files, please go to https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
 		// instantiating the conversion handler
@@ -66,7 +68,6 @@ public class StampSignature {
 	
 	public static void signPDFDocWithStampSignature(String fileName) throws Throwable{
 		//ExStart:signPDFDocWithStampSignature
-		// For complete examples and data files, please go to https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
 		// instantiating the conversion handler
@@ -143,7 +144,6 @@ public class StampSignature {
 	
 	public static void signSlidesDocWithStampSignature(String fileName) throws Throwable{
 		//ExStart:signSlidesDocWithStampSignature
-		// For complete examples and data files, please go to https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
 		// instantiating the conversion handler
@@ -189,7 +189,6 @@ public class StampSignature {
 	
 	public static void signWordsDocWithStampSignature(String fileName) throws Throwable{
 		//ExStart:signWordsDocWithStampSignature
-		// For complete examples and data files, please go to https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
 		// instantiating the conversion handler
@@ -231,5 +230,85 @@ public class StampSignature {
 		String signedPath = handler.<String>sign(fileName, signOptions, saveOptions);
 		System.out.println("Signed file path is: "+signedPath);
 		//ExEnd:signWordsDocWithStampSignature
+	}
+	
+	public static void signImageDocWithStampSignature(String fileName) throws Throwable{
+		//ExStart:signImageDocWithStampSignature
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		
+		// setup options
+		ImagesStampSignOptions signOptions = new ImagesStampSignOptions();
+		signOptions.setHeight(300);
+		signOptions.setWidth(300);
+		  
+		signOptions.setBackgroundColor(Color.ORANGE);
+		signOptions.setBackgroundColorCropType(StampBackgroundCropType.OuterArea); //This feature is supported starting from version 17.08
+		signOptions.setImageGuid(CommonUtilities.getImagesPath("sign.PNG"));
+		signOptions.setBackgroundImageCropType(StampBackgroundCropType.InnerArea); //This feature is supported starting from version 17.08
+		  
+		  //Outer round lines
+		StampLine line0 = new StampLine();
+		line0.setText("* European Union *");
+		line0.setTextRepeatType(StampTextRepeatType.FullTextRepeat); //This feature is supported starting from version 17.08
+		line0.getFont().setFontSize(12);
+		line0.setHeight(22);
+		line0.setTextBottomIntent(6);
+		line0.setTextColor(Color.GRAY);
+		line0.setBackgroundColor(Color.BLUE);
+		signOptions.getOuterLines().add(line0);
+		  
+		StampLine line1 = new StampLine();
+		line1.setHeight(2);
+		line1.setBackgroundColor(Color.WHITE);
+		signOptions.getOuterLines().add(line1);
+		  
+		StampLine line2 = new StampLine();
+		line2.setText("* Entrepreneur *");
+		line2.setTextRepeatType(StampTextRepeatType.FullTextRepeat); //This feature is supported starting from version 17.08
+		line2.setTextColor(Color.BLUE);
+		line2.getFont().setFontSize(15);
+		line2.setHeight(30);
+		line2.setTextBottomIntent(8);
+		line2.getInnerBorder().setColor(Color.BLUE);
+		line2.getOuterBorder().setColor(Color.BLUE);
+		line2.getInnerBorder().setStyle(ExtendedDashStyle.Dot);
+		signOptions.getOuterLines().add(line2);
+		  
+		  //Inner square lines
+		StampLine line3 = new StampLine();
+		line3.setText("John");
+		line3.setTextColor(Color.RED);
+		line3.getFont().setFontSize(20);
+		line3.getFont().setBold(true);
+		line3.setHeight(40);
+		signOptions.getInnerLines().add(line3);
+		  
+		StampLine line4 = new StampLine();
+		line4.setText("Smith");
+		line4.setTextColor(Color.RED);
+		line4.getFont().setFontSize(20);
+		line4.getFont().setBold(true);
+		line4.setHeight(40);
+		signOptions.getInnerLines().add(line4);
+		  
+		StampLine line5 = new StampLine();
+		line5.setText("SSN 1230242424");
+		line5.setTextColor(Color.RED);
+		line5.getFont().setFontSize(12);
+		line5.getFont().setBold(true);
+		line5.setHeight(40);
+		signOptions.getInnerLines().add(line5);
+		 
+		SaveOptions saveOptions =  new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		 
+	    // sign document
+		String signedPath = handler.<String>sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: "+signedPath);
+		//ExEnd:signImageDocWithStampSignature
 	}
 }
