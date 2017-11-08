@@ -19,7 +19,7 @@ Directory | Description
 ## Resources
 
 + **Website:** [www.groupdocs.com](http://www.groupdocs.com)
-+ **Product Home:** [GroupDocs.Signature for Java](https://www.groupdocs.com/products/signature/java)
++ **Product Home:** [GroupDocs.Signature for Java](https://products.groupdocs.com/signature/java)
 + **Download:** [Download GroupDocs.Signature for Java](https://downloads.groupdocs.com/signature/java)
 + **Documentation:** [GroupDocs.Signature for Java Documentation](https://docs.groupdocs.com/display/signaturejava/Home)
 + **Forum:** [GroupDocs.Signature for Java Forum](https://forum.groupdocs.com/c/signature)
