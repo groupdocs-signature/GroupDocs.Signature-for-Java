@@ -9,7 +9,6 @@ public class MainClass {
 		//TextSignature.signSlideDocWithText("butterfly effect.pptx");
 		//TextSignature.signWordDocWithText("getting started.docx");
 		//TextSignature.validatePdfTextSignatures("digital signatures.pdf");
-		
 		//TextSignature.verifyCellWithTextSignature("pie chart.xlsx");
 		//TextSignature.verifyPDFWithTextSignatureAnnotation("digital signatures.pdf");
 		//TextSignature.verifyPDFWithTextSignatureSticker("digital signatures.pdf");
@@ -27,6 +26,10 @@ public class MainClass {
 		//TextSignature.signImageWithDifferentOutputFileType("sample.png");
 		//TextSignature.addTransperanceAndRotationToTextSignatureInImageDoc("sample.png");
 		//TextSignature.signImageDocsWithTextSignatureAsWatermark("sample.png");
+		
+		//TextSignature.signDocumentWithSignatureProcessEvents("digital signatures.pdf");
+		//TextSignature.verifyDocumentWithVerificationProcessEvents("digital signatures.pdf");
+		//TextSignature.signCellDocumentWithTextSignatureAppearence("pie chart.xlsx");
 		
 		
 		//Image Signatures
@@ -60,6 +63,11 @@ public class MainClass {
 		//DigitalSignature.digitalVerificationOfSlideDoc();
 		//DigitalSignature.digitalVerificationOfWordDocWithCertificateContainer("getting started.docx");
 		//DigitalSignature.digitalVerificationOfWordDocWithPfcCertificateContainer("getting started.docx");
+		
+		//DigitalSignature.searchDigitalSignatureInPDFDocuments("digital signatures.pdf");
+		//DigitalSignature.searchDigitalSignatureInCellDocuments("pie chart.xlsx");
+		//DigitalSignature.searchDigitalSignatureInWordDocuments("getting started.docx");
+		//DigitalSignature.searchDigitalSignatureInSystem();
 		
 		//Optical Signature
 		//OpticalSignature.signCellDocWithBarcodeSignature("pie chart.xlsx");

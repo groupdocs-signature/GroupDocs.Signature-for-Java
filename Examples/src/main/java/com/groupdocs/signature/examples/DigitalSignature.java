@@ -3,17 +3,28 @@ package com.groupdocs.signature.examples;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.security.KeyStore;
+import java.security.cert.Certificate;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.List;
 
 import com.groupdocs.signature.config.SignatureConfig;
 import com.groupdocs.signature.domain.FileDescription;
+import com.groupdocs.signature.domain.SearchResult;
 import com.groupdocs.signature.domain.VerificationResult;
+import com.groupdocs.signature.domain.signatures.BaseSignature;
+import com.groupdocs.signature.domain.signatures.CellsDigitalSignature;
+import com.groupdocs.signature.domain.signatures.PDFDigitalSignature;
+import com.groupdocs.signature.domain.signatures.WordsDigitalSignature;
 import com.groupdocs.signature.handler.SignatureHandler;
 import com.groupdocs.signature.options.OutputType;
 import com.groupdocs.signature.options.VerifyOptions;
 import com.groupdocs.signature.options.VerifyOptionsCollection;
+import com.groupdocs.signature.options.digitalsearch.CellsSearchDigitalOptions;
+import com.groupdocs.signature.options.digitalsearch.PdfSearchDigitalOptions;
+import com.groupdocs.signature.options.digitalsearch.WordsSearchDigitalOptions;
 import com.groupdocs.signature.options.digitalsignature.CellsSignDigitalOptions;
 import com.groupdocs.signature.options.digitalsignature.PdfSignDigitalOptions;
 import com.groupdocs.signature.options.digitalsignature.WordsSignDigitalOptions;
@@ -225,6 +236,93 @@ public class DigitalSignature {
 		VerificationResult result = handler.verify(CommonUtilities.getStoragePath(fileName), verifyOptionsCollection);
 		System.out.println("Signed file verification result: " + result.isValid());
 		//ExEnd:digitalVerificationOfWordDocWithPfcCertificateContainer
+	}
+	
+	public static void searchDigitalSignatureInPDFDocuments(String fileName) throws Exception{
+		//ExStart:searchDigitalSignatureInPDFDocuments
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the signature handler          
+		SignatureHandler handler = new SignatureHandler(signConfig);		  
+		// setup options with text of signature
+		PdfSearchDigitalOptions searchOptions = new PdfSearchDigitalOptions();
+		// Search Document for Signatures
+		SearchResult searchResult = handler.search(fileName, searchOptions);
+		System.out.println("Source file " +fileName+ " contains "+searchResult.getSignatures().size()+" digital signature(s)" );
+		for(BaseSignature signature : searchResult.getSignatures())
+		{
+		    PDFDigitalSignature pdfSign = (PDFDigitalSignature)signature;
+		    if (pdfSign != null) {
+		        System.out.println("\t >> Digital signature from "+pdfSign.getSignTime()+". Contact: "+pdfSign.getContactInfo()+". Valid "+pdfSign.isValid());
+		    }
+		}
+		//ExEnd:searchDigitalSignatureInPDFDocuments
+	}
+	
+	public static void searchDigitalSignatureInCellDocuments(String fileName) throws Exception{
+		//ExStart:searchDigitalSignatureInCellDocuments
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the signature handler          
+		SignatureHandler handler = new SignatureHandler(signConfig);		  
+		// setup options with text of signature
+		CellsSearchDigitalOptions  searchOptions = new CellsSearchDigitalOptions ();
+		// Search Document for Signatures
+		SearchResult searchResult = handler.search(fileName, searchOptions);
+		System.out.println("Source file " +fileName+ " contains "+searchResult.getSignatures().size()+" digital signature(s)" );
+		for(BaseSignature signature : searchResult.getSignatures())
+		{
+		    CellsDigitalSignature cellsSign = (CellsDigitalSignature )signature;
+		    if (cellsSign != null) {
+		        System.out.println("\t >> Digital signature from "+cellsSign.getSignTime()+". Comments: "+cellsSign.getComments()+". Valid "+cellsSign.isValid());
+		    }
+		}
+		//ExEnd:searchDigitalSignatureInCellDocuments
+	}
+	
+	public static void searchDigitalSignatureInWordDocuments(String fileName) throws Exception{
+		//ExStart:searchDigitalSignatureInWordDocuments
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the signature handler          
+		SignatureHandler handler = new SignatureHandler(signConfig);		  
+		// setup options with text of signature
+		WordsSearchDigitalOptions searchOptions = new WordsSearchDigitalOptions();
+		// Search Document for Signatures
+		SearchResult searchResult = handler.search(fileName, searchOptions);
+		System.out.println("Source file " +fileName+ " contains "+searchResult.getSignatures().size()+" digital signature(s)" );
+		for(BaseSignature signature : searchResult.getSignatures())
+		{
+		    WordsDigitalSignature WordsSign = (WordsDigitalSignature)signature;
+		    if (WordsSign != null) {
+		        System.out.println("\t >> Digital signature from "+WordsSign.getSignTime()+". Comments: "+WordsSign.getComments()+". Valid "+WordsSign.isValid());
+		    }
+		}
+		//ExEnd:searchDigitalSignatureInWordDocuments
+	}
+	
+	public static void searchDigitalSignatureInSystem() throws Exception{
+		//ExStart:searchDigitalSignatureInSystem
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// load Digital Signature registered in system
+		List<com.groupdocs.signature.domain.signatures.DigitalSignature> signatures = com.groupdocs.signature.domain.signatures.DigitalSignature.loadDigitalSignatures();
+		for (com.groupdocs.signature.domain.signatures.DigitalSignature signature : signatures)
+		{
+		    if (signature.getCertificate() != null)
+		    {
+		  
+		        KeyStore keyStore = signature.getCertificate();
+		        for (Enumeration l = keyStore.aliases(); l.hasMoreElements();) {
+		            String al = (String) l.nextElement();
+		            Certificate cert = keyStore.getCertificate(al);
+		  
+		            System.out.println("\nCertificate: " + cert.toString());
+		  
+		        }   
+		    }
+		}
+		//ExEnd:searchDigitalSignatureInSystem
 	}
 	
 	
