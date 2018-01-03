@@ -4,6 +4,8 @@ import java.awt.Color;
 import com.groupdocs.signature.config.SignatureConfig;
 import com.groupdocs.signature.domain.Padding;
 import com.groupdocs.signature.domain.VerificationResult;
+import com.groupdocs.signature.domain.enums.CellsTextShapeType;
+import com.groupdocs.signature.domain.enums.DashStyle;
 import com.groupdocs.signature.domain.enums.ExtendedDashStyle;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.ImagesSaveFileFormat;
@@ -15,6 +17,12 @@ import com.groupdocs.signature.domain.enums.PdfTextSignatureImplementation;
 import com.groupdocs.signature.domain.enums.PdfTextStickerIcon;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.handler.SignatureHandler;
+import com.groupdocs.signature.handler.events.ProcessCompleteEventArgs;
+import com.groupdocs.signature.handler.events.ProcessCompleteEventHandler;
+import com.groupdocs.signature.handler.events.ProcessProgressEventArgs;
+import com.groupdocs.signature.handler.events.ProcessProgressEventHandler;
+import com.groupdocs.signature.handler.events.ProcessStartEventArgs;
+import com.groupdocs.signature.handler.events.ProcessStartEventHandler;
 import com.groupdocs.signature.options.OutputType;
 import com.groupdocs.signature.options.SignOptions;
 import com.groupdocs.signature.options.SignatureOptionsCollection;
@@ -738,5 +746,131 @@ public class TextSignature {
 		String signedPath = handler.sign(CommonUtilities.getStoragePath(fileName), signOptions, saveOptions);
 		System.out.println("Signed file path is: " + signedPath);
 		//ExEnd:signImageDocsWithTextSignatureAsWatermark
+	}
+	
+	public static void signDocumentWithSignatureProcessEvents(String fileName) throws Throwable{
+		//ExStart:signDocumentWithSignatureProcessEvents
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup signature option
+		PdfSignTextOptions signOptions = new PdfSignTextOptions("John Smith");
+		// text rectangle size
+		signOptions.setHeight(100);
+		signOptions.setWidth(100);
+		signOptions.setSignAllPages(true);
+		//
+		SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("Process_Events");
+		//
+		handler.SignatureStarted.add(new ProcessStartEventHandler() {
+		    public void invoke(Object sender, ProcessStartEventArgs args) {
+		        System.out.println("Signature process of "+args.getGuid()+" started at "+ args.getStarted().toString());
+		    }
+		});
+		  
+		//
+		handler.SignatureProgress.add(new ProcessProgressEventHandler(){
+		    public void invoke(Object sender, ProcessProgressEventArgs args) {
+		        System.out.println("Singing of "+args.getGuid()+" progress: "+args.getProgress()+" %. Since start process spent "+args.getTicks()+" mlsec" );
+		    }
+		  
+		});
+		handler.SignatureCompleted.add(new ProcessCompleteEventHandler() {
+		    public void invoke(Object sender, ProcessCompleteEventArgs args) {
+		        System.out.println("Singing of "+args.getGuid()+" completed at "+args.getCompleted().toString()+". Process took "+args.getTicks()+" mlsec" );
+		    }
+		});
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:signDocumentWithSignatureProcessEvents
+	}
+	
+	public static void verifyDocumentWithVerificationProcessEvents(String fileName) throws Throwable{
+		//ExStart:verifyDocumentWithVerificationProcessEvents
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup signature option
+		PDFVerifyTextOptions verifyOptions = new PDFVerifyTextOptions("John Smith");
+		// text rectangle size
+		verifyOptions.setVerifyAllPages(true);
+		//
+		handler.VerificationStarted.add(new ProcessStartEventHandler() {
+			public void invoke(Object sender, ProcessStartEventArgs args) {
+		        System.out.println("Verification process of "+args.getGuid()+" started at "+ args.getStarted().toString());
+		    }
+		});
+		handler.VerificationProgress.add(new ProcessProgressEventHandler() {
+			 public void invoke(Object sender, ProcessProgressEventArgs args) {
+			        System.out.println("Verification of "+args.getGuid()+" progress: "+args.getProgress()+" %. Since start process spent "+args.getTicks()+" mlsec");
+			    }
+		});
+		handler.VerificationCompleted.add(new ProcessCompleteEventHandler() {
+			public void invoke(Object sender, ProcessCompleteEventArgs args) {
+		        System.out.println("Verification of "+args.getGuid()+" completed at "+args.getCompleted().toString()+". Process took "+args.getTicks()+" mlsec");
+		    }
+		});
+		// verify document
+		VerificationResult result = handler.verify(fileName, verifyOptions);
+		System.out.println("Verification result is: " + result.isValid());
+		//ExEnd:verifyDocumentWithVerificationProcessEvents
+	}
+	
+	public static void signCellDocumentWithTextSignatureAppearence(String fileName) throws Throwable{
+		//ExStart:signCellDocumentWithTextSignatureAppearence
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup appearance options
+		CellsSignTextOptions signOptions = new CellsSignTextOptions("John Smith");
+		  
+		// setup background settings
+		signOptions.setVerticalAlignment(VerticalAlignment.None);
+		signOptions.setHorizontalAlignment(HorizontalAlignment.None);
+		signOptions.setColumnNumber(2);
+		signOptions.setRowNumber(3);
+		signOptions.setWidth(300);
+		signOptions.setHeight(100);
+		  
+		// setup background settings
+		signOptions.setBackgroundColor(Color.YELLOW);
+		signOptions.setBackgroundTransparency(0.5);
+		  
+		//setup border settings
+		signOptions.setBorderColor(Color.ORANGE);
+		signOptions.setBorderWeight(1.2);
+		signOptions.setBorderTransparency(0.5);
+		signOptions.setBorderDashStyle(DashStyle.DashLongDashDot);
+		signOptions.setBorderVisiblity(true);
+		signOptions.setBorderWeight(2);
+		  
+		// setup text color
+		signOptions.setForeColor(Color.BLUE);
+		// setup Font options
+		signOptions.getFont().setBold(true);
+		signOptions.getFont().setItalic(true);
+		signOptions.getFont().setUnderline(true);
+		signOptions.getFont().setStrikeout(true);
+		signOptions.getFont().setFontFamily("Arial");
+		signOptions.getFont().setFontSize(25);
+		  
+		//setup type of signature shape (could appears differently for various document types)
+		//This feature is supported starting from version 17.11
+		signOptions.setShapeType(CellsTextShapeType.UpRibbon);
+		  
+		// setup save options
+		SaveOptions saveOptions =new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:signCellDocumentWithTextSignatureAppearence
 	}
 }
