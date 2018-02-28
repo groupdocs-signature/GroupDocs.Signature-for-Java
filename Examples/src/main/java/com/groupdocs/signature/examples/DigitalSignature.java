@@ -65,7 +65,8 @@ public class DigitalSignature {
 		// instantiating the conversion handler
 		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
 		// setup digital signature options
-		PdfSignDigitalOptions signOptions = new PdfSignDigitalOptions(new FileDescription(CommonUtilities.getCertificatePath("acer.pfx")), CommonUtilities.getImagesPath("sign.png"));
+		//PdfSignDigitalOptions signOptions = new PdfSignDigitalOptions(new FileDescription(CommonUtilities.getCertificatePath("acer.pfx")), CommonUtilities.getImagesPath("sign.png"));
+		PdfSignDigitalOptions signOptions = new PdfSignDigitalOptions(CommonUtilities.getCertificatePath("acer.pfx"), CommonUtilities.getImagesPath("sign.png"));
 		signOptions.setReason("Test reason");
 		signOptions.setContact("Test contact");
 		signOptions.setLocation("Test location");
