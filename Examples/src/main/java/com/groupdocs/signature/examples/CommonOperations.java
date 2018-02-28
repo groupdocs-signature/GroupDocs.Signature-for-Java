@@ -5,10 +5,17 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 
 import com.groupdocs.signature.config.SignatureConfig;
+import com.groupdocs.signature.domain.DocumentDescription;
 import com.groupdocs.signature.domain.enums.CellsSaveFileFormat;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.handler.SignatureHandler;
+import com.groupdocs.signature.handler.events.ProcessCompleteEventArgs;
+import com.groupdocs.signature.handler.events.ProcessCompleteEventHandler;
+import com.groupdocs.signature.handler.events.ProcessProgressEventArgs;
+import com.groupdocs.signature.handler.events.ProcessProgressEventHandler;
+import com.groupdocs.signature.handler.events.ProcessStartEventArgs;
+import com.groupdocs.signature.handler.events.ProcessStartEventHandler;
 import com.groupdocs.signature.options.OutputType;
 import com.groupdocs.signature.options.SignOptions;
 import com.groupdocs.signature.options.SignatureOptionsCollection;
@@ -212,5 +219,24 @@ public class CommonOperations {
 		saveOptions.setOutputType(OutputType.String);
 		saveOptions.setOutputFileName("signed_output.pdf");
 		System.out.println("Signed file path is: " + signedPath);
+	}
+	
+	public static void getDocInfoFromURL() throws Exception{
+		//ExStart:getDocInfoFromURL
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the signature handler without Signature Config object
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// Document description
+		DocumentDescription docInfo = handler.getDocumentDescription("https://www.dropbox.com/s/bzx1xm68zd0c910/PieChart.docx?dl=1", null);
+		System.out.println("Document " + docInfo.getGuid() + " contains " + docInfo.getPageCount() + " pages");
+		System.out.println("File format is " + docInfo.getFileFormat());
+		System.out.println("File extension is  " + docInfo.getExtension());
+		System.out.println("Date created is " + docInfo.getDateCreated());
+		System.out.println("Date modified is " + docInfo.getDateModified());
+		System.out.println("Password to open file is " + docInfo.getPassword());
+		System.out.println("File size in bytes is " + docInfo.getSize());
+		System.out.println("Width of first page is " + docInfo.getPages().get(0).getWidth());
+		//ExEnd:getDocInfoFromURL
 	}
 }
