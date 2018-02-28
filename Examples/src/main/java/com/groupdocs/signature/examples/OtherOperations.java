@@ -125,8 +125,9 @@ public class OtherOperations {
 		// instantiating the conversion handler
 		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
 		// setup digital signature options
-		PdfSignDigitalOptions signOptions = new PdfSignDigitalOptions(new FileDescription(CommonUtilities.getCertificatePath("acer.pfx")), CommonUtilities.getImagesPath("sign.png"));
-		signOptions.setPassword("1234567890");
+		//PdfSignDigitalOptions signOptions = new PdfSignDigitalOptions(new FileDescription(CommonUtilities.getCertificatePath("acer.pfx")), CommonUtilities.getImagesPath("sign.png"));
+		PdfSignDigitalOptions signOptions = new PdfSignDigitalOptions(CommonUtilities.getCertificatePath("acer.pfx"), CommonUtilities.getImagesPath("sign.png"));
+		//signOptions.setPassword("1234567890");
 		// image position to locate on right bottom corner with small margins
 		signOptions.setHorizontalAlignment(HorizontalAlignment.Right); // only Margin.Right value will be used to shift the Signature rectangle
 		signOptions.setVerticalAlignment(VerticalAlignment.Bottom); // only Margin.Bottom value will be used to shift the Signature rectangle

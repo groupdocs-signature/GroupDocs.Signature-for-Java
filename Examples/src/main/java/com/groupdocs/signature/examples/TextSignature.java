@@ -16,6 +16,7 @@ import com.groupdocs.signature.domain.enums.PdfTextAnnotationBorderStyle;
 import com.groupdocs.signature.domain.enums.PdfTextSignatureImplementation;
 import com.groupdocs.signature.domain.enums.PdfTextStickerIcon;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
+import com.groupdocs.signature.domain.extensions.TextShadow;
 import com.groupdocs.signature.handler.SignatureHandler;
 import com.groupdocs.signature.handler.events.ProcessCompleteEventArgs;
 import com.groupdocs.signature.handler.events.ProcessCompleteEventHandler;
@@ -872,5 +873,38 @@ public class TextSignature {
 		String signedPath = handler.sign(fileName, signOptions, saveOptions);
 		System.out.println("Signed file path is: " + signedPath);
 		//ExEnd:signCellDocumentWithTextSignatureAppearence
+	}
+	
+	public static void signSlideDocumentWithTextShadowExtension(String fileName) throws Throwable{
+		//ExStart:signSlideDocumentWithTextShadowExtension
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// set up text signature options
+		SlidesSignTextOptions signOptions = new SlidesSignTextOptions("John Smith");
+		signOptions.setWidth(300);
+		signOptions.setHeight(300);
+		signOptions.getFont().setFontSize(48);
+		  
+		// set up shadow options for text
+		TextShadow shadow = new TextShadow();
+		shadow.setColor(Color.ORANGE);
+		shadow.setAngle(135);
+		shadow.setBlur(5);
+		shadow.setDistance(4);
+		shadow.setTransparency(0.2);
+		  
+		//add text shadow to signature extensions
+		signOptions.getExtensions().add(shadow);
+		  
+		// specify save options
+		SaveOptions saveOptions =new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:signSlideDocumentWithTextShadowExtension
 	}
 }

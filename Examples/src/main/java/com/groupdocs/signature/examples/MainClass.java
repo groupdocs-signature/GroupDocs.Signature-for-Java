@@ -25,12 +25,11 @@ public class MainClass {
 		//TextSignature.signImageDocWithText("sample.png");
 		//TextSignature.signImageWithDifferentOutputFileType("sample.png");
 		//TextSignature.addTransperanceAndRotationToTextSignatureInImageDoc("sample.png");
-		//TextSignature.signImageDocsWithTextSignatureAsWatermark("sample.png");
-		
+		//TextSignature.signImageDocsWithTextSignatureAsWatermark("sample.png");		
 		//TextSignature.signDocumentWithSignatureProcessEvents("digital signatures.pdf");
 		//TextSignature.verifyDocumentWithVerificationProcessEvents("digital signatures.pdf");
-		//TextSignature.signCellDocumentWithTextSignatureAppearence("pie chart.xlsx");
-		
+		//TextSignature.signCellDocumentWithTextSignatureAppearence("pie chart.xlsx");		
+		//TextSignature.signSlideDocumentWithTextShadowExtension("butterfly effect.pptx");		
 		
 		//Image Signatures
 		//ImageSignature.signCellDocWithImage("pie chart.xlsx");
@@ -53,7 +52,7 @@ public class MainClass {
 		
 		//Digital Signatures
 		//DigitalSignature.signCellDocsWithDigitalSignature("pie chart.xlsx");
-		//DigitalSignature.signPdfDocsWithDigitalSignature("digital signatures.pdf");
+		/////DigitalSignature.signPdfDocsWithDigitalSignature("digital signatures.pdf");
 		//DigitalSignature.signSlideDocsWithDigitalSignature("butterfly effect.pptx");
 		//DigitalSignature.signWordDocsWithDigitalSignature("getting started.docx");
 		//DigitalSignature.signCellDocsWithPfxCertificateContainer("pie chart.xlsx");
@@ -62,8 +61,7 @@ public class MainClass {
 		//DigitalSignature.signPdfDocsWithPfxCertificateContainer("digital signatures.pdf");
 		//DigitalSignature.digitalVerificationOfSlideDoc();
 		//DigitalSignature.digitalVerificationOfWordDocWithCertificateContainer("getting started.docx");
-		//DigitalSignature.digitalVerificationOfWordDocWithPfcCertificateContainer("getting started.docx");
-		
+		//DigitalSignature.digitalVerificationOfWordDocWithPfcCertificateContainer("getting started.docx");		
 		//DigitalSignature.searchDigitalSignatureInPDFDocuments("digital signatures.pdf");
 		//DigitalSignature.searchDigitalSignatureInCellDocuments("pie chart.xlsx");
 		//DigitalSignature.searchDigitalSignatureInWordDocuments("getting started.docx");
@@ -103,12 +101,13 @@ public class MainClass {
 		//OtherOperations.setUpBackgroundAndBorderOptions("getting started.docx");
 		//OtherOperations.setUpBackgroundAndBorderOptions("getting started.docx");
 		//OtherOperations.setUpImageSignatureArea("digital signatures.pdf");
-		//OtherOperations.alignSignatureOnDocPage("digital signatures.pdf");	
+		///////OtherOperations.alignSignatureOnDocPage("digital signatures.pdf");	
 		//OtherOperations.specifyMeasurementUnits("digital signatures.pdf");
 		//OtherOperations.obtainInfoAboutDocument("digital signatures.pdf");
 		
 		//CommonOperations
-		//CommonOperations.getSourceDocFromUri();
+		//CommonOperations.getSourceDocFromUri();		
+		//CommonOperations.getDocInfoFromURL();		
 		//CommonOperations.getSourceDocFromRelativePath("digital signatures.pdf");
 		//CommonOperations.getSourceDocFromAbsolutePath("digital signatures.pdf");
 		//CommonOperations.getSourceDocFromStream("digital signatures.pdf");
