@@ -10,8 +10,10 @@ import com.groupdocs.signature.domain.enums.MeasureType;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.handler.SignatureHandler;
 import com.groupdocs.signature.options.OutputType;
+import com.groupdocs.signature.options.SignatureOptionsCollection;
 import com.groupdocs.signature.options.appearances.ImageAppearance;
 import com.groupdocs.signature.options.imagesignature.CellsSignImageOptions;
+import com.groupdocs.signature.options.imagesignature.ImagesSignImageOptions;
 import com.groupdocs.signature.options.imagesignature.PdfSignImageOptions;
 import com.groupdocs.signature.options.imagesignature.SlidesSignImageOptions;
 import com.groupdocs.signature.options.imagesignature.WordsSignImageOptions;
@@ -348,6 +350,140 @@ public class ImageSignature {
         String signedPath = handler.sign(CommonUtilities.getStoragePath(fileName), signOptions, loadOptions, saveOptions);
 	    System.out.println("Signed file path is: " + signedPath);
 	    //ExEnd:signArbitraryPagesOfDocumentWithImageSignature
+	}
+	
+	public static void signImageDocWithImage(String fileName) throws Exception {
+		//ExStart:signImageDocWithImage
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup image signature options
+		ImagesSignImageOptions signOptions = new ImagesSignImageOptions(CommonUtilities.getImagesPath("sign.png"));
+		  
+		// setup save options
+		SaveOptions saveOptions =new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(CommonUtilities.getStoragePath(fileName), signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:signImageDocWithImage
+	}
+	
+	public static void signImageDocWithMarginsAndAlignment(String fileName) throws Exception {
+		//ExStart:signImageDocWithMarginsAndAlignment
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup image signature options
+		ImagesSignImageOptions signOptions = new ImagesSignImageOptions(CommonUtilities.getImagesPath("sign.png"));
+		  
+		// specify horizontal alignment
+		signOptions.setHorizontalAlignment(HorizontalAlignment.Center);
+		  // specify vertical alignment
+		signOptions.setVerticalAlignment(VerticalAlignment.Bottom);
+		  // specify Margin
+		signOptions.setMargin(new Padding(10));
+		  // specify separate left margin value
+		signOptions.getMargin().setLeft(20);
+		  
+		  // setup save options
+		SaveOptions saveOptions =new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(CommonUtilities.getStoragePath(fileName), signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:signImageDocWithMarginsAndAlignment
+	}
+	
+	public static void signImageDocWithSpecifiedAdjustmentSizeAndMargins(String fileName) throws Exception {
+		//ExStart:signImageDocWithSpecifiedAdjustmentSizeAndMargins
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		SignatureOptionsCollection collection = new SignatureOptionsCollection();
+		//Percents
+		// setup image signature options
+		ImagesSignImageOptions signOptionsPercents = new ImagesSignImageOptions(CommonUtilities.getImagesPath("sign.png"));
+		 // specify Size
+		signOptionsPercents.setHeight(25);
+		signOptionsPercents.setWidth(25);
+		  // specify size in percents of page size
+		signOptionsPercents.setSizeMeasureType(MeasureType.Percents);
+		  // specify Margin
+		signOptionsPercents.setMargin(new Padding(10));
+		  // specify margin in percents of page size
+		signOptionsPercents.setMarginMeasureType(MeasureType.Percents);
+		  // specify Intents
+		signOptionsPercents.setTop(50);
+		signOptionsPercents.setLeft(20);
+		  // specify intents in percents of page size
+		signOptionsPercents.setLocationMeasureType(MeasureType.Percents);
+		collection.add(signOptionsPercents);
+		  
+		  //Millimeters
+		  // setup image signature options
+		ImagesSignImageOptions signOptionsMillimeters = new ImagesSignImageOptions(CommonUtilities.getImagesPath("sign.png"));
+		  // specify Size
+		signOptionsMillimeters.setHeight(50);
+		signOptionsMillimeters.setWidth(50);
+		  // specify size in millimeters
+		signOptionsMillimeters.setSizeMeasureType(MeasureType.Millimeters);
+		  // specify Margin
+		signOptionsMillimeters.setHorizontalAlignment(HorizontalAlignment.Right);
+		signOptionsMillimeters.setVerticalAlignment(VerticalAlignment.Bottom);
+		signOptionsMillimeters.setMargin(new Padding(20));
+		  // specify margin in millimeters
+		signOptionsMillimeters.setMarginMeasureType(MeasureType.Millimeters);
+		collection.add(signOptionsMillimeters);
+		  
+		  // setup save options
+		SaveOptions saveOptions =new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(CommonUtilities.getStoragePath(fileName), collection, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:signImageDocWithSpecifiedAdjustmentSizeAndMargins
+	}
+	
+	public static void signImageWithExtendedOptionInImageSignature(String fileName) throws Exception{
+		//ExStart:signImageWithExtendedOptionInImageSignature
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();     
+        // instantiating the conversion handler
+	    SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+	    //setup size and position
+	    ImagesSignImageOptions signOptions = new ImagesSignImageOptions(CommonUtilities.getImagesPath("sign.png"));
+        signOptions.setLeft(100);
+        signOptions.setTop(100);
+        signOptions.setWidth(200);
+        signOptions.setHeight(200);
+          // setup rotation
+        signOptions.setRotationAngle(48);
+          // setup opacity
+        signOptions.setOpacity(0.88);
+          //setup additional image appearance
+        ImageAppearance imageAppearance = new ImageAppearance();
+        imageAppearance.setBrightness(1.2f);
+        imageAppearance.setGrayscale(true);
+        imageAppearance.setBorderDashStyle(ExtendedDashStyle.Dot);
+        imageAppearance.setBorderColor(Color.ORANGE);
+        imageAppearance.setBorderWeight(5);
+        signOptions.setAppearance(imageAppearance);
+        
+    	// setup save options
+	    SaveOptions saveOptions = new SaveOptions();
+        saveOptions.setOutputType(OutputType.String);
+        saveOptions.setOutputFileName("signed_output");
+        
+        // sign document
+	    String signedPath = handler.sign(CommonUtilities.getStoragePath(fileName), signOptions, saveOptions);
+	    System.out.println("Signed file path is: " + signedPath);
+	    //ExEnd:signImageWithExtendedOptionInImageSignature
 	}
 
 }

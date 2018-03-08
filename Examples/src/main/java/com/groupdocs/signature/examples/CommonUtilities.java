@@ -15,8 +15,7 @@ public class CommonUtilities {
 	// Storage path\
 	public static final String storagePath = (System.getProperty("user.dir") + "\\Data\\Storage\\");
 	// License path
-	public static final String licensePath = (System.getProperty("user.dir")
-			+ "\\Data\\Storage\\GroupDocs.Total.Java.lic");
+	public static final String licensePath = "E:\\GroupDocs.Total.Java.lic";
 	// Output path
 	public static final String outputPath = (System.getProperty("user.dir") + "\\Data\\Output\\");
 	// Output image path
