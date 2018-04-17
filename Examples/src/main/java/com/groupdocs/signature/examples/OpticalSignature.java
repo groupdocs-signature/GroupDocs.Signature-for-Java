@@ -3,6 +3,7 @@ package com.groupdocs.signature.examples;
 import java.awt.Color;
 
 import com.groupdocs.signature.config.SignatureConfig;
+import com.groupdocs.signature.domain.SearchResult;
 import com.groupdocs.signature.domain.VerificationResult;
 import com.groupdocs.signature.domain.barcodes.BarcodeTypes;
 import com.groupdocs.signature.domain.enums.DashStyle;
@@ -10,10 +11,24 @@ import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.TextMatchType;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.domain.qrcodes.QRCodeTypes;
+import com.groupdocs.signature.domain.signatures.BaseSignature;
+import com.groupdocs.signature.domain.signatures.barcode.BarcodeSignature;
+import com.groupdocs.signature.domain.signatures.qrcode.QRCodeSignature;
 import com.groupdocs.signature.handler.SignatureHandler;
+import com.groupdocs.signature.handler.events.ProcessCompleteEventArgs;
+import com.groupdocs.signature.handler.events.ProcessCompleteEventHandler;
+import com.groupdocs.signature.handler.events.ProcessProgressEventArgs;
+import com.groupdocs.signature.handler.events.ProcessProgressEventHandler;
+import com.groupdocs.signature.handler.events.ProcessStartEventArgs;
+import com.groupdocs.signature.handler.events.ProcessStartEventHandler;
 import com.groupdocs.signature.options.OutputType;
 import com.groupdocs.signature.options.SignatureOptionsCollection;
 import com.groupdocs.signature.options.VerifyOptionsCollection;
+import com.groupdocs.signature.options.barcodesearch.CellsSearchBarcodeOptions;
+import com.groupdocs.signature.options.barcodesearch.ImagesSearchBarcodeOptions;
+import com.groupdocs.signature.options.barcodesearch.PdfSearchBarcodeOptions;
+import com.groupdocs.signature.options.barcodesearch.SlidesSearchBarcodeOptions;
+import com.groupdocs.signature.options.barcodesearch.WordsSearchBarcodeOptions;
 import com.groupdocs.signature.options.barcodesignature.CellsBarcodeSignOptions;
 import com.groupdocs.signature.options.barcodesignature.ImagesBarcodeSignOptions;
 import com.groupdocs.signature.options.barcodesignature.PdfBarcodeSignOptions;
@@ -24,6 +39,11 @@ import com.groupdocs.signature.options.barcodeverification.ImagesVerifyBarcodeOp
 import com.groupdocs.signature.options.barcodeverification.PDFVerifyBarcodeOptions;
 import com.groupdocs.signature.options.barcodeverification.SlidesVerifyBarcodeOptions;
 import com.groupdocs.signature.options.barcodeverification.WordsVerifyBarcodeOptions;
+import com.groupdocs.signature.options.qrcodesearch.CellsSearchQRCodeOptions;
+import com.groupdocs.signature.options.qrcodesearch.ImagesSearchQRCodeOptions;
+import com.groupdocs.signature.options.qrcodesearch.PdfSearchQRCodeOptions;
+import com.groupdocs.signature.options.qrcodesearch.SlidesSearchQRCodeOptions;
+import com.groupdocs.signature.options.qrcodesearch.WordsSearchQRCodeOptions;
 import com.groupdocs.signature.options.qrcodesignature.CellsQRCodeSignOptions;
 import com.groupdocs.signature.options.qrcodesignature.ImagesQRCodeSignOptions;
 import com.groupdocs.signature.options.qrcodesignature.PdfQRCodeSignOptions;
@@ -35,6 +55,7 @@ import com.groupdocs.signature.options.qrcodeverification.PDFVerifyQRCodeOptions
 import com.groupdocs.signature.options.qrcodeverification.SlidesVerifyQRCodeOptions;
 import com.groupdocs.signature.options.qrcodeverification.WordsVerifyQRCodeOptions;
 import com.groupdocs.signature.options.saveoptions.SaveOptions;
+import com.microsoft.azure.storage.table.TableQuery.Operators;
 
 public class OpticalSignature {
 
@@ -561,5 +582,435 @@ public class OpticalSignature {
         System.out.println("Verification word file with Qrcode signature " + result.isValid());
 		//ExEnd:verifyImageDocWithQRCodeSignature
 	}
+	
+	public static void searchBarCodeSignaturesInPDF(String fileName) throws Throwable{
+		//ExStart:searchBarCodeSignaturesInPDF
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		
+		// setup search options
+		PdfSearchBarcodeOptions searchOptions = new PdfSearchBarcodeOptions();
+		    // search only page with specified number
+		searchOptions.setDocumentPageNumber(1);
+		    // specify as true to search all pages of a document
+		searchOptions.setSearchAllPages(false);
+		    // specify different pages to search
+		searchOptions.getPagesSetup().setFirstPage(true);
+		searchOptions.getPagesSetup().setLastPage(true);
+		searchOptions.getPagesSetup().setOddPages(true);
+		searchOptions.getPagesSetup().setEvenPages(true);
+		    // specify barcode type to search only special encode type
+		searchOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+		    // specify barcode text to search
+		searchOptions.setText("12345678");
+		    // specify text math type
+		searchOptions.setMatchType(TextMatchType.Contains);
+		    // search document
+		SearchResult result = handler.search(fileName, searchOptions);
+		    // output signatures
+		for(BaseSignature signature : result.getSignatures())
+		{
+		    BarcodeSignature bcSignature = (BarcodeSignature)signature;
+		    if(bcSignature != null)
+		    {
+		    	System.out.println("Found Barcode signature:"+bcSignature.getEncodeType().getTypeName()+" with text "+bcSignature.getText());
+		    }
+		}
+		//ExEnd:searchBarCodeSignaturesInPDF
+	}
+	
+	public static void searchBarCodeSignaturesInCells(String fileName) throws Throwable{
+		//ExStart:searchBarCodeSignaturesInCells
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		
+		// setup search options
+		CellsSearchBarcodeOptions searchOptions = new CellsSearchBarcodeOptions();
+		    // search only page with specified number
+		searchOptions.setDocumentPageNumber(1);
+		    // specify as true to search all pages of a document
+		searchOptions.setSearchAllPages(false);
+		    // specify different pages to search
+		searchOptions.getPagesSetup().setFirstPage(true);
+		searchOptions.getPagesSetup().setLastPage(true);
+		searchOptions.getPagesSetup().setOddPages(true);
+		searchOptions.getPagesSetup().setEvenPages(true);
+		    // specify barcode type to search only special encode type
+		searchOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+		    // specify barcode text to search
+		searchOptions.setText("12345678");
+		    // specify text math type
+		searchOptions.setMatchType(TextMatchType.Contains);
+		    // search document
+		SearchResult result = handler.search(fileName, searchOptions);
+		    // output signatures
+		for(BaseSignature signature : result.getSignatures())
+		{
+		    BarcodeSignature bcSignature = (BarcodeSignature)signature;
+		    if(bcSignature != null)
+		    {
+		    	System.out.println("Found Barcode signature:"+bcSignature.getEncodeType().getTypeName()+" with text "+bcSignature.getText());
+		    }
+		}
+		//ExEnd:searchBarCodeSignaturesInCells
+	}
+	
+	public static void searchBarCodeSignaturesInImages(String fileName) throws Throwable{
+		//ExStart:searchBarCodeSignaturesInImages
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		
+		// setup search options
+		ImagesSearchBarcodeOptions searchOptions = new ImagesSearchBarcodeOptions();
+		    // search only page with specified number
+		searchOptions.setDocumentPageNumber(1);
+		    // specify as true to search all pages of a document
+		searchOptions.setSearchAllPages(false);
+		    // specify different pages to search
+		searchOptions.getPagesSetup().setFirstPage(true);
+		searchOptions.getPagesSetup().setLastPage(true);
+		searchOptions.getPagesSetup().setOddPages(true);
+		searchOptions.getPagesSetup().setEvenPages(true);
+		    // specify barcode type to search only special encode type
+		searchOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+		    // specify barcode text to search
+		searchOptions.setText("12345678");
+		    // specify text math type
+		searchOptions.setMatchType(TextMatchType.Contains);
+		    // search document
+		SearchResult result = handler.search(fileName, searchOptions);
+		    // output signatures
+		for(BaseSignature signature : result.getSignatures())
+		{
+		    BarcodeSignature bcSignature = (BarcodeSignature)signature;
+		    if(bcSignature != null)
+		    {
+		    	System.out.println("Found Barcode signature:"+bcSignature.getEncodeType().getTypeName()+" with text "+bcSignature.getText());
+		    }
+		}
+		//ExEnd:searchBarCodeSignaturesInImages
+	}
+	
+	public static void searchBarCodeSignaturesInSlides(String fileName) throws Throwable{
+		//ExStart:searchBarCodeSignaturesInSlides
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		
+		// setup search options
+		SlidesSearchBarcodeOptions searchOptions = new SlidesSearchBarcodeOptions();
+		    // search only page with specified number
+		searchOptions.setDocumentPageNumber(1);
+		    // specify as true to search all pages of a document
+		searchOptions.setSearchAllPages(false);
+		    // specify different pages to search
+		searchOptions.getPagesSetup().setFirstPage(true);
+		searchOptions.getPagesSetup().setLastPage(true);
+		searchOptions.getPagesSetup().setOddPages(true);
+		searchOptions.getPagesSetup().setEvenPages(true);
+		    // specify barcode type to search only special encode type
+		searchOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+		    // specify barcode text to search
+		searchOptions.setText("12345678");
+		    // specify text math type
+		searchOptions.setMatchType(TextMatchType.Contains);
+		    // search document
+		SearchResult result = handler.search(fileName, searchOptions);
+		    // output signatures
+		for(BaseSignature signature : result.getSignatures())
+		{
+		    BarcodeSignature bcSignature = (BarcodeSignature)signature;
+		    if(bcSignature != null)
+		    {
+		    	System.out.println("Found Barcode signature:"+bcSignature.getEncodeType().getTypeName()+" with text "+bcSignature.getText());
+		    }
+		}
+		//ExEnd:searchBarCodeSignaturesInSlides
+	}
+	
+	public static void searchBarCodeSignaturesInWords(String fileName) throws Throwable{
+		//ExStart:searchBarCodeSignaturesInWords
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		
+		// setup search options
+		WordsSearchBarcodeOptions searchOptions = new WordsSearchBarcodeOptions ();
+		    // search only page with specified number
+		searchOptions.setDocumentPageNumber(1);
+		    // specify as true to search all pages of a document
+		searchOptions.setSearchAllPages(false);
+		    // specify different pages to search
+		searchOptions.getPagesSetup().setFirstPage(true);
+		searchOptions.getPagesSetup().setLastPage(true);
+		searchOptions.getPagesSetup().setOddPages(true);
+		searchOptions.getPagesSetup().setEvenPages(true);
+		    // specify barcode type to search only special encode type
+		searchOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+		    // specify barcode text to search
+		searchOptions.setText("12345678");
+		    // specify text math type
+		searchOptions.setMatchType(TextMatchType.Contains);
+		    // search document
+		SearchResult result = handler.search(fileName, searchOptions);
+		    // output signatures
+		for(BaseSignature signature : result.getSignatures())
+		{
+		    BarcodeSignature bcSignature = (BarcodeSignature)signature;
+		    if(bcSignature != null)
+		    {
+		    	System.out.println("Found Barcode signature:"+bcSignature.getEncodeType().getTypeName()+" with text "+bcSignature.getText());
+		    }
+		}
+		//ExEnd:searchBarCodeSignaturesInWords
+	}
+	
+	public static void searchQRCodeSignaturesInPDF(String fileName) throws Throwable{
+		//ExStart:searchQRCodeSignaturesInPDF
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		
+		// setup search options
+		PdfSearchQRCodeOptions searchOptions = new PdfSearchQRCodeOptions();
+		    // search only page with specified number
+		searchOptions.setDocumentPageNumber(1);
+		    // specify as true to search all pages of a document
+		searchOptions.setSearchAllPages(false);
+		    // specify different pages to search
+		searchOptions.getPagesSetup().setFirstPage(true);
+		searchOptions.getPagesSetup().setLastPage(true);
+		searchOptions.getPagesSetup().setOddPages(true);
+		searchOptions.getPagesSetup().setEvenPages(true);
+		    // specify QRCode type to search only special encode type
+		searchOptions.setEncodeType(QRCodeTypes.QR);
+		    // specify QRCode text to search
+		searchOptions.setText("12345678");
+		    // specify text math type
+		searchOptions.setMatchType(TextMatchType.Contains);
+		    // search document
+		SearchResult result = handler.search(fileName, searchOptions);
+		    // output signatures
+		for(BaseSignature signature : result.getSignatures())
+		{
+			QRCodeSignature qcSignature = (QRCodeSignature)signature;
+		    if(qcSignature != null)
+		    {
+		    	System.out.println("Found QRCode signature:"+qcSignature.getEncodeType().getTypeName()+" with text "+qcSignature.getText());
+		    }
+		}
+		//ExEnd:searchQRCodeSignaturesInPDF
+	}
+	
+	public static void searchQRCodeSignaturesInCells(String fileName) throws Throwable{
+		//ExStart:searchQRCodeSignaturesInCells
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		
+		// setup search options
+		CellsSearchQRCodeOptions searchOptions = new CellsSearchQRCodeOptions();
+		    // search only page with specified number
+		searchOptions.setDocumentPageNumber(1);
+		    // specify as true to search all pages of a document
+		searchOptions.setSearchAllPages(false);
+		    // specify different pages to search
+		searchOptions.getPagesSetup().setFirstPage(true);
+		searchOptions.getPagesSetup().setLastPage(true);
+		searchOptions.getPagesSetup().setOddPages(true);
+		searchOptions.getPagesSetup().setEvenPages(true);
+		    // specify QRCode type to search only special encode type
+		searchOptions.setEncodeType(QRCodeTypes.QR);
+		    // specify QRCode text to search
+		searchOptions.setText("12345678");
+		    // specify text math type
+		searchOptions.setMatchType(TextMatchType.Contains);
+		    // search document
+		SearchResult result = handler.search(fileName, searchOptions);
+		    // output signatures
+		for(BaseSignature signature : result.getSignatures())
+		{
+			QRCodeSignature qcSignature = (QRCodeSignature)signature;
+		    if(qcSignature != null)
+		    {
+		    	System.out.println("Found QRCode signature:"+qcSignature.getEncodeType().getTypeName()+" with text "+qcSignature.getText());
+		    }
+		}
+		//ExEnd:searchQRCodeSignaturesInCells
+	}
+	
+	public static void searchQRCodeSignaturesInImages(String fileName) throws Throwable{
+		//ExStart:searchQRCodeSignaturesInImages
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		
+		// setup search options
+		ImagesSearchQRCodeOptions searchOptions = new ImagesSearchQRCodeOptions();
+		    // search only page with specified number
+		searchOptions.setDocumentPageNumber(1);
+		    // specify as true to search all pages of a document
+		searchOptions.setSearchAllPages(false);
+		    // specify different pages to search
+		searchOptions.getPagesSetup().setFirstPage(true);
+		searchOptions.getPagesSetup().setLastPage(true);
+		searchOptions.getPagesSetup().setOddPages(true);
+		searchOptions.getPagesSetup().setEvenPages(true);
+		    // specify QRCode type to search only special encode type
+		searchOptions.setEncodeType(QRCodeTypes.QR);
+		    // specify QRCode text to search
+		searchOptions.setText("12345678");
+		    // specify text math type
+		searchOptions.setMatchType(TextMatchType.Contains);
+		    // search document
+		SearchResult result = handler.search(fileName, searchOptions);
+		    // output signatures
+		for(BaseSignature signature : result.getSignatures())
+		{
+			QRCodeSignature qcSignature = (QRCodeSignature)signature;
+		    if(qcSignature != null)
+		    {
+		    	System.out.println("Found QRCode signature:"+qcSignature.getEncodeType().getTypeName()+" with text "+qcSignature.getText());
+		    }
+		}
+		//ExEnd:searchQRCodeSignaturesInImages
+	}
+	
+	public static void searchQRCodeSignaturesInSlides(String fileName) throws Throwable{
+		//ExStart:searchQRCodeSignaturesInSlides
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		
+		// setup search options
+		SlidesSearchQRCodeOptions searchOptions = new SlidesSearchQRCodeOptions();
+		    // search only page with specified number
+		searchOptions.setDocumentPageNumber(1);
+		    // specify as true to search all pages of a document
+		searchOptions.setSearchAllPages(false);
+		    // specify different pages to search
+		searchOptions.getPagesSetup().setFirstPage(true);
+		searchOptions.getPagesSetup().setLastPage(true);
+		searchOptions.getPagesSetup().setOddPages(true);
+		searchOptions.getPagesSetup().setEvenPages(true);
+		    // specify QRCode type to search only special encode type
+		searchOptions.setEncodeType(QRCodeTypes.QR);
+		    // specify QRCode text to search
+		searchOptions.setText("12345678");
+		    // specify text math type
+		searchOptions.setMatchType(TextMatchType.Contains);
+		    // search document
+		SearchResult result = handler.search(fileName, searchOptions);
+		    // output signatures
+		for(BaseSignature signature : result.getSignatures())
+		{
+			QRCodeSignature qcSignature = (QRCodeSignature)signature;
+		    if(qcSignature != null)
+		    {
+		    	System.out.println("Found QRCode signature:"+qcSignature.getEncodeType().getTypeName()+" with text "+qcSignature.getText());
+		    }
+		}
+		//ExEnd:searchQRCodeSignaturesInSlides
+	}
+	
+	public static void searchQRCodeSignaturesInWords(String fileName) throws Throwable{
+		//ExStart:searchQRCodeSignaturesInWords
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		
+		// setup search options
+		WordsSearchQRCodeOptions searchOptions = new WordsSearchQRCodeOptions();
+		    // search only page with specified number
+		searchOptions.setDocumentPageNumber(1);
+		    // specify as true to search all pages of a document
+		searchOptions.setSearchAllPages(false);
+		    // specify different pages to search
+		searchOptions.getPagesSetup().setFirstPage(true);
+		searchOptions.getPagesSetup().setLastPage(true);
+		searchOptions.getPagesSetup().setOddPages(true);
+		searchOptions.getPagesSetup().setEvenPages(true);
+		    // specify QRCode type to search only special encode type
+		searchOptions.setEncodeType(QRCodeTypes.QR);
+		    // specify QRCode text to search
+		searchOptions.setText("12345678");
+		    // specify text math type
+		searchOptions.setMatchType(TextMatchType.Contains);
+		    // search document
+		SearchResult result = handler.search(fileName, searchOptions);
+		    // output signatures
+		for(BaseSignature signature : result.getSignatures())
+		{
+			QRCodeSignature qcSignature = (QRCodeSignature)signature;
+		    if(qcSignature != null)
+		    {
+		    	System.out.println("Found QRCode signature:"+qcSignature.getEncodeType().getTypeName()+" with text "+qcSignature.getText());
+		    }
+		}
+		//ExEnd:searchQRCodeSignaturesInWords
+	}
+	
+	public static void searchBarcodeSignatureWithProcessEvents(String fileName) throws Throwable{
+		//ExStart:searchBarcodeSignatureWithProcessEvents
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		
+		// setup search options
+		PdfSearchBarcodeOptions searchOptions = new PdfSearchBarcodeOptions();
+		    // search only page with specified number
+		searchOptions.setDocumentPageNumber(1);
+		    // specify as true to search all pages of a document
+		searchOptions.setSearchAllPages(true);
+		    // specify barcode type to search only special encode type
+		searchOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+		    // specify barcode text to search
+		searchOptions.setText("12345678");
+		    // specify text math type
+		searchOptions.setMatchType(TextMatchType.StartsWith);
+		    
+		handler.SearchStarted.add(new ProcessStartEventHandler() {
+			public void invoke(Object sender, ProcessStartEventArgs args) {
+		        System.out.println("Search started for "+args.getTotalSignatures()+"-page(s) in Document "+args.getGuid()+" started at " +String.valueOf(args.getStarted()));
+		    }
+		});		  
+		handler.SearchProgress.add(new ProcessProgressEventHandler() {
+			public void invoke(Object sender, ProcessProgressEventArgs args) {
+		        System.out.println("Search "+args.getGuid()+" progress: "+args.getProgress()+" %. Processed  "+args.getProcessedSignatures()+" pages. Since start process spent "+args.getTicks()+" mlsec");
+		    }
+		});
+		handler.SearchCompleted.add(new ProcessCompleteEventHandler() {
+			public void invoke(Object sender, ProcessCompleteEventArgs args) {
+		        System.out.println("Search "+args.getGuid()+" completed at "+String.valueOf(args.getCompleted())+". Processing of "+args.getTotalSignatures()+" pages took "+args.getTicks()+" mlsec");
+		    }
+		});		  
+		    // search document
+		SearchResult searchResult = handler.search(fileName, searchOptions);
+		    // output signatures
+		for (BaseSignature signature : searchResult.getSignatures())
+		{
+		    BarcodeSignature bcSignature = (BarcodeSignature)signature;
+		    if (bcSignature != null)
+		    {
+		        System.out.println("Found Barcode signature: "+bcSignature.getEncodeType().getTypeName()+" with text " +bcSignature.getText() );
+		    }
+		}
+		//ExEnd:searchBarcodeSignatureWithProcessEvents
+	}
+	
 	
 }
