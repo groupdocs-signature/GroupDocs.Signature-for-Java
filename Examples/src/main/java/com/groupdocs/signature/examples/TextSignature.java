@@ -1,6 +1,8 @@
 package com.groupdocs.signature.examples;
 
 import java.awt.Color;
+import java.awt.Rectangle;
+
 import com.groupdocs.signature.config.SignatureConfig;
 import com.groupdocs.signature.domain.Padding;
 import com.groupdocs.signature.domain.VerificationResult;
@@ -16,7 +18,12 @@ import com.groupdocs.signature.domain.enums.PdfTextAnnotationBorderStyle;
 import com.groupdocs.signature.domain.enums.PdfTextSignatureImplementation;
 import com.groupdocs.signature.domain.enums.PdfTextStickerIcon;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
+import com.groupdocs.signature.domain.extensions.Brush;
+import com.groupdocs.signature.domain.extensions.LinearGradientBrush;
+import com.groupdocs.signature.domain.extensions.RadialGradientBrush;
+import com.groupdocs.signature.domain.extensions.SolidBrush;
 import com.groupdocs.signature.domain.extensions.TextShadow;
+import com.groupdocs.signature.domain.extensions.TextureBrush;
 import com.groupdocs.signature.handler.SignatureHandler;
 import com.groupdocs.signature.handler.events.ProcessCompleteEventArgs;
 import com.groupdocs.signature.handler.events.ProcessCompleteEventHandler;
@@ -906,5 +913,113 @@ public class TextSignature {
 		String signedPath = handler.sign(fileName, signOptions, saveOptions);
 		System.out.println("Signed file path is: " + signedPath);
 		//ExEnd:signSlideDocumentWithTextShadowExtension
+	}
+	
+	public static void setupSolidBrushForSignatureBackground(String fileName) throws Throwable{
+		//ExStart:setupSolidBrushForSignatureBackground
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// set up options with text of signature
+		PdfSignTextOptions signOptions = new PdfSignTextOptions("John Smith");
+		signOptions.setWidth(100);
+		signOptions.setHeight(100);
+		  
+		// set up brush for signature background
+		Brush userBrushStyle = new SolidBrush(Color.ORANGE);
+		  
+		signOptions.setBackgroundBrushStyle(userBrushStyle);
+		  
+		// specify save options
+		SaveOptions saveOptions =new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:setupSolidBrushForSignatureBackground
+	}
+	
+	public static void setupLinearGrdiantBrushForSignatureBackground(String fileName) throws Throwable{
+		//ExStart:setupLinearGrdiantBrushForSignatureBackground
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup options with text of signature
+		CellsSignTextOptions signOptions = new CellsSignTextOptions("John Smith");		   
+	    // text rectangle size
+		signOptions.setHeight(100);
+		signOptions.setWidth(100);		   
+	    //brush for signature background
+		Rectangle rectBrush = new Rectangle(0, 0, signOptions.getWidth(), signOptions.getHeight());		   
+		   
+	    //This feature is available from version 18.4
+		LinearGradientBrush linearGradientBrush = new LinearGradientBrush();
+		linearGradientBrush.setStartColor(Color.BLUE);
+		linearGradientBrush.setEndColor(Color.ORANGE);
+		linearGradientBrush.setAngle(75);		   
+		Brush userBrushStyle = linearGradientBrush;
+		   
+		signOptions.setBackgroundBrushStyle(userBrushStyle);
+		   
+	    // specify save options
+		SaveOptions saveOptions =new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:setupLinearGrdiantBrushForSignatureBackground
+	}
+	
+	public static void setupRadialGrdiantBrushForSignatureBackground(String fileName) throws Throwable{
+		//ExStart:setupRadialGrdiantBrushForSignatureBackground
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// set up options with text of signature
+		PdfSignTextOptions signOptions = new PdfSignTextOptions("John Smith");
+		signOptions.setWidth(100);
+		signOptions.setHeight(100);
+		signOptions.setSignatureImplementation(PdfTextSignatureImplementation.Image);		  
+		// set up brush for signature background
+		RadialGradientBrush userBrushStyle = new RadialGradientBrush(Color.ORANGE, Color.RED);		  
+		signOptions.setBackgroundBrushStyle(userBrushStyle);		  
+		// specify save options
+		SaveOptions saveOptions =new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:setupRadialGrdiantBrushForSignatureBackground
+	}
+	
+	public static void setupTextureBrushForSignatureBackground(String fileName) throws Throwable{
+		//ExStart:setupTextureBrushForSignatureBackground
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// set up options with text of signature
+		CellsSignTextOptions signOptions = new CellsSignTextOptions("John Smith");
+		signOptions.setWidth(100);
+		signOptions.setHeight(100);		  
+		  
+		TextureBrush userBrushStyle = new TextureBrush(CommonUtilities.getImagesPath("sign.PNG"));
+		  
+		signOptions.setBackgroundBrushStyle(userBrushStyle);
+		  
+		// specify save options
+		SaveOptions saveOptions =new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:setupTextureBrushForSignatureBackground
 	}
 }
