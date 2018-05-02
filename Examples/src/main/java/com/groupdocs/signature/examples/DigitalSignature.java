@@ -15,9 +15,9 @@ import com.groupdocs.signature.domain.FileDescription;
 import com.groupdocs.signature.domain.SearchResult;
 import com.groupdocs.signature.domain.VerificationResult;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
-import com.groupdocs.signature.domain.signatures.CellsDigitalSignature;
-import com.groupdocs.signature.domain.signatures.PDFDigitalSignature;
-import com.groupdocs.signature.domain.signatures.WordsDigitalSignature;
+import com.groupdocs.signature.domain.signatures.digital.CellsDigitalSignature;
+import com.groupdocs.signature.domain.signatures.digital.PDFDigitalSignature;
+import com.groupdocs.signature.domain.signatures.digital.WordsDigitalSignature;
 import com.groupdocs.signature.handler.SignatureHandler;
 import com.groupdocs.signature.options.OutputType;
 import com.groupdocs.signature.options.VerifyOptions;
@@ -307,8 +307,8 @@ public class DigitalSignature {
 		// setup Signature configuration
 		SignatureConfig signConfig = CommonUtilities.getConfiguration();
 		// load Digital Signature registered in system
-		List<com.groupdocs.signature.domain.signatures.DigitalSignature> signatures = com.groupdocs.signature.domain.signatures.DigitalSignature.loadDigitalSignatures();
-		for (com.groupdocs.signature.domain.signatures.DigitalSignature signature : signatures)
+		List<com.groupdocs.signature.domain.signatures.digital.DigitalSignature> signatures = com.groupdocs.signature.domain.signatures.digital.DigitalSignature.loadDigitalSignatures();
+		for (com.groupdocs.signature.domain.signatures.digital.DigitalSignature signature : signatures)
 		{
 		    if (signature.getCertificate() != null)
 		    {

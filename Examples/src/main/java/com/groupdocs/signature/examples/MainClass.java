@@ -29,7 +29,12 @@ public class MainClass {
 		//TextSignature.signDocumentWithSignatureProcessEvents("digital signatures.pdf");
 		//TextSignature.verifyDocumentWithVerificationProcessEvents("digital signatures.pdf");
 		//TextSignature.signCellDocumentWithTextSignatureAppearence("pie chart.xlsx");		
-		//TextSignature.signSlideDocumentWithTextShadowExtension("butterfly effect.pptx");		
+		//TextSignature.signSlideDocumentWithTextShadowExtension("butterfly effect.pptx");
+		
+		//TextSignature.setupSolidBrushForSignatureBackground("digital signatures.pdf");
+        //TextSignature.setupLinearGrdiantBrushForSignatureBackground("pie chart.xlsx");
+        //TextSignature.setupRadialGrdiantBrushForSignatureBackground("digital signatures.pdf");
+        //TextSignature.setupTextureBrushForSignatureBackground("pie chart.xlsx");
 		
 		//Image Signatures
 		//ImageSignature.signCellDocWithImage("pie chart.xlsx");
@@ -87,7 +92,19 @@ public class MainClass {
 		//OpticalSignature.signImageDocWithBarcodeSignature("sample.png");
 		//OpticalSignature.signImageDocWithQRCodeSignature("sample.png");
 		//OpticalSignature.verifyImageDocWithBarcodeSignature("sample.png");
-		//OpticalSignature.verifyImageDocWithQRCodeSignature("sample.png");
+		//OpticalSignature.verifyImageDocWithQRCodeSignature("sample.png");		
+		
+		//OpticalSignature.searchBarCodeSignaturesInPDF("digital signatures.pdf");
+        //OpticalSignature.searchBarCodeSignaturesInCells("pie chart.xlsx");
+        //OpticalSignature.searchBarCodeSignaturesInImages("sample.png");
+        //OpticalSignature.searchBarCodeSignaturesInSlides("butterfly effect.pptx");
+        //OpticalSignature.searchBarCodeSignaturesInWords("getting started.docx");		
+		//OpticalSignature.searchQRCodeSignaturesInPDF("signed_output.pdf");
+        //OpticalSignature.searchQRCodeSignaturesInCells("pie chart.xlsx");
+        //OpticalSignature.searchQRCodeSignaturesInImages("sample.png");
+        //OpticalSignature.searchQRCodeSignaturesInSlides("butterfly effect.pptx");
+        //OpticalSignature.searchQRCodeSignaturesInWords("getting started.docx");		
+		//OpticalSignature.searchBarcodeSignatureWithProcessEvents("digital signatures.pdf");
 		
 		//Stamp Signature
 		//StampSignature.signCellDocWithStampSignature("pie chart.xlsx");
@@ -101,7 +118,7 @@ public class MainClass {
 		//OtherOperations.setUpBackgroundAndBorderOptions("getting started.docx");
 		//OtherOperations.setUpBackgroundAndBorderOptions("getting started.docx");
 		//OtherOperations.setUpImageSignatureArea("digital signatures.pdf");
-		///////OtherOperations.alignSignatureOnDocPage("digital signatures.pdf");	
+		//OtherOperations.alignSignatureOnDocPage("digital signatures.pdf");	
 		//OtherOperations.specifyMeasurementUnits("digital signatures.pdf");
 		//OtherOperations.obtainInfoAboutDocument("digital signatures.pdf");
 		
