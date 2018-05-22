@@ -16,11 +16,13 @@ Directory | Description
 [Examples](https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java/tree/master/Examples)  | Contains the package of all Java examples and sample files that will help you learn how to use product features. 
 [Showcases](#)  | GroupDocs.Signature for Java front end projects are the open source web based projects. These projects demonstrate the salient features of GroupDocs.Signature for Java. 
 
-## Resources
+#  Resources
 
-+ **Website:** [www.groupdocs.com](http://www.groupdocs.com)
++ **Website:** [www.groupdocs.com](https://www.groupdocs.com)
 + **Product Home:** [GroupDocs.Signature for Java](https://products.groupdocs.com/signature/java)
-+ **Download:** [Download GroupDocs.Signature for Java](https://downloads.groupdocs.com/signature/java)
++ **API Reference:** [GroupDocs.Signature for Java API Reference](https://apireference.groupdocs.com/java/signature)
++ **Download:** [Download GroupDocs.Signature for Java](https://artifact.groupdocs.com/repo/com/groupdocs/groupdocs-signature/)
 + **Documentation:** [GroupDocs.Signature for Java Documentation](https://docs.groupdocs.com/display/signaturejava/Home)
-+ **Forum:** [GroupDocs.Signature for Java Forum](https://forum.groupdocs.com/c/signature)
++ **Free Support:** [GroupDocs.Signature for Java Free Support Forum](https://forum.groupdocs.com/c/signature)
++ **Paid Support:** [GroupDocs.Signature for Java Paid Support Helpdesk](https://helpdesk.groupdocs.com/)
 + **Blog:** [GroupDocs.Signature for Java Blog](https://blog.groupdocs.com/category/groupdocs-signature-product-family/)
