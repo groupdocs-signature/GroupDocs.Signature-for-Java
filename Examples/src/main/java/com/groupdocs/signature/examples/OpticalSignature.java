@@ -1,6 +1,8 @@
 package com.groupdocs.signature.examples;
 
 import java.awt.Color;
+import java.util.Date;
+import java.util.UUID;
 
 import com.groupdocs.signature.config.SignatureConfig;
 import com.groupdocs.signature.domain.SearchResult;
@@ -10,9 +12,13 @@ import com.groupdocs.signature.domain.enums.DashStyle;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.TextMatchType;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
+import com.groupdocs.signature.domain.extensions.serialization.Address;
+import com.groupdocs.signature.domain.extensions.serialization.Email;
+import com.groupdocs.signature.domain.extensions.serialization.VCard;
 import com.groupdocs.signature.domain.qrcodes.QRCodeTypes;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.domain.signatures.barcode.BarcodeSignature;
+import com.groupdocs.signature.domain.signatures.qrcode.PdfQRCodeSignature;
 import com.groupdocs.signature.domain.signatures.qrcode.QRCodeSignature;
 import com.groupdocs.signature.handler.SignatureHandler;
 import com.groupdocs.signature.handler.events.ProcessCompleteEventArgs;
@@ -1012,5 +1018,178 @@ public class OpticalSignature {
 		//ExEnd:searchBarcodeSignatureWithProcessEvents
 	}
 	
+	public static void signDocumentWithCustomQRCodeData(String fileName) throws Throwable{
+		//ExStart:signDocumentWithCustomQRCodeData
+		// For complete examples and data files, please go to https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		
+		// setup custom object instance with required data
+		DocumentSignature docSignature =new DocumentSignature();
+		docSignature.setID(UUID.randomUUID().toString());
+		docSignature.setAuthor("Mr.Sherlock");
+		docSignature.setSigned(new java.util.Date());
+		docSignature.setDataFactor(new java.math.BigDecimal("0.67"));
+		
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		
+		// setup options
+		PdfQRCodeSignOptions signOptions = new PdfQRCodeSignOptions();
+		// QR-code type
+		signOptions.setEncodeType(QRCodeTypes.QR);		  
+		// setup Data property with custom object
+		signOptions.setData(docSignature);		    
+		// save Options
+		SaveOptions saveOptions =new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = (String)handler.<String>sign(fileName, signOptions, saveOptions);
+		//ExEnd:signDocumentWithCustomQRCodeData
+	}
+	
+	public static void signDocumentWithEmbeddedVCardObjectToQRCode(String fileName) throws Throwable{
+		//ExStart:signDocumentWithEmbeddedVCardObjectToQRCode
+		// For complete examples and data files, please go to https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java
+		// setup Signature configuration
+				SignatureConfig signConfig = CommonUtilities.getConfiguration();
+				
+				// Setup VCard object
+				VCard vcard =new VCard();
+				vcard.setFirstName("Sherlock");
+				vcard.setMidddleName("Jay");
+				vcard.setLastName("Holmes");
+				vcard.setInitials("Mr.");
+				vcard.setCompany("Watson Inc.");
+				vcard.setJobTitle("Detective");
+				vcard.setHomePhone("0333 003 3577");
+				vcard.setWorkPhone("0333 003 3512");
+				vcard.setEmail("watson@sherlockholmes.com");
+				vcard.setUrl("http://sherlockholmes.com/");
+				vcard.setBirthDay(new Date(1854, 1, 6));
+				    // Setup Address of Contant details
+				vcard.setHomeAddress(new Address());
+				vcard.getHomeAddress().setStreet("221B Baker Street");
+				vcard.getHomeAddress().setCity("London");
+				vcard.getHomeAddress().setState("NW");
+				vcard.getHomeAddress().setZIP("NW16XE");
+				vcard.getHomeAddress().setCountry("England");
+				
+				// instantiating the conversion handler
+				SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+				
+				// setup options
+				PdfQRCodeSignOptions signOptions = new PdfQRCodeSignOptions();
+				// QR-code type
+				signOptions.setEncodeType(QRCodeTypes.QR);		  
+				// setup Data property with custom object
+				signOptions.setData(vcard);		
+				signOptions.setWidth(200);
+				signOptions.setHeight(200);
+				// save Options
+				SaveOptions saveOptions =new SaveOptions();
+				saveOptions.setOutputType(OutputType.String);
+				saveOptions.setOutputFileName("signed_output");
+				// sign document
+				String signedPath = (String)handler.<String>sign(fileName, signOptions, saveOptions);
+		//ExEnd:signDocumentWithEmbeddedVCardObjectToQRCode
+	}
+	
+	public static void signDocumentWithEmbeddedEmailObjectToQRCode(String fileName) throws Throwable{
+		//ExStart:signDocumentWithEmbeddedEmailObjectToQRCode
+		// For complete examples and data files, please go to https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java
+		// setup Signature configuration
+				SignatureConfig signConfig = CommonUtilities.getConfiguration();
+				
+				// Setup Email object
+				Email email =new Email();
+				email.setAddress("watson@sherlockholmes.com");
+				email.setSubject("Welcome email");
+				email.setBody("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+				
+				// instantiating the conversion handler
+				SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+				
+				// setup options
+				PdfQRCodeSignOptions signOptions = new PdfQRCodeSignOptions();
+				// QR-code type
+				signOptions.setEncodeType(QRCodeTypes.QR);	
+				signOptions.setWidth(200);
+				signOptions.setHeight(200);
+				// setup Data property with custom object
+				signOptions.setData(email);		    
+				// save Options
+				SaveOptions saveOptions =new SaveOptions();
+				saveOptions.setOutputType(OutputType.String);
+				saveOptions.setOutputFileName("signed_output");
+				// sign document
+				String signedPath = (String)handler.<String>sign(fileName, signOptions, saveOptions);
+		//ExEnd:signDocumentWithEmbeddedEmailObjectToQRCode
+	}
+	
+	public static void searchCustomObjectFromSignedPDF(String fileName) throws Throwable{
+		//ExStart:searchCustomObjectFromSignedPDF
+		// For complete examples and data files, please go to https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		
+		// setup search options
+		PdfSearchQRCodeOptions  searchOptions = new PdfSearchQRCodeOptions ();
+		// specify as true to search all pages of a document
+		searchOptions.setSearchAllPages(false);
+		// search document
+		SearchResult searchResult = handler.search(fileName, searchOptions);
+		    // output signatures
+		for (BaseSignature signature : searchResult.getSignatures())
+		{
+			PdfQRCodeSignature qrCodeSignature = (PdfQRCodeSignature)signature;
+		    if (qrCodeSignature != null)
+		    {
+		        System.out.println("Found QRCode signature: " + qrCodeSignature.getEncodeType().getTypeName() + " with text " + qrCodeSignature.getText());
+		  
+		        DocumentSignature docSignature = qrCodeSignature.<DocumentSignature>getData(DocumentSignature.class);
+		        if (docSignature != null)
+		        {
+		            System.out.println("Found DocumentSignature signature: #"+docSignature.getID()+". Author "+docSignature.getAuthor()+" from "+docSignature.getDataFactor()+". Factor: "+docSignature.getDataFactor());
+		        }
+		    }
+		}
+		//ExEnd:searchCustomObjectFromSignedPDF
+	}
+	
+	public static void searchStandardVCardAndEmailObjectFromSignedPDF(String fileName) throws Throwable{
+		//ExStart:searchStandardVCardAndEmailObjectFromSignedPDF
+		// For complete examples and data files, please go to https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java
+		// setup Signature configuration
+				SignatureConfig signConfig = CommonUtilities.getConfiguration();
+				// instantiating the conversion handler
+				SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+				
+				// setup search options
+				PdfSearchQRCodeOptions  searchOptions = new PdfSearchQRCodeOptions ();
+				// specify as true to search all pages of a document
+				searchOptions.setSearchAllPages(false);
+				// search document
+				SearchResult searchResult = handler.search(fileName, searchOptions);
+				    // output signatures
+				for (BaseSignature signature : searchResult.getSignatures())
+				{
+					 PdfQRCodeSignature qrCodeSignature = (PdfQRCodeSignature)signature;
+					    if (qrCodeSignature != null)
+					    {
+					        System.out.println("Found QRCode signature: "+qrCodeSignature.getEncodeType().getTypeName()+" with text " + qrCodeSignature.getText());
+					  
+					        VCard vcard = qrCodeSignature.<VCard>getData(VCard.class);
+					        if (vcard != null)
+					        {
+					            System.out.println("Found VCard signature: "+vcard.getFirstName()+" "+vcard.getLastName()+" from "+vcard.getCompany()+". Email: " +vcard.getEmail());
+					        }
+					    }
+				}
+		//ExEnd:searchStandardVCardAndEmailObjectFromSignedPDF
+	}
 	
 }
