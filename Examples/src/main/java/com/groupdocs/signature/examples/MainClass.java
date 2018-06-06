@@ -93,7 +93,6 @@ public class MainClass {
 		//OpticalSignature.signImageDocWithQRCodeSignature("sample.png");
 		//OpticalSignature.verifyImageDocWithBarcodeSignature("sample.png");
 		//OpticalSignature.verifyImageDocWithQRCodeSignature("sample.png");		
-		
 		//OpticalSignature.searchBarCodeSignaturesInPDF("digital signatures.pdf");
         //OpticalSignature.searchBarCodeSignaturesInCells("pie chart.xlsx");
         //OpticalSignature.searchBarCodeSignaturesInImages("sample.png");
@@ -106,12 +105,21 @@ public class MainClass {
         //OpticalSignature.searchQRCodeSignaturesInWords("getting started.docx");		
 		//OpticalSignature.searchBarcodeSignatureWithProcessEvents("digital signatures.pdf");
 		
+		OpticalSignature.signDocumentWithCustomQRCodeData("digital signatures.pdf");
+		OpticalSignature.signDocumentWithEmbeddedVCardObjectToQRCode("digital signatures.pdf");
+		OpticalSignature.signDocumentWithEmbeddedEmailObjectToQRCode("digital signatures.pdf");
+		OpticalSignature.searchCustomObjectFromSignedPDF("digital signatures.pdf");
+		OpticalSignature.searchStandardVCardAndEmailObjectFromSignedPDF("digital signatures.pdf");
+		
+		
 		//Stamp Signature
 		//StampSignature.signCellDocWithStampSignature("pie chart.xlsx");
 		//StampSignature.signPDFDocWithStampSignature("digital signatures.pdf");
 		//StampSignature.signSlidesDocWithStampSignature("butterfly effect.pptx");
 		//StampSignature.signWordsDocWithStampSignature("getting started.docx");		
 		//StampSignature.signImageDocWithStampSignature("sample.png");
+		
+		StampSignature.signImageWithStampSignatureUsingStampType("digital signatures.pdf");
 		
 		//Other Operations
 		//OtherOperations.setUpFontAndColorOptions("digital signatures.pdf");
