@@ -29,12 +29,11 @@ public class MainClass {
 		//TextSignature.signDocumentWithSignatureProcessEvents("digital signatures.pdf");
 		//TextSignature.verifyDocumentWithVerificationProcessEvents("digital signatures.pdf");
 		//TextSignature.signCellDocumentWithTextSignatureAppearence("pie chart.xlsx");		
-		//TextSignature.signSlideDocumentWithTextShadowExtension("butterfly effect.pptx");
-		
+		//TextSignature.signSlideDocumentWithTextShadowExtension("butterfly effect.pptx");		
 		//TextSignature.setupSolidBrushForSignatureBackground("digital signatures.pdf");
-        	//TextSignature.setupLinearGrdiantBrushForSignatureBackground("pie chart.xlsx");
-        	//TextSignature.setupRadialGrdiantBrushForSignatureBackground("digital signatures.pdf");
-        	//TextSignature.setupTextureBrushForSignatureBackground("pie chart.xlsx");
+    	//TextSignature.setupLinearGrdiantBrushForSignatureBackground("pie chart.xlsx");
+    	//TextSignature.setupRadialGrdiantBrushForSignatureBackground("digital signatures.pdf");
+    	//TextSignature.setupTextureBrushForSignatureBackground("pie chart.xlsx");
 		
 		//Image Signatures
 		//ImageSignature.signCellDocWithImage("pie chart.xlsx");
@@ -57,7 +56,7 @@ public class MainClass {
 		
 		//Digital Signatures
 		//DigitalSignature.signCellDocsWithDigitalSignature("pie chart.xlsx");
-		/////DigitalSignature.signPdfDocsWithDigitalSignature("digital signatures.pdf");
+		//DigitalSignature.signPdfDocsWithDigitalSignature("digital signatures.pdf");
 		//DigitalSignature.signSlideDocsWithDigitalSignature("butterfly effect.pptx");
 		//DigitalSignature.signWordDocsWithDigitalSignature("getting started.docx");
 		//DigitalSignature.signCellDocsWithPfxCertificateContainer("pie chart.xlsx");
@@ -94,17 +93,16 @@ public class MainClass {
 		//OpticalSignature.verifyImageDocWithBarcodeSignature("sample.png");
 		//OpticalSignature.verifyImageDocWithQRCodeSignature("sample.png");		
 		//OpticalSignature.searchBarCodeSignaturesInPDF("digital signatures.pdf");
-        	//OpticalSignature.searchBarCodeSignaturesInCells("pie chart.xlsx");
-        	//OpticalSignature.searchBarCodeSignaturesInImages("sample.png");
-        	//OpticalSignature.searchBarCodeSignaturesInSlides("butterfly effect.pptx");
-        	//OpticalSignature.searchBarCodeSignaturesInWords("getting started.docx");		
+    	//OpticalSignature.searchBarCodeSignaturesInCells("pie chart.xlsx");
+    	//OpticalSignature.searchBarCodeSignaturesInImages("sample.png");
+    	//OpticalSignature.searchBarCodeSignaturesInSlides("butterfly effect.pptx");
+    	//OpticalSignature.searchBarCodeSignaturesInWords("getting started.docx");		
 		//OpticalSignature.searchQRCodeSignaturesInPDF("signed_output.pdf");
-        	//OpticalSignature.searchQRCodeSignaturesInCells("pie chart.xlsx");
-        	//OpticalSignature.searchQRCodeSignaturesInImages("sample.png");
-        	//OpticalSignature.searchQRCodeSignaturesInSlides("butterfly effect.pptx");
-        	//OpticalSignature.searchQRCodeSignaturesInWords("getting started.docx");		
-		//OpticalSignature.searchBarcodeSignatureWithProcessEvents("digital signatures.pdf");
-		
+    	//OpticalSignature.searchQRCodeSignaturesInCells("pie chart.xlsx");
+    	//OpticalSignature.searchQRCodeSignaturesInImages("sample.png");
+    	//OpticalSignature.searchQRCodeSignaturesInSlides("butterfly effect.pptx");
+    	//OpticalSignature.searchQRCodeSignaturesInWords("getting started.docx");		
+		//OpticalSignature.searchBarcodeSignatureWithProcessEvents("digital signatures.pdf");		
 		//OpticalSignature.signDocumentWithCustomQRCodeData("digital signatures.pdf");
 		//OpticalSignature.signDocumentWithEmbeddedVCardObjectToQRCode("digital signatures.pdf");
 		//OpticalSignature.signDocumentWithEmbeddedEmailObjectToQRCode("digital signatures.pdf");
@@ -117,8 +115,7 @@ public class MainClass {
 		//StampSignature.signPDFDocWithStampSignature("digital signatures.pdf");
 		//StampSignature.signSlidesDocWithStampSignature("butterfly effect.pptx");
 		//StampSignature.signWordsDocWithStampSignature("getting started.docx");		
-		//StampSignature.signImageDocWithStampSignature("sample.png");
-		
+		//StampSignature.signImageDocWithStampSignature("sample.png");		
 		//StampSignature.signImageWithStampSignatureUsingStampType("digital signatures.pdf");
 		
 		//Other Operations
