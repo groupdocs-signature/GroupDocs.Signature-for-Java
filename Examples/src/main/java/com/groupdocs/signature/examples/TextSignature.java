@@ -709,15 +709,16 @@ public class TextSignature {
 		// setup appearance options
 		ImagesSignTextOptions signOptions = new ImagesSignTextOptions("John Smith");
 		  
-		signOptions.getFont().setFontSize(64);
-		signOptions.getFont().setBold(true);
-		signOptions.getFont().setItalic(true);
-		signOptions.getFont().setUnderline(true);
-		signOptions.setOpacity(0.7);
-		signOptions.setForeColor(Color.BLUE);
-		  
-		  // type of implementation
-		signOptions.setSignatureImplementation(ImagesTextSignatureImplementation.Watermark);
+		signOptions.setLeft(100);
+		signOptions.setTop(100);
+		signOptions.setWidth(200);
+		signOptions.setHeight(200);
+		signOptions.setForeColor(Color.ORANGE);
+		signOptions.setBackgroundColor(Color.BLUE);
+		// setup rotation
+		signOptions.setRotationAngle(90);
+		// setup transparency
+		signOptions.setBackgroundTransparency(0.4);
 		  
 		SaveOptions saveOptions =new SaveOptions();
 		saveOptions.setOutputType(OutputType.String);
