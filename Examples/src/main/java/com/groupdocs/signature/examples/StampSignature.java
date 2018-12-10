@@ -6,7 +6,10 @@ import com.groupdocs.signature.config.SignatureConfig;
 import com.groupdocs.signature.domain.SearchResult;
 import com.groupdocs.signature.domain.barcodes.BarcodeTypes;
 import com.groupdocs.signature.domain.enums.ExtendedDashStyle;
+import com.groupdocs.signature.domain.enums.HorizontalAlignment;
+import com.groupdocs.signature.domain.enums.MeasureType;
 import com.groupdocs.signature.domain.enums.TextMatchType;
+import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.domain.signatures.barcode.BarcodeSignature;
 import com.groupdocs.signature.domain.stamps.StampBackgroundCropType;
@@ -22,6 +25,7 @@ import com.groupdocs.signature.handler.events.ProcessStartEventArgs;
 import com.groupdocs.signature.handler.events.ProcessStartEventHandler;
 import com.groupdocs.signature.options.OutputType;
 import com.groupdocs.signature.options.barcodesearch.PdfSearchBarcodeOptions;
+import com.groupdocs.signature.options.qrcodesignature.CellsQRCodeSignOptions;
 import com.groupdocs.signature.options.saveoptions.SaveOptions;
 import com.groupdocs.signature.options.stampsignature.CellsStampSignOptions;
 import com.groupdocs.signature.options.stampsignature.ImagesStampSignOptions;
@@ -335,13 +339,13 @@ public class StampSignature {
 		// setup options
 		ImagesStampSignOptions signOptions = new ImagesStampSignOptions();
 	    // setup stamp type
-		signOptions.setStampType(StampTypes.SQUARE); //This feature is supported starting from version 18.6.		  
+		signOptions.setStampType(StampTypes.Square); //This feature is supported starting from version 18.6.		  
 		// setup other properties
 		signOptions.setTop(300);
 		signOptions.setLeft(255);
 		signOptions.setHeight(150);
 		signOptions.setWidth(250);
-		signOptions.setStampType(StampTypes.ROUND);		  
+		signOptions.setStampType(StampTypes.Round);		  
 		signOptions.setImageGuid(CommonUtilities.getImagesPath("sign.PNG"));
 		  
 		    //Outer lines
@@ -390,7 +394,7 @@ public class StampSignature {
 		String signedPath = (String)handler.<String>sign(fileName, signOptions,saveOptions);
 		System.out.println("Signed file path is: "+signedPath);
 		//change stamp type
-		signOptions.setStampType(StampTypes.SQUARE);
+		signOptions.setStampType(StampTypes.Square);
 		  
 		SaveOptions saveOptions2 =  new SaveOptions();
 		saveOptions2.setOutputType(OutputType.String);
@@ -398,5 +402,90 @@ public class StampSignature {
 		    // sign document with square stamp
 		String signedPath2 = (String)handler.<String>sign(fileName, signOptions, saveOptions2);
 		//ExEnd:signImageWithStampSignatureUsingStampType
+	}
+	
+	public static void setStampSignaturePositionOnCells(String fileName) throws Throwable{
+		//ExStart:setStampSignaturePositionOnCells
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup options with text of signature
+	     CellsStampSignOptions signOptions = new CellsStampSignOptions();
+	    signOptions.setHeight(120);
+	    signOptions.setWidth(300);
+	    signOptions.setTop(15);
+	    signOptions.setLeft(22);
+	  
+	    //Inner square lines
+	    StampLine line0 = new StampLine();
+	    line0.setText("John");
+	    line0.setTextBottomIntent(0);
+	    line0.setTextColor(Color.RED);
+	    line0.getOuterBorder().setColor(Color.BLUE);
+	    line0.getInnerBorder().setColor(Color.BLUE);
+	    line0.getInnerBorder().setStyle(ExtendedDashStyle.Dash);
+	    line0.getFont().setFontSize(20);
+	    line0.getFont().setBold(true);
+	    line0.setHeight(40);
+	    signOptions.getInnerLines().add(line0);
+	  
+	    StampLine line1 = new StampLine();
+	    line1.setText("Smith");
+	    line1.setTextBottomIntent(0);
+	    line1.setTextColor(Color.RED);
+	    line1.getInnerBorder().setColor(Color.BLUE);
+	    line1.getFont().setFontSize(20);
+	    line1.getFont().setBold(true);
+	    line1.setHeight(40);
+	    signOptions.getInnerLines().add(line1);
+		// specify save options
+		SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:setStampSignaturePositionOnCells
+	}
+	
+	public static void signCellsWithStampMeasure(String fileName) throws Throwable{
+		//ExStart:signCellsWithStampMeasure
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		CellsStampSignOptions signOptions = new CellsStampSignOptions();
+	    signOptions.setWidth(150);
+	    signOptions.setHeight(150);
+	    signOptions.setHorizontalAlignment(HorizontalAlignment.Left);
+	    signOptions.setVerticalAlignment(VerticalAlignment.Top);
+	    signOptions.setBackgroundColor(java.awt.Color.BLUE);
+	    signOptions.setBackgroundColorCropType(StampBackgroundCropType.None);
+	    StampLine line1 = new StampLine();
+	    line1.setText("John");
+	    line1.setBackgroundColor(Color.BLUE);
+	    line1.setTextColor(Color.CYAN);
+	    signOptions.getOuterLines().add(line1);
+	    // size
+	    signOptions.setSizeMeasureType(MeasureType.Percents);
+	    signOptions.setWidth(10);
+	    signOptions.setHeight(10);	  
+	    // position
+	    // alignment
+	    signOptions.setHorizontalAlignment(HorizontalAlignment.Center);
+	    signOptions.setVerticalAlignment(VerticalAlignment.Top);	  
+	    // margin
+	    signOptions.setMarginMeasureType(MeasureType.Percents);
+	    signOptions.getMargin().setTop(25);
+	     
+		// specify save options
+		SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:signCellsWithStampMeasure
 	}
 }

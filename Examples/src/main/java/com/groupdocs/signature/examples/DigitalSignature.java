@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.security.KeyStore;
 import java.security.cert.Certificate;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
@@ -14,6 +15,9 @@ import com.groupdocs.signature.config.SignatureConfig;
 import com.groupdocs.signature.domain.FileDescription;
 import com.groupdocs.signature.domain.SearchResult;
 import com.groupdocs.signature.domain.VerificationResult;
+import com.groupdocs.signature.domain.enums.HorizontalAlignment;
+import com.groupdocs.signature.domain.enums.MeasureType;
+import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.domain.signatures.digital.CellsDigitalSignature;
 import com.groupdocs.signature.domain.signatures.digital.PDFDigitalSignature;
@@ -31,6 +35,7 @@ import com.groupdocs.signature.options.digitalsignature.WordsSignDigitalOptions;
 import com.groupdocs.signature.options.digitalverification.CellsVerifyDigitalOptions;
 import com.groupdocs.signature.options.digitalverification.PDFVerifyDigitalOptions;
 import com.groupdocs.signature.options.digitalverification.WordsVerifyDigitalOptions;
+import com.groupdocs.signature.options.imagesignature.CellsSignImageOptions;
 import com.groupdocs.signature.options.saveoptions.SaveOptions;
 
 public class DigitalSignature {
@@ -326,5 +331,109 @@ public class DigitalSignature {
 		//ExEnd:searchDigitalSignatureInSystem
 	}
 	
+	public static void setDigitalSignaturePositionOnCells(String fileName) throws Throwable{
+		//ExStart:setDigitalSignaturePositionOnCells
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// Specify Signature Options 
+		CellsSignDigitalOptions signOptions = new CellsSignDigitalOptions(CommonUtilities.getCertificatePath("acer.pfx"), CommonUtilities.getImagesPath("sign.png"));
+		//signOptions.setPassword("1234567890");
+		signOptions.setWidth(200);
+		signOptions.setHeight(200);
+		signOptions.setTop(15);
+		signOptions.setLeft(22);
+		// specify save options
+		SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:setDigitalSignaturePositionOnCells
+	}
 	
+	public static void searchDigitalSignatureInWordsWithExtendedOption(String fileName) throws Exception{
+		//ExStart:searchDigitalSignatureInWordsWithExtendedOption
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the signature handler          
+		SignatureHandler handler = new SignatureHandler(signConfig);		  
+		// setup options with text of signature
+		WordsSearchDigitalOptions searchOptions = new WordsSearchDigitalOptions();
+		// setup additional search criteria
+		searchOptions.setComments("test comments");
+		searchOptions.setSignDateTimeFrom(new Date(new Date().getYear(), 1, 1));
+		searchOptions.setIssuerName("John");
+		// Search Document for Signatures
+		SearchResult searchResult = handler.search(fileName, searchOptions);
+		System.out.print("Source file "+fileName+" contains "+searchResult.getSignatures().size()+" digital signature(s)");
+		for(BaseSignature signature : searchResult.getSignatures())
+		{
+		 WordsDigitalSignature WordsSign = (WordsDigitalSignature)signature ;
+		    if (WordsSign != null)
+		    {
+		        System.out.print("\t >> Digital signature from "+ WordsSign.getSignTime()+". Comments: "+WordsSign.getComments()+". Valid "+WordsSign.isValid() );
+		    }
+		}
+		//ExEnd:searchDigitalSignatureInWordsWithExtendedOption
+	}
+	
+	public static void searchDigitalSignatureInCellsWithExtendedOption(String fileName) throws Exception{
+		//ExStart:searchDigitalSignatureInCellsWithExtendedOption
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the signature handler          
+		SignatureHandler handler = new SignatureHandler(signConfig);		  
+		// setup options with text of signature
+		CellsSearchDigitalOptions searchOptions = new CellsSearchDigitalOptions();
+		// setup additional options
+		searchOptions.setComments("test comment");            
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+		Date dateFrom = sdf.parse("26/1/2017 14:55:07");        
+		searchOptions.setSignDateTimeFrom(dateFrom);
+		// Search Document for Signatures
+		SearchResult searchResult = handler.search(fileName, searchOptions);
+		System.out.print("Source file "+ fileName+" contains "+searchResult.getSignatures().size()+" digital signature(s)" );
+		for(BaseSignature signature : searchResult.getSignatures())
+		{
+		    CellsDigitalSignature cellsSign = (CellsDigitalSignature)signature ;
+		    if (cellsSign != null)
+		    {
+		        System.out.print("\t >> Digital signature from "+cellsSign.getSignTime()+". Comments: "+cellsSign.getComments()+". Valid " + cellsSign.isValid() );
+		    }
+		}
+		//ExEnd:searchDigitalSignatureInCellsWithExtendedOption
+	}
+	
+	public static void signCellsWithDigitalSignatureMeasure(String fileName) throws Throwable{
+		//ExStart:signCellsWithDigitalSignatureMeasure
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// Specify Signature Options 
+		CellsSignDigitalOptions signOptions = new CellsSignDigitalOptions(CommonUtilities.getCertificatePath("acer.pfx"), CommonUtilities.getImagesPath("sign.png"));
+		//signOptions.setPassword("1234567890");
+		// size
+	    signOptions.setSizeMeasureType(MeasureType.Percents);
+	    signOptions.setWidth(10);
+	    signOptions.setHeight(10);	  
+	    // position
+	    // alignment
+	    signOptions.setHorizontalAlignment(HorizontalAlignment.Center);
+	    signOptions.setVerticalAlignment(VerticalAlignment.Top);
+	    // margin
+	    signOptions.setMarginMeasureType(MeasureType.Percents);
+	    signOptions.getMargin().setTop(25);
+		// specify save options
+		SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:signCellsWithDigitalSignatureMeasure
+	}
 }

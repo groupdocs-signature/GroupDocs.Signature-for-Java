@@ -1,6 +1,7 @@
 package com.groupdocs.signature.examples;
 
 import java.awt.Color;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
 
@@ -10,16 +11,22 @@ import com.groupdocs.signature.domain.VerificationResult;
 import com.groupdocs.signature.domain.barcodes.BarcodeTypes;
 import com.groupdocs.signature.domain.enums.DashStyle;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
+import com.groupdocs.signature.domain.enums.MeasureType;
 import com.groupdocs.signature.domain.enums.TextMatchType;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
+import com.groupdocs.signature.domain.extensions.encryption.IDataEncryption;
+import com.groupdocs.signature.domain.extensions.encryption.SymmetricAlgorithmType;
+import com.groupdocs.signature.domain.extensions.encryption.SymmetricEncryption;
 import com.groupdocs.signature.domain.extensions.serialization.Address;
 import com.groupdocs.signature.domain.extensions.serialization.Email;
+import com.groupdocs.signature.domain.extensions.serialization.FormatAttribute;
 import com.groupdocs.signature.domain.extensions.serialization.VCard;
 import com.groupdocs.signature.domain.qrcodes.QRCodeTypes;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.domain.signatures.barcode.BarcodeSignature;
 import com.groupdocs.signature.domain.signatures.qrcode.PdfQRCodeSignature;
 import com.groupdocs.signature.domain.signatures.qrcode.QRCodeSignature;
+import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.handler.SignatureHandler;
 import com.groupdocs.signature.handler.events.ProcessCompleteEventArgs;
 import com.groupdocs.signature.handler.events.ProcessCompleteEventHandler;
@@ -61,7 +68,6 @@ import com.groupdocs.signature.options.qrcodeverification.PDFVerifyQRCodeOptions
 import com.groupdocs.signature.options.qrcodeverification.SlidesVerifyQRCodeOptions;
 import com.groupdocs.signature.options.qrcodeverification.WordsVerifyQRCodeOptions;
 import com.groupdocs.signature.options.saveoptions.SaveOptions;
-import com.microsoft.azure.storage.table.TableQuery.Operators;
 
 public class OpticalSignature {
 
@@ -75,7 +81,7 @@ public class OpticalSignature {
 		CellsBarcodeSignOptions signOptions = new CellsBarcodeSignOptions("12345678");
 		
 		// barcode type
-		signOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+		signOptions.setEncodeType(BarcodeTypes.Code39Standard);
 		// if you need to sign all sheets set it to true
         signOptions.setSignAllPages(true);      
         final SaveOptions saveOptions = new SaveOptions();
@@ -99,7 +105,7 @@ public class OpticalSignature {
 		signOptions.setHorizontalAlignment(HorizontalAlignment.Right);
 		signOptions.setVerticalAlignment(VerticalAlignment.Bottom);
 		// barcode type
-		signOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+		signOptions.setEncodeType(BarcodeTypes.Code39Standard);
 		// if you need to sign all sheets set it to true
 		signOptions.setSignAllPages(true);
 		// set border (optionally)
@@ -127,7 +133,7 @@ public class OpticalSignature {
 		
 		SlidesBarcodeSignOptions signOptions = new SlidesBarcodeSignOptions("12345678");
 		// barcode type
-		signOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+		signOptions.setEncodeType(BarcodeTypes.Code39Standard);
 		// if you need to sign all sheets set it to true
         signOptions.setSignAllPages(true);      
         final SaveOptions saveOptions = new SaveOptions();
@@ -148,7 +154,7 @@ public class OpticalSignature {
 		
 		WordsBarcodeSignOptions signOptions = new WordsBarcodeSignOptions("12345678");
 		// barcode type
-		signOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+		signOptions.setEncodeType(BarcodeTypes.Code39Standard);
 		// if you need to sign all sheets set it to true
         signOptions.setSignAllPages(true);      
         final SaveOptions saveOptions = new SaveOptions();
@@ -169,7 +175,7 @@ public class OpticalSignature {
 		
 		CellsQRCodeSignOptions signOptions = new CellsQRCodeSignOptions("12345678");
 		// barcode type
-		signOptions.setEncodeType(QRCodeTypes.AZTEC);
+		signOptions.setEncodeType(QRCodeTypes.Aztec);
 		// if you need to sign all sheets set it to true
         signOptions.setSignAllPages(true);      
         final SaveOptions saveOptions = new SaveOptions();
@@ -190,7 +196,7 @@ public class OpticalSignature {
 		
 		PdfQRCodeSignOptions signOptions = new PdfQRCodeSignOptions("12345678");
 		// barcode type
-		signOptions.setEncodeType(QRCodeTypes.AZTEC);
+		signOptions.setEncodeType(QRCodeTypes.Aztec);
 		// if you need to sign all sheets set it to true
 		signOptions.setSignAllPages(true);		   
 		// set border (optionally)
@@ -218,7 +224,7 @@ public class OpticalSignature {
 		
 		SlidesQRCodeSignOptions signOptions = new SlidesQRCodeSignOptions ("12345678");
 		// barcode type
-        signOptions.setEncodeType(QRCodeTypes.AZTEC);
+        signOptions.setEncodeType(QRCodeTypes.Aztec);
         // if you need to sign all sheets set it to true
         signOptions.setSignAllPages(true);      
         final SaveOptions saveOptions = new SaveOptions();
@@ -239,7 +245,7 @@ public class OpticalSignature {
 		
 		WordsQRCodeSignOptions signOptions = new WordsQRCodeSignOptions ("12345678");
 		// barcode type
-        signOptions.setEncodeType(QRCodeTypes.AZTEC);
+        signOptions.setEncodeType(QRCodeTypes.Aztec);
 		// if you need to sign all sheets set it to true
         signOptions.setSignAllPages(true);      
 	    final SaveOptions saveOptions = new SaveOptions();
@@ -265,7 +271,7 @@ public class OpticalSignature {
         // verify all pages of a document if true
         verifyOptions.setVerifyAllPages(true);
         // barcode type
-        verifyOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+        verifyOptions.setEncodeType(BarcodeTypes.Code39Standard);
         //If verify option Text is set, it will be searched in Title, Subject and Contents
         verifyOptions.setText("12345678");
         //verify document
@@ -288,7 +294,7 @@ public class OpticalSignature {
         // verify all pages of a document if true
         verifyOptions.setVerifyAllPages(true);
         // barcode type
-        verifyOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+        verifyOptions.setEncodeType(BarcodeTypes.Code39Standard);
         //If verify option Text is set, it will be searched in Title, Subject and Contents
         verifyOptions.setText("12345678");
         //verify document
@@ -311,7 +317,7 @@ public class OpticalSignature {
         // verify all pages of a document if true
         verifyOptions.setVerifyAllPages(true);
         // barcode type
-        verifyOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+        verifyOptions.setEncodeType(BarcodeTypes.Code39Standard);
         //If verify option Text is set, it will be searched in Title, Subject and Contents
         verifyOptions.setText("12345678");
         //verify document
@@ -334,7 +340,7 @@ public class OpticalSignature {
         // verify all pages of a document if true
         verifyOptions.setVerifyAllPages(true);
         // barcode type
-        verifyOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+        verifyOptions.setEncodeType(BarcodeTypes.Code39Standard);
         //If verify option Text is set, it will be searched in Title, Subject and Contents
         verifyOptions.setText("12345678");
         //verify document
@@ -357,7 +363,7 @@ public class OpticalSignature {
         // verify all pages of a document if true
         verifyOptions.setVerifyAllPages(true);
         // barcode type
-        verifyOptions.setEncodeType(QRCodeTypes.AZTEC);
+        verifyOptions.setEncodeType(QRCodeTypes.Aztec);
         //If verify option Text is set, it will be searched in Title, Subject and Contents
         verifyOptions.setText("12345678");
         //verify document
@@ -380,7 +386,7 @@ public class OpticalSignature {
         // verify all pages of a document if true
         verifyOptions.setVerifyAllPages(true);
         // barcode type
-        verifyOptions.setEncodeType(QRCodeTypes.AZTEC);
+        verifyOptions.setEncodeType(QRCodeTypes.Aztec);
         //If verify option Text is set, it will be searched in Title, Subject and Contents
         verifyOptions.setText("12345678");
         //verify document
@@ -403,7 +409,7 @@ public class OpticalSignature {
         // verify all pages of a document if true
         verifyOptions.setVerifyAllPages(true);
         // barcode type
-        verifyOptions.setEncodeType(QRCodeTypes.AZTEC);
+        verifyOptions.setEncodeType(QRCodeTypes.Aztec);
         //If verify option Text is set, it will be searched in Title, Subject and Contents
         verifyOptions.setText("12345678");
         //verify document
@@ -426,7 +432,7 @@ public class OpticalSignature {
         // verify all pages of a document if true
         verifyOptions.setVerifyAllPages(true);
         // barcode type
-        verifyOptions.setEncodeType(QRCodeTypes.AZTEC);
+        verifyOptions.setEncodeType(QRCodeTypes.Aztec);
         //If verify option Text is set, it will be searched in Title, Subject and Contents
         verifyOptions.setText("12345678");
         //verify document
@@ -446,14 +452,14 @@ public class OpticalSignature {
 		  
 		  // barcode type Code39Standard
 		ImagesBarcodeSignOptions signOptions = new ImagesBarcodeSignOptions("12345678");
-		signOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+		signOptions.setEncodeType(BarcodeTypes.Code39Standard);
 		signOptions.setHorizontalAlignment(HorizontalAlignment.None);
 		signOptions.setVerticalAlignment(VerticalAlignment.None);
 		collection.add(signOptions);
 		  
 		  // barcode type DutchKIX
 		signOptions = new ImagesBarcodeSignOptions("12345678");
-		signOptions.setEncodeType(BarcodeTypes.DUTCH_KIX);
+		signOptions.setEncodeType(BarcodeTypes.DutchKIX);
 		signOptions.setTop(300);
 		signOptions.setHorizontalAlignment(HorizontalAlignment.None);
 		signOptions.setVerticalAlignment(VerticalAlignment.None);
@@ -461,7 +467,7 @@ public class OpticalSignature {
 		  
 		  // barcode type DatabarLimited
 		signOptions = new ImagesBarcodeSignOptions("12345678");
-		signOptions.setEncodeType(BarcodeTypes.DATABAR_LIMITED);
+		signOptions.setEncodeType(BarcodeTypes.DatabarLimited);
 		signOptions.setHorizontalAlignment(HorizontalAlignment.None);
 		signOptions.setVerticalAlignment(VerticalAlignment.None);
 		signOptions.setTop(600);
@@ -487,14 +493,14 @@ public class OpticalSignature {
 		  
 		// QRCode type Aztec
 		ImagesQRCodeSignOptions signOptions = new ImagesQRCodeSignOptions("12345678");
-		signOptions.setEncodeType(QRCodeTypes.AZTEC);
+		signOptions.setEncodeType(QRCodeTypes.Aztec);
 		signOptions.setHorizontalAlignment(HorizontalAlignment.None);
 		signOptions.setVerticalAlignment(VerticalAlignment.None);
 		collection.add(signOptions);
 		  
 		//QRCode type DataMatrix
 		signOptions = new ImagesQRCodeSignOptions("12345678");
-		signOptions.setEncodeType(QRCodeTypes.DATA_MATRIX);
+		signOptions.setEncodeType(QRCodeTypes.DataMatrix);
 		signOptions.setTop(300);
 		signOptions.setHorizontalAlignment(HorizontalAlignment.None);
 		signOptions.setVerticalAlignment(VerticalAlignment.None);
@@ -528,21 +534,21 @@ public class OpticalSignature {
 		  
 		// setup verification options Code39Standard
 		ImagesVerifyBarcodeOptions verifyOptions = new ImagesVerifyBarcodeOptions();
-		verifyOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+		verifyOptions.setEncodeType(BarcodeTypes.Code39Standard);
 		verifyOptions.setMatchType(TextMatchType.Exact);
 		verifyOptions.setText("12345678");
 		collection.add(verifyOptions);
 		  
 		//setup verification options DutchKIX
 		verifyOptions = new ImagesVerifyBarcodeOptions();
-		verifyOptions.setEncodeType(BarcodeTypes.DUTCH_KIX);
+		verifyOptions.setEncodeType(BarcodeTypes.DutchKIX);
 		verifyOptions.setMatchType(TextMatchType.StartsWith);
 		verifyOptions.setText("1234");
 		collection.add(verifyOptions);
 		  
 		//setup verification options DatabarLimited
 		verifyOptions = new ImagesVerifyBarcodeOptions();
-		verifyOptions.setEncodeType(BarcodeTypes.DATABAR_LIMITED);
+		verifyOptions.setEncodeType(BarcodeTypes.DatabarLimited);
 		verifyOptions.setMatchType(TextMatchType.Contains);
 		verifyOptions.setText("5678");
 		collection.add(verifyOptions);
@@ -564,14 +570,14 @@ public class OpticalSignature {
 		  
 		  // setup verification options Aztec
 		ImagesVerifyQRCodeOptions verifyOptions = new ImagesVerifyQRCodeOptions();
-		verifyOptions.setEncodeType(QRCodeTypes.AZTEC);
+		verifyOptions.setEncodeType(QRCodeTypes.Aztec);
 		verifyOptions.setMatchType(TextMatchType.Exact);
 		verifyOptions.setText("12345678");
 		collection.add(verifyOptions);
 		  
 		  // setup verification options DataMatrix
 		verifyOptions = new ImagesVerifyQRCodeOptions();
-		verifyOptions.setEncodeType(QRCodeTypes.DATA_MATRIX);
+		verifyOptions.setEncodeType(QRCodeTypes.DataMatrix );
 		verifyOptions.setMatchType(TextMatchType.StartsWith);
 		verifyOptions.setText("1234");
 		collection.add(verifyOptions);
@@ -608,7 +614,7 @@ public class OpticalSignature {
 		searchOptions.getPagesSetup().setOddPages(true);
 		searchOptions.getPagesSetup().setEvenPages(true);
 		    // specify barcode type to search only special encode type
-		searchOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+		searchOptions.setEncodeType(BarcodeTypes.Code39Standard);
 		    // specify barcode text to search
 		searchOptions.setText("12345678");
 		    // specify text math type
@@ -646,7 +652,7 @@ public class OpticalSignature {
 		searchOptions.getPagesSetup().setOddPages(true);
 		searchOptions.getPagesSetup().setEvenPages(true);
 		    // specify barcode type to search only special encode type
-		searchOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+		searchOptions.setEncodeType(BarcodeTypes.Code39Standard);
 		    // specify barcode text to search
 		searchOptions.setText("12345678");
 		    // specify text math type
@@ -684,7 +690,7 @@ public class OpticalSignature {
 		searchOptions.getPagesSetup().setOddPages(true);
 		searchOptions.getPagesSetup().setEvenPages(true);
 		    // specify barcode type to search only special encode type
-		searchOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+		searchOptions.setEncodeType(BarcodeTypes.Code39Standard);
 		    // specify barcode text to search
 		searchOptions.setText("12345678");
 		    // specify text math type
@@ -722,7 +728,7 @@ public class OpticalSignature {
 		searchOptions.getPagesSetup().setOddPages(true);
 		searchOptions.getPagesSetup().setEvenPages(true);
 		    // specify barcode type to search only special encode type
-		searchOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+		searchOptions.setEncodeType(BarcodeTypes.Code39Standard);
 		    // specify barcode text to search
 		searchOptions.setText("12345678");
 		    // specify text math type
@@ -760,7 +766,7 @@ public class OpticalSignature {
 		searchOptions.getPagesSetup().setOddPages(true);
 		searchOptions.getPagesSetup().setEvenPages(true);
 		    // specify barcode type to search only special encode type
-		searchOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+		searchOptions.setEncodeType(BarcodeTypes.Code39Standard);
 		    // specify barcode text to search
 		searchOptions.setText("12345678");
 		    // specify text math type
@@ -983,7 +989,7 @@ public class OpticalSignature {
 		    // specify as true to search all pages of a document
 		searchOptions.setSearchAllPages(true);
 		    // specify barcode type to search only special encode type
-		searchOptions.setEncodeType(BarcodeTypes.CODE_39_STANDARD);
+		searchOptions.setEncodeType(BarcodeTypes.Code39Standard);
 		    // specify barcode text to search
 		searchOptions.setText("12345678");
 		    // specify text math type
@@ -1192,4 +1198,163 @@ public class OpticalSignature {
 		//ExEnd:searchStandardVCardAndEmailObjectFromSignedPDF
 	}
 	
+	public static void setBarcodeSignaturePositionOnCells(String fileName) throws Throwable{
+		//ExStart:setBarcodeSignaturePositionOnCells
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// Specify Signature Options 
+		CellsBarcodeSignOptions signOptions = new CellsBarcodeSignOptions("1234567");
+		signOptions.setWidth(300);
+		signOptions.setHeight(100);
+		signOptions.setTop(15);
+		signOptions.setLeft(22);
+		// specify save options
+		SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:setBarcodeSignaturePositionOnCells
+	}
+	
+	public static void setQRCodeSignaturePositionOnCells(String fileName) throws Throwable{
+		//ExStart:setQRCodeSignaturePositionOnCells
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// Specify Signature Options 
+		CellsQRCodeSignOptions signOptions = new CellsQRCodeSignOptions ("1234567");
+		signOptions.setWidth(300);
+		signOptions.setHeight(100);
+		signOptions.setTop(15);
+		signOptions.setLeft(22);
+		// specify save options
+		SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:setQRCodeSignaturePositionOnCells
+	}
+	
+	public static void verifyQRCodeInPDFWithoutEncodeType(String fileName) throws Throwable{
+		//ExStart:verifyQRCodeInPDFWithoutEncodeType
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup verification options
+		PDFVerifyQRCodeOptions verifyOptions = new PDFVerifyQRCodeOptions("12345678");
+		// specify as true to verify all pages of a document
+		verifyOptions.setVerifyAllPages(true); 
+        //verify document
+        VerificationResult result = handler.verify(fileName, verifyOptions);
+        System.out.println("Verification pdf file with Qrcode signature " + result.isValid());
+		//ExEnd:verifyQRCodeInPDFWithoutEncodeType
+	}
+	
+	public static void verifyEncryptedQRCodeInPDF(String fileName) throws Throwable{
+		//ExStart:verifyEncryptedQRCodeInPDF
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup key and pasphrase
+		String key = "1234567890";
+		String salt = "1234567890";
+		// create data encryption
+		IDataEncryption encrypter = new SymmetricEncryption(SymmetricAlgorithmType.Rijndael, key, salt);
+		// setup verification options
+		PDFVerifyQRCodeOptions verifyOptions = new PDFVerifyQRCodeOptions("This is private text to be secured.");
+		// specify as true to verify all pages of a document
+		verifyOptions.setVerifyAllPages(true);
+		// setup encrypter to retrieve original text
+		verifyOptions.setDataEncryption(encrypter);
+        //verify document
+        VerificationResult result = handler.verify(fileName, verifyOptions);
+        System.out.println("Verification pdf file with Qrcode signature " + result.isValid());
+		//ExEnd:verifyEncryptedQRCodeInPDF
+	}
+	
+	public static void exceptionHandlingWhileVerifyingQRCodeInPDF(String fileName) throws Throwable{
+		//ExStart:exceptionHandlingWhileVerifyingQRCodeInPDF
+		try{
+			// setup Signature configuration
+			SignatureConfig signConfig = CommonUtilities.getConfiguration();
+			// instantiating the conversion handler
+			SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+			// setup verification options
+			PDFVerifyQRCodeOptions verifyOptions = new PDFVerifyQRCodeOptions("12345678");
+			// specify as true to verify all pages of a document
+			verifyOptions.setVerifyAllPages(true); 
+	        //verify document
+	        VerificationResult result = handler.verify(fileName, verifyOptions);
+	        System.out.println("Verification pdf file with Qrcode signature " + result.isValid());
+		}catch(GroupDocsSignatureException ex){
+		    System.out.print("GroupDocs Signature Exception: " + ex.getMessage());
+		}catch(Exception ex){
+		    System.out.print("System Exception: " + ex.getMessage());
+		}
+		//ExEnd:exceptionHandlingWhileVerifyingQRCodeInPDF
+	}
+	
+	public static void signCellsWithQRCodeMeasure(String fileName) throws Throwable{
+		//ExStart:signCellsWithQRCodeMeasure
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		CellsQRCodeSignOptions signOptions = new CellsQRCodeSignOptions ("12345678");
+	    // size
+	    signOptions.setSizeMeasureType(MeasureType.Percents);
+	    signOptions.setWidth(10);
+	    signOptions.setHeight(10);	   
+	    // position alignment
+	    signOptions.setHorizontalAlignment(HorizontalAlignment.Center);
+	    signOptions.setVerticalAlignment(VerticalAlignment.Top);	   
+	    // margin
+	    signOptions.setMarginMeasureType(MeasureType.Percents);
+	    signOptions.getMargin().setTop(25);
+	     
+        final SaveOptions saveOptions = new SaveOptions();
+        saveOptions.setOutputType(OutputType.String);
+        saveOptions.setOutputFileName("signed_output");
+        // sign document
+        String signedPath = handler.<String>sign(fileName, signOptions, saveOptions);
+        System.out.println("Signed cells document with Qrcode" + signedPath);
+		//ExEnd:signCellsWithQRCodeMeasure
+	}
+	
+	public static void signCellsWithBarCodeMeasure(String fileName) throws Throwable{
+		//ExStart:signCellsWithBarCodeMeasure
+		// setup Signature configuration
+		SignatureConfig signConfig = CommonUtilities.getConfiguration();
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		CellsBarcodeSignOptions signOptions = new CellsBarcodeSignOptions("12345678");		  
+	     // size
+	    signOptions.setSizeMeasureType(MeasureType.Percents);
+	    signOptions.setWidth(10);
+	    signOptions.setHeight(10);	  
+	    // position alignment
+	    signOptions.setHorizontalAlignment(HorizontalAlignment.Center);
+	    signOptions.setVerticalAlignment(VerticalAlignment.Top);	  
+	    // margin
+	    signOptions.setMarginMeasureType(MeasureType.Percents);
+	    signOptions.getMargin().setTop(25);
+	     
+        final SaveOptions saveOptions = new SaveOptions();
+        saveOptions.setOutputType(OutputType.String);
+        saveOptions.setOutputFileName("signed_output");
+        // sign document
+        String signedPath = handler.<String>sign(fileName, signOptions, saveOptions);
+        System.out.println("Signed cells document with barcode" + signedPath);
+		//ExEnd:signCellsWithBarCodeMeasure
+	}
 }
+

@@ -20,6 +20,7 @@ import com.groupdocs.signature.options.imagesignature.WordsSignImageOptions;
 import com.groupdocs.signature.options.loadoptions.LoadOptions;
 import com.groupdocs.signature.options.saveoptions.CellsSaveOptions;
 import com.groupdocs.signature.options.saveoptions.SaveOptions;
+import com.groupdocs.signature.options.textsignature.CellsSignTextOptions;
 
 public class ImageSignature {
 	
@@ -485,5 +486,55 @@ public class ImageSignature {
 	    System.out.println("Signed file path is: " + signedPath);
 	    //ExEnd:signImageWithExtendedOptionInImageSignature
 	}
+	
+	public static void setImageSignaturePositionOnCells(String fileName) throws Throwable{
+		//ExStart:setImageSignaturePositionOnCells
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// Specify Signature Options 
+		CellsSignImageOptions signOptions = new CellsSignImageOptions(CommonUtilities.getImagesPath("sign.png"));
+		signOptions.setWidth(200);
+		signOptions.setHeight(200);
+		signOptions.setTop(15);
+		signOptions.setLeft(22);
+		// specify save options
+		SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:setImageSignaturePositionOnCells
+	}
 
+	public static void signCellsWithImageMeasure(String fileName) throws Throwable{
+		//ExStart:signCellsWithImageMeasure
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		CellsSignImageOptions signOptions = new CellsSignImageOptions (CommonUtilities.getImagesPath("sign.png"));
+	     // specify Size
+		signOptions.setSizeMeasureType(MeasureType.Percents);
+		signOptions.setHeight(25);
+		signOptions.setWidth(25);
+	    // specify size in percents of page size
+		signOptions.setMarginMeasureType(MeasureType.Percents);
+	    signOptions.getMargin().setTop(25);
+	    // specify Intents
+	    signOptions.setTop(15);
+	    signOptions.setLeft(20);
+	    // specify intents in percents of page size
+	    signOptions.setLocationMeasureType(MeasureType.Percents);
+		// specify save options
+		SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:signCellsWithImageMeasure
+	}
 }

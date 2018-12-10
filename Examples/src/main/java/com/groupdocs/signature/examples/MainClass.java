@@ -35,6 +35,18 @@ public class MainClass {
     	//TextSignature.setupRadialGrdiantBrushForSignatureBackground("digital signatures.pdf");
     	//TextSignature.setupTextureBrushForSignatureBackground("pie chart.xlsx");
 		
+		//TextSignature.setTextSignaturePositionOnCells("pie chart.xlsx");
+		//TextSignature.alignTextSignaturePositionOnCells("pie chart.xlsx");
+		//TextSignature.alignTextSignaturePositionOnPDF("digital signatures.pdf");
+		//TextSignature.alignTextSignaturePositionOnSlides("butterfly effect.pptx");
+		//TextSignature.alignTextSignaturePositionOnWords("getting started.docx");
+		//TextSignature.alignTextSignaturePositionOnImages("sample.png");
+		//TextSignature.signPDFWithUpdatedProcessEvents("digital signatures.pdf");
+		//TextSignature.signCellsWithTextMeasure("pie chart.xlsx");
+		//TextSignature.signCellsWithTextSignatureAlignment("pie chart.xlsx");
+		//TextSignature.saveImagesSignedWithTextSignatureAsPDF("sample.png");
+		//TextSignature.verifyTextSignatureInWordsWithMatchTypeProperty("getting started.docx");
+		
 		//Image Signatures
 		//ImageSignature.signCellDocWithImage("pie chart.xlsx");
 		//ImageSignature.signCellDocWithImageSpecifyMargins("pie chart.xlsx");
@@ -54,6 +66,9 @@ public class MainClass {
 		//ImageSignature.signImageDocWithSpecifiedAdjustmentSizeAndMargins("sample.png");
 		//ImageSignature.signImageWithExtendedOptionInImageSignature("sample.png");
 		
+		//ImageSignature.setImageSignaturePositionOnCells("pie chart.xlsx");
+		//ImageSignature.signCellsWithImageMeasure("pie chart.xlsx");
+		
 		//Digital Signatures
 		//DigitalSignature.signCellDocsWithDigitalSignature("pie chart.xlsx");
 		//DigitalSignature.signPdfDocsWithDigitalSignature("digital signatures.pdf");
@@ -70,6 +85,11 @@ public class MainClass {
 		//DigitalSignature.searchDigitalSignatureInCellDocuments("pie chart.xlsx");
 		//DigitalSignature.searchDigitalSignatureInWordDocuments("getting started.docx");
 		//DigitalSignature.searchDigitalSignatureInSystem();
+		
+		//DigitalSignature.setDigitalSignaturePositionOnCells("pie chart.xlsx");
+		//DigitalSignature.searchDigitalSignatureInWordsWithExtendedOption("getting started.docx");
+		//DigitalSignature.searchDigitalSignatureInCellsWithExtendedOption("pie chart.xlsx");
+		//DigitalSignature.signCellsWithDigitalSignatureMeasure("pie chart.xlsx");
 		
 		//Optical Signature
 		//OpticalSignature.signCellDocWithBarcodeSignature("pie chart.xlsx");
@@ -109,6 +129,15 @@ public class MainClass {
 		//OpticalSignature.searchCustomObjectFromSignedPDF("digital signatures.pdf");
 		//OpticalSignature.searchStandardVCardAndEmailObjectFromSignedPDF("digital signatures.pdf");
 		
+		//OpticalSignature.setBarcodeSignaturePositionOnCells("pie chart.xlsx");	
+		//OpticalSignature.setQRCodeSignaturePositionOnCells("pie chart.xlsx");
+		//OpticalSignature.verifyQRCodeInPDFWithoutEncodeType("digital signatures.pdf");
+		//OpticalSignature.verifyEncryptedQRCodeInPDF("digital signatures.pdf");
+		//OpticalSignature.exceptionHandlingWhileVerifyingQRCodeInPDF("digital signatures.pdf");
+		//OpticalSignature.signCellsWithQRCodeMeasure("pie chart.xlsx");
+		//OpticalSignature.signCellsWithBarCodeMeasure("pie chart.xlsx");
+		
+		
 		
 		//Stamp Signature
 		//StampSignature.signCellDocWithStampSignature("pie chart.xlsx");
@@ -117,6 +146,14 @@ public class MainClass {
 		//StampSignature.signWordsDocWithStampSignature("getting started.docx");		
 		//StampSignature.signImageDocWithStampSignature("sample.png");		
 		//StampSignature.signImageWithStampSignatureUsingStampType("digital signatures.pdf");
+		
+		//StampSignature.setStampSignaturePositionOnCells("pie chart.xlsx");
+		//StampSignature.signCellsWithStampMeasure("pie chart.xlsx");
+		
+		//Metadata Signature
+		//MetadataSignatures.signPDFWithMetadataSignOptions("digital signatures.pdf");
+		//MetadataSignatures.signPDFWithStandardMetadataSignatures("digital signatures.pdf");
+		//MetadataSignatures.searchMetadataSignatureInPDFDocuments("digital signatures.pdf");
 		
 		//Other Operations
 		//OtherOperations.setUpFontAndColorOptions("digital signatures.pdf");

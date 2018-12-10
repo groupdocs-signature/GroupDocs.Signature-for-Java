@@ -12,12 +12,17 @@ import com.groupdocs.signature.domain.enums.ExtendedDashStyle;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.ImagesSaveFileFormat;
 import com.groupdocs.signature.domain.enums.ImagesTextSignatureImplementation;
+import com.groupdocs.signature.domain.enums.MeasureType;
 import com.groupdocs.signature.domain.enums.PdfSaveFileFormat;
 import com.groupdocs.signature.domain.enums.PdfTextAnnotationBorderEffect;
 import com.groupdocs.signature.domain.enums.PdfTextAnnotationBorderStyle;
 import com.groupdocs.signature.domain.enums.PdfTextSignatureImplementation;
 import com.groupdocs.signature.domain.enums.PdfTextStickerIcon;
+import com.groupdocs.signature.domain.enums.TextHorizontalAlignment;
+import com.groupdocs.signature.domain.enums.TextMatchType;
+import com.groupdocs.signature.domain.enums.TextVerticalAlignment;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
+import com.groupdocs.signature.domain.enums.WordsTextSignatureImplementation;
 import com.groupdocs.signature.domain.extensions.Brush;
 import com.groupdocs.signature.domain.extensions.LinearGradientBrush;
 import com.groupdocs.signature.domain.extensions.RadialGradientBrush;
@@ -1022,5 +1027,282 @@ public class TextSignature {
 		String signedPath = handler.sign(fileName, signOptions, saveOptions);
 		System.out.println("Signed file path is: " + signedPath);
 		//ExEnd:setupTextureBrushForSignatureBackground
+	}
+	
+	public static void setTextSignaturePositionOnCells(String fileName) throws Throwable{
+		//ExStart:setTextSignaturePositionOnCells
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// Specify Signature Options 
+		CellsSignTextOptions signOptions = new CellsSignTextOptions ("John Smith");
+		signOptions.setWidth(100);
+		signOptions.setHeight(100);
+		signOptions.setTop(15);
+		signOptions.setLeft(22);
+		// specify save options
+		SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:setTextSignaturePositionOnCells
+	}
+	
+	public static void alignTextSignaturePositionOnCells(String fileName) throws Throwable{
+		//ExStart:alignTextSignaturePositionOnCells
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup options with text of signature
+	    CellsSignTextOptions signOptions = new CellsSignTextOptions("John Smith");
+	    // text rectangle size
+	    signOptions.setHeight(100);
+	    signOptions.setWidth(100);
+	    // set text alignment inside signature (This feature is supported starting from version 18.11)
+	    signOptions.setTextHorizontalAlignment(TextHorizontalAlignment.Center);
+	    signOptions.setTextVerticalAlignment(TextVerticalAlignment.Center);
+		// specify save options
+		SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:alignTextSignaturePositionOnCells
+	}
+	
+	public static void alignTextSignaturePositionOnPDF(String fileName) throws Throwable{
+		//ExStart:alignTextSignaturePositionOnPDF
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup text signature options
+	    PdfSignTextOptions signOptions = new PdfSignTextOptions("John Smith");
+	    // text rectangle size
+	    signOptions.setHeight(100);
+	    signOptions.setWidth(100);
+	    //type of implementation
+	    signOptions.setSignatureImplementation(PdfTextSignatureImplementation.Image);
+	    // set text alignment inside signature (This feature is supported starting from version 18.11)
+	    signOptions.setTextHorizontalAlignment(TextHorizontalAlignment.Center);
+	    signOptions.setTextVerticalAlignment(TextVerticalAlignment.Center);
+		// specify save options
+		SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:alignTextSignaturePositionOnPDF
+	}
+	
+	public static void alignTextSignaturePositionOnSlides(String fileName) throws Throwable{
+		//ExStart:alignTextSignaturePositionOnSlides
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup text signature options
+	    SlidesSignTextOptions signOptions = new SlidesSignTextOptions("John Smith");
+	    signOptions.setWidth(100);
+	    signOptions.setHeight(100);
+	    // set text alignment inside signature (This feature is supported starting from version 18.11)
+	    signOptions.setTextHorizontalAlignment(TextHorizontalAlignment.Center);
+	    signOptions.setTextVerticalAlignment(TextVerticalAlignment.Center);
+		// specify save options
+		SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:alignTextSignaturePositionOnSlides
+	}
+	
+	public static void alignTextSignaturePositionOnWords(String fileName) throws Throwable{
+		//ExStart:alignTextSignaturePositionOnWords
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup text signature options
+	    WordsSignTextOptions signOptions = new WordsSignTextOptions("John Smith");
+	    signOptions.setWidth(100);
+	    signOptions.setHeight(100);
+	    // type of implementation
+	    signOptions.setSignatureImplementation(WordsTextSignatureImplementation.TextAsImage);
+	    // set text alignment inside signature (This feature is supported starting from version 18.11)
+	    signOptions.setTextHorizontalAlignment(TextHorizontalAlignment.Center);
+	    signOptions.setTextVerticalAlignment(TextVerticalAlignment.Center);
+		// specify save options
+		SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:alignTextSignaturePositionOnWords
+	}
+	
+	public static void alignTextSignaturePositionOnImages(String fileName) throws Throwable{
+		//ExStart:alignTextSignaturePositionOnImages
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup text signature options
+	    ImagesSignTextOptions signOptions = new ImagesSignTextOptions("John Smith");
+	    signOptions.setLeft(10);
+	    signOptions.setTop(10);
+	    signOptions.setWidth(100);
+	    signOptions.setHeight(100);	  
+	    // type of implementation
+	    signOptions.setSignatureImplementation(ImagesTextSignatureImplementation.TextAsImage);
+	    signOptions.setTextHorizontalAlignment(TextHorizontalAlignment.Center);
+	    signOptions.setTextVerticalAlignment(TextVerticalAlignment.Center);
+		// specify save options
+		SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:alignTextSignaturePositionOnImages
+	}
+	
+	public static void signPDFWithUpdatedProcessEvents(String fileName) throws Throwable{
+		//ExStart:signPDFWithUpdatedProcessEvents
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup signature option
+	    PdfSignTextOptions signOptions = new PdfSignTextOptions("John Smith",10,10,100,100);
+	    signOptions.setSignAllPages(true);
+	    
+	    handler.SignatureStarted.add(new ProcessStartEventHandler() {
+		    public void invoke(Object sender, ProcessStartEventArgs args) {
+		            System.out.println("Processing of "+args.getTotalSignatures()+" signatures for "+args.getGuid()+" started at " + args.getStarted().toString());
+		        }
+	    });
+	    handler.SignatureProgress.add(new ProcessProgressEventHandler(){
+	        public void invoke(Object sender, ProcessProgressEventArgs args) {
+	            System.out.println("Singing of "+args.getGuid()+" progress: "+args.getProgress()+" %. Processed "+args.getProcessedSignatures()+" signatures. Since start process spent "+args.getTicks()+" mlsec");
+	            if(args.getProgress() > 10){
+	                args.setCancel(true);
+	                System.out.println("Cancellation of process");
+	            }
+	        }
+	    });
+	    handler.SignatureCompleted.add(new ProcessCompleteEventHandler() {
+	        public void invoke(Object sender, ProcessCompleteEventArgs args) {
+	            if (args.getCanceled()){
+	                System.out.println("Singing process was canceled");
+	            }else{
+	                System.out.println("Singing of "+args.getGuid()+" completed at "+args.getCompleted().toString()+". Processing of "+args.getTotalSignatures()+" signatures took "+args.getTicks()+" mlsec");
+	            }
+	        }
+	    });
+		// specify save options
+		SaveOptions saveOptions =new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:signPDFWithUpdatedProcessEvents
+	}
+	
+	public static void signCellsWithTextMeasure(String fileName) throws Throwable{
+		//ExStart:signCellsWithTextMeasure
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		CellsSignTextOptions signOptions = new CellsSignTextOptions("John Smith");
+	    // size
+	    signOptions.setSizeMeasureType(MeasureType.Percents);
+	    signOptions.setWidth(10);
+	    signOptions.setHeight(10);	  
+	    // position
+	    // alignment
+	    signOptions.setHorizontalAlignment(HorizontalAlignment.Center);
+	    signOptions.setVerticalAlignment(VerticalAlignment.Top);	  
+	    // margin
+	    signOptions.setMarginMeasureType(MeasureType.Percents);
+	    signOptions.getMargin().setTop(25);
+		// specify save options
+		SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:signCellsWithTextMeasure
+	}
+	
+	public static void signCellsWithTextSignatureAlignment(String fileName) throws Throwable{
+		//ExStart:signCellsWithTextSignatureAlignment
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup options with text of signature
+	    CellsSignTextOptions signOptions = new CellsSignTextOptions("John Smith");
+	    // text position	  
+	    signOptions.setRowNumber(10);
+	    signOptions.setColumnNumber(10);	  
+	    // text rectangle size
+	    signOptions.setHeight(100);
+	    signOptions.setWidth(100);
+		// specify save options
+		SaveOptions saveOptions = new SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:signCellsWithTextSignatureAlignment
+	}
+	
+	public static void saveImagesSignedWithTextSignatureAsPDF(String fileName) throws Throwable{
+		//ExStart:saveImagesSignedWithTextSignatureAsPDF
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup text signature options
+	    SignOptions signOptions = new ImagesSignTextOptions("John Smith");
+	    // instantiate Pdf save options
+	    ImagesSaveOptions saveOptions = new ImagesSaveOptions();
+	    saveOptions.setOutputType(OutputType.String);
+	    saveOptions.setFileFormat(ImagesSaveFileFormat.Pdf);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:saveImagesSignedWithTextSignatureAsPDF
+	}
+	
+	public static void verifyTextSignatureInWordsWithMatchTypeProperty(String fileName) throws Throwable{
+		//ExStart:verifyTextSignatureInWordsWithMatchTypeProperty
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup text verification options
+	     WordsVerifyTextOptions verifyOptions = new WordsVerifyTextOptions("John Smith");	  
+	     // set match type
+	     verifyOptions.setMatchType(TextMatchType.Contains);
+	     verifyOptions.getPagesSetup().setFirstPage(true);	  
+	     //verify document
+	     VerificationResult result = handler.verify(fileName, verifyOptions);
+	     System.out.print("Signed file verification result: " + result.isValid());
+		//ExEnd:verifyTextSignatureInWordsWithMatchTypeProperty
 	}
 }
