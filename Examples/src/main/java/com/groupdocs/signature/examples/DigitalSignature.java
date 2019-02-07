@@ -436,4 +436,28 @@ public class DigitalSignature {
 		System.out.println("Signed file path is: " + signedPath);
 		//ExEnd:signCellsWithDigitalSignatureMeasure
 	}
+	
+	public static void digitalVerificationOfWordsDocumentWithExtendedProperties(String fileName) throws Throwable{
+		//ExStart:digitalVerificationOfWordsDocumentWithExtendedProperties
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+	    // setup digital verification options
+		WordsVerifyDigitalOptions verifyOptions = new WordsVerifyDigitalOptions("SherlockHolmes.cer");
+		verifyOptions.setComments("Test1");
+		verifyOptions.setSubjectName("Signature");
+		verifyOptions.setIssuerName("GroupDocs");
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+		Date dateFrom = sdf.parse("26/1/2017 16:55:57");
+		Date dateTo = sdf.parse("26/1/2017 16:55:59");
+		
+		verifyOptions.setSignDateTimeFrom(dateFrom);
+		verifyOptions.setSignDateTimeTo(dateTo);
+		//verify document
+		VerificationResult result = handler.verify(fileName, verifyOptions);
+		System.out.print("Signed file verification result: " + result.isValid());
+		//ExEnd:digitalVerificationOfWordsDocumentWithExtendedProperties
+	}
 }
