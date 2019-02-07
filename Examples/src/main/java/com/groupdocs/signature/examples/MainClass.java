@@ -84,12 +84,13 @@ public class MainClass {
 		//DigitalSignature.searchDigitalSignatureInPDFDocuments("digital signatures.pdf");
 		//DigitalSignature.searchDigitalSignatureInCellDocuments("pie chart.xlsx");
 		//DigitalSignature.searchDigitalSignatureInWordDocuments("getting started.docx");
-		//DigitalSignature.searchDigitalSignatureInSystem();
-		
+		//DigitalSignature.searchDigitalSignatureInSystem();		
 		//DigitalSignature.setDigitalSignaturePositionOnCells("pie chart.xlsx");
 		//DigitalSignature.searchDigitalSignatureInWordsWithExtendedOption("getting started.docx");
 		//DigitalSignature.searchDigitalSignatureInCellsWithExtendedOption("pie chart.xlsx");
 		//DigitalSignature.signCellsWithDigitalSignatureMeasure("pie chart.xlsx");
+		
+		DigitalSignature.digitalVerificationOfWordsDocumentWithExtendedProperties("digital signatures.docx");
 		
 		//Optical Signature
 		//OpticalSignature.signCellDocWithBarcodeSignature("pie chart.xlsx");
@@ -153,7 +154,18 @@ public class MainClass {
 		//Metadata Signature
 		//MetadataSignatures.signPDFWithMetadataSignOptions("digital signatures.pdf");
 		//MetadataSignatures.signPDFWithStandardMetadataSignatures("digital signatures.pdf");
-		//MetadataSignatures.searchMetadataSignatureInPDFDocuments("digital signatures.pdf");
+		//MetadataSignatures.signCellsWithMetadataSignOptions("pie chart.xlsx");
+        //MetadataSignatures.signWordsWithMetadataSignOptions("getting started.docx");
+        //MetadataSignatures.signSlidesWithMetadataSignOptions("butterfly effect.pptx");
+        //MetadataSignatures.searchMetadataSignatureInPDFDocuments("digital signatures.pdf");
+        //MetadataSignatures.searchMetadataSignatureInCellsDocuments("pie chart.xlsx");
+        //MetadataSignatures.searchMetadataSignatureInWordsDocuments("getting started.docx");
+        //MetadataSignatures.searchMetadataSignatureInSlidesDocuments("butterfly effect.pptx");
+        
+        //WorkingWithFormFieldSignatures
+
+        //FormFieldSignatures.signPDFWithFormFieldSignOptions("digital signatures.pdf");
+        //FormFieldSignatures.searchFormFieldSignatureInPDF("digital signatures.pdf");
 		
 		//Other Operations
 		//OtherOperations.setUpFontAndColorOptions("digital signatures.pdf");
