@@ -10,6 +10,8 @@ import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.MeasureType;
 import com.groupdocs.signature.domain.enums.TextMatchType;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
+import com.groupdocs.signature.domain.helpers.stamp.Corners;
+import com.groupdocs.signature.domain.helpers.stamp.SquareBorderLine;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.domain.signatures.barcode.BarcodeSignature;
 import com.groupdocs.signature.domain.stamps.StampBackgroundCropType;
@@ -487,5 +489,41 @@ public class StampSignature {
 		String signedPath = handler.sign(fileName, signOptions, saveOptions);
 		System.out.println("Signed file path is: " + signedPath);
 		//ExEnd:signCellsWithStampMeasure
+	}
+	
+	public static void signImagesWithRoundedCornersStampSignature(String fileName) throws Throwable{
+		//ExStart:signImagesWithRoundedCornersStampSignature
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup options
+		ImagesStampSignOptions signOptions = new ImagesStampSignOptions();
+		signOptions.setHeight(100);
+		signOptions.setWidth(300);
+		  
+		signOptions.setBackgroundColorCropType(StampBackgroundCropType.OuterArea);
+		  
+		//Inner square lines
+		StampLine line0 = new StampLine();
+		line0.setText("PAID");
+		line0.setTextColor(Color.WHITE);
+		line0.getFont().setFontSize(32);
+		line0.getFont().setBold(true);
+		line0.setHeight(100);
+		//Set radius of square corner
+		line0.setOuterBorder(new SquareBorderLine(new Corners(25))); //This type is supported starting from version 19.5
+		line0.getOuterBorder().setColor(Color.GRAY);
+		line0.getOuterBorder().setWeight(2);
+		line0.setBackgroundColor(Color.GRAY);
+		signOptions.getInnerLines().add(line0);
+		
+		SaveOptions saveOptions = new  SaveOptions();
+		saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:signImagesWithRoundedCornersStampSignature
 	}
 }
