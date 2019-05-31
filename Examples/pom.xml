@@ -13,7 +13,7 @@
 		<dependency>
     		<groupId>com.groupdocs</groupId>
    			<artifactId>groupdocs-signature</artifactId>
-    		<version>19.1.1</version>
+    		<version>19.5</version>
 		</dependency>
 		<dependency>
 			<groupId>com.microsoft.azure</groupId>

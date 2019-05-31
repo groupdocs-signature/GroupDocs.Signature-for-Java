@@ -89,8 +89,7 @@ public class MainClass {
 		//DigitalSignature.searchDigitalSignatureInWordsWithExtendedOption("getting started.docx");
 		//DigitalSignature.searchDigitalSignatureInCellsWithExtendedOption("pie chart.xlsx");
 		//DigitalSignature.signCellsWithDigitalSignatureMeasure("pie chart.xlsx");
-		
-		DigitalSignature.digitalVerificationOfWordsDocumentWithExtendedProperties("digital signatures.docx");
+		//DigitalSignature.digitalVerificationOfWordsDocumentWithExtendedProperties("digital signatures.docx");
 		
 		//Optical Signature
 		//OpticalSignature.signCellDocWithBarcodeSignature("pie chart.xlsx");
@@ -129,7 +128,6 @@ public class MainClass {
 		//OpticalSignature.signDocumentWithEmbeddedEmailObjectToQRCode("digital signatures.pdf");
 		//OpticalSignature.searchCustomObjectFromSignedPDF("digital signatures.pdf");
 		//OpticalSignature.searchStandardVCardAndEmailObjectFromSignedPDF("digital signatures.pdf");
-		
 		//OpticalSignature.setBarcodeSignaturePositionOnCells("pie chart.xlsx");	
 		//OpticalSignature.setQRCodeSignaturePositionOnCells("pie chart.xlsx");
 		//OpticalSignature.verifyQRCodeInPDFWithoutEncodeType("digital signatures.pdf");
@@ -147,9 +145,10 @@ public class MainClass {
 		//StampSignature.signWordsDocWithStampSignature("getting started.docx");		
 		//StampSignature.signImageDocWithStampSignature("sample.png");		
 		//StampSignature.signImageWithStampSignatureUsingStampType("digital signatures.pdf");
-		
 		//StampSignature.setStampSignaturePositionOnCells("pie chart.xlsx");
 		//StampSignature.signCellsWithStampMeasure("pie chart.xlsx");
+		
+		//StampSignature.signImagesWithRoundedCornersStampSignature("sample.png");	
 		
 		//Metadata Signature
 		//MetadataSignatures.signPDFWithMetadataSignOptions("digital signatures.pdf");
