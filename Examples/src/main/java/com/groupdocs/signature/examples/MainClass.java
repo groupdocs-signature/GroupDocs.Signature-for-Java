@@ -33,8 +33,7 @@ public class MainClass {
 		//TextSignature.setupSolidBrushForSignatureBackground("digital signatures.pdf");
     	//TextSignature.setupLinearGrdiantBrushForSignatureBackground("pie chart.xlsx");
     	//TextSignature.setupRadialGrdiantBrushForSignatureBackground("digital signatures.pdf");
-    	//TextSignature.setupTextureBrushForSignatureBackground("pie chart.xlsx");
-		
+    	//TextSignature.setupTextureBrushForSignatureBackground("pie chart.xlsx");		
 		//TextSignature.setTextSignaturePositionOnCells("pie chart.xlsx");
 		//TextSignature.alignTextSignaturePositionOnCells("pie chart.xlsx");
 		//TextSignature.alignTextSignaturePositionOnPDF("digital signatures.pdf");
@@ -64,8 +63,7 @@ public class MainClass {
 		//ImageSignature.signImageDocWithImage("sample.png");
 		//ImageSignature.signImageDocWithMarginsAndAlignment("sample.png");
 		//ImageSignature.signImageDocWithSpecifiedAdjustmentSizeAndMargins("sample.png");
-		//ImageSignature.signImageWithExtendedOptionInImageSignature("sample.png");
-		
+		//ImageSignature.signImageWithExtendedOptionInImageSignature("sample.png");		
 		//ImageSignature.setImageSignaturePositionOnCells("pie chart.xlsx");
 		//ImageSignature.signCellsWithImageMeasure("pie chart.xlsx");
 		
@@ -146,8 +144,7 @@ public class MainClass {
 		//StampSignature.signImageDocWithStampSignature("sample.png");		
 		//StampSignature.signImageWithStampSignatureUsingStampType("digital signatures.pdf");
 		//StampSignature.setStampSignaturePositionOnCells("pie chart.xlsx");
-		//StampSignature.signCellsWithStampMeasure("pie chart.xlsx");
-		
+		//StampSignature.signCellsWithStampMeasure("pie chart.xlsx");	
 		//StampSignature.signImagesWithRoundedCornersStampSignature("sample.png");	
 		
 		//Metadata Signature
@@ -160,6 +157,20 @@ public class MainClass {
         //MetadataSignatures.searchMetadataSignatureInCellsDocuments("pie chart.xlsx");
         //MetadataSignatures.searchMetadataSignatureInWordsDocuments("getting started.docx");
         //MetadataSignatures.searchMetadataSignatureInSlidesDocuments("butterfly effect.pptx");
+		
+		//MetadataSignatures.signImagesWithMetadataSignOptions("sample.png");
+		//MetadataSignatures.searchMetadataSignatureInImages("sample.png");s		
+		
+		//Working with Encrypted Signature
+		//MetadataSignatures.signPDFWithEncryptedMetadataSignature("digital signatures.pdf");
+		//MetadataSignatures.signWordsWithEncryptedMetadataSignature("getting started.docx");
+		//MetadataSignatures.signSlidesWithEncryptedMetadataSignature("butterfly effect.pptx");
+		//MetadataSignatures.signCellsWithEncryptedMetadataSignature("pie chart.xlsx");
+        
+		//MetadataSignatures.searchCustomEncryptedMetadataSignatureInPDF("digital signatures.pdf");
+		//MetadataSignatures.searchCustomEncryptedMetadataSignatureInWords("getting started.docx");
+		//MetadataSignatures.searchCustomEncryptedMetadataSignatureInSlides("butterfly effect.pptx");
+		//MetadataSignatures.searchCustomEncryptedMetadataSignatureInCells("pie chart.xlsx");
         
         //WorkingWithFormFieldSignatures
 

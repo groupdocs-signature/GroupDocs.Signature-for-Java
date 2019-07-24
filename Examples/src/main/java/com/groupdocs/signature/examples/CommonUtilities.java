@@ -9,6 +9,7 @@ import java.util.Properties;
 
 import com.groupdocs.signature.config.SignatureConfig;
 import com.groupdocs.signature.licensing.License;
+import com.groupdocs.signature.metered.Metered;
 
 public class CommonUtilities {
 	// ExStart:commonutilities
@@ -56,6 +57,36 @@ public class CommonUtilities {
 		// setup license
 		license.setLicense(licenseStream);
 		// ExEnd:applyLicenseFromStream
+	}
+	
+	public static void setMeteredLicense() throws Exception {
+		// ExStart:setMeteredLicense
+		String PublicKey = ""; // Your public license key
+		String PrivateKey = ""; // Your private license key
+        Metered.setMeteredKey(PublicKey, PrivateKey);
+		// ExEnd:setMeteredLicense
+	}
+	
+	public static void getConsumptionQuantity() throws Exception {
+		// ExStart:getConsumptionQuantity
+		String publicKey = "";
+		String privateKey = "";
+		
+	    Metered.setMeteredKey(publicKey, privateKey);
+	    double consumption = Metered.getConsumptionQuantity();
+	    System.out.print("Metered consumption = " + consumption);		
+		// ExEnd:getConsumptionQuantity
+	}
+	
+	public static void getCreditQuantity() throws Exception {
+		// ExStart:getCreditQuantity
+		String publicKey = "";
+		String privateKey = "";
+		
+	    Metered.setMeteredKey(publicKey, privateKey);
+	    double credit = Metered.getConsumptionCredit();
+	    System.out.print("Metered credit = " + credit);		
+		// ExEnd:getCreditQuantity
 	}
 
 	public static SignatureConfig getConfiguration() {

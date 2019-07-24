@@ -1,12 +1,17 @@
 package com.groupdocs.signature.examples;
 
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import com.groupdocs.signature.config.SignatureConfig;
 import com.groupdocs.signature.domain.SearchResult;
+import com.groupdocs.signature.domain.extensions.encryption.IDataEncryption;
+import com.groupdocs.signature.domain.extensions.encryption.SymmetricAlgorithmType;
+import com.groupdocs.signature.domain.extensions.encryption.SymmetricEncryption;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.domain.signatures.metadata.CellsMetadataSignature;
+import com.groupdocs.signature.domain.signatures.metadata.ImageMetadataSignature;
 import com.groupdocs.signature.domain.signatures.metadata.MetadataSignature;
 import com.groupdocs.signature.domain.signatures.metadata.PdfMetadataSignature;
 import com.groupdocs.signature.domain.signatures.metadata.PdfMetadataSignatures;
@@ -18,10 +23,12 @@ import com.groupdocs.signature.internal.c.a.ms.System.Guid;
 import com.groupdocs.signature.internal.c.a.ms.lang.Operators;
 import com.groupdocs.signature.options.OutputType;
 import com.groupdocs.signature.options.metadatasearch.CellsSearchMetadataOptions;
+import com.groupdocs.signature.options.metadatasearch.ImagesSearchMetadataOptions;
 import com.groupdocs.signature.options.metadatasearch.PdfSearchMetadataOptions;
 import com.groupdocs.signature.options.metadatasearch.SlidesSearchMetadataOptions;
 import com.groupdocs.signature.options.metadatasearch.WordsSearchMetadataOptions;
 import com.groupdocs.signature.options.metadatasignature.CellsMetadataSignOptions;
+import com.groupdocs.signature.options.metadatasignature.ImagesMetadataSignOptions;
 import com.groupdocs.signature.options.metadatasignature.PdfMetadataSignOptions;
 import com.groupdocs.signature.options.metadatasignature.SlidesMetadataSignOptions;
 import com.groupdocs.signature.options.metadatasignature.WordsMetadataSignOptions;
@@ -201,6 +208,39 @@ public class MetadataSignatures {
 		//ExEnd:signSlidesWithMetadataSignOptions
 	}
 	
+	public static void signImagesWithMetadataSignOptions(String fileName) throws Throwable{
+		//ExStart:signImagesWithMetadataSignOptions
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup options with text of signature
+		ImagesMetadataSignOptions signOptions = new ImagesMetadataSignOptions();
+		// Specify different Metadata Signatures and add them to options sigature collection
+		int imgsMetadataId = 41996;
+		// setup int value
+		ImageMetadataSignature mdSign_DocId = new ImageMetadataSignature(imgsMetadataId++, 123456); // int
+		signOptions.getMetadataSignatures().add(mdSign_DocId);
+		// setup Author property
+		ImageMetadataSignature mdSign_Author = new ImageMetadataSignature(imgsMetadataId++, "Mr.Scherlock Holmes"); // string
+		signOptions.getMetadataSignatures().add(mdSign_Author);
+		// setup data of sign date
+		ImageMetadataSignature mdSign_Date = new ImageMetadataSignature(imgsMetadataId++, new Date()); // DateTime
+		signOptions.getMetadataSignatures().add(mdSign_Date);
+		// setup double
+		ImageMetadataSignature mdSign_Amnt = new ImageMetadataSignature(imgsMetadataId++, new Double("123.456")); //decimal value
+		signOptions.getMetadataSignatures().add(mdSign_Amnt);
+		
+		// save option		
+		SaveOptions saveOptions = new SaveOptions();
+	    saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		//ExEnd:signImagesWithMetadataSignOptions
+	}
+	
 	public static void searchMetadataSignatureInPDFDocuments(String fileName) throws Throwable{
 		//ExStart:searchMetadataSignatureInPDFDocuments
 		// setup Signature configuration 
@@ -291,5 +331,308 @@ public class MetadataSignatures {
 			}
 		}
 		//ExEnd:searchMetadataSignatureInSlidesDocuments
+	}
+	
+	public static void searchMetadataSignatureInImages(String fileName) throws Throwable{
+		//ExStart:searchMetadataSignatureInImages
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup search options
+		ImagesSearchMetadataOptions searchOptions = new ImagesSearchMetadataOptions();
+		  
+		// search document
+		SearchResult result = handler.search(fileName, searchOptions);
+		// output signatures
+		for (BaseSignature signature : result.getSignatures())
+		{
+			ImageMetadataSignature  metadataSignature = Operators.as(signature, ImageMetadataSignature .class);
+		    if (metadataSignature != null)
+		    {
+		    	System.out.println("Image Metadata:"+metadataSignature.getDescription()+":"+ metadataSignature.getName()+" = "+ metadataSignature.toString());
+		    }
+		}
+		//ExEnd:searchMetadataSignatureInImages
+	}
+	
+	public static void signPDFWithEncryptedMetadataSignature(String fileName) throws Throwable{
+		//ExStart:signPDFWithEncryptedMetadataSignature
+		// setup key and passphrase
+		String key = "1234567890";
+		String salt = "1234567890";
+		// create data encryption
+		IDataEncryption encryption = new SymmetricEncryption(SymmetricAlgorithmType.Rijndael, key, salt);
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup options with text of signature
+		PdfMetadataSignOptions signOptions = new PdfMetadataSignOptions();
+		   
+		// create custom object
+		DocumentSignature signature = new DocumentSignature();
+		signature.setID(Guid.newGuid().toString());
+		signature.setAuthor(System.getenv("USERNAME"));
+		signature.setSigned(new java.util.Date());
+		signature.setDataFactor(new java.math.BigDecimal("11.22"));
+		   
+		// Specify different Metadata Signatures and add them to options sigature collection
+		// setup Author property
+		PdfMetadataSignature mdDocument = signOptions.addSignature("DocumentSignature", signature);
+		// set encryption
+		mdDocument.setDataEncryption(encryption);
+		
+		// save option		
+		SaveOptions saveOptions = new SaveOptions();
+	    saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		
+		//ExEnd:signPDFWithEncryptedMetadataSignature
+	}
+	
+	public static void signWordsWithEncryptedMetadataSignature(String fileName) throws Throwable{
+		//ExStart:signWordsWithEncryptedMetadataSignature
+		// setup key and passphrase
+		String key = "1234567890";
+		String salt = "1234567890";
+		// create data encryption
+		IDataEncryption encryption = new SymmetricEncryption(SymmetricAlgorithmType.Rijndael, key, salt);
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup options with text of signature
+		WordsMetadataSignOptions signOptions = new WordsMetadataSignOptions();
+		   
+		// create custom object
+		DocumentSignature signature = new DocumentSignature();
+		signature.setID(Guid.newGuid().toString());
+		signature.setAuthor(System.getenv("USERNAME"));
+		signature.setSigned(new java.util.Date());
+		signature.setDataFactor(new java.math.BigDecimal("11.22"));
+		   
+		// Specify different Metadata Signatures and add them to options sigature collection
+		// setup Author property
+		WordsMetadataSignature mdDocument = signOptions.addSignature("DocumentSignature", signature);
+		// set encryption
+		mdDocument.setDataEncryption(encryption);
+		
+		// save option		
+		SaveOptions saveOptions = new SaveOptions();
+	    saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		
+		//ExEnd:signWordsWithEncryptedMetadataSignature
+	}
+	
+	public static void signSlidesWithEncryptedMetadataSignature(String fileName) throws Throwable{
+		//ExStart:signSlidesWithEncryptedMetadataSignature
+		// setup key and passphrase
+		String key = "1234567890";
+		String salt = "1234567890";
+		// create data encryption
+		IDataEncryption encryption = new SymmetricEncryption(SymmetricAlgorithmType.Rijndael, key, salt);
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup options with text of signature
+		SlidesMetadataSignOptions signOptions = new SlidesMetadataSignOptions();
+		   
+		// create custom object
+		DocumentSignature signature = new DocumentSignature();
+		signature.setID(Guid.newGuid().toString());
+		signature.setAuthor(System.getenv("USERNAME"));
+		signature.setSigned(new java.util.Date());
+		signature.setDataFactor(new java.math.BigDecimal("11.22"));
+		   
+		// Specify different Metadata Signatures and add them to options sigature collection
+		// setup Author property
+		SlidesMetadataSignature mdDocument = signOptions.addSignature("DocumentSignature", signature);
+		// set encryption
+		mdDocument.setDataEncryption(encryption);
+		
+		// save option		
+		SaveOptions saveOptions = new SaveOptions();
+	    saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		
+		//ExEnd:signSlidesWithEncryptedMetadataSignature
+	}
+	
+	public static void signCellsWithEncryptedMetadataSignature(String fileName) throws Throwable{
+		//ExStart:signCellsWithEncryptedMetadataSignature
+		// setup key and passphrase
+		String key = "1234567890";
+		String salt = "1234567890";
+		// create data encryption
+		IDataEncryption encryption = new SymmetricEncryption(SymmetricAlgorithmType.Rijndael, key, salt);
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);
+		// setup options with text of signature
+		CellsMetadataSignOptions signOptions = new CellsMetadataSignOptions();
+		   
+		// create custom object
+		DocumentSignature signature = new DocumentSignature();
+		signature.setID(Guid.newGuid().toString());
+		signature.setAuthor(System.getenv("USERNAME"));
+		signature.setSigned(new java.util.Date());
+		signature.setDataFactor(new java.math.BigDecimal("11.22"));
+		   
+		// Specify different Metadata Signatures and add them to options sigature collection
+		// setup Author property
+		CellsMetadataSignature mdDocument = signOptions.addSignature("DocumentSignature", signature);
+		// set encryption
+		mdDocument.setDataEncryption(encryption);
+		
+		// save option		
+		SaveOptions saveOptions = new SaveOptions();
+	    saveOptions.setOutputType(OutputType.String);
+		saveOptions.setOutputFileName("signed_output");
+		// sign document
+		String signedPath = handler.sign(fileName, signOptions, saveOptions);
+		System.out.println("Signed file path is: " + signedPath);
+		
+		//ExEnd:signCellsWithEncryptedMetadataSignature
+	}
+	
+	public static void searchCustomEncryptedMetadataSignatureInPDF(String fileName) throws Throwable{
+		//ExStart:searchCustomEncryptedMetadataSignatureInPDF
+		// setup key and pasphrase
+		String key = "1234567890";
+		String salt = "1234567890";
+		// create data encryption
+		IDataEncryption encryption = new SymmetricEncryption(SymmetricAlgorithmType.Rijndael, key, salt);
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);		
+		// setup search options
+		PdfSearchMetadataOptions searchOptions = new PdfSearchMetadataOptions();
+		   
+		// search document
+		SearchResult result = handler.search(fileName, searchOptions);
+		// output signatures
+		List<PdfMetadataSignature> signatures = result.toList(PdfMetadataSignature.class);
+		//foreach to while statements conversion
+		Iterator tmp0 = ( signatures).iterator();
+		while (tmp0.hasNext()){
+			PdfMetadataSignature signature = (PdfMetadataSignature)tmp0.next();
+		    if (signature != null && signature.getName().equals("DocumentSignature")){
+		        DocumentSignature docSignature = signature.<DocumentSignature>getData(DocumentSignature.class, encryption);
+		        if (docSignature != null){
+		            System.out.print("Found DocumentSignature signature: #"+docSignature.getID()+". Author "+docSignature.getAuthor()+" from "+docSignature.getDataFactor()+". Factor: " +docSignature.getDataFactor() );
+		        }
+		    }
+		}
+		//ExEnd:searchCustomEncryptedMetadataSignatureInPDF
+	}
+	
+	public static void searchCustomEncryptedMetadataSignatureInWords(String fileName) throws Throwable{
+		//ExStart:searchCustomEncryptedMetadataSignatureInWords
+		// setup key and pasphrase
+		String key = "1234567890";
+		String salt = "1234567890";
+		// create data encryption
+		IDataEncryption encryption = new SymmetricEncryption(SymmetricAlgorithmType.Rijndael, key, salt);
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);		
+		// setup search options
+		WordsSearchMetadataOptions searchOptions = new WordsSearchMetadataOptions();
+		   
+		// search document
+		SearchResult result = handler.search(fileName, searchOptions);
+		// output signatures
+		List<WordsMetadataSignature> signatures = result.toList(WordsMetadataSignature.class);
+		//foreach to while statements conversion
+		Iterator tmp0 = ( signatures).iterator();
+		while (tmp0.hasNext()){
+			WordsMetadataSignature signature = (WordsMetadataSignature)tmp0.next();
+		    if (signature != null && signature.getName().equals("DocumentSignature")){
+		        DocumentSignature docSignature = signature.<DocumentSignature>getData(DocumentSignature.class, encryption);
+		        if (docSignature != null){
+		            System.out.print("Found DocumentSignature signature: #"+docSignature.getID()+". Author "+docSignature.getAuthor()+" from "+docSignature.getDataFactor()+". Factor: " +docSignature.getDataFactor() );
+		        }
+		    }
+		}
+		//ExEnd:searchCustomEncryptedMetadataSignatureInWords
+	}
+	
+	public static void searchCustomEncryptedMetadataSignatureInSlides(String fileName) throws Throwable{
+		//ExStart:searchCustomEncryptedMetadataSignatureInSlides
+		// setup key and pasphrase
+		String key = "1234567890";
+		String salt = "1234567890";
+		// create data encryption
+		IDataEncryption encryption = new SymmetricEncryption(SymmetricAlgorithmType.Rijndael, key, salt);
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);		
+		// setup search options
+		SlidesSearchMetadataOptions searchOptions = new SlidesSearchMetadataOptions();
+		   
+		// search document
+		SearchResult result = handler.search(fileName, searchOptions);
+		// output signatures
+		List<SlidesMetadataSignature> signatures = result.toList(SlidesMetadataSignature.class);
+		//foreach to while statements conversion
+		Iterator tmp0 = ( signatures).iterator();
+		while (tmp0.hasNext()){
+			SlidesMetadataSignature signature = (SlidesMetadataSignature)tmp0.next();
+		    if (signature != null && signature.getName().equals("DocumentSignature")){
+		        DocumentSignature docSignature = signature.<DocumentSignature>getData(DocumentSignature.class, encryption);
+		        if (docSignature != null){
+		            System.out.print("Found DocumentSignature signature: #"+docSignature.getID()+". Author "+docSignature.getAuthor()+" from "+docSignature.getDataFactor()+". Factor: " +docSignature.getDataFactor() );
+		        }
+		    }
+		}
+		//ExEnd:searchCustomEncryptedMetadataSignatureInSlides
+	}
+	
+	public static void searchCustomEncryptedMetadataSignatureInCells(String fileName) throws Throwable{
+		//ExStart:searchCustomEncryptedMetadataSignatureInCells
+		// setup key and pasphrase
+		String key = "1234567890";
+		String salt = "1234567890";
+		// create data encryption
+		IDataEncryption encryption = new SymmetricEncryption(SymmetricAlgorithmType.Rijndael, key, salt);
+		// setup Signature configuration 
+		SignatureConfig signConfig = CommonUtilities.getConfiguration(); 
+		// instantiating the conversion handler
+		SignatureHandler<String> handler = new SignatureHandler<String>(signConfig);		
+		// setup search options
+		CellsSearchMetadataOptions searchOptions = new CellsSearchMetadataOptions();
+		   
+		// search document
+		SearchResult result = handler.search(fileName, searchOptions);
+		// output signatures
+		List<CellsMetadataSignature> signatures = result.toList(CellsMetadataSignature.class);
+		//foreach to while statements conversion
+		Iterator tmp0 = ( signatures).iterator();
+		while (tmp0.hasNext()){
+			CellsMetadataSignature signature = (CellsMetadataSignature)tmp0.next();
+		    if (signature != null && signature.getName().equals("DocumentSignature")){
+		        DocumentSignature docSignature = signature.<DocumentSignature>getData(DocumentSignature.class, encryption);
+		        if (docSignature != null){
+		            System.out.print("Found DocumentSignature signature: #"+docSignature.getID()+". Author "+docSignature.getAuthor()+" from "+docSignature.getDataFactor()+". Factor: " +docSignature.getDataFactor() );
+		        }
+		    }
+		}
+		//ExEnd:searchCustomEncryptedMetadataSignatureInCells
 	}
 }
