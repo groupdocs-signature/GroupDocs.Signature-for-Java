@@ -9,9 +9,11 @@ This package contains Java Example Projects for [GroupDocs.Signature for Java](h
   </a>
 </p>
 
-## How to Run the Examples?
+# How to Run the Examples?
 
-It is assumed that maven is installed and configured in your system path. You can edit the project by opening in your favorite IDE like NetBeans, Eclipse, and IntelliJ IDEA.
+It is assumed that maven is installed and configured in your system path. You can edit the project by opening in your favorite IDE like NetBeans, Eclipse, and IntelliJ IDEA. Please visit our [documentation website](https://docs.groupdocs.com/display/signaturejava/How+to+Run+Examples) for more details.
+
+## Install and Configure Maven
 
 You may find following resources helpful:
 
