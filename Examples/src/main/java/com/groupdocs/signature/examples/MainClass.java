@@ -80,7 +80,7 @@ public class MainClass {
         //region Document Preview
 
         //GetDocumentInfo.run();
-        GeneratePreview.run();
+        //GeneratePreview.run();
         //endregion
 
         //region Sign document with different signature types
