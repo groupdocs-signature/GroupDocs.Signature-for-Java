@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="groupdocs-signature-19.11-shaded-jarjar-final">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../signature/signature-19.9/target/groupdocs-signature-19.11-shaded-jarjar-final.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
