@@ -104,7 +104,7 @@ public class MainClass {
         //SignWithStamp.run();
 
         //Sign image document with metadata signature
-        //SignImageWithMetadata.run();
+       // SignImageWithMetadata.run();
 
         //Sign pdf document with text signature
         //SignPdfWithMetadata.run();
@@ -258,13 +258,13 @@ public class MainClass {
         //region Search signed documents for different signature types with additional options
 
         //Search document for Bar-Code signature with applying specific options
-        //SearchForBarcodeAdvanced.run();
+       // SearchForBarcodeAdvanced.run();
 
         //Search document for encrypted QR-Code signature with applying specific options
         //SearchForQRCodeAdvanced.run();
 
         //Search document for digital signature with applying specific options
-        //SearchForDigitalAdvanced.run();
+       // SearchForDigitalAdvanced.run();
 
         //Search document for form-field signature with applying specific options
         //SearchForFormFieldAdvanced.run();
@@ -311,7 +311,7 @@ public class MainClass {
         //VerifyWithExceptionHandling.run();
         //endregion // Advanced Usage
 
-        System.out.print("All done.");
+        //System.out.print("\nAll done.");
 
 	}
 }

@@ -26,7 +26,7 @@ public class LoadPasswordProtectedDocument {
         loadOptions.setPassword("1234567890");
 
         try {
-            Signature signature = new Signature(filePath);
+            Signature signature = new Signature(filePath, loadOptions);
             QrCodeSignOptions options = new QrCodeSignOptions("JohnSmith");
             options.setEncodeType(QrCodeTypes.QR);
             options.setLeft(100);

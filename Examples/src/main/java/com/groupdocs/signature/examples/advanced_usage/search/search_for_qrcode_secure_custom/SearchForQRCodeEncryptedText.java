@@ -54,7 +54,7 @@ public class SearchForQRCodeEncryptedText {
                 System.out.print("QRCode signature found at page "+qrCodeSignature.getPageNumber()+" with type "+qrCodeSignature.getEncodeType().getTypeName()+" and text "+ qrCodeSignature.getText());
             }
         }catch(Exception e){
-            throw new GroupDocsSignatureException(e.getMessage());
+
         }
     }
 }

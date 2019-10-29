@@ -22,7 +22,7 @@ public class SaveSignedPdfWithDifferentOutputFileType {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
 
-        String outputFilePath = new File(Constants.OutputPath, "SaveSignedOutputType//SamplePdf.docx").getPath();
+        String outputFilePath = new File(Constants.OutputPath, "SaveSignedOutputType//Sample.doc").getPath();
 
         try {
             Signature signature = new Signature(filePath);
@@ -33,7 +33,7 @@ public class SaveSignedPdfWithDifferentOutputFileType {
             signOptions.setTop(100);
 
             PdfSaveOptions saveOptions = new PdfSaveOptions();
-            saveOptions.setFileFormat(PdfSaveFileFormat.DocX);
+            saveOptions.setFileFormat(PdfSaveFileFormat.Doc);
             saveOptions.setOverwriteExistingFiles(true);
             // sign document to file
             signature.sign(outputFilePath, signOptions, saveOptions);

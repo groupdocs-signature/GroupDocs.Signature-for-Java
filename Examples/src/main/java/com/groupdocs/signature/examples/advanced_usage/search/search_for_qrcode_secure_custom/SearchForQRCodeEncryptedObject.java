@@ -87,7 +87,7 @@ public class SearchForQRCodeEncryptedObject {
                 }
             }
         }catch(Exception e){
-            throw new GroupDocsSignatureException(e.getMessage());
+
         }
     }
 }

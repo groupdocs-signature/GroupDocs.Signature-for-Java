@@ -19,7 +19,7 @@ public class SearchWithExceptionHandling {
         String filePath = Constants.SAMPLE_SIGNED_PWD_PDF;
         try {
             LoadOptions loadOptions = new LoadOptions();
-            Signature signature = new Signature(filePath);
+            Signature signature = new Signature(filePath,loadOptions);
             // create QRCode option with predefined QRCode text
             DigitalSearchOptions options = new DigitalSearchOptions();
 

@@ -19,7 +19,7 @@ public class VerifyTextAdvanced {
     public static void run()
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_SPREADSHEET_SIGNED;
+        String filePath = Constants.SAMPLE_PDF_SIGNED;
         try {
             Signature signature = new Signature(filePath);
             // create QRCode option with predefined QRCode text

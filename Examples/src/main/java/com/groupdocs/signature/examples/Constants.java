@@ -30,7 +30,7 @@ public class Constants {
     public static String ImageHandwrite = new File(ImagesPath, "signature-handwrite.jpg").getPath();
     public static String ImageStamp = new File(ImagesPath, "stamp.png").getPath();
     //Certificate
-    public static String CertificatePfx = new File(CertificatesPath, "MrSmithSignature.pfx").getPath();
+    public static String CertificatePfx = new File(CertificatesPath, "DrWatson.pfx").getPath();
     public static String CertificateCer = new File(CertificatesPath, "signtest.cer").getPath();
 
 

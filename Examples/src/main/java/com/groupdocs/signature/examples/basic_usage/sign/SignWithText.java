@@ -30,6 +30,7 @@ public class SignWithText {
             options.setLeft(100);
             options.setTop(100);
 
+
             // set signature rectangle
             options.setWidth(100);
             options.setHeight(30);
