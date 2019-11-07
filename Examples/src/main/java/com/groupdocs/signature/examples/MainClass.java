@@ -1,201 +1,317 @@
 package com.groupdocs.signature.examples;
 
+import com.groupdocs.signature.examples.advanced_usage.common.*;
+import com.groupdocs.signature.examples.advanced_usage.loading.LoadPasswordProtectedDocument;
+import com.groupdocs.signature.examples.advanced_usage.loading.loading_documents_from_different_sources.*;
+import com.groupdocs.signature.examples.advanced_usage.saving.SaveDocumentWithPassword;
+import com.groupdocs.signature.examples.advanced_usage.saving.SaveSignedDocumentsAsImages;
+import com.groupdocs.signature.examples.advanced_usage.saving.SaveSignedImageWithVariousOutputTypes;
+import com.groupdocs.signature.examples.advanced_usage.saving.save_documents_with_different_output_types.*;
+import com.groupdocs.signature.examples.advanced_usage.search.*;
+import com.groupdocs.signature.examples.advanced_usage.search.search_for_metadata_secure_custom.SearchForMetadataCustomEncryptionObject;
+import com.groupdocs.signature.examples.advanced_usage.search.search_for_metadata_secure_custom.SearchForMetadataCustomSerializationObject;
+import com.groupdocs.signature.examples.advanced_usage.search.search_for_metadata_secure_custom.SearchForMetadataEncryptedObject;
+import com.groupdocs.signature.examples.advanced_usage.search.search_for_metadata_secure_custom.SearchForMetadataEncryptedText;
+import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_secure_custom.SearchForQRCodeCustomEncryptionObject;
+import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_secure_custom.SearchForQRCodeCustomSerializationObject;
+import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_secure_custom.SearchForQRCodeEncryptedObject;
+import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_secure_custom.SearchForQRCodeEncryptedText;
+import com.groupdocs.signature.examples.advanced_usage.sign.*;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_advanced.SignImageWithCustomMetadata;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_advanced.SignPdfWithCustomMetadata;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataCustomEncryptionObject;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataCustomSerializationObject;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataEncryptedObject;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataEncryptedText;
+import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithDigitalAppearance;
+import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithImageAppearance;
+import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithPdfTextAnnotation;
+import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithPdfTextSticker;
+import com.groupdocs.signature.examples.advanced_usage.sign.signature_positions.SignWithAlignments;
+import com.groupdocs.signature.examples.advanced_usage.sign.signature_positions.SignWithMillimeters;
+import com.groupdocs.signature.examples.advanced_usage.sign.signature_positions.SignWithPercents;
+import com.groupdocs.signature.examples.advanced_usage.sign.signature_positions.SignWithStretchMode;
+import com.groupdocs.signature.examples.advanced_usage.sign.singin_with_brushes.SignWithLinearGradientBrush;
+import com.groupdocs.signature.examples.advanced_usage.sign.singin_with_brushes.SignWithRadialGradientBrush;
+import com.groupdocs.signature.examples.advanced_usage.sign.singin_with_brushes.SignWithSolidBrush;
+import com.groupdocs.signature.examples.advanced_usage.sign.singin_with_brushes.SignWithTextureBrush;
+import com.groupdocs.signature.examples.advanced_usage.verify.*;
+import com.groupdocs.signature.examples.basic_usage.common.GetSupportedFileFormats;
+import com.groupdocs.signature.examples.basic_usage.document_preview.GeneratePreview;
+import com.groupdocs.signature.examples.basic_usage.document_preview.GetDocumentInfo;
+import com.groupdocs.signature.examples.basic_usage.search.*;
+import com.groupdocs.signature.examples.basic_usage.sign.*;
+import com.groupdocs.signature.examples.basic_usage.sign.metadata.*;
+import com.groupdocs.signature.examples.basic_usage.verify.VerifyBarcode;
+import com.groupdocs.signature.examples.basic_usage.verify.VerifyDigital;
+import com.groupdocs.signature.examples.basic_usage.verify.VerifyQRCode;
+import com.groupdocs.signature.examples.basic_usage.verify.VerifyText;
+import com.groupdocs.signature.examples.quick_start.HelloWorld;
+import com.groupdocs.signature.examples.quick_start.SetLicenseFromFile;
+import com.groupdocs.signature.examples.quick_start.SetLicenseFromStream;
+import com.groupdocs.signature.examples.quick_start.SetMeteredLicense;
+
 public class MainClass {
 	public static void main(String[] args) throws Throwable {
-		//CommonUtilities.applyLicense();
-		//Text Signatures 
-		//TextSignature.signCellDocWithText("pie chart.xlsx");
-		//TextSignature.signPdfDocWithText("digital signatures.pdf");
-		//TextSignature.signSlideDocWithText("butterfly effect.pptx");
-		//TextSignature.signWordDocWithText("getting started.docx");
-		//TextSignature.validatePdfTextSignatures("digital signatures.pdf");
-		//TextSignature.verifyCellWithTextSignature("pie chart.xlsx");
-		//TextSignature.verifyPDFWithTextSignatureAnnotation("digital signatures.pdf");
-		//TextSignature.verifyPDFWithTextSignatureSticker("digital signatures.pdf");
-		//TextSignature.verifySlidesWithTextSignature("butterfly effect.pptx");
-		//TextSignature.verifyWordWithTextSignature("getting started.docx");	
-		//TextSignature.signPDFWithFontAndColorOptions("digital signatures.pdf");
-		//TextSignature.signPDFWithDifferentOutputFileType("digital signatures.pdf");
-		//TextSignature.addOpacityOptionsToTextSignatureAppearance("digital signatures.pdf");
-		//TextSignature.signPdfDocumentWithTextSignatureAsImage("digital signatures.pdf");
-		//TextSignature.signPdfWithTextSignatureAsSticker("digital signatures.pdf");
-		//TextSignature.usingDefaultAppearanceSignPdfWithTextSignatureSticker("digital signatures.pdf");
-		//TextSignature.addTransperanceAndRotationToTextSignatureAppearance("butterfly effect.pptx");
-		//TextSignature.signPasswordProtectedDocWithTextSignature("pie chart.xlsx");		
-		//TextSignature.signImageDocWithText("sample.png");
-		//TextSignature.signImageWithDifferentOutputFileType("sample.png");
-		//TextSignature.addTransperanceAndRotationToTextSignatureInImageDoc("sample.png");
-		//TextSignature.signImageDocsWithTextSignatureAsWatermark("sample.png");		
-		//TextSignature.signDocumentWithSignatureProcessEvents("digital signatures.pdf");
-		//TextSignature.verifyDocumentWithVerificationProcessEvents("digital signatures.pdf");
-		//TextSignature.signCellDocumentWithTextSignatureAppearence("pie chart.xlsx");		
-		//TextSignature.signSlideDocumentWithTextShadowExtension("butterfly effect.pptx");		
-		//TextSignature.setupSolidBrushForSignatureBackground("digital signatures.pdf");
-    	//TextSignature.setupLinearGrdiantBrushForSignatureBackground("pie chart.xlsx");
-    	//TextSignature.setupRadialGrdiantBrushForSignatureBackground("digital signatures.pdf");
-    	//TextSignature.setupTextureBrushForSignatureBackground("pie chart.xlsx");		
-		//TextSignature.setTextSignaturePositionOnCells("pie chart.xlsx");
-		//TextSignature.alignTextSignaturePositionOnCells("pie chart.xlsx");
-		//TextSignature.alignTextSignaturePositionOnPDF("digital signatures.pdf");
-		//TextSignature.alignTextSignaturePositionOnSlides("butterfly effect.pptx");
-		//TextSignature.alignTextSignaturePositionOnWords("getting started.docx");
-		//TextSignature.alignTextSignaturePositionOnImages("sample.png");
-		//TextSignature.signPDFWithUpdatedProcessEvents("digital signatures.pdf");
-		//TextSignature.signCellsWithTextMeasure("pie chart.xlsx");
-		//TextSignature.signCellsWithTextSignatureAlignment("pie chart.xlsx");
-		//TextSignature.saveImagesSignedWithTextSignatureAsPDF("sample.png");
-		//TextSignature.verifyTextSignatureInWordsWithMatchTypeProperty("getting started.docx");
-		
-		//Image Signatures
-		//ImageSignature.signCellDocWithImage("pie chart.xlsx");
-		//ImageSignature.signCellDocWithImageSpecifyMargins("pie chart.xlsx");
-		//ImageSignature.signPdfDocWithImage("digital signatures.pdf");
-		//ImageSignature.signPdfDocWithImageSpecifyMargins("digital signatures.pdf");
-		//ImageSignature.signPdfDocWithImageSpecifyIntents("digital signatures.pdf");
-		//ImageSignature.signSlideDocWithImage("butterfly effect.pptx");
-		//ImageSignature.signSlideDocWithImageWithSpecifyMargins("butterfly effect.pptx");
-		//ImageSignature.signSlideDocWithImageSpecifyIntents("butterfly effect.pptx");
-		//ImageSignature.signWordDocWithImage("getting started.docx");
-		//ImageSignature.signWordDocWithImageSpecifyMargins("getting started.docx");
-		//ImageSignature.signWordDocWithImageSpecifyIntents("getting started.docx");		
-		//ImageSignature.extendedOptionInImageSignature("digital signatures.pdf");
-		//ImageSignature.signArbitraryPagesOfDocumentWithImageSignature("digital signatures.pdf");		
-		//ImageSignature.signImageDocWithImage("sample.png");
-		//ImageSignature.signImageDocWithMarginsAndAlignment("sample.png");
-		//ImageSignature.signImageDocWithSpecifiedAdjustmentSizeAndMargins("sample.png");
-		//ImageSignature.signImageWithExtendedOptionInImageSignature("sample.png");		
-		//ImageSignature.setImageSignaturePositionOnCells("pie chart.xlsx");
-		//ImageSignature.signCellsWithImageMeasure("pie chart.xlsx");
-		
-		//Digital Signatures
-		//DigitalSignature.signCellDocsWithDigitalSignature("pie chart.xlsx");
-		//DigitalSignature.signPdfDocsWithDigitalSignature("digital signatures.pdf");
-		//DigitalSignature.signSlideDocsWithDigitalSignature("butterfly effect.pptx");
-		//DigitalSignature.signWordDocsWithDigitalSignature("getting started.docx");
-		//DigitalSignature.signCellDocsWithPfxCertificateContainer("pie chart.xlsx");
-		//DigitalSignature.signCellDocsWithCertificateContainer("pie chart.xlsx");
-		//DigitalSignature.signPdfDocsWithCertificateContainer("digital signatures.pdf");
-		//DigitalSignature.signPdfDocsWithPfxCertificateContainer("digital signatures.pdf");
-		//DigitalSignature.digitalVerificationOfSlideDoc();
-		//DigitalSignature.digitalVerificationOfWordDocWithCertificateContainer("getting started.docx");
-		//DigitalSignature.digitalVerificationOfWordDocWithPfcCertificateContainer("getting started.docx");		
-		//DigitalSignature.searchDigitalSignatureInPDFDocuments("digital signatures.pdf");
-		//DigitalSignature.searchDigitalSignatureInCellDocuments("pie chart.xlsx");
-		//DigitalSignature.searchDigitalSignatureInWordDocuments("getting started.docx");
-		//DigitalSignature.searchDigitalSignatureInSystem();		
-		//DigitalSignature.setDigitalSignaturePositionOnCells("pie chart.xlsx");
-		//DigitalSignature.searchDigitalSignatureInWordsWithExtendedOption("getting started.docx");
-		//DigitalSignature.searchDigitalSignatureInCellsWithExtendedOption("pie chart.xlsx");
-		//DigitalSignature.signCellsWithDigitalSignatureMeasure("pie chart.xlsx");
-		//DigitalSignature.digitalVerificationOfWordsDocumentWithExtendedProperties("digital signatures.docx");
-		
-		//Optical Signature
-		//OpticalSignature.signCellDocWithBarcodeSignature("pie chart.xlsx");
-		//OpticalSignature.signPDFDocWithBarcodeSignature("digital signatures.pdf");
-		//OpticalSignature.signSlidesDocWithBarcodeSignature("butterfly effect.pptx");
-		//OpticalSignature.signWordsDocWithBarcodeSignature("getting started.docx");		
-		//OpticalSignature.signCellDocWithQRCodeSignature("pie chart.xlsx");
-		//OpticalSignature.signPDFDocWithQRCodeSignature("digital signatures.pdf");
-		//OpticalSignature.signSlidesDocWithQRCodeSignature("butterfly effect.pptx");
-		//OpticalSignature.signWordsDocWithQRCodeSignature("getting started.docx");		
-		//OpticalSignature.verifyCellDocWithBarcodeSignature("pie chart.xlsx");
-		//OpticalSignature.verifyPDFDocWithBarcodeSignature("digital signatures.pdf");
-		//OpticalSignature.verifySlidesDocWithBarcodeSignature("butterfly effect.pptx");
-		//OpticalSignature.verifyWordsDocWithBarcodeSignature("getting started.docx");		
-		//OpticalSignature.verifyCellDocWithQRCodeSignature("pie chart.xlsx");
-		//OpticalSignature.verifyPDFDocWithQRCodeSignature("digital signatures.pdf");
-		//OpticalSignature.verifySlidesDocWithQRCodeSignature("butterfly effect.pptx");
-		//OpticalSignature.verifyWordsDocWithQRCodeSignature("getting started.docx");		
-		//OpticalSignature.signImageDocWithBarcodeSignature("sample.png");
-		//OpticalSignature.signImageDocWithQRCodeSignature("sample.png");
-		//OpticalSignature.verifyImageDocWithBarcodeSignature("sample.png");
-		//OpticalSignature.verifyImageDocWithQRCodeSignature("sample.png");		
-		//OpticalSignature.searchBarCodeSignaturesInPDF("digital signatures.pdf");
-    	//OpticalSignature.searchBarCodeSignaturesInCells("pie chart.xlsx");
-    	//OpticalSignature.searchBarCodeSignaturesInImages("sample.png");
-    	//OpticalSignature.searchBarCodeSignaturesInSlides("butterfly effect.pptx");
-    	//OpticalSignature.searchBarCodeSignaturesInWords("getting started.docx");		
-		//OpticalSignature.searchQRCodeSignaturesInPDF("signed_output.pdf");
-    	//OpticalSignature.searchQRCodeSignaturesInCells("pie chart.xlsx");
-    	//OpticalSignature.searchQRCodeSignaturesInImages("sample.png");
-    	//OpticalSignature.searchQRCodeSignaturesInSlides("butterfly effect.pptx");
-    	//OpticalSignature.searchQRCodeSignaturesInWords("getting started.docx");		
-		//OpticalSignature.searchBarcodeSignatureWithProcessEvents("digital signatures.pdf");		
-		//OpticalSignature.signDocumentWithCustomQRCodeData("digital signatures.pdf");
-		//OpticalSignature.signDocumentWithEmbeddedVCardObjectToQRCode("digital signatures.pdf");
-		//OpticalSignature.signDocumentWithEmbeddedEmailObjectToQRCode("digital signatures.pdf");
-		//OpticalSignature.searchCustomObjectFromSignedPDF("digital signatures.pdf");
-		//OpticalSignature.searchStandardVCardAndEmailObjectFromSignedPDF("digital signatures.pdf");
-		//OpticalSignature.setBarcodeSignaturePositionOnCells("pie chart.xlsx");	
-		//OpticalSignature.setQRCodeSignaturePositionOnCells("pie chart.xlsx");
-		//OpticalSignature.verifyQRCodeInPDFWithoutEncodeType("digital signatures.pdf");
-		//OpticalSignature.verifyEncryptedQRCodeInPDF("digital signatures.pdf");
-		//OpticalSignature.exceptionHandlingWhileVerifyingQRCodeInPDF("digital signatures.pdf");
-		//OpticalSignature.signCellsWithQRCodeMeasure("pie chart.xlsx");
-		//OpticalSignature.signCellsWithBarCodeMeasure("pie chart.xlsx");
-		
-		
-		
-		//Stamp Signature
-		//StampSignature.signCellDocWithStampSignature("pie chart.xlsx");
-		//StampSignature.signPDFDocWithStampSignature("digital signatures.pdf");
-		//StampSignature.signSlidesDocWithStampSignature("butterfly effect.pptx");
-		//StampSignature.signWordsDocWithStampSignature("getting started.docx");		
-		//StampSignature.signImageDocWithStampSignature("sample.png");		
-		//StampSignature.signImageWithStampSignatureUsingStampType("digital signatures.pdf");
-		//StampSignature.setStampSignaturePositionOnCells("pie chart.xlsx");
-		//StampSignature.signCellsWithStampMeasure("pie chart.xlsx");	
-		//StampSignature.signImagesWithRoundedCornersStampSignature("sample.png");	
-		
-		//Metadata Signature
-		//MetadataSignatures.signPDFWithMetadataSignOptions("digital signatures.pdf");
-		//MetadataSignatures.signPDFWithStandardMetadataSignatures("digital signatures.pdf");
-		//MetadataSignatures.signCellsWithMetadataSignOptions("pie chart.xlsx");
-        //MetadataSignatures.signWordsWithMetadataSignOptions("getting started.docx");
-        //MetadataSignatures.signSlidesWithMetadataSignOptions("butterfly effect.pptx");
-        //MetadataSignatures.searchMetadataSignatureInPDFDocuments("digital signatures.pdf");
-        //MetadataSignatures.searchMetadataSignatureInCellsDocuments("pie chart.xlsx");
-        //MetadataSignatures.searchMetadataSignatureInWordsDocuments("getting started.docx");
-        //MetadataSignatures.searchMetadataSignatureInSlidesDocuments("butterfly effect.pptx");
-		
-		//MetadataSignatures.signImagesWithMetadataSignOptions("sample.png");
-		//MetadataSignatures.searchMetadataSignatureInImages("sample.png");s		
-		
-		//Working with Encrypted Signature
-		//MetadataSignatures.signPDFWithEncryptedMetadataSignature("digital signatures.pdf");
-		//MetadataSignatures.signWordsWithEncryptedMetadataSignature("getting started.docx");
-		//MetadataSignatures.signSlidesWithEncryptedMetadataSignature("butterfly effect.pptx");
-		//MetadataSignatures.signCellsWithEncryptedMetadataSignature("pie chart.xlsx");
-        
-		//MetadataSignatures.searchCustomEncryptedMetadataSignatureInPDF("digital signatures.pdf");
-		//MetadataSignatures.searchCustomEncryptedMetadataSignatureInWords("getting started.docx");
-		//MetadataSignatures.searchCustomEncryptedMetadataSignatureInSlides("butterfly effect.pptx");
-		//MetadataSignatures.searchCustomEncryptedMetadataSignatureInCells("pie chart.xlsx");
-        
-        //WorkingWithFormFieldSignatures
+        // TODO: Reference library from Nuget instead of local path.
 
-        //FormFieldSignatures.signPDFWithFormFieldSignOptions("digital signatures.pdf");
-        //FormFieldSignatures.searchFormFieldSignatureInPDF("digital signatures.pdf");
-		
-		//Other Operations
-		//OtherOperations.setUpFontAndColorOptions("digital signatures.pdf");
-		//OtherOperations.setUpBackgroundAndBorderOptions("getting started.docx");
-		//OtherOperations.setUpBackgroundAndBorderOptions("getting started.docx");
-		//OtherOperations.setUpImageSignatureArea("digital signatures.pdf");
-		//OtherOperations.alignSignatureOnDocPage("digital signatures.pdf");	
-		//OtherOperations.specifyMeasurementUnits("digital signatures.pdf");
-		//OtherOperations.obtainInfoAboutDocument("digital signatures.pdf");
-		
-		//CommonOperations
-		//CommonOperations.getSourceDocFromUri();		
-		//CommonOperations.getDocInfoFromURL();		
-		//CommonOperations.getSourceDocFromRelativePath("digital signatures.pdf");
-		//CommonOperations.getSourceDocFromAbsolutePath("digital signatures.pdf");
-		//CommonOperations.getSourceDocFromStream("digital signatures.pdf");
-		//CommonOperations.passwordProtectedDoc("pie chart.xlsx");
-		//CommonOperations.signDocWithDifferentFileName("pie chart.xlsx");
-		//CommonOperations.signDocWithDifferentFileFormat("pie chart.xlsx");
-		//CommonOperations.setupDigitalSigantureOptions("digital signatures.pdf");
-		//CommonOperations.imposePdfDigSignWithTextSignAboveUnderSignatureArea("digital signature.pdf");
+        System.out.print("Open RunExamples.cs. \nIn Main() method uncomment the example that you want to run.");
+        System.out.print("=====================================================");
+
+        // Please uncomment the example you want to try out
+
+        //region Quick Start
+
+        //SetLicenseFromFile.run();
+        //SetLicenseFromStream.run();
+        //SetMeteredLicense.run();
+        //HelloWorld.run();
+        //endregion // Quick Start
+
+        //return;
+        //region Basic Usage
+
+        //region Common
+
+        //GetSupportedFileFormats.run();
+
+        //endregion
+
+        //region Document Preview
+
+        //GetDocumentInfo.run();
+        //GeneratePreview.run();
+        //endregion
+
+        //region Sign document with different signature types
+
+        //Sign document with text signature
+        //SignWithText.run();
+
+        //Sign document with image signature
+        //SignWithImage.run();
+
+        //Sign document with barcode signature
+        //SignWithBarcode.run();
+
+        //Sign document with qr-code signature
+        //SignWithQRCode.run();
+
+        //Sign document with digital signature
+        //SignWithDigital.run();
+
+        //Sign document with Stamp signature
+        //SignWithStamp.run();
+
+        //Sign image document with metadata signature
+       // SignImageWithMetadata.run();
+
+        //Sign pdf document with text signature
+        //SignPdfWithMetadata.run();
+
+        //Sign presentation document with text signature
+        //SignPresentationWithMetadata.run();
+
+        //Sign spreadsheets document with text signature
+        //SignSpreadsheetWithMetadata.run();
+
+        //Sign word-processing document with text signature
+        //SignWordProcessingWithMetadata.run();
+
+        //Sign pdf document with form - field signature
+        //SignPdfWithFormField.run();
+
+        //SignWithMultipleOptions.run();
+
+        //endregion // Sign document with different signature types
+
+        //region Search signed documents for different signature types
+
+        //Search document for Bar-Code signature
+        //SearchForBarcode.run();
+
+        //Search document for QR-Code signature
+        //SearchForQRCode.run();
+
+        //Search document for digital signature
+        //SearchForDigital.run();
+
+        //Search document for metadata signature
+        //SearchForMetadata.run();
+
+        //Search document for form-field signature
+        //SearchForFormField.run();
+
+        //Search for signature with multiple options
+        //SearchForMultiple.run();
+
+        //endregion // Search signed documents for different signature types
+
+        //region Verify documents signed with different signature types
+
+        //Verify document with Text signature
+        //VerifyText.run();
+
+        //Verify document with Bar-Code signature
+        //VerifyBarcode.run();
+
+        //Verify document with QR-Code signature
+        //VerifyQRCode.run();
+
+        //Verify document with digital signature
+        //VerifyDigital.run();
+
+        //endregion // Verify documents signed with different signature types
+
+        //endregion // Basic Usage
+
+        //region Advanced Usage
+
+        //region Loading
+        //LoadDocumentFromLocalDisk.run();
+        //LoadDocumentFromStream.run();
+        //LoadDocumentFromUrl.run();
+        //LoadDocumentFromAmazonS3.run();
+        //LoadDocumentFromFtp.run();
+        //LoadPasswordProtectedDocument.run();
+
+        //endregion
+
+        //region Saving
+
+        //SaveSignedPdfWithDifferentOutputFileType.run();
+        //SaveSignedSpreadsheetWithDifferentOutputFileType.run();
+        //SaveSignedWordProcessingWithDifferentOutputFileType.run();
+        //SaveSignedPresentationWithDifferentOutputFileType.run();
+        //SaveSignedImageWithDifferentOutputFileType.run();
+        //SaveSignedImageWithVariousOutputTypes.run();
+
+        //SaveDocumentWithPassword.run();
+        //SaveSignedDocumentsAsImages.run();
+        //endregion
+
+        //region Sign document with different signature types with additional options
+
+        //Sign document with text signature applying specific options
+        //SignWithTextAdvanced.run();
+
+        //Sign document with image signature applying specific options
+        //SignWithImageAdvanced.run();
+
+        //Sign document with Bar-Code signature applying specific options
+        //SignWithBarcodeAdvanced.run();
+
+        //Sign document with QR-Code signature applying specific options
+        //SignWithQRCodeAdvanced.run();
+
+        // Sign Pdf document with Form-fields
+        //SignPdfWithFormFieldAdvanced.run();
+
+        //SignWithStampAdvanced.run();
+
+        //endregion
+
+        //region Sign QR-Code Encryption, Custom encryption, custom serialization
+        //SearchForQRCodeEncryptedText.run();
+        //SearchForQRCodeEncryptedObject.run();
+        //SearchForQRCodeCustomEncryptionObject.run();
+        //SearchForQRCodeCustomSerializationObject.run();
+        //endregion
+
+        //region Sign Metadata advanced
+        //Sign document with Metadata signature applying specific options
+        //SignPdfWithStandardMetadata.run();
+        //SignPdfWithCustomMetadata.run();
+        //SignImageWithCustomMetadata.run();
+
+        //SignWithMetadataEncryptedText.run();
+        //SignWithMetadataEncryptedObject.run();
+        //SignWithMetadataCustomEncryptionObject.run();
+        //SignWithMetadataCustomSerializationObject.run();
+        //endregion
+
+        //region Sign with different annotation
+        //SignWithPdfTextAnnotation.run();
+        //SignWithPdfTextSticker.run();
+        //SignWithImageAppearance.run();
+        //SignWithDigitalAppearance.run();
+
+        //endregion
+
+        //region Sign with different measure type
+        //SignWithMillimeters.run();
+        //SignWithPercents.run();
+        //SignWithAlignments.run();
+        //endregion
+
+        //SignWithStretchMode.run();
+
+        //SignWithExceptionHandling.run();
+
+        //region Sining with different brush styles
+        //SignWithSolidBrush.run();
+        //SignWithTextureBrush.run();
+        //SignWithLinearGradientBrush.run();
+        //SignWithRadialGradientBrush.run();
+        //endregion
+
+        //region Search signed documents for different signature types with additional options
+
+        //Search document for Bar-Code signature with applying specific options
+       // SearchForBarcodeAdvanced.run();
+
+        //Search document for encrypted QR-Code signature with applying specific options
+        //SearchForQRCodeAdvanced.run();
+
+        //Search document for digital signature with applying specific options
+       // SearchForDigitalAdvanced.run();
+
+        //Search document for form-field signature with applying specific options
+        //SearchForFormFieldAdvanced.run();
+
+        //Search document for metadata signature with applying specific options
+        //SearchForMetadataAdvanced.run();
+
+        //SearchForMetadataEncryptedText.run();
+        //SearchForMetadataEncryptedObject.run();
+        //SearchForMetadataCustomEncryptionObject.run();
+        //SearchForMetadataCustomSerializationObject.run();
+
+        //SearchWithExceptionHandling.run();
+        //endregion // Search signed documents for different signature types with additional options
+
+        //region Verify signed documents with additional options
+
+        //Verify document with Text signature with applying specific options
+        //VerifyTextAdvanced.run();
+
+        //Verify document with Bar-Code signature with applying specific options
+        //VerifyBarcodeAdvanced.run();
+
+        //Verify document with QR-Code signature with applying specific options
+        //VerifyQRCodeAdvanced.run();
+
+        //Verify document with digital signature with applying specific options
+        //VerifyDigitalAdvanced.run();
+
+        //endregion // Verify signed documents with additional options
+
+        //region Subscribing for signing, verification, searching events
+        //SubscribeSignEvents.run();
+        //SubscribeVerifyEvents.run();
+        //SubscribeSearchEvents.run();
+        //endregion
+
+        //region Cancellation of signing, verification, searching process
+        //CancellationSignProcess.run();
+        //CancellationVerifyProcess.run();
+        //CancellationSearchProcess.run();
+        //endregion
+
+        //VerifyWithExceptionHandling.run();
+        //endregion // Advanced Usage
+
+        //System.out.print("\nAll done.");
+
 	}
 }
