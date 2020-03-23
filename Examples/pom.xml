@@ -13,13 +13,18 @@
 		<dependency>
     		<groupId>com.groupdocs</groupId>
    			<artifactId>groupdocs-signature</artifactId>
-    		<version>19.11</version>
+    		<version>20.3</version>
 		</dependency>
-		<dependency>
-			<groupId>com.microsoft.azure</groupId>
-			<artifactId>azure-storage</artifactId>
-			<version>5.0.0</version>
-		</dependency>
+        <dependency>
+            <groupId>com.microsoft.azure</groupId>
+            <artifactId>azure-keyvault</artifactId>
+            <version>0.9.4</version>
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.azure</groupId>
+            <artifactId>azure-storage</artifactId>
+            <version>4.3.0</version>
+        </dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>

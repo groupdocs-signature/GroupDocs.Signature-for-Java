@@ -42,6 +42,7 @@ public class SearchForBarcodeAdvanced {
 
             // search for signatures in document
             List<BarcodeSignature> signatures = signature.search(BarcodeSignature.class, options);
+
             System.out.print("\nSource document contains following signatures.");
             for (BarcodeSignature barcodeSignature : signatures) {
                 System.out.print("Barcode signature found at page " + barcodeSignature.getPageNumber() + " with type " + barcodeSignature.getEncodeType() + " and text " + barcodeSignature.getText());

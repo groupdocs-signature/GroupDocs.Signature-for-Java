@@ -20,7 +20,7 @@ public class VerifyDigital {
         try {
             Signature signature = new Signature(filePath);
             DigitalVerifyOptions options = new DigitalVerifyOptions(Constants.CertificatePfx);
-            //options.setComments("Test comment");
+            options.setComments("Test comment");
             options.setPassword("1234567890");
 
             // verify document signatures

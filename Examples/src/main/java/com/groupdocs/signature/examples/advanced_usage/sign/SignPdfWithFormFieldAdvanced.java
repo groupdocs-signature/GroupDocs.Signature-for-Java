@@ -3,8 +3,10 @@ package com.groupdocs.signature.examples.advanced_usage.sign;
 
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.Padding;
+import com.groupdocs.signature.domain.SignResult;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
+import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.domain.signatures.formfield.CheckboxFormFieldSignature;
 import com.groupdocs.signature.domain.signatures.formfield.DigitalFormFieldSignature;
 import com.groupdocs.signature.domain.signatures.formfield.FormFieldSignature;
@@ -70,7 +72,15 @@ public class SignPdfWithFormFieldAdvanced {
             listOptions.add(optionsTextDIG);
 
             // sign document to file
-            signature.sign(outputFilePath, listOptions);
+            SignResult signResult = signature.sign(outputFilePath, listOptions);
+            // analyzing result
+            System.out.print("List of newly created signatures:");
+            int number = 1;
+            for(BaseSignature temp : signResult.getSucceeded())
+            {
+                System.out.print("Signature #"+ number++ +": Type: "+temp.getSignatureType()+" Id:"+temp.getSignatureId()+
+                        ",Location: "+temp.getLeft()+"x"+temp.getTop()+". Size: "+temp.getWidth()+"x"+temp.getHeight());
+            }
             System.out.print("\nSource document signed successfully.\nFile saved at " + outputFilePath);
         }catch(Exception e){
             throw new GroupDocsSignatureException(e.getMessage());

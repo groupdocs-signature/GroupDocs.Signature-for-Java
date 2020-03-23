@@ -20,20 +20,17 @@ public class SignWithQRCode {
         String filePath = Constants.SAMPLE_PDF;
         String fileName = Paths.get(filePath).getFileName().toString();
 
-        String outputFilePath = new File(Constants.OutputPath, "SignWithQRCode-"+ fileName).getPath();
+        String outputFilePath = new File(Constants.OutputPath, "SignWithQRCode\\"+ fileName).getPath();
         try {
             Signature signature = new Signature(filePath);
 
             // create barcode option with predefined barcode text
             QrCodeSignOptions options = new QrCodeSignOptions("JohnSmith");
-
             // setup Barcode encoding type
             options.setEncodeType(QrCodeTypes.QR);
-
             // set signature position
             options.setLeft(100);
             options.setTop(100);
-
 
             // sign document to file
             signature.sign(outputFilePath, options);

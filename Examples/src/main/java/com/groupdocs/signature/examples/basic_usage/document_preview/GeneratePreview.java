@@ -5,10 +5,10 @@ import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsException;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
-import com.groupdocs.signature.options.CreatePageStream;
+import com.groupdocs.signature.options.PageStreamFactory;
 import com.groupdocs.signature.options.PreviewFormats;
 import com.groupdocs.signature.options.PreviewOptions;
-import com.groupdocs.signature.options.ReleasePageStream;
+
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,15 +25,14 @@ public class GeneratePreview {
         FileInputStream stream = new FileInputStream(filePath);
         final Signature signature = new Signature(stream);
         // Image from specified page
-        PreviewOptions previewOptions = new PreviewOptions(new CreatePageStream() {
+        PreviewOptions previewOptions = new PreviewOptions(new PageStreamFactory() {
             @Override
-            public OutputStream invoke(int pageNumber) {
-                return createPageStream(pageNumber);
+            public OutputStream createPageStream(int pageNumber) {
+                return createPageStreamTest(pageNumber);
             }
-        }
-                , new ReleasePageStream() {
+
             @Override
-            public void invoke(int pageNumber, OutputStream pageStream) {
+            public void closePageStream(int pageNumber, OutputStream pageStream) {
                 releasePageStream(pageNumber, pageStream);
             }
         });
@@ -41,7 +40,7 @@ public class GeneratePreview {
         signature.generatePreview(previewOptions);
     }
 
-    private static OutputStream createPageStream(int pageNumber)
+    private static OutputStream createPageStreamTest(int pageNumber)
     {
         try {
             String filePath = Constants.OutputPath +"\\image-"+pageNumber+".png";

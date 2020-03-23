@@ -18,10 +18,10 @@ public class SignWithText {
     public static void run()
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX;
+        String filePath = Constants.SAMPLE_SPREADSHEET;
         String fileName = Paths.get(filePath).getFileName().toString();
 
-        String outputFilePath = new File(Constants.OutputPath, "SignWithText-"+ fileName).getPath();
+        String outputFilePath = new File(Constants.OutputPath, "SignWithText//"+ fileName).getPath();
         try {
             Signature signature = new Signature(filePath);
 

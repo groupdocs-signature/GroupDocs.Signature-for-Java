@@ -13,7 +13,7 @@ public class GetDocumentInfo {
         String filePath = Constants.SAMPLE_PDF;
 
         Signature signature = new Signature(filePath);
-// Document description
+        // Document description
         IDocumentInfo docInfo = signature.getDocumentInfo();
         System.out.print("Document contains " + docInfo.getPageCount() + " pages");
         System.out.print("File type is " + docInfo.getFileType().getFileFormat());
