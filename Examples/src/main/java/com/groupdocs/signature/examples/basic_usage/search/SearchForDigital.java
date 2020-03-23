@@ -27,7 +27,7 @@ public class SearchForDigital {
             System.out.print("\nSource document contains following signatures.");
             for (DigitalSignature digitalSignature : signatures)
             {
-                System.out.print("Digital signature found from "+digitalSignature.getSignTime()+" with validation flag "+digitalSignature.isValid()+". Certificate SN "+ digitalSignature.getCertificate().getType());
+                System.out.print("Digital signature found from "+digitalSignature.getSignTime()+" with validation flag "+digitalSignature.isValid());
             }
         }
         catch (Exception ex)

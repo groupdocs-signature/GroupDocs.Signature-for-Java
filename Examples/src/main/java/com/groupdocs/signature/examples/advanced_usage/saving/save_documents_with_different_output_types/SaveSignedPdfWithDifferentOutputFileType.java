@@ -2,13 +2,11 @@ package com.groupdocs.signature.examples.advanced_usage.saving.save_documents_wi
 
 
 import com.groupdocs.signature.Signature;
-import com.groupdocs.signature.domain.enums.ImagesSaveFileFormat;
 import com.groupdocs.signature.domain.enums.PdfSaveFileFormat;
 import com.groupdocs.signature.domain.qrcodes.QrCodeTypes;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.options.saveoptions.PdfSaveOptions;
-import com.groupdocs.signature.options.saveoptions.imagessaveoptions.ImagesSaveOptions;
 import com.groupdocs.signature.options.sign.QrCodeSignOptions;
 
 import java.io.File;

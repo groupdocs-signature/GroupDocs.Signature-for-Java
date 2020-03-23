@@ -4,7 +4,7 @@ package com.groupdocs.signature.examples.advanced_usage.saving;
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.Border;
 import com.groupdocs.signature.domain.enums.DashStyle;
-import com.groupdocs.signature.domain.enums.ImagesSaveFileFormat;
+import com.groupdocs.signature.domain.enums.ImageSaveFileFormat;
 import com.groupdocs.signature.domain.qrcodes.QrCodeTypes;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
@@ -25,7 +25,7 @@ public class SaveSignedDocumentsAsImages {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
 
-        String outputFilePath = new File(Constants.OutputPath, "SignSaveToImage//ignedAndSavedAsImage").getPath();
+        String outputFilePath = new File(Constants.OutputPath, "SignSaveToImage//ignedAndSavedAsImage.png").getPath();
 
         try {
             Signature signature = new Signature(filePath);
@@ -35,7 +35,7 @@ public class SaveSignedDocumentsAsImages {
             signOptions.setTop(100);
 
             //Export to image options
-            ExportImageSaveOptions exportImageSaveOptions = new ExportImageSaveOptions(ImagesSaveFileFormat.Png);
+            ExportImageSaveOptions exportImageSaveOptions = new ExportImageSaveOptions(ImageSaveFileFormat.Png);
 
                 //set pages border style
             Border border= new Border();

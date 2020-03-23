@@ -37,7 +37,6 @@ public class SignPdfWithFormField {
             FormFieldSignature textSignature = new TextFormFieldSignature("FieldText", "Value1");
             // instantiate options based on text form field signature
             FormFieldSignOptions options = new FormFieldSignOptions(textSignature);
-
             options.setHorizontalAlignment(HorizontalAlignment.Left);
             options.setVerticalAlignment(VerticalAlignment.Top);
             options.setMargin(new Padding(10, 20, 0, 0));

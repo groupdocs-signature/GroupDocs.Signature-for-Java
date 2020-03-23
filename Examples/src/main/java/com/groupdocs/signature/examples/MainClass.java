@@ -1,6 +1,9 @@
 package com.groupdocs.signature.examples;
 
 import com.groupdocs.signature.examples.advanced_usage.common.*;
+import com.groupdocs.signature.examples.advanced_usage.documentpreview.GeneratePreviewAdvanced;
+import com.groupdocs.signature.examples.advanced_usage.handlingexceptions.HandlingIncorrectPasswordException;
+import com.groupdocs.signature.examples.advanced_usage.handlingexceptions.HandlingPasswordRequiredException;
 import com.groupdocs.signature.examples.advanced_usage.loading.LoadPasswordProtectedDocument;
 import com.groupdocs.signature.examples.advanced_usage.loading.loading_documents_from_different_sources.*;
 import com.groupdocs.signature.examples.advanced_usage.saving.SaveDocumentWithPassword;
@@ -35,13 +38,16 @@ import com.groupdocs.signature.examples.advanced_usage.sign.singin_with_brushes.
 import com.groupdocs.signature.examples.advanced_usage.sign.singin_with_brushes.SignWithRadialGradientBrush;
 import com.groupdocs.signature.examples.advanced_usage.sign.singin_with_brushes.SignWithSolidBrush;
 import com.groupdocs.signature.examples.advanced_usage.sign.singin_with_brushes.SignWithTextureBrush;
+import com.groupdocs.signature.examples.advanced_usage.update.UpdateBarcodeAdvanced;
 import com.groupdocs.signature.examples.advanced_usage.verify.*;
 import com.groupdocs.signature.examples.basic_usage.common.GetSupportedFileFormats;
+import com.groupdocs.signature.examples.basic_usage.delete.*;
 import com.groupdocs.signature.examples.basic_usage.document_preview.GeneratePreview;
 import com.groupdocs.signature.examples.basic_usage.document_preview.GetDocumentInfo;
 import com.groupdocs.signature.examples.basic_usage.search.*;
 import com.groupdocs.signature.examples.basic_usage.sign.*;
 import com.groupdocs.signature.examples.basic_usage.sign.metadata.*;
+import com.groupdocs.signature.examples.basic_usage.update.*;
 import com.groupdocs.signature.examples.basic_usage.verify.VerifyBarcode;
 import com.groupdocs.signature.examples.basic_usage.verify.VerifyDigital;
 import com.groupdocs.signature.examples.basic_usage.verify.VerifyQRCode;
@@ -62,13 +68,17 @@ public class MainClass {
 
         //region Quick Start
 
-        //SetLicenseFromFile.run();
+        SetLicenseFromFile.run();
         //SetLicenseFromStream.run();
         //SetMeteredLicense.run();
         //HelloWorld.run();
         //endregion // Quick Start
 
         //return;
+
+        //GeneratePreviewAdvanced.run();
+
+
         //region Basic Usage
 
         //region Common
@@ -104,7 +114,7 @@ public class MainClass {
         //SignWithStamp.run();
 
         //Sign image document with metadata signature
-       // SignImageWithMetadata.run();
+        //SignImageWithMetadata.run();
 
         //Sign pdf document with text signature
         //SignPdfWithMetadata.run();
@@ -162,7 +172,42 @@ public class MainClass {
         //VerifyDigital.run();
 
         //endregion // Verify documents signed with different signature types
+//>>>>>>>> #region  Update different signatutes in the document
 
+        //Update Text signature in the document
+        //UpdateBarcodeAdvanced.run();
+
+        //Update Image signature in the document
+        //UpdateImage.run();
+
+        //Update Barcode signature in the document
+        //UpdateBarcode.run();
+
+        //Update QR-Code signature in the document
+        //UpdateQRCode.run();
+
+        //Update multiple signatures in the document
+        //UpdateMultiple.run();
+
+        //<<<<<<<< #endregion
+
+        //>>>>>>>> #region  Delete different signatutes in the document
+
+        ////Delete Text signature from the document
+        //DeleteText.run();
+
+        ////Delete Image signature from the document
+        //DeleteImage.run();
+
+        ////Delete Barcode signature from the document
+        //DeleteBarcode.run();
+
+        ////Delete QR-Code signature from the document
+       // DeleteQRCode.run();
+
+        ////Delete multiple signatures from the document
+        //DeleteMultiple.run();
+        //<<<<<<<< #endregion
         //endregion // Basic Usage
 
         //region Advanced Usage
@@ -188,6 +233,11 @@ public class MainClass {
 
         //SaveDocumentWithPassword.run();
         //SaveSignedDocumentsAsImages.run();
+        //endregion
+
+        //region Handling different special exceptions
+        //HandlingIncorrectPasswordException.run();
+        //HandlingPasswordRequiredException.run();
         //endregion
 
         //region Sign document with different signature types with additional options
@@ -256,15 +306,21 @@ public class MainClass {
         //endregion
 
         //region Search signed documents for different signature types with additional options
+        //Search document for Text signature with applying specific options
+        //SearchForTextAdvanced.run(); //PDF TEXT NULL POINTER
+
+        //Search document for Image signature with applying specific options
+        //SearchForImageAdvanced.run();
+        //SearchAndSkipExternalSignatures.run();
 
         //Search document for Bar-Code signature with applying specific options
-       // SearchForBarcodeAdvanced.run();
+        //SearchForBarcodeAdvanced.run();
 
         //Search document for encrypted QR-Code signature with applying specific options
         //SearchForQRCodeAdvanced.run();
 
         //Search document for digital signature with applying specific options
-       // SearchForDigitalAdvanced.run();
+        //SearchForDigitalAdvanced.run();
 
         //Search document for form-field signature with applying specific options
         //SearchForFormFieldAdvanced.run();

@@ -28,7 +28,6 @@ public class SignWithImage {
             // set signature position
             options.setLeft(100);
             options.setTop(100);
-            //
             options.setPageNumber(1);
             options.setAllPages(true);
 

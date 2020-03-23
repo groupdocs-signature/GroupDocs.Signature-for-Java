@@ -1,9 +1,6 @@
 package com.groupdocs.signature.examples;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.Properties;
@@ -18,7 +15,7 @@ public class Constants {
 	// Storage path
 	public static final String SamplesPath = (System.getProperty("user.dir") + "\\Resources\\SampleFiles\\");
 	// License path
-	public static final String LicensePath = "E:\\GroupDocs.Total.Java.lic";
+	public static final String LicensePath = "С:\\\\GroupDocs.Signature.Product.Family.lic";
 	// Output path
 	public static final String OutputPath = (System.getProperty("user.dir") + "\\Resources\\Output\\");
 	//Certificates path
@@ -39,6 +36,7 @@ public class Constants {
     }
     // WordProcessing documents
     public static String SAMPLE_DOCX  = getSampleFilePath("getting started.docx");
+    public static String SAMPLE_DOCX_BARCODE_SIGNED  = getSampleFilePath("AllSignatures.docx");
 
     public static String SAMPLE_PDF  = getSampleFilePath( "sample.pdf");
 
@@ -60,11 +58,22 @@ public class Constants {
     public static String SAMPLE_SPREADSHEET = getSampleFilePath( "sample.xlsx");
 
     public static String SAMPLE_SPREADSHEET_SIGNED = getSampleFilePath( "signed_sample.xlsx");
+    public static String SAMPLE_SPREADSHEET_TEXT_SIGNED = getSampleFilePath( "sample_text_signed.xlsx");
 
     // Presentation document files
     public static String SAMPLE_PRESENTATION = getSampleFilePath( "sample.ppsx");
 
     // Image
     public static String SAMPLE_JPG  = getSampleFilePath( "sample.jpg");
+
+    public static void checkDir(String filePath) throws Exception
+    {
+        File dir = new File(filePath);
+
+        if (!dir.exists())
+        {
+            dir.getParentFile().mkdirs();
+        }
+    }
 
 }

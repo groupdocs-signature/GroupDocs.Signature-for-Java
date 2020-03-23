@@ -2,12 +2,12 @@ package com.groupdocs.signature.examples.advanced_usage.saving.save_documents_wi
 
 
 import com.groupdocs.signature.Signature;
-import com.groupdocs.signature.domain.enums.ImagesSaveFileFormat;
+import com.groupdocs.signature.domain.enums.ImageSaveFileFormat;
 import com.groupdocs.signature.domain.qrcodes.QrCodeTypes;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.options.sign.QrCodeSignOptions;
-import com.groupdocs.signature.options.saveoptions.imagessaveoptions.ImagesSaveOptions;
+import com.groupdocs.signature.options.saveoptions.imagessaveoptions.ImageSaveOptions;
 
 import java.io.File;
 
@@ -31,8 +31,8 @@ public class SaveSignedImageWithDifferentOutputFileType {
             signOptions.setLeft(100);
             signOptions.setTop(100);
 
-            ImagesSaveOptions saveOptions = new ImagesSaveOptions();
-            saveOptions.setFileFormat(ImagesSaveFileFormat.Svg);
+            ImageSaveOptions saveOptions = new ImageSaveOptions();
+            saveOptions.setFileFormat(ImageSaveFileFormat.Svg);
             saveOptions.setOverwriteExistingFiles(true);
             // sign document to file
             signature.sign(outputFilePath, signOptions, saveOptions);

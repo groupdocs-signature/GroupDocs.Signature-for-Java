@@ -29,7 +29,7 @@ public class SaveSignedImageWithVariousOutputTypes {
             signOptions.setLeft(100);
             signOptions.setTop(100);
 
-            List<ImagesSaveOptions> listSaveOptions = new ArrayList<ImagesSaveOptions>();
+            List<ImageSaveOptions> listSaveOptions = new ArrayList<ImageSaveOptions>();
 
             // create Bmp save options with advanced settings
             BmpSaveOptions bmpSaveOptions = new BmpSaveOptions();
@@ -83,13 +83,13 @@ public class SaveSignedImageWithVariousOutputTypes {
 
             listSaveOptions.add(tiffSaveOptions);
 
-            for (ImagesSaveOptions saveOptions : listSaveOptions)
+            for (ImageSaveOptions saveOptions : listSaveOptions)
             {
                 // set flag to overwrite existing files
                 saveOptions.setOverwriteExistingFiles(true);
                 // set flag to add missing extension automatically
                 saveOptions.setAddMissingExtenstion(true);
-                String outputFilePath = new File(Constants.OutputPath, "SaveSignedImageOutputType//sampleJPG2").getPath();
+                String outputFilePath = new File(Constants.OutputPath, "SaveSignedImageOutputType//sampleJPG2"+ saveOptions.getClass().getSimpleName().toString()).getPath();
                 // sign document to file
                 signature.sign(outputFilePath, signOptions, saveOptions);
                 System.out.print("\nSource document signed successfully.\nFile saved at " + outputFilePath);

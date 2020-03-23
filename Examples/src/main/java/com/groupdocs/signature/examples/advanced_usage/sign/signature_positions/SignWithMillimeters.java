@@ -32,7 +32,6 @@ public class SignWithMillimeters {
             // setup Barcode encoding type
             options.setEncodeType(BarcodeTypes.Code128);
 
-
             // set signature position in absolute position
             options.setLocationMeasureType(MeasureType.Millimeters);
             options.setLeft(40);
