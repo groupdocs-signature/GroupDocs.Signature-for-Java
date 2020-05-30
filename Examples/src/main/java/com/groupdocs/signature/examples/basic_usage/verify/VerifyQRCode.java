@@ -15,7 +15,7 @@ public class VerifyQRCode {
     public static void run()
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_PDF_SIGNED;
+        String filePath = Constants.SAMPLE_DOCX_BARCODE_SIGNED;
 
         try {
             Signature signature = new Signature(filePath);

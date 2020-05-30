@@ -3,7 +3,6 @@ package com.groupdocs.signature.examples.basic_usage.document_preview;
 
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.examples.Constants;
-import com.groupdocs.signature.exception.GroupDocsException;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.options.PageStreamFactory;
 import com.groupdocs.signature.options.PreviewFormats;
@@ -46,7 +45,7 @@ public class GeneratePreview {
             String filePath = Constants.OutputPath +"\\image-"+pageNumber+".png";
             return new FileOutputStream(filePath);
         }catch (Exception e){
-            throw new GroupDocsException(e.getMessage());
+            throw new GroupDocsSignatureException(e.getMessage());
         }
 
     }

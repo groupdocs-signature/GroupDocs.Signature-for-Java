@@ -55,7 +55,7 @@ public class SearchForMultiple {
                 System.out.print("\nSource document contains following signatures.");
                 for (BaseSignature resSignature : result.getSignatures())
                 {
-                    System.out.print("Signature found at page "+resSignature.getPageNumber()+" with type "+resSignature.getSignatureType());
+                    System.out.print("Signature found at page "+resSignature.getPageNumber()+" with type "+resSignature.getSignatureType() +". ");
                 }
             }
             else

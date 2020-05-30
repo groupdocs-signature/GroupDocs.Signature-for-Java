@@ -19,13 +19,17 @@ import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_
 import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_secure_custom.SearchForQRCodeCustomSerializationObject;
 import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_secure_custom.SearchForQRCodeEncryptedObject;
 import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_secure_custom.SearchForQRCodeEncryptedText;
+import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_standard_objects.*;
 import com.groupdocs.signature.examples.advanced_usage.sign.*;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_form_fields_advanced.SignPdfWithFormFieldAdvanced;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_form_fields_advanced.SignPdfWithFormFieldAdvancedRadio;
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_advanced.SignImageWithCustomMetadata;
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_advanced.SignPdfWithCustomMetadata;
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataCustomEncryptionObject;
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataCustomSerializationObject;
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataEncryptedObject;
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataEncryptedText;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_signature_implementation.*;
 import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithDigitalAppearance;
 import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithImageAppearance;
 import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithPdfTextAnnotation;
@@ -38,7 +42,7 @@ import com.groupdocs.signature.examples.advanced_usage.sign.singin_with_brushes.
 import com.groupdocs.signature.examples.advanced_usage.sign.singin_with_brushes.SignWithRadialGradientBrush;
 import com.groupdocs.signature.examples.advanced_usage.sign.singin_with_brushes.SignWithSolidBrush;
 import com.groupdocs.signature.examples.advanced_usage.sign.singin_with_brushes.SignWithTextureBrush;
-import com.groupdocs.signature.examples.advanced_usage.update.UpdateBarcodeAdvanced;
+
 import com.groupdocs.signature.examples.advanced_usage.verify.*;
 import com.groupdocs.signature.examples.basic_usage.common.GetSupportedFileFormats;
 import com.groupdocs.signature.examples.basic_usage.delete.*;
@@ -69,7 +73,6 @@ public class MainClass {
         //region Quick Start
 
         SetLicenseFromFile.run();
-        multipleTest.run();
         //SetLicenseFromStream.run();
         //SetMeteredLicense.run();
         //HelloWorld.run();
@@ -95,6 +98,10 @@ public class MainClass {
         //endregion
 
         //region Sign document with different signature types
+
+        // Sign Pdf document with Form-fields
+        //SignPdfWithFormFieldAdvanced.run();
+        //SignPdfWithFormFieldAdvancedRadio.run();
 
         //Sign document with text signature
         //SignWithText.run();
@@ -132,11 +139,32 @@ public class MainClass {
         //Sign pdf document with form - field signature
         //SignPdfWithFormField.run();
 
+        //region Sign with different signature implementation type
+        //SignWithTextStamp.run();
+        //SignWithTextAnnotation.run();
+        //SignWithTextImage.run();
+        //SignWithTextSticker.run();
+        //SignWithTextFormField.run();
+        //SignWithTextWatermark.run();
+        //endregion
+
+        //SignWithXAdESTypes.run();
+
         //SignWithMultipleOptions.run();
 
         //endregion // Sign document with different signature types
 
         //region Search signed documents for different signature types
+
+        //region Search for QR-Code standard objects
+        //SearchForQRCodeAddressObject.run();
+        //SearchForQRCodeEmailObject.run();
+        //SearchForQRCodeVCardObject.run();
+        //SearchForQRCodeEPCObject.run();
+        //SearchForQRCodeEventObject.run();
+        //SearchForQRCodeMeCardObject.run();
+        //endregion
+
 
         //Search document for Bar-Code signature
         //SearchForBarcode.run();
@@ -147,8 +175,6 @@ public class MainClass {
         //Search document for digital signature
         //SearchForDigital.run();
 
-        //Search document for metadata signature
-        //SearchForMetadata.run();
 
         //Search document for form-field signature
         //SearchForFormField.run();
@@ -164,10 +190,10 @@ public class MainClass {
         //VerifyText.run();
 
         //Verify document with Bar-Code signature
-        //VerifyBarcode.run();
+        VerifyBarcode.run();
 
         //Verify document with QR-Code signature
-        //VerifyQRCode.run();
+        VerifyQRCode.run();
 
         //Verify document with digital signature
         //VerifyDigital.run();
@@ -175,27 +201,23 @@ public class MainClass {
         //endregion // Verify documents signed with different signature types
 //>>>>>>>> #region  Update different signatutes in the document
 
-        //Update Text signature in the document
-        //UpdateBarcodeAdvanced.run();
 
         //Update Image signature in the document
-        //UpdateImage.run();
+        UpdateImage.run();
 
         //Update Barcode signature in the document
-        //UpdateBarcode.run();
+        UpdateBarcode.run();
 
         //Update QR-Code signature in the document
-        //UpdateQRCode.run();
+        UpdateQRCode.run();
 
-        //Update multiple signatures in the document
-        //UpdateMultiple.run();
 
         //<<<<<<<< #endregion
 
         //>>>>>>>> #region  Delete different signatutes in the document
 
         ////Delete Text signature from the document
-        //DeleteText.run();
+        DeleteText.run();
 
         ////Delete Image signature from the document
         //DeleteImage.run();
