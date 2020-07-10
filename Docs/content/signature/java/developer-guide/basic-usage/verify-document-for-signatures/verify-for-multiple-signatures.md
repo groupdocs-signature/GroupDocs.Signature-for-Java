@@ -12,15 +12,10 @@ hideChildren: False
 
 Here are the steps to verify document for multiple signatures with GroupDocs.Signature:
 
-*   Create new instance of [Signature](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature/Signature) class and pass source document path or stream as a constructor parameter.
-    
-*   Instantiate required several [VerifyOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.verify/VerifyOptions) objects ([BarcodeVerifyOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.verify/BarcodeVerifyOptions)[, ](https://apireference.groupdocs.com/net/signature/groupdocs.signature.options/barcodesearchoptions)[QrCodeVerifyOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.verify/QrCodeVerifyOptions)[, ](https://apireference.groupdocs.com/net/signature/groupdocs.signature.options/qrcodesearchoptions)[DigitalVerifyOptions,](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.verify/DigitalVerifyOptions)[ ](https://apireference.groupdocs.com/net/signature/groupdocs.signature.options/qrcodesearchoptions)[TextVerifyOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.verify/TextVerifyOptions)) and add instances to List<[VerifyOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.verify/VerifyOptions)\> collection.[  
-    ](https://apireference.groupdocs.com/net/signature/groupdocs.signature.options/qrcodesearchoptions)
-    
-*   Call [verify](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature/Signature#verify(java.util.List)) method of [Signature](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature/Signature) class instance and pass filled list o List<[VerifyOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.verify/VerifyOptions)\> to it.
-    
+*   Create new instance of [Signature](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature/Signature) class and pass source document path or stream as a constructor parameter.    
+*   Instantiate required several [VerifyOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.verify/VerifyOptions) objects ([BarcodeVerifyOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.verify/BarcodeVerifyOptions), [QrCodeVerifyOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.verify/QrCodeVerifyOptions), [DigitalVerifyOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.verify/DigitalVerifyOptions), [TextVerifyOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.verify/TextVerifyOptions)) and add instances to List<[VerifyOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.verify/VerifyOptions)\> collection.
+*   Call [verify](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature/Signature#verify(java.util.List)) method of [Signature](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature/Signature) class instance and pass filled list of List<[VerifyOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.verify/VerifyOptions)\> to it.   
 
-  
 
 This example shows how to search for different signature types in the document.
 
