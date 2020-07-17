@@ -18,7 +18,10 @@ Here are the steps to generate document preview with GroupDocs.Signature:
     *   page numbers to process;        
     *   custom size of preview images (if needed).         
 *   Call [generatePreview](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature/Signature#generatePreview(com.groupdocs.signature.options.PreviewOptions)) method of [Signature](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature/Signature) class instance and pass [PreviewOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options/PreviewOptions) to it.       
-    {{< alert style="info" >}}Important note! Stream that were created by createPageStream method will be disposed automatically once after generation of preview image. If you need to implement custom image preview stream disposing you have to pass additional method closePageStream to clean up resources.{{< /alert >}}
+{{< alert style="info" >}}
+Important note! Stream that were created by [createPageStream](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options/PageStreamFactory#createPageStream(int)) method will be disposed automatically once after generation of preview image. If you need to implement custom image preview stream disposing you have to pass additional method [closePageStream](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options/PageStreamFactory#closePageStream(int,%20java.io.OutputStream)) to clean up resources.  
+{{< /alert >}}
+
 
 ## Generate document preview from file on local disk
 
