@@ -86,7 +86,7 @@ for(BaseSignature temp : signResult.getSucceeded())
 
 ## Sign Pdf document with Text signature Sticker appearance
 
-This example shows how to add Text signature to Pdf document with sticker look. See [SignResult](https://apireference.groupdocs.com/net/signature/groupdocs.signature.domain/signresult)
+This example shows how to add Text signature to Pdf document with sticker look. See [SignResult](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.domain/SignResult)
 
 ```java
 Signature signature = new Signature("sample.pdf");

@@ -14,7 +14,7 @@ Here are the steps to search for multiple signatures types within the document w
 
 *   Create new instance of [Signature](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature/Signature) class and pass source document path as a constructor parameter.
     
-*   Instantiate search options for required signature types and them to collection of List<[SearchOptions](https://apireference.groupdocs.com/net/signature/groupdocs.signature.options/searchoptions)\>  type.  
+*   Instantiate search options for required signature types and them to collection of List<[SearchOptions](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.options.search/SearchOptions)\>  type.
     The possible options are: 
     
     *   [BarcodeSearchOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.search/BarcodeSearchOptions) - to search for Barcode signatures;
@@ -22,7 +22,7 @@ Here are the steps to search for multiple signatures types within the document w
     *   [DigitalSearchOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.search/DigitalSearchOptions) -  to search for Digital signatures;
         
     *   [FormFieldSearchOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.search/FormFieldSearchOptions) - to search for Form-field signatures;
-    *   [ImageSearchOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.search/ImageSearchOptions) - to search for Image signatures;[](https://apireference.groupdocs.com/net/signature/groupdocs.signature.options/imagesearchoptions)
+    *   [ImageSearchOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.search/ImageSearchOptions) - to search for Image signatures;
         
     *   [MetadataSearchOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.search/MetadataSearchOptions) - to search for Metadata signatures;
         
@@ -30,7 +30,7 @@ Here are the steps to search for multiple signatures types within the document w
         
     *   [TextSearchOptions](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature.options.search/TextSearchOptions) to search for Text signatures.
         
-*   Call [search](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature/Signature#search(java.util.List)) method of [Signature](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature/Signature) class instance and pass collection of [s](https://apireference.groupdocs.com/net/signature/groupdocs.signature.options/searchoptions)earch options to it.
+*   Call [search](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature/Signature#search(java.util.List)) method of [Signature](https://apireference.groupdocs.com/java/signature/com.groupdocs.signature/Signature) class instance and pass collection of [search](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.options.search/SearchOptions) options to it.
     
 
 This example shows how to search for multiple electronic signature types in the document.

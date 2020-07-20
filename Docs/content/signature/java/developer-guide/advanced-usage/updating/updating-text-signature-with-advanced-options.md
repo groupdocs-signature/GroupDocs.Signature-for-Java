@@ -82,7 +82,7 @@ for (BaseSignature temp : updateResult.getSucceeded())
 
 ## Update Text signature in document by known signature Identifier
 
-This example shows how to update Text signature in the document by known signature Id (that was obtained by [Search](https://apireference.groupdocs.com/net/signature/groupdocs.signature/signature/methods/search/_1) or [Sign](https://apireference.groupdocs.com/net/signature/groupdocs.signature/signature/methods/sign) method previously) and analyze result.
+This example shows how to update Text signature in the document by known signature Id (that was obtained by [Search](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature/Signature#search(java.lang.Class,%20int)) or [Sign](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.domain/SignResult) method previously) and analyze result.
 
 ```java
 // initialize Signature instance
