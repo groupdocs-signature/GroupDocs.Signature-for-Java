@@ -245,7 +245,7 @@ public abstract class BaseSignature implements ICloneable
 
 ### Public class **DeleteResult **was added to keep result of **Delete** method of Signature class.
 
-This class implements newly added interface **[IResult]({{< ref "signature/java/release-notes/release-notes-2020/groupdocs.signature-for-java-20.3-release-notes.md" >}})** that specifies succeeded and failed signatures after process.
+This class implements newly added interface **[IResult](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.domain/IResult)** that specifies succeeded and failed signatures after process.
 
 **New public class DeleteResult**
 
@@ -423,13 +423,13 @@ public interface IResult
 ```
 
 *   read-only property **Succeeded** specifies list of signatures that were successfully processed. 
-*   for **Sign** process this is a list of newly created signatures (see **[SignResult]({{< ref "signature/java/release-notes/release-notes-2020/groupdocs.signature-for-java-20.3-release-notes.md" >}})**),
-*   for **Update** method this property keeps a list of successfully updated signatures (see **[UpdateResult]({{< ref "signature/java/release-notes/release-notes-2020/groupdocs.signature-for-java-20.3-release-notes.md" >}})**),
-*   for **Delete** method this property keeps a list of successfully deleted signatures (see **[DeleteResult]({{< ref "signature/java/release-notes/release-notes-2020/groupdocs.signature-for-java-20.3-release-notes.md" >}})**)
+*   for **Sign** process this is a list of newly created signatures (see **[SignResult](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.domain/SignResult)**),
+*   for **Update** method this property keeps a list of successfully updated signatures (see **[UpdateResult](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.domain/UpdateResult)**),
+*   for **Delete** method this property keeps a list of successfully deleted signatures (see **[DeleteResult](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.domain/DeleteResult)**)
 *   property **Failed** specifies list of signatures that were not successfully processed. 
-*   for **Sign** process this is a list of newly created signatures (see **[SignResult]({{< ref "signature/java/release-notes/release-notes-2020/groupdocs.signature-for-java-20.3-release-notes.md" >}})**),
-*   for **Update** method this property keeps a list of successfully updated signatures (see **[UpdateResult]({{< ref "signature/java/release-notes/release-notes-2020/groupdocs.signature-for-java-20.3-release-notes.md" >}})**),
-*   for **Delete** method this property keeps a list of successfully deleted signatures (see **[DeleteResult]({{< ref "signature/java/release-notes/release-notes-2020/groupdocs.signature-for-java-20.3-release-notes.md" >}})**)
+*   for **Sign** process this is a list of newly created signatures (see **[SignResult](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.domain/SignResult)**),
+*   for **Update** method this property keeps a list of successfully updated signatures (see **[UpdateResult](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.domain/UpdateResult)**),
+*   for **Delete** method this property keeps a list of successfully deleted signatures (see **[DeleteResult](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.domain/DeleteResult)**)
 
 See different examples for various methods
 
@@ -512,7 +512,7 @@ try
 
 ### Public class **SignResult **was added
 
-This class implements newly added interface **[IResult]({{< ref "signature/java/release-notes/release-notes-2020/groupdocs.signature-for-java-20.3-release-notes.md" >}})** that specifies succeeded and failed signatures after process.
+This class implements newly added interface **[IResult](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.domain/IResult)** that specifies succeeded and failed signatures after process.
 
 **New public class SignResult**
 
@@ -672,7 +672,7 @@ List<TextSignature> signatures = signature.search(TextSignature.class, options);
 
 ### Public class **UpdateResult **was added
 
-This class implements newly added interface **[IResult]({{< ref "signature/java/release-notes/release-notes-2020/groupdocs.signature-for-java-20.3-release-notes.md" >}})** that specifies succeeded and failed signatures after process.
+This class implements newly added interface **[IResult](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.domain/IResult)** that specifies succeeded and failed signatures after process.
 
 **New public class DeleteResult**
 
@@ -705,7 +705,7 @@ public class UpdateResult implements IResult
 
 Few reasons when passed signature to method **Update** was not processed (updated) in the document
 
-*   signature was passed only with property** SignatureId** identifier (see changes of **[BaseSignature]({{< ref "signature/java/release-notes/release-notes-2020/groupdocs.signature-for-java-20.3-release-notes.md" >}})**) that was not found at document signature information layer;
+*   signature was passed only with property** SignatureId** identifier (see changes of **[BaseSignature](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.domain.signatures/BaseSignature)**) that was not found at document signature information layer;
 *   signature was passed after Search method with correct properties, but was not found in a document with these coordinates, size or other properties that identifies unique signature.
 *   signature was passed with "wrong" properties like not actual **SignatureId**, coordinates **Left**, **Top**, **Width** or **Height**, same as Text for text signatures or **BarcodeType** for barcode signatures
 
@@ -802,7 +802,7 @@ catch (java.lang.RuntimeException ex)
 
 ### Added new boolean **HideSignatures** property to **PreviewOptions **class. 
 
-This property indicates whether signatures that were marked as **IsSignature = true** should be hidden from document preview or not**. **For more information see **[BaseSignature]({{< ref "signature/java/release-notes/release-notes-2020/groupdocs.signature-for-java-20.3-release-notes.md" >}}).**
+This property indicates whether signatures that were marked as **IsSignature = true** should be hidden from document preview or not**. **For more information see **[BaseSignature](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.domain.signatures/BaseSignature).**
 
 **class PreviewOptions**
 
@@ -1132,7 +1132,7 @@ try
 
 ### Main public class **Signature** was updated with following changes
 
-*   all existing overload methods **Sign** were extended with result as instance of object **SignResult** (see **[SignResult]({{< ref "signature/java/release-notes/release-notes-2020/groupdocs.signature-for-java-20.3-release-notes.md" >}})**). This result allows to obtain list of newly created signatures (see changes of base class **[BaseSignature]({{< ref "signature/java/release-notes/release-notes-2020/groupdocs.signature-for-java-20.3-release-notes.md" >}})**) with all properties set (like actual location, size, implementation type, and other corresponding signature fields) and new properties **IsSignature** = true and assigned value to internal property **SignatureId.**
+*   all existing overload methods **Sign** were extended with result as instance of object **SignResult** (see **[SignResult](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.domain/SignResult)**). This result allows to obtain list of newly created signatures (see changes of base class **[BaseSignature](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.domain.signatures/BaseSignature)**) with all properties set (like actual location, size, implementation type, and other corresponding signature fields) and new properties **IsSignature** = true and assigned value to internal property **SignatureId.**
     
     **Updated overload method Sign definition**
     
@@ -1154,7 +1154,7 @@ try
     public SignResult sign(String filePath, java.util.List<SignOptions> signOptionsList, SaveOptions saveOptions);
     ```
     
-*   added new overload method **Update **that expects one signature or list of signatures to update in the document. Method with one signature argument returns Boolean value as indicator if process went successfully. Method with list of signatures returns instance of **UpdateResult**. See **[UpdateResult]({{< ref "signature/java/release-notes/release-notes-2020/groupdocs.signature-for-java-20.3-release-notes.md" >}})**  with lists of updated signatures and signatures that were not found. Each of passed signature should be identified with existing signatures in the document. This identification could be provided in two ways. First way when signature was searched right pass to **Update** method by **Search** method. See first example 2 *How to update signatures after Search*. The second way works over unique signature identifier **SignatureId**. This **SignatureId** could be obtained after **Sign** result as unique signature identifier stored at document metadata layer. The very important thing here that this method applies changes in same document file or stream. See second example  *How to update signatures by known Id*
+*   added new overload method **Update **that expects one signature or list of signatures to update in the document. Method with one signature argument returns Boolean value as indicator if process went successfully. Method with list of signatures returns instance of **UpdateResult**. See **[UpdateResult](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.domain/UpdateResult)**  with lists of updated signatures and signatures that were not found. Each of passed signature should be identified with existing signatures in the document. This identification could be provided in two ways. First way when signature was searched right pass to **Update** method by **Search** method. See first example 2 *How to update signatures after Search*. The second way works over unique signature identifier **SignatureId**. This **SignatureId** could be obtained after **Sign** result as unique signature identifier stored at document metadata layer. The very important thing here that this method applies changes in same document file or stream. See second example  *How to update signatures by known Id*
     
     **New overload method Update definition**
     
@@ -1168,7 +1168,7 @@ try
     public UpdateResult update(String filePath, java.util.List<BaseSignature> signatures);
     ```
     
-*   added new overload method **Delete **that that expects one signature or list of signatures to delete from the document. Method with one signature argument returns Boolean value as indicator if process went successfully. Method with list of signatures returns instance of **DeleteResult**. See **[DeleteResult]({{< ref "signature/java/release-notes/release-notes-2020/groupdocs.signature-for-java-20.3-release-notes.md" >}})**  with lists of removed signatures and signatures that were not found. Same as method **Update** each of passed signature should be identified with existing signatures in the document. This identification could be provided by two ways. First way when signature was searched right pass to **Update** method by **Search** method. See first example *How to update signatures after Search*. The second way works over unique signature identifier **SignatureId**. This **SignatureId** could be obtained after **Sign** result as unique signature identifier stored at document metadata layer. The very important thing here that this method applies changes in same document file or stream.
+*   added new overload method **Delete **that that expects one signature or list of signatures to delete from the document. Method with one signature argument returns Boolean value as indicator if process went successfully. Method with list of signatures returns instance of **DeleteResult**. See **[DeleteResult](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.domain/DeleteResult)**  with lists of removed signatures and signatures that were not found. Same as method **Update** each of passed signature should be identified with existing signatures in the document. This identification could be provided by two ways. First way when signature was searched right pass to **Update** method by **Search** method. See first example *How to update signatures after Search*. The second way works over unique signature identifier **SignatureId**. This **SignatureId** could be obtained after **Sign** result as unique signature identifier stored at document metadata layer. The very important thing here that this method applies changes in same document file or stream.
     
     ```java
     public boolean delete(OutputStream document, BaseSignature signature);
