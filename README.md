@@ -1,10 +1,6 @@
-## GroupDocs.Signature for Java
+# Java API to Manage Document e-Signatures
 
-This package contains [Examples](https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java/tree/master/Examples) and [Showcases](#) for [GroupDocs.Signature for Java](https://products.groupdocs.com/signature/java) that will help you in understanding the API's working and writing your own applications.
-
-GroupDocs.Signature for Java is a feature rich library which provides an ability to add stamps, barcodes and QR-codes, text, image, metadata, form field and digital signatures to documents of various formats. Sign, search and verify document signatures for all popular document formats and set different signing options to suit your needs with GroupDocs.Signature for Java API.
-
-Supported document formats: PDF, Microsoft Word documents, Microsoft Excel spreadsheets, Microsoft PowerPoint presentations, Open Document formats, Images - TIFF, JPEG, PNG, GIF, BMP, and many more.
+GroupDocs.Signature for Java is an [Digital Signature API](https://products.groupdocs.com/signature/java) that provides the ability to add stamps, barcodes and QR-codes, text, image, metadata, form field and digital signatures to [documents of 35+ formats](https://docs.groupdocs.com/signature/java/supported-document-formats/). Supported document formats inlcude PDF, Microsoft Word documents, Microsoft Excel spreadsheets, Microsoft PowerPoint presentations, Open Document formats, images, Corel & Photoshop files, and many more.
 
 <p align="center">
 
@@ -15,27 +11,87 @@ Supported document formats: PDF, Microsoft Word documents, Microsoft Excel sprea
 
 Directory | Description
 --------- | -----------
-[Examples](https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java/tree/master/Examples)  | Contains the package of all Java examples and sample files that will help you learn how to use product features. 
-[Showcases](#)  | GroupDocs.Signature for Java front end projects are the open source web based projects. These projects demonstrate the salient features of GroupDocs.Signature for Java. 
+[Docs](https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java/tree/master/Docs)  | Product documentation containing the Developer's Guide, Release Notes and more.
+[Examples](https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java/tree/master/Examples)  | Java examples and sample documents for you to get started quickly. 
 
-## How to Run the Examples
+## Electronic Signature Management via Java
 
-+ You can either clone the repository using your favorite GitHub client or download the ZIP file from the above button.
-+ Extract the contents of the ZIP file to any folder on your computer.
-+ Open Java IDE and import the project to get started with it.
-+ On the first run, the dependencies will automatically be downloaded.
-+ Open MainClass.java file, all the examples are called from here.
-+ Uncomment the examples you want to run from within the project.
+### Document Singing
 
-Please find more details for how to run the examples [here](https://docs.groupdocs.com/display/signaturejava/How+to+Run+Examples).
+- Native text signatures as text stamps, text labels with settings for visualization effects, opacity, colors, fonts and so on.
+- Text as image signatures with scope of additional options to specify how text will look.
+- Image signatures with options to specify extra image effects & rotation.
+- Digital signatures based on certificate files and ability to support digital signature by document type.
+- [Barcode & QR-code signatures with variety of options](https://docs.groupdocs.com/signature/java/esign-document-with-barcode-signature/).
+- Metadata signatures to keep signatures hidden.
+- [Form-field signatures](https://docs.groupdocs.com/signature/java/esign-document-with-form-field-signature/).
 
-##  Resources
+### Search & Verify Digital Signatures
 
-+ **Website:** [www.groupdocs.com](https://www.groupdocs.com)
-+ **Product Home:** [GroupDocs.Signature for Java](https://products.groupdocs.com/signature/java)
-+ **API Reference:** [GroupDocs.Signature for Java API Reference](https://apireference.groupdocs.com/java/signature)
-+ **Download:** [Download GroupDocs.Signature for Java](https://artifact.groupdocs.com/repo/com/groupdocs/groupdocs-signature/)
-+ **Documentation:** [GroupDocs.Signature for Java Documentation](https://docs.groupdocs.com/display/signaturejava/Home)
-+ **Free Support:** [GroupDocs.Signature for Java Free Support Forum](https://forum.groupdocs.com/c/signature)
-+ **Paid Support:** [GroupDocs.Signature for Java Paid Support Helpdesk](https://helpdesk.groupdocs.com/)
-+ **Blog:** [GroupDocs.Signature for Java Blog](https://blog.groupdocs.com/category/groupdocs-signature-product-family/)
+- Digital signature information from PDF, Spreadsheets, Word Processing documents & PowerPoint presentations.
+- Barcode & QR-code signature information from all supported formats.
+- Metadata signatures information from all supported formats.
+- Form-field signatures information from all supported formats.
+
+### Preview Document Pages
+
+Document preview feature allows to generate image representations of document pages. This may be helpful for better understanding about document content and its structure, set proper signature position inside document, apply appropriate signature styling etc. Preview can be generated for all document pages (by default) or for specific page numbers or page range in PNG, JPG & BMP formats.
+
+
+## Get Started with GroupDocs.Signature for Java
+
+GroupDocs.Signature for Java requires J2SE 7.0 (1.7), J2SE 8.0 (1.8) or above. Please install Java first if you do not have it already. 
+
+GroupDocs hosts all Java APIs on [GroupDocs Artifact Repository](https://artifact.groupdocs.com/webapp/#/artifacts/browse/tree/General/repo/com/groupdocs/groupdocs-signature), so simply [configure](https://docs.groupdocs.com/signature/java/installation/) your Maven project to fetch the dependencies automatically.
+
+## Search for Digital Signatures in Excel XLSX
+```java
+Signature signature = new Signature("spreadsheet.xlsx");
+DigitalSearchOptions options = new DigitalSearchOptions();
+
+// search for signatures in document
+List<DigitalSignature> signatures = signature.search(DigitalSignature.class, options);
+System.out.print("\nSource document contains following signatures.");
+for (DigitalSignature digitalSignature : signatures)
+{
+    System.out.print("Digital signature found from "+digitalSignature.getSignTime()+" with validation flag "+digitalSignature.isValid()+". Certificate SN "+ digitalSignature.getCertificate().getType());
+}
+```
+
+## Digitally Sign PDF with Certificate
+```java
+Signature signature = new Signature("sample.pdf"); 
+DigitalSignOptions options = new DigitalSignOptions("certificate.pfx");
+ 
+// certifiate password
+options.setPassword("1234567890");
+// digital certificate details
+options.setReason("Sign");
+options.setContact("JohnSmith");
+options.setLocation("Office1");
+ 
+// image as digital certificate appearance on document pages
+options.setImageFilePath("sample.jpg");
+//
+options.setAllPages(true);
+options.setWidth(80);
+options.setHeight(60);
+options.setVerticalAlignment(VerticalAlignment.Bottom);
+options.setHorizontalAlignment(HorizontalAlignment.Right);
+Padding padding = new Padding();
+padding.setBottom(10);
+padding.setRight(10);
+options.setMargin(padding);
+ 
+SignResult signResult = signature.sign("signed.pdf", options);
+// analyzing result
+System.out.print("List of newly created signatures:");
+int number = 1;
+for(BaseSignature temp : signResult.getSucceeded())
+{
+    System.out.print("Signature #"+ number++ +": Type: "+temp.getSignatureType()+" Id:"+temp.getSignatureId()+
+            ",Location: "+temp.getLeft()+"x"+temp.getTop()+". Size: "+temp.getWidth()+"x"+temp.getHeight());
+}
+```
+
+[Home](https://www.groupdocs.com/) | [Product Page](https://products.groupdocs.com/signature/java) | [Documentation](https://docs.groupdocs.com/signature/java/) | [Demos](https://products.groupdocs.app/signature/family) | [API Reference](https://apireference.groupdocs.com/java/signature) | [Examples](https://github.com/groupdocs-Signature/GroupDocs.Signature-for-Java/tree/master/Examples) | [Blog](https://blog.groupdocs.com/category/annotation/) | [Free Support](https://forum.groupdocs.com/c/signature) | [Temporary License](https://purchase.groupdocs.com/temporary-license)
