@@ -34,8 +34,7 @@ public class SearchForImage {
             {
                 for (ImageSignature imageSignature : signatures)
                 {
-                    System.out.print("Found Image signature at page "+imageSignature.getPageNumber()+" and size "+imageSignature.getSize()+"}.");
-
+                    System.out.print("Image signature found at page "+imageSignature.getPageNumber()+" with size "+imageSignature.getSize()+". Created "+imageSignature.getCreatedOn()+", modified "+imageSignature.getModifiedOn());
                 }
             }
             catch (Exception ex)

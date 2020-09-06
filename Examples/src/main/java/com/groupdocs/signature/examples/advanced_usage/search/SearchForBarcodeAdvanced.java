@@ -22,7 +22,7 @@ public class SearchForBarcodeAdvanced {
         try {
             Signature signature = new Signature(filePath);
             BarcodeSearchOptions options = new BarcodeSearchOptions();
-            options.setAllPages(true); // this value is set by default
+            options.setAllPages(false); // this value is set by default
             // single page number
             options.setPageNumber(1);
                     // setup extended search in pages setup
@@ -34,11 +34,13 @@ public class SearchForBarcodeAdvanced {
             options.setPagesSetup(pagesSetup);
 
             // specify special barcode type to search
-            options.setEncodeType(BarcodeTypes.Code39Standard);
+            options.setEncodeType(BarcodeTypes.Code128);
             // specify text match type
             options.setMatchType(TextMatchType.Contains);
             // specify text pattern to search
-            options.setText("12345678");
+            options.setText("GroupDocs.Signature");
+            // set field for barcode images returning
+            options.setReturnContent(true);
 
             // search for signatures in document
             List<BarcodeSignature> signatures = signature.search(BarcodeSignature.class, options);
@@ -46,6 +48,7 @@ public class SearchForBarcodeAdvanced {
             System.out.print("\nSource document contains following signatures.");
             for (BarcodeSignature barcodeSignature : signatures) {
                 System.out.print("Barcode signature found at page " + barcodeSignature.getPageNumber() + " with type " + barcodeSignature.getEncodeType() + " and text " + barcodeSignature.getText());
+                System.out.print("Barcode signature size "+barcodeSignature.getContent().length+" and format " + barcodeSignature.getFormat().getExtension());
             }
         } catch (Exception ex) {
             System.out.print("System Exception: " + ex.getMessage());

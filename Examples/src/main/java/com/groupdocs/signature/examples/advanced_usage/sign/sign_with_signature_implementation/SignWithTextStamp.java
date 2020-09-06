@@ -24,7 +24,7 @@ public class SignWithTextStamp {
         System.out.print("[Example Advanced Usage] # SignWithTextStamp : Sign document with text signature applying Stamp implementation type (this is default value)\n");
 
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX;
+        String filePath = Constants.SAMPLE_SPREADSHEET;
         String fileName = Paths.get(filePath).getFileName().toString();
 
         String outputFilePath = new File(Constants.OutputPath, "SignWithTextStamp\\" + fileName).getPath();

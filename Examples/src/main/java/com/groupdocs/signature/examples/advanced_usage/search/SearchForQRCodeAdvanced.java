@@ -37,9 +37,11 @@ public class SearchForQRCodeAdvanced {
             // specify special barcode type to search
             options.setEncodeType(QrCodeTypes.QR);
             // specify text match type
-            options.setMatchType(TextMatchType.Exact);
+            options.setMatchType(TextMatchType.Contains);
             // specify text pattern to search
-            options.setText("12345678");
+            options.setText("GroupDocs.Signature");
+            // set field for barcode images returning
+            options.setReturnContent(true);
 
             // search for signatures in document
             List<QrCodeSignature> signatures = signature.search(QrCodeSignature.class, options);
@@ -47,6 +49,7 @@ public class SearchForQRCodeAdvanced {
             for (QrCodeSignature qrCodeSignature : signatures)
             {
                 System.out.print("QRCode signature found at page "+qrCodeSignature.getPageNumber() +" with type "+qrCodeSignature.getEncodeType() +" and text "+ qrCodeSignature.getText());
+                System.out.print("QRCode signature size "+qrCodeSignature.getContent().length+" and format "+ qrCodeSignature.getFormat().getExtension());
             }
         }
         catch (Exception ex)

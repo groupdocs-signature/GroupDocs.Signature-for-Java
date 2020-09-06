@@ -40,6 +40,8 @@ public class Constants {
 
     public static String SAMPLE_PDF  = getSampleFilePath( "sample.pdf");
 
+    public static String SAMPLE_PPTX  = getSampleFilePath( "butterfly effect.pptx");
+
     public static String SAMPLE_PDF_SIGNED = getSampleFilePath("sample_signed.pdf");
 
     public static String SAMPLE_PDF_SIGNED_METADATA = getSampleFilePath("SignedWithMetadata.pdf");
@@ -60,11 +62,11 @@ public class Constants {
     public static String SAMPLE_PDF_QRCODE_EPC_OBJECT    = getSampleFilePath("QRCodeEPCObject.pdf");
     public static String SAMPLE_PDF_QRCODE_EVENT_OBJECT    = getSampleFilePath("QRCodeEventObject.pdf");
 
-
-    public static String SAMPLE_DOCX_METADATA_ENCRYPTED_TEXT  = getSampleFilePath("MetadataEncryptedText.DOCX");
-    public static String SAMPLE_DOCX_METADATA_ENCRYPTED_OBJECT  = getSampleFilePath("MetadataEncryptedObject.DOCX");
-    public static String SAMPLE_DOCX_METADATA_CUSTOM_ENCRYPTION_OBJECT = getSampleFilePath("MetadataCustomEncryptionObject.DOCX");
-    public static String SAMPLE_DOCX_METADATA_CUSTOM_SERIALIZATION_OBJECT  = getSampleFilePath("MetadataCustomSerializationObject.DOCX");
+    public static String SAMPLE_WORD_SIGNED  = getSampleFilePath("AllSignatures.docx");
+    public static String SAMPLE_DOCX_METADATA_ENCRYPTED_TEXT  = getSampleFilePath("MetadataEncryptedText.docx");
+    public static String SAMPLE_DOCX_METADATA_ENCRYPTED_OBJECT  = getSampleFilePath("MetadataEncryptedObject.docx");
+    public static String SAMPLE_DOCX_METADATA_CUSTOM_ENCRYPTION_OBJECT = getSampleFilePath("MetadataCustomEncryptionObject.docx");
+    public static String SAMPLE_DOCX_METADATA_CUSTOM_SERIALIZATION_OBJECT  = getSampleFilePath("MetadataCustomSerializationObject.docx");
 
     public static String SAMPLE_PDF_SIGNED_FORMFIELD  = getSampleFilePath( "signed_formfield.pdf");
 
@@ -73,7 +75,7 @@ public class Constants {
     public static String SAMPLE_SPREADSHEET = getSampleFilePath( "sample.xlsx");
 
     public static String SAMPLE_SPREADSHEET_SIGNED = getSampleFilePath( "signed_sample.xlsx");
-    public static String SAMPLE_SPREADSHEET_TEXT_SIGNED = getSampleFilePath( "sample_text_signed.xlsx");
+    public static String SAMPLE_SPREADSHEET_TEXT_SIGNED = getSampleFilePath( "TextStamp.xlsx");
 
     // Presentation document files
     public static String SAMPLE_PRESENTATION = getSampleFilePath( "sample.ppsx");

@@ -1,65 +1,26 @@
 package com.groupdocs.signature.examples;
 
-import com.groupdocs.signature.examples.advanced_usage.common.*;
-import com.groupdocs.signature.examples.advanced_usage.documentpreview.GeneratePreviewAdvanced;
-import com.groupdocs.signature.examples.advanced_usage.handlingexceptions.HandlingIncorrectPasswordException;
-import com.groupdocs.signature.examples.advanced_usage.handlingexceptions.HandlingPasswordRequiredException;
-import com.groupdocs.signature.examples.advanced_usage.loading.LoadPasswordProtectedDocument;
-import com.groupdocs.signature.examples.advanced_usage.loading.loading_documents_from_different_sources.*;
-import com.groupdocs.signature.examples.advanced_usage.saving.SaveDocumentWithPassword;
-import com.groupdocs.signature.examples.advanced_usage.saving.SaveSignedDocumentsAsImages;
-import com.groupdocs.signature.examples.advanced_usage.saving.SaveSignedImageWithVariousOutputTypes;
-import com.groupdocs.signature.examples.advanced_usage.saving.save_documents_with_different_output_types.*;
-import com.groupdocs.signature.examples.advanced_usage.search.*;
-import com.groupdocs.signature.examples.advanced_usage.search.search_for_metadata_secure_custom.SearchForMetadataCustomEncryptionObject;
-import com.groupdocs.signature.examples.advanced_usage.search.search_for_metadata_secure_custom.SearchForMetadataCustomSerializationObject;
-import com.groupdocs.signature.examples.advanced_usage.search.search_for_metadata_secure_custom.SearchForMetadataEncryptedObject;
-import com.groupdocs.signature.examples.advanced_usage.search.search_for_metadata_secure_custom.SearchForMetadataEncryptedText;
-import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_secure_custom.SearchForQRCodeCustomEncryptionObject;
-import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_secure_custom.SearchForQRCodeCustomSerializationObject;
-import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_secure_custom.SearchForQRCodeEncryptedObject;
-import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_secure_custom.SearchForQRCodeEncryptedText;
+
+
 import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_standard_objects.*;
 import com.groupdocs.signature.examples.advanced_usage.sign.*;
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_form_fields_advanced.SignPdfWithFormFieldAdvanced;
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_form_fields_advanced.SignPdfWithFormFieldAdvancedRadio;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_advanced.SignImageWithCustomMetadata;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_advanced.SignPdfWithCustomMetadata;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataCustomEncryptionObject;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataCustomSerializationObject;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataEncryptedObject;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataEncryptedText;
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_signature_implementation.*;
-import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithDigitalAppearance;
-import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithImageAppearance;
-import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithPdfTextAnnotation;
-import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithPdfTextSticker;
-import com.groupdocs.signature.examples.advanced_usage.sign.signature_positions.SignWithAlignments;
-import com.groupdocs.signature.examples.advanced_usage.sign.signature_positions.SignWithMillimeters;
-import com.groupdocs.signature.examples.advanced_usage.sign.signature_positions.SignWithPercents;
-import com.groupdocs.signature.examples.advanced_usage.sign.signature_positions.SignWithStretchMode;
-import com.groupdocs.signature.examples.advanced_usage.sign.singin_with_brushes.SignWithLinearGradientBrush;
-import com.groupdocs.signature.examples.advanced_usage.sign.singin_with_brushes.SignWithRadialGradientBrush;
-import com.groupdocs.signature.examples.advanced_usage.sign.singin_with_brushes.SignWithSolidBrush;
-import com.groupdocs.signature.examples.advanced_usage.sign.singin_with_brushes.SignWithTextureBrush;
-
-import com.groupdocs.signature.examples.advanced_usage.verify.*;
-import com.groupdocs.signature.examples.basic_usage.common.GetSupportedFileFormats;
 import com.groupdocs.signature.examples.basic_usage.delete.*;
 import com.groupdocs.signature.examples.basic_usage.document_preview.GeneratePreview;
 import com.groupdocs.signature.examples.basic_usage.document_preview.GetDocumentInfo;
 import com.groupdocs.signature.examples.basic_usage.search.*;
 import com.groupdocs.signature.examples.basic_usage.sign.*;
 import com.groupdocs.signature.examples.basic_usage.sign.metadata.*;
-import com.groupdocs.signature.examples.basic_usage.update.*;
+import com.groupdocs.signature.examples.basic_usage.update.UpdateBarcode;
+import com.groupdocs.signature.examples.basic_usage.update.UpdateImage;
+import com.groupdocs.signature.examples.basic_usage.update.UpdateQRCode;
 import com.groupdocs.signature.examples.basic_usage.verify.VerifyBarcode;
 import com.groupdocs.signature.examples.basic_usage.verify.VerifyDigital;
 import com.groupdocs.signature.examples.basic_usage.verify.VerifyQRCode;
 import com.groupdocs.signature.examples.basic_usage.verify.VerifyText;
-import com.groupdocs.signature.examples.quick_start.HelloWorld;
 import com.groupdocs.signature.examples.quick_start.SetLicenseFromFile;
-import com.groupdocs.signature.examples.quick_start.SetLicenseFromStream;
-import com.groupdocs.signature.examples.quick_start.SetMeteredLicense;
 
 public class MainClass {
 	public static void main(String[] args) throws Throwable {
@@ -101,7 +62,7 @@ public class MainClass {
 
         // Sign Pdf document with Form-fields
         //SignPdfWithFormFieldAdvanced.run();
-        //SignPdfWithFormFieldAdvancedRadio.run();
+       // SignPdfWithFormFieldAdvancedRadio.run();
 
         //Sign document with text signature
         //SignWithText.run();
@@ -146,6 +107,7 @@ public class MainClass {
         //SignWithTextSticker.run();
         //SignWithTextFormField.run();
         //SignWithTextWatermark.run();
+        //SignWithTextWatermarkNative.run();
         //endregion
 
         //SignWithXAdESTypes.run();
@@ -190,10 +152,10 @@ public class MainClass {
         //VerifyText.run();
 
         //Verify document with Bar-Code signature
-        VerifyBarcode.run();
+        //VerifyBarcode.run();
 
         //Verify document with QR-Code signature
-        VerifyQRCode.run();
+        //VerifyQRCode.run();
 
         //Verify document with digital signature
         //VerifyDigital.run();
@@ -203,13 +165,13 @@ public class MainClass {
 
 
         //Update Image signature in the document
-        UpdateImage.run();
+        //UpdateImage.run();
 
         //Update Barcode signature in the document
-        UpdateBarcode.run();
+        //UpdateBarcode.run();
 
         //Update QR-Code signature in the document
-        UpdateQRCode.run();
+        //UpdateQRCode.run();
 
 
         //<<<<<<<< #endregion
@@ -217,7 +179,7 @@ public class MainClass {
         //>>>>>>>> #region  Delete different signatutes in the document
 
         ////Delete Text signature from the document
-        DeleteText.run();
+        //DeleteText.run();
 
         ////Delete Image signature from the document
         //DeleteImage.run();
@@ -226,7 +188,7 @@ public class MainClass {
         //DeleteBarcode.run();
 
         ////Delete QR-Code signature from the document
-       // DeleteQRCode.run();
+        //DeleteQRCode.run();
 
         ////Delete multiple signatures from the document
         //DeleteMultiple.run();
@@ -266,21 +228,24 @@ public class MainClass {
         //region Sign document with different signature types with additional options
 
         //Sign document with text signature applying specific options
-        //SignWithTextAdvanced.run();
+        SignWithTextAdvanced.run();
 
         //Sign document with image signature applying specific options
-        //SignWithImageAdvanced.run();
+        SignWithImageAdvanced.run();
 
         //Sign document with Bar-Code signature applying specific options
-        //SignWithBarcodeAdvanced.run();
+        SignWithBarcodeAdvanced.run();
 
         //Sign document with QR-Code signature applying specific options
-        //SignWithQRCodeAdvanced.run();
+        SignWithQRCodeAdvanced.run();
+
+        // Sign Spreadsheet document with XAdes signature
+        SignWithXAdESTypes.run();
 
         // Sign Pdf document with Form-fields
-        //SignPdfWithFormFieldAdvanced.run();
+        SignPdfWithFormFieldAdvanced.run();
 
-        //SignWithStampAdvanced.run();
+        SignWithStampAdvanced.run();
 
         //endregion
 

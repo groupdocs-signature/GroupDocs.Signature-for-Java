@@ -12,10 +12,9 @@ import java.io.File;
 import java.nio.file.Paths;
 
 public class SignWithXAdESTypes {
-    /**
-     * Sign document with XML Advanced Electronic Signatures (XAdES)
-     */
-   
+    /// <summary>
+    /// Sign document with XML Advanced Electronic Signatures (XAdES)
+    /// </summary>
     public static void run() throws Exception
     {
         System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
@@ -25,7 +24,7 @@ public class SignWithXAdESTypes {
         String filePath = Constants.SAMPLE_SPREADSHEET;
         String fileName = Paths.get(filePath).getFileName().toString();
         String certificatePath = Constants.CertificatePfx;
-        String outputFilePath = new File(Constants.OutputPath, "SignWithXAdESTypes\\" + fileName).getPath();
+        String outputFilePath = new File(Constants.OutputPath, "SignWithXAdESTypes\\"+ fileName).getPath();
 
         Signature signature = new Signature(filePath);
         {
@@ -41,20 +40,15 @@ public class SignWithXAdESTypes {
                 options.setLocation("Office1");
             };
 
+            SignResult signResult = signature.sign(outputFilePath, options);
+            System.out.print("\nSource document signed successfully with "+signResult.getSucceeded().size()+" signature(s).\nFile saved at "+outputFilePath);
 
-
-                SignResult signResult = signature.sign(outputFilePath, options);
-                System.out.print("\nSource document signed successfully with "+signResult.getSucceeded().size()+" signature(s).\nFile saved at "+outputFilePath);
-
-                System.out.print("\nList of newly created signatures:");
-                int number = 1;
-                for (BaseSignature temp : signResult.getSucceeded())
-                {
-                    System.out.print("Signature #"+number++ +": Type: "+temp.getSignatureType()+" Id:"+temp.getSignatureId()+", Location: "+temp.getLeft()+"x"+temp.getTop()+". Size: "+temp.getWidth()+"x"+temp.getHeight());
-                }
-
-
-
+            System.out.print("\nList of newly created signatures:");
+            int number = 1;
+            for (BaseSignature temp : signResult.getSucceeded())
+            {
+                System.out.print("Signature #"+number++ +": Type: "+temp.getSignatureType()+" Id:"+temp.getSignatureId());
+            }
         }
     }
 }
