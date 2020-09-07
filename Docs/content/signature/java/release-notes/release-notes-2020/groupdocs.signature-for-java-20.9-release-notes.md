@@ -84,9 +84,6 @@ Following topics from Developer Guide were updated:
 
 [Search for Image e-signatures]({{< ref "signature/java/search-for-image-e-signatures.md" >}})
 
-[Advanced search for Metadata signatures]({{< ref "signature/java/advanced-search-for-metadata-signatures.md" >}})
-
-[Sign document with XAdES Digital signature]({{< ref "signature/java/sign-document-with-xades-digital-signature.md" >}})
 
 ## Public API and Backward Incompatible Changes
 
