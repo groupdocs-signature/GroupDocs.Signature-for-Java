@@ -74,16 +74,6 @@ Full List of Issues Covering all Changes in this Release 
 | SIGNATURENET-2882 | Exception on Word Processing document with obtaining watermark properties. | Bug |
 | SIGNATURENET-2837 | Document content is changed after saving for OTT files | Bug |
 
-## Public Developer Guide examples changes
-
-Following topics from Developer Guide were updated:
-
-[Advanced search for Barcode signatures]({{< ref "signature/java/advanced-search-for-barcode-signatures.md" >}})
-
-[Advanced search for QR-code signatures]({{< ref "signature/java/advanced-search-for-qr-code-signatures.md" >}})
-
-[Search for Image e-signatures]({{< ref "signature/java/search-for-image-e-signatures.md" >}})
-
 
 
 ## Public API and Backward Incompatible Changes
