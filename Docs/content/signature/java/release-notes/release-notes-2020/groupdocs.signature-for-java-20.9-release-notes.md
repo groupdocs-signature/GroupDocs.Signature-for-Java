@@ -85,6 +85,7 @@ Following topics from Developer Guide were updated:
 [Search for Image e-signatures]({{< ref "signature/java/search-for-image-e-signatures.md" >}})
 
 
+
 ## Public API and Backward Incompatible Changes
 
 #### Public class [BarcodeSignature](https://apireference.groupdocs.com/signature/java/com.groupdocs.signature.domain.signatures/BarcodeSignature) was updated with new properties and ability to contain Barcode image content.
