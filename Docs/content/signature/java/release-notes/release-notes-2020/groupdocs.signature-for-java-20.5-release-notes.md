@@ -2,7 +2,7 @@
 id: groupdocs-signature-for-java-20-5-release-notes
 url: signature/java/groupdocs-signature-for-java-20-5-release-notes
 title: GroupDocs.Signature for Java 20.5 Release Notes
-weight: 1
+weight: 2
 description: ""
 keywords: 
 productName: GroupDocs.Signature for Java
