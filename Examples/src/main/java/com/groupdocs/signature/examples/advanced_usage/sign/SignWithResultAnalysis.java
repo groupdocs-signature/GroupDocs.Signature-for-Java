@@ -19,7 +19,7 @@ public class SignWithResultAnalysis {
      * Sign document with qr-code signature
      * </p>
      */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;

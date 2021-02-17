@@ -4,7 +4,6 @@ import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.documentpreview.FileType;
 import com.groupdocs.signature.domain.signatures.ImageSignature;
 import com.groupdocs.signature.examples.Constants;
-import com.groupdocs.signature.options.PagesSetup;
 import com.groupdocs.signature.options.search.ImageSearchOptions;
 
 import java.nio.file.Paths;
@@ -19,7 +18,7 @@ public class SearchForImageAdvanced {
     public static void run()
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_WORD_SIGNED;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
         String fileName = Paths.get(filePath).getFileName().toString();
         final Signature signature = new Signature(filePath);
         try /*JAVA: was using*/

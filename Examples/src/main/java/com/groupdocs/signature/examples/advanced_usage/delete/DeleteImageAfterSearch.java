@@ -3,11 +3,9 @@ package com.groupdocs.signature.examples.advanced_usage.delete;
 
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.DeleteResult;
-import com.groupdocs.signature.domain.signatures.BarcodeSignature;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.domain.signatures.ImageSignature;
 import com.groupdocs.signature.examples.Constants;
-import com.groupdocs.signature.options.search.BarcodeSearchOptions;
 import com.groupdocs.signature.options.search.ImageSearchOptions;
 import org.apache.commons.io.IOUtils;
 
@@ -30,7 +28,7 @@ public class DeleteImageAfterSearch {
             System.out.print("[Example Advanced Usage] # DeleteImageAfterSearch : Delete Image signature from the document\n");
 
             // The path to the documents directory.
-            String filePath = Constants.SAMPLE_DOCX_BARCODE_SIGNED;
+            String filePath = Constants.SAMPLE_SIGNED_MULTI;
             // copy source file since Update method works with same Document
             String fileName = Paths.get(filePath).getFileName().toString();
             String outputFilePath = new File(Constants.OutputPath, "DeleteImageAfterSearch\\"+ fileName).getPath();

@@ -3,7 +3,6 @@ package com.groupdocs.signature.examples.advanced_usage.update;
 
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.UpdateResult;
-import com.groupdocs.signature.domain.signatures.BarcodeSignature;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.domain.signatures.QrCodeSignature;
 import com.groupdocs.signature.examples.Constants;
@@ -28,7 +27,7 @@ public class UpdateQRCodeById {
             System.out.print("[Example Advanced Usage] # UpdateBarcodeById : Update Barcode signature in the document by known SignatureId\n");
 
             // The path to the documents directory.
-            String filePath = Constants.SAMPLE_DOCX_BARCODE_SIGNED;
+            String filePath = Constants.SAMPLE_SIGNED_MULTI;
             String fileName = Paths.get(filePath).getFileName().toString();
             String outputFilePath = new File(Constants.OutputPath, "UpdateQRCodeById\\"+ fileName).getPath();
             Constants.checkDir(outputFilePath);
@@ -38,7 +37,7 @@ public class UpdateQRCodeById {
             // read from some data source signature Id value
             String[] signatureIdList = new String[]
                     {
-                            "b0123987-b0d4-4004-86ec-30ab5c41ac7e"
+                            "eff64a14-dad9-47b0-88e5-2ee4e3604e71"
                     };
             // create list of Barcode Signature by known SignatureId
             List<BaseSignature> signatures = new ArrayList<BaseSignature>();

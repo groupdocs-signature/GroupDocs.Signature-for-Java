@@ -7,8 +7,6 @@ import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.options.verify.DigitalVerifyOptions;
 
-import java.io.File;
-
 public class VerifyWithExceptionHandling {
     /**
      * Verify document with digital signature applying specific options
@@ -16,7 +14,7 @@ public class VerifyWithExceptionHandling {
     public static void run()
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX;
+        String filePath = Constants.SAMPLE_PDF;
         try {
             Signature signature = new Signature(filePath);
             // create QRCode option with predefined QRCode text

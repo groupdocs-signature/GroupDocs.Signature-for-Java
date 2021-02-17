@@ -11,7 +11,7 @@ import java.io.InputStream;
 import java.net.URL;
 
 public class LoadDocumentFromUrl {
-    public static void run()
+    public static void run() throws Exception
     {
         String outputFilePath = new File(Constants.OutputPath, "SignedWithTextFromUrl\\sample.pdf").getPath();
 

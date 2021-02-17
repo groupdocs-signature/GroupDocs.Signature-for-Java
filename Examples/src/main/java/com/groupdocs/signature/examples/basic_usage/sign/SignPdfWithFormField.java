@@ -5,25 +5,20 @@ import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.Padding;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
-import com.groupdocs.signature.domain.signatures.formfield.CheckboxFormFieldSignature;
-import com.groupdocs.signature.domain.signatures.formfield.DigitalFormFieldSignature;
 import com.groupdocs.signature.domain.signatures.formfield.FormFieldSignature;
 import com.groupdocs.signature.domain.signatures.formfield.TextFormFieldSignature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.options.sign.FormFieldSignOptions;
-import com.groupdocs.signature.options.sign.SignOptions;
 
 import java.io.File;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 public class SignPdfWithFormField {
     /**
      * Sign pdf document with form-field signature
      */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;

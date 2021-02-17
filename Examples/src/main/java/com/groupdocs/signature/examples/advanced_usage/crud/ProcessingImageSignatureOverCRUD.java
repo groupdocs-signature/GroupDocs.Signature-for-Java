@@ -8,7 +8,6 @@ import com.groupdocs.signature.domain.SignResult;
 import com.groupdocs.signature.domain.UpdateResult;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
-import com.groupdocs.signature.domain.signatures.BarcodeSignature;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.domain.signatures.ImageSignature;
 import com.groupdocs.signature.examples.Constants;
@@ -33,7 +32,7 @@ public class ProcessingImageSignatureOverCRUD {
         System.out.print("[Example Advanced Usage] # ProcessingImageSignatureOverCRUD : Process Image Signature over all signature life-cycle\n");
 
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX;
+        String filePath = Constants.SAMPLE_WORDPROCESSING;
         String fileName = Paths.get(filePath).getFileName().toString();
 
         String outputFilePath = new File(Constants.OutputPath, "ProcessingImageSignatureOverCRUD\\"+ fileName).getPath();
@@ -43,7 +42,7 @@ public class ProcessingImageSignatureOverCRUD {
         // -----------------------------------------------------------------------------------------------------------------------------
         Signature signature = new Signature(filePath);
         {
-            ImageSignOptions signOptions = new ImageSignOptions(Constants.ImageStamp);
+            ImageSignOptions signOptions = new ImageSignOptions(Constants.ImageHandwrite);
             signOptions.setVerticalAlignment(VerticalAlignment.Top);
             signOptions.setHorizontalAlignment(HorizontalAlignment.Center);
             signOptions.setWidth(100);

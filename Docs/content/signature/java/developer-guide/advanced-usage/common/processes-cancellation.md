@@ -2,7 +2,7 @@
 id: processes-cancellation
 url: signature/java/processes-cancellation
 title: Processes cancellation
-weight: 1
+weight: 3
 description: "This article explains how to control signature processing (cancellation) for large documents with GroupDocs.Signature API."
 keywords: 
 productName: GroupDocs.Signature for Java

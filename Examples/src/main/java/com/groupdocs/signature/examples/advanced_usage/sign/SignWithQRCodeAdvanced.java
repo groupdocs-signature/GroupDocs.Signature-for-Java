@@ -3,7 +3,6 @@ package com.groupdocs.signature.examples.advanced_usage.sign;
 
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.*;
-import com.groupdocs.signature.domain.barcodes.BarcodeTypes;
 import com.groupdocs.signature.domain.documentpreview.FileType;
 import com.groupdocs.signature.domain.enums.DashStyle;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
@@ -26,10 +25,10 @@ public class SignWithQRCodeAdvanced {
     /**
     * Sign document with QR-Code signature applying specific options
     */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX;
+        String filePath = Constants.SAMPLE_WORDPROCESSING;
         String fileName = Paths.get(filePath).getFileName().toString();
 
         String outputFilePath = new File(Constants.OutputPath, "SignWithQRCodeAdvanced\\"+ fileName).getPath();

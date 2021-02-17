@@ -7,7 +7,6 @@ import com.groupdocs.signature.domain.Padding;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.TextSignatureImplementation;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
-import com.groupdocs.signature.domain.extensions.SolidBrush;
 import com.groupdocs.signature.domain.extensions.TextureBrush;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
@@ -17,7 +16,7 @@ import java.awt.*;
 import java.io.File;
 
 public class SignWithTextureBrush {
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;

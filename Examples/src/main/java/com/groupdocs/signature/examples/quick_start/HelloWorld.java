@@ -14,7 +14,7 @@ public class HelloWorld {
     /**
      * Basic example of GroupDocs.Signature usage
      */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_DOCX;

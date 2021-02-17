@@ -49,10 +49,10 @@ public class SubscribeSearchEvents {
     /**
      * search document for barcode sigantures and subscribe for events
      */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_PDF;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
 
         try {
             Signature signature = new Signature(filePath);
@@ -88,12 +88,10 @@ public class SubscribeSearchEvents {
             pagesSetup.setEvenPages(false);
             options.setPagesSetup(pagesSetup);
 
-            // specify special barcode type to search
-            options.setEncodeType(BarcodeTypes.Code39Standard);
             // specify text match type
             options.setMatchType(TextMatchType.Contains);
             // specify text pattern to search
-            options.setText("12345678");
+            options.setText("12345");
 
 
             // search for signatures in document

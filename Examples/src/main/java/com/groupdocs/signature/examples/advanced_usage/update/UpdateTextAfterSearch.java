@@ -3,11 +3,9 @@ package com.groupdocs.signature.examples.advanced_usage.update;
 
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.UpdateResult;
-import com.groupdocs.signature.domain.signatures.BarcodeSignature;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.domain.signatures.TextSignature;
 import com.groupdocs.signature.examples.Constants;
-import com.groupdocs.signature.options.search.BarcodeSearchOptions;
 import com.groupdocs.signature.options.search.TextSearchOptions;
 import org.apache.commons.io.IOUtils;
 
@@ -28,7 +26,7 @@ public class UpdateTextAfterSearch {
         System.out.print("[Example Advanced Usage] # UpdateBarcodeAfterSearch : Update Barcode signature from the document\n");
 
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX_BARCODE_SIGNED;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
         // copy source file since Update method works with same Document
         String fileName = Paths.get(filePath).getFileName().toString();
         String outputFilePath = new File(Constants.OutputPath, "UpdateTextAfterSearch\\"+ fileName).getPath();

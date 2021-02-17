@@ -2,7 +2,6 @@ package com.groupdocs.signature.examples.advanced_usage.delete;
 
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.DeleteResult;
-import com.groupdocs.signature.domain.signatures.BarcodeSignature;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.domain.signatures.TextSignature;
 import com.groupdocs.signature.examples.Constants;
@@ -28,7 +27,7 @@ public class DeleteTextById {
         System.out.print("[Example Advanced Usage] # DeleteTextById : Delete Text signature in the document by known SignatureId\n");
 
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX_BARCODE_SIGNED;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
         String fileName = Paths.get(filePath).getFileName().toString();
         String outputFilePath = new File(Constants.OutputPath, "DeleteTextById\\"+ fileName).getPath();
         Constants.checkDir(outputFilePath);
@@ -38,8 +37,7 @@ public class DeleteTextById {
         // read from some data source signature Id value
         String[] signatureIdList = new String[]
                 {
-                        "a6fec431-111e-4572-950c-5cc5f1c85d36",
-                        "b0123987-b0d4-4004-86ec-30ab5c41ac7e"
+                        "ff988ab1-7403-4c8d-8db7-f2a56b9f8530"
                 };
         // create list of Text Signature by known SignatureId
         List<BaseSignature> signatures = new ArrayList<BaseSignature>();

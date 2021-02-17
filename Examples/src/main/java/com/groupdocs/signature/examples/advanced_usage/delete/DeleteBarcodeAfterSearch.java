@@ -28,7 +28,7 @@ public class DeleteBarcodeAfterSearch {
             System.out.print("[Example Advanced Usage] # DeleteBarcodeAfterSearch : Delete Barcode signature from the document");
 
             // The path to the documents directory.
-            String filePath = Constants.SAMPLE_DOCX_BARCODE_SIGNED;
+            String filePath = Constants.SAMPLE_SIGNED_MULTI;
             // copy source file since Update method works with same Document
             String fileName = Paths.get(filePath).getFileName().toString();
             String outputFilePath = new File(Constants.OutputPath, "DeleteBarcodeAfterSearch\\"+ fileName).getPath();
@@ -43,7 +43,7 @@ public class DeleteBarcodeAfterSearch {
             // collect signatures to delete
             for (BarcodeSignature temp : signatures)
             {
-                if (temp.getText().contains("John"))
+                if (temp.getText().contains("12345"))
                 {
                     signaturesToDelete.add(temp);
                 }

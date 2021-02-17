@@ -42,7 +42,7 @@ public class SearchForQRCodeCustomSerializationObject {
     /**
      * Search document for QR-Code signature with applying specific options
      */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF_QRCODE_CUSTOM_ENCRYPTION_OBJECT;

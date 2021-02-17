@@ -8,7 +8,6 @@ import com.groupdocs.signature.domain.extensions.encryption.SymmetricEncryption;
 import com.groupdocs.signature.domain.qrcodes.QrCodeTypes;
 import com.groupdocs.signature.domain.signatures.QrCodeSignature;
 import com.groupdocs.signature.examples.Constants;
-import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.options.PagesSetup;
 import com.groupdocs.signature.options.search.QrCodeSearchOptions;
 
@@ -18,10 +17,10 @@ public class SearchForQRCodeEncryptedText {
     /**
      * Search document for QR-Code signature with applying specific options
      */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_PDF_QRCODE_CUSTOM_ENCRYPTION_OBJECT;
+        String filePath = Constants.SAMPLE_PDF_QRCODE_ENCRYPTED_TEXT;
 
         try {
             Signature signature = new Signature(filePath);
@@ -36,10 +35,10 @@ public class SearchForQRCodeEncryptedText {
             options.setAllPages(true);
             options.setPageNumber(1);
             PagesSetup pagesSetup = new PagesSetup();
-            pagesSetup.setFirstPage(false);
+            pagesSetup.setFirstPage(true);
             pagesSetup.setLastPage(true);
             pagesSetup.setOddPages(false);
-            pagesSetup.setEvenPages(true);
+            pagesSetup.setEvenPages(false);
             options.setPagesSetup(pagesSetup);
             // specify types of QR code to verify
             options.setEncodeType(QrCodeTypes.QR);
@@ -54,7 +53,7 @@ public class SearchForQRCodeEncryptedText {
                 System.out.print("QRCode signature found at page "+qrCodeSignature.getPageNumber()+" with type "+qrCodeSignature.getEncodeType().getTypeName()+" and text "+ qrCodeSignature.getText());
             }
         }catch(Exception e){
-
+            System.out.print( e.getClass());
         }
     }
 }

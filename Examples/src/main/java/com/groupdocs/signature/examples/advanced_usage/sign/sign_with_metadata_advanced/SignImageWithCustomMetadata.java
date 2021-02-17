@@ -45,10 +45,10 @@ public class SignImageWithCustomMetadata {
     /**
     * Sign Image document with metadata signature with customer object and encryption
     */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_JPG;
+        String filePath = Constants.SAMPLE_IMAGE_JPG;
         String fileName = Paths.get(filePath).getFileName().toString();
 
         String outputFilePath = new File(Constants.OutputPath, "SignImageWithCustomMetadata//" + fileName).getPath();

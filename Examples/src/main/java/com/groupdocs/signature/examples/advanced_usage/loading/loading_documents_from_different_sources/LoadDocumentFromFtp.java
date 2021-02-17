@@ -10,10 +10,9 @@ import org.apache.commons.net.ftp.FTPClient;
 
 import java.io.File;
 import java.io.InputStream;
-import java.net.URL;
 
 public class LoadDocumentFromFtp {
-    public static void run()
+    public static void run() throws Exception
     {
         String server = "ftp.example.com";
         String filePath = "localhost/sample.doc";

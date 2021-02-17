@@ -5,7 +5,6 @@ import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.VerificationResult;
 import com.groupdocs.signature.domain.enums.TextMatchType;
 import com.groupdocs.signature.examples.Constants;
-import com.groupdocs.signature.options.verify.BarcodeVerifyOptions;
 import com.groupdocs.signature.options.verify.QrCodeVerifyOptions;
 
 public class VerifyQRCode {
@@ -15,7 +14,7 @@ public class VerifyQRCode {
     public static void run()
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX_BARCODE_SIGNED;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
 
         try {
             Signature signature = new Signature(filePath);

@@ -9,6 +9,7 @@ import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.options.verify.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class VerifyWithMultipleOptions {
@@ -18,19 +19,19 @@ public class VerifyWithMultipleOptions {
     public static void run()
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_PDF_SIGNED;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
 
         try {
             Signature signature = new Signature(filePath);
             TextVerifyOptions textVerifyOptions = new TextVerifyOptions();
             textVerifyOptions.setAllPages(true); // this value is set by default
-            textVerifyOptions.setText("John");
-            textVerifyOptions.setSignatureImplementation(TextSignatureImplementation.Stamp);
+            textVerifyOptions.setText("Text signature");
+            textVerifyOptions.setSignatureImplementation(TextSignatureImplementation.Native);
             textVerifyOptions.setMatchType(TextMatchType.Contains);
 
             BarcodeVerifyOptions barcVerifyOptions = new BarcodeVerifyOptions();
             barcVerifyOptions.setAllPages(true); // this value is set by default
-            barcVerifyOptions.setText("John");
+            barcVerifyOptions.setText("12345");
             barcVerifyOptions.setMatchType(TextMatchType.Contains);
 
             QrCodeVerifyOptions qrcdVerifyOptions = new QrCodeVerifyOptions();
@@ -39,7 +40,7 @@ public class VerifyWithMultipleOptions {
             qrcdVerifyOptions.setMatchType(TextMatchType.Contains);
 
             DigitalVerifyOptions digtVerifyOptions = new DigitalVerifyOptions();
-            digtVerifyOptions.setComments("Test comment"); // this value is set by default
+            digtVerifyOptions.setPassword("1234567890");
 
             // verify document signatures
             List<VerifyOptions> listOptions = new ArrayList<VerifyOptions>();

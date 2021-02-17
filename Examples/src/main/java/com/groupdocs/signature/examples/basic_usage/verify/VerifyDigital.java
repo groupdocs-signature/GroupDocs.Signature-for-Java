@@ -3,9 +3,7 @@ package com.groupdocs.signature.examples.basic_usage.verify;
 
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.VerificationResult;
-import com.groupdocs.signature.domain.enums.TextMatchType;
 import com.groupdocs.signature.examples.Constants;
-import com.groupdocs.signature.options.verify.BarcodeVerifyOptions;
 import com.groupdocs.signature.options.verify.DigitalVerifyOptions;
 
 public class VerifyDigital {
@@ -20,7 +18,7 @@ public class VerifyDigital {
         try {
             Signature signature = new Signature(filePath);
             DigitalVerifyOptions options = new DigitalVerifyOptions(Constants.CertificatePfx);
-            options.setComments("Test comment");
+            options.setComments("Mr.Smith");
             options.setPassword("1234567890");
 
             // verify document signatures

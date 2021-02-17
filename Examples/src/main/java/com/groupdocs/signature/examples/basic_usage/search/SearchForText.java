@@ -2,6 +2,7 @@ package com.groupdocs.signature.examples.basic_usage.search;
 
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.signatures.TextSignature;
+import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.options.search.TextSearchOptions;
 
 import java.nio.file.Paths;
@@ -15,7 +16,7 @@ public class SearchForText {
      */
     public static void run() {
         // The path to the documents directory.
-        String filePath = "C:\\GroupDocs\\Output\\test_sign1.docx";
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
         String fileName = Paths.get(filePath).getFileName().toString();
         final Signature signature = new Signature(filePath);
         try /*JAVA: was using*/ {

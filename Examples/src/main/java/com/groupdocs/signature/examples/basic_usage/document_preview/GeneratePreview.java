@@ -3,11 +3,9 @@ package com.groupdocs.signature.examples.basic_usage.document_preview;
 
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.examples.Constants;
-import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.options.PageStreamFactory;
 import com.groupdocs.signature.options.PreviewFormats;
 import com.groupdocs.signature.options.PreviewOptions;
-
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -45,7 +43,7 @@ public class GeneratePreview {
             String filePath = Constants.OutputPath +"\\image-"+pageNumber+".png";
             return new FileOutputStream(filePath);
         }catch (Exception e){
-            throw new GroupDocsSignatureException(e.getMessage());
+            throw new RuntimeException(e.getMessage());
         }
 
     }
@@ -57,7 +55,7 @@ public class GeneratePreview {
             String imageFilePath = new File("GeneratePreviewFolder", "image-" + pageNumber + ".png").getPath();
             System.out.print("Image file "+imageFilePath+" is ready for preview");
         }catch (Exception e){
-            throw new GroupDocsSignatureException(e.getMessage());
+            throw new RuntimeException(e.getMessage());
         }
 
     }

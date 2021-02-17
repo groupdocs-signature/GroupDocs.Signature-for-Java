@@ -4,7 +4,6 @@ package com.groupdocs.signature.examples.advanced_usage.update;
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.UpdateResult;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
-import com.groupdocs.signature.domain.signatures.QrCodeSignature;
 import com.groupdocs.signature.domain.signatures.TextSignature;
 import com.groupdocs.signature.examples.Constants;
 import org.apache.commons.io.IOUtils;
@@ -28,7 +27,7 @@ public class UpdateTextById {
             System.out.print("[Example Advanced Usage] # UpdateBarcodeById : Update Barcode signature in the document by known SignatureId\n");
 
             // The path to the documents directory.
-            String filePath = Constants.SAMPLE_DOCX_BARCODE_SIGNED;
+            String filePath = Constants.SAMPLE_SIGNED_MULTI;
             String fileName = Paths.get(filePath).getFileName().toString();
             String outputFilePath = new File(Constants.OutputPath, "UpdateTextById\\"+ fileName).getPath();
             Constants.checkDir(outputFilePath);
@@ -38,8 +37,7 @@ public class UpdateTextById {
             // read from some data source signature Id value
             String[] signatureIdList = new String[]
                     {
-                            "1dd21cf3-b904-4da9-9413-1ff1dab51974",
-                            "b0123987-b0d4-4004-86ec-30ab5c41ac7e"
+                            "ff988ab1-7403-4c8d-8db7-f2a56b9f8530"
                     };
             // create list of Barcode Signature by known SignatureId
             List<BaseSignature> signatures = new ArrayList<BaseSignature>();
@@ -50,6 +48,7 @@ public class UpdateTextById {
                 temp.setHeight(150);
                 temp.setLeft(200);
                 temp.setTop(200);
+                temp.setText("Mr. John Smith");
                 signatures.add(temp);
             }
             // update all found signatures

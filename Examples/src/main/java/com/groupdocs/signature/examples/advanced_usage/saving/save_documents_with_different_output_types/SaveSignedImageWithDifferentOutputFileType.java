@@ -6,8 +6,8 @@ import com.groupdocs.signature.domain.enums.ImageSaveFileFormat;
 import com.groupdocs.signature.domain.qrcodes.QrCodeTypes;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
-import com.groupdocs.signature.options.sign.QrCodeSignOptions;
 import com.groupdocs.signature.options.saveoptions.imagessaveoptions.ImageSaveOptions;
+import com.groupdocs.signature.options.sign.QrCodeSignOptions;
 
 import java.io.File;
 
@@ -16,10 +16,10 @@ public class SaveSignedImageWithDifferentOutputFileType {
     /**
      * Sign document with qr-code signature
      */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_JPG;
+        String filePath = Constants.SAMPLE_IMAGE;
 
         String outputFilePath = new File(Constants.OutputPath, "SaveSignedOutputType//SampleJPG.svg").getPath();
 

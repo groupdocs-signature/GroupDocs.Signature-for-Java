@@ -4,15 +4,12 @@ package com.groupdocs.signature.examples.advanced_usage.search.search_for_metada
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.extensions.encryption.IDataEncryption;
 import com.groupdocs.signature.domain.extensions.serialization.FormatAttribute;
-import com.groupdocs.signature.domain.signatures.metadata.MetadataSignature;
 import com.groupdocs.signature.domain.signatures.metadata.WordProcessingMetadataSignature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.examples.advanced_usage.custom_encryption.CustomXOREncryption;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.options.search.MetadataSearchOptions;
-import com.groupdocs.signature.options.sign.MetadataSignOptions;
 
-import java.io.File;
 import java.util.List;
 
 public class SearchForMetadataCustomEncryptionObject {
@@ -47,7 +44,7 @@ public class SearchForMetadataCustomEncryptionObject {
     /**
      * Search document for metadata signature with applying specific options
      */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_DOCX_METADATA_CUSTOM_ENCRYPTION_OBJECT;

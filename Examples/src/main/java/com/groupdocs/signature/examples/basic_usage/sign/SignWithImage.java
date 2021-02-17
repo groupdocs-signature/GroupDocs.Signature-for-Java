@@ -2,7 +2,6 @@ package com.groupdocs.signature.examples.basic_usage.sign;
 
 
 import com.groupdocs.signature.Signature;
-import com.groupdocs.signature.domain.extensions.SpreadsheetPosition;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.options.sign.ImageSignOptions;
@@ -14,7 +13,7 @@ public class SignWithImage {
     /**
      * Sign pdf document with form-field signature
      */
-    public static void run() {
+    public static void run() throws Exception {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_DOCX;
         String fileName = Paths.get(filePath).getFileName().toString();

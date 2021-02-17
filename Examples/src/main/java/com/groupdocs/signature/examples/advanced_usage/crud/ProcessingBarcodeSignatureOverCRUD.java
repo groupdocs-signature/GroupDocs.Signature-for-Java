@@ -33,7 +33,7 @@ public class ProcessingBarcodeSignatureOverCRUD {
         System.out.print("[Example Advanced Usage] # ProcessingBarcodeSignatureOverCRUD : Process Barcode Signature over all signature life-cycle\n");
 
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX;
+        String filePath = Constants.SAMPLE_WORDPROCESSING;
         String fileName = Paths.get(filePath).getFileName().toString();
 
         String outputFilePath = new File(Constants.OutputPath, "ProcessingBarcodeSignatureOverCRUD\\"+ fileName).getPath();

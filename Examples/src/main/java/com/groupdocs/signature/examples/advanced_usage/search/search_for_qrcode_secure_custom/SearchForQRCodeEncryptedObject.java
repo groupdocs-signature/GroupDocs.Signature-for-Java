@@ -9,8 +9,6 @@ import com.groupdocs.signature.domain.extensions.serialization.FormatAttribute;
 import com.groupdocs.signature.domain.qrcodes.QrCodeTypes;
 import com.groupdocs.signature.domain.signatures.QrCodeSignature;
 import com.groupdocs.signature.examples.Constants;
-import com.groupdocs.signature.examples.advanced_usage.custom_encryption.CustomXOREncryption;
-import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.options.PagesSetup;
 import com.groupdocs.signature.options.search.QrCodeSearchOptions;
 
@@ -46,7 +44,7 @@ public class SearchForQRCodeEncryptedObject {
     /**
      * Search document for QR-Code signature with applying specific options
      */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF_QRCODE_CUSTOM_ENCRYPTION_OBJECT;
@@ -64,10 +62,10 @@ public class SearchForQRCodeEncryptedObject {
             options.setAllPages(true);
             options.setPageNumber(1);
             PagesSetup pagesSetup = new PagesSetup();
-            pagesSetup.setFirstPage(false);
+            pagesSetup.setFirstPage(true);
             pagesSetup.setLastPage(true);
             pagesSetup.setOddPages(false);
-            pagesSetup.setEvenPages(true);
+            pagesSetup.setEvenPages(false);
             options.setPagesSetup(pagesSetup);
             // specify types of QR code to verify
             options.setEncodeType(QrCodeTypes.QR);
@@ -87,7 +85,7 @@ public class SearchForQRCodeEncryptedObject {
                 }
             }
         }catch(Exception e){
-
+            System.out.print( e.getClass());
         }
     }
 }

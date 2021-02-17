@@ -10,7 +10,6 @@ import com.groupdocs.signature.domain.enums.TextSignatureImplementation;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
-import com.groupdocs.signature.options.appearances.PdfTextAnnotationAppearance;
 import com.groupdocs.signature.options.appearances.PdfTextStickerAppearance;
 import com.groupdocs.signature.options.sign.TextSignOptions;
 
@@ -21,7 +20,7 @@ public class SignWithPdfTextSticker {
     /**
      * Sign document with text signature applying specific options
      */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;

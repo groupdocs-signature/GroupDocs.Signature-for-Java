@@ -16,9 +16,9 @@ public class SignWithMetadataEncryptedText {
     /**
     * Sign pdf document with metadata signature with customer object and encryption
     */
-    public static void run()
+    public static void run() throws Exception
     {
-        String filePath = Constants.SAMPLE_DOCX;
+        String filePath = Constants.SAMPLE_WORDPROCESSING;
 
         String outputFilePath = new File(Constants.OutputPath, "SignWithMetadataSecureCustom//MetadataEncryptedText.docx").getPath();
         try{

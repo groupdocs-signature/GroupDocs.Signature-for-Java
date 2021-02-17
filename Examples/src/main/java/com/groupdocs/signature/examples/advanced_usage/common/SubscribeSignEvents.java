@@ -2,19 +2,13 @@ package com.groupdocs.signature.examples.advanced_usage.common;
 
 
 import com.groupdocs.signature.Signature;
-import com.groupdocs.signature.domain.barcodes.BarcodeTypes;
-import com.groupdocs.signature.domain.enums.TextMatchType;
-import com.groupdocs.signature.domain.signatures.BarcodeSignature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.handler.events.*;
-import com.groupdocs.signature.options.PagesSetup;
-import com.groupdocs.signature.options.search.BarcodeSearchOptions;
 import com.groupdocs.signature.options.sign.TextSignOptions;
 
 import java.io.File;
 import java.nio.file.Paths;
-import java.util.List;
 
 public class SubscribeSignEvents {
     /**
@@ -51,7 +45,7 @@ public class SubscribeSignEvents {
     /**
      * Sign document with text signature applying specific options
      */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;

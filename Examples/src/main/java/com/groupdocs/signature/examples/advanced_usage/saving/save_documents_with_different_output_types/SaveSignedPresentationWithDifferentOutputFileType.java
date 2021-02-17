@@ -2,12 +2,10 @@ package com.groupdocs.signature.examples.advanced_usage.saving.save_documents_wi
 
 
 import com.groupdocs.signature.Signature;
-import com.groupdocs.signature.domain.enums.PdfSaveFileFormat;
 import com.groupdocs.signature.domain.enums.PresentationSaveFileFormat;
 import com.groupdocs.signature.domain.qrcodes.QrCodeTypes;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
-import com.groupdocs.signature.options.saveoptions.PdfSaveOptions;
 import com.groupdocs.signature.options.saveoptions.PresentationSaveOptions;
 import com.groupdocs.signature.options.sign.QrCodeSignOptions;
 
@@ -17,7 +15,7 @@ public class SaveSignedPresentationWithDifferentOutputFileType {
     /**
      * Sign document with qr-code signature
      */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PRESENTATION;

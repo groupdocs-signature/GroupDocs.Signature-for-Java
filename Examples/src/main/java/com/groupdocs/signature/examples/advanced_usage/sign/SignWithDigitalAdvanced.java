@@ -19,10 +19,10 @@ public class SignWithDigitalAdvanced {
 /**
  * Sign document with digital signature
  */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.            
-        String filePath = Constants.SAMPLE_DOCX;
+        String filePath = Constants.SAMPLE_WORDPROCESSING;
         String fileName = Paths.get(filePath).getFileName().toString();
         String imagePath = Constants.ImageHandwrite;
         String certificatePath = Constants.CertificatePfx;

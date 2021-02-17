@@ -73,7 +73,7 @@ public class SignWithQRCodeCustomSerializationObject {
     /**
      * Sign document with QR-Code signature applying specific options
      */
-    public static void run() {
+    public static void run() throws Exception {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
 

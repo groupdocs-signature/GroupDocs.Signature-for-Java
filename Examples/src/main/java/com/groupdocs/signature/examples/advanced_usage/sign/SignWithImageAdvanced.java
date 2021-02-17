@@ -22,10 +22,10 @@ public class SignWithImageAdvanced {
     /** 
      * Sign document with image signature applying specific options
      */ 
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX;
+        String filePath = Constants.SAMPLE_WORDPROCESSING;
         String fileName = Paths.get(filePath).getFileName().toString();
         String imagePath = Constants.ImageHandwrite;
 
@@ -53,24 +53,22 @@ public class SignWithImageAdvanced {
             options.setHorizontalAlignment(HorizontalAlignment.Right);
 
             Padding padding = new Padding();
-            padding.setRight(20);
-            padding.setTop(20);
+            padding.setRight(120);
+            padding.setTop(120);
             options.setMargin(padding);
 
             // set rotation
             options.setRotationAngle(45);
 
-            // setup image additional appearance as Brightness and Border
-            ImageAppearance imageAppearance = new ImageAppearance();
+            //setup signature border
             Border border = new Border();
             border.setColor(Color.GREEN);
             border.setDashStyle(DashStyle.DashLongDashDot);
-            border.setWeight(2);
-            border.setTransparency(0.5);
+            border.setWeight(5);
             border.setVisible(true);
-            imageAppearance.setBorder(border);
-            imageAppearance.setBrightness(0.9f);
-            options.setAppearance(imageAppearance);
+
+            options.setBorder(border);
+
 
             // sign document to file
             SignResult signResult = signature.sign(outputFilePath, options);

@@ -18,7 +18,7 @@ public class GetDocumentInfoAdvanced {
         System.out.print("[Example Advanced Usage] # GetDocumentInfoAdvanced : Get document form fields and signatures information\n");
 
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX_BARCODE_SIGNED;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
 
         final Signature signature = new Signature(filePath);
         try /*JAVA: was using*/

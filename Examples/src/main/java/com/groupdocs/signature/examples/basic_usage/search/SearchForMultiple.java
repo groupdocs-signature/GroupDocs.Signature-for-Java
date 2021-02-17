@@ -7,7 +7,6 @@ import com.groupdocs.signature.domain.barcodes.BarcodeTypes;
 import com.groupdocs.signature.domain.enums.TextMatchType;
 import com.groupdocs.signature.domain.qrcodes.QrCodeTypes;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
-import com.groupdocs.signature.domain.signatures.QrCodeSignature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.options.search.BarcodeSearchOptions;
 import com.groupdocs.signature.options.search.MetadataSearchOptions;

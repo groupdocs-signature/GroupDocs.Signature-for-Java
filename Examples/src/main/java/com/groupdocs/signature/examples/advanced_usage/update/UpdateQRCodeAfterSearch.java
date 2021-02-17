@@ -3,11 +3,11 @@ package com.groupdocs.signature.examples.advanced_usage.update;
 
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.UpdateResult;
-import com.groupdocs.signature.domain.signatures.BarcodeSignature;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.domain.signatures.QrCodeSignature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.options.search.BarcodeSearchOptions;
+import com.groupdocs.signature.options.search.QrCodeSearchOptions;
 import org.apache.commons.io.IOUtils;
 
 import java.io.File;
@@ -28,7 +28,7 @@ public class UpdateQRCodeAfterSearch {
         System.out.print("[Example Advanced Usage] # UpdateBarcodeAfterSearch : Update Barcode signature from the document\n");
 
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX_BARCODE_SIGNED;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
         // copy source file since Update method works with same Document
         String fileName = Paths.get(filePath).getFileName().toString();
         String outputFilePath = new File(Constants.OutputPath, "UpdateQRCodeAfterSearch\\" + fileName).getPath();
@@ -36,7 +36,7 @@ public class UpdateQRCodeAfterSearch {
         IOUtils.copy(new FileInputStream(filePath), new FileOutputStream(outputFilePath, true));
         // initialize Signature instance
         Signature signature = new Signature(outputFilePath);
-        BarcodeSearchOptions options = new BarcodeSearchOptions();
+        QrCodeSearchOptions options = new QrCodeSearchOptions();
 
         List<QrCodeSignature> signatures = signature.search(QrCodeSignature.class, options);
         List<BaseSignature> bS = new ArrayList<BaseSignature>();

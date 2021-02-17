@@ -20,10 +20,10 @@ public class SignWithImageAppearance {
     /**
      * Sign document with image signature applying specific options
      */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX;
+        String filePath = Constants.SAMPLE_WORDPROCESSING;
         String imagePath = Constants.ImageHandwrite;
 
         String outputFilePath = new File(Constants.OutputPath, "SignWithAppearances\\DocxImageAppearance.docx").getPath();
@@ -63,7 +63,7 @@ public class SignWithImageAppearance {
             border.setVisible(true);
             border.setWeight(2);
 
-            imageAppearance.setBorder(border);
+            options.setBorder(border);
             options.setAppearance(imageAppearance);
 
             // sign document to file

@@ -3,7 +3,6 @@ package com.groupdocs.signature.examples.advanced_usage.crud;
 
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.*;
-import com.groupdocs.signature.domain.barcodes.BarcodeTypes;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.TextMatchType;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
@@ -32,7 +31,7 @@ public class ProcessingTextSignatureOverCRUD {
         System.out.print("[Example Advanced Usage] # ProcessingTextSignatureOverCRUD : Process Text Signature over all signature life-cycle\n");
 
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX;
+        String filePath = Constants.SAMPLE_WORDPROCESSING;
         String fileName = Paths.get(filePath).getFileName().toString();
 
         String outputFilePath = new File(Constants.OutputPath, "ProcessingTextSignatureOverCRUD\\"+ fileName).getPath();
@@ -103,7 +102,7 @@ public class ProcessingTextSignatureOverCRUD {
             searchOptions.setText(textLabel);
 
             // search for text signatures in document
-            List<TextSignature> signatures = signature.search(TextSignature.class,searchOptions);
+            List<TextSignature> signatures = signature2.search(TextSignature.class,searchOptions);
             System.out.print("\nSource document contains following text signature(s).");
             // enumerate all signature for output
             for (TextSignature textSignature : signatures)

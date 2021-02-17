@@ -1,10 +1,8 @@
 package com.groupdocs.signature.examples.basic_usage.search;
 
 import com.groupdocs.signature.Signature;
-import com.groupdocs.signature.domain.signatures.BarcodeSignature;
 import com.groupdocs.signature.domain.signatures.DigitalSignature;
 import com.groupdocs.signature.examples.Constants;
-import com.groupdocs.signature.options.search.BarcodeSearchOptions;
 import com.groupdocs.signature.options.search.DigitalSearchOptions;
 
 import java.util.List;

@@ -8,9 +8,6 @@ import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.handler.events.*;
 import com.groupdocs.signature.options.verify.TextVerifyOptions;
 
-import java.io.File;
-import java.nio.file.Paths;
-
 public class SubscribeVerifyEvents {
     /**
      * Defines on start process event handler
@@ -46,7 +43,7 @@ public class SubscribeVerifyEvents {
     /**
      * Verify document with text signature applying specific options and subscribe for events
      */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;

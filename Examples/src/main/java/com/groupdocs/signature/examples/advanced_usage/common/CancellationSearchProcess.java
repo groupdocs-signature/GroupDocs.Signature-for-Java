@@ -4,11 +4,13 @@ package com.groupdocs.signature.examples.advanced_usage.common;
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.qrcodes.QrCodeTypes;
 import com.groupdocs.signature.domain.signatures.QrCodeSignature;
+import com.groupdocs.signature.domain.signatures.TextSignature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.handler.events.ProcessProgressEventArgs;
 import com.groupdocs.signature.handler.events.ProcessProgressEventHandler;
 import com.groupdocs.signature.options.search.QrCodeSearchOptions;
+import com.groupdocs.signature.options.search.TextSearchOptions;
 
 import java.util.List;
 
@@ -28,9 +30,9 @@ public class CancellationSearchProcess {
         }
     }
 
-    public static void run() {
+    public static void run() throws Exception {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_PDF;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
 
         try {
             Signature signature = new Signature(filePath);
@@ -40,16 +42,16 @@ public class CancellationSearchProcess {
                 }
             });
 
-            QrCodeSearchOptions options = new QrCodeSearchOptions(QrCodeTypes.QR) {
+            TextSearchOptions options = new TextSearchOptions("Text signature") {
                 // ...
             };
 
             // search for signatures in document
-            List<QrCodeSignature> signatures = signature.search(QrCodeSignature.class, options);
+            List<TextSignature> signatures = signature.search(TextSignature.class, options);
             System.out.print("\nSource document contains following signatures.");
-            for(QrCodeSignature qr_signature : signatures)
+            for(TextSignature text_signature : signatures)
             {
-                System.out.print("QRCode signature found at page "+qr_signature.getPageNumber()+" with type "+ qr_signature.getEncodeType()+" and text " + qr_signature.getText());
+                System.out.print("QRCode signature found at page "+text_signature.getPageNumber()+" with text " + text_signature.getText());
             }
         } catch (Exception e) {
             throw new GroupDocsSignatureException(e.getMessage());

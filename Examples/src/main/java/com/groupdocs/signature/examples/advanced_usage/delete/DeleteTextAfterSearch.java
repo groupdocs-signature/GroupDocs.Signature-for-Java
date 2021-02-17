@@ -28,7 +28,7 @@ public class DeleteTextAfterSearch {
         System.out.print("[Example Advanced Usage] # DeleteTextAfterSearch : Delete Text signature from the document\n");
 
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX_BARCODE_SIGNED;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
         // copy source file since Update method works with same Document
         String fileName = Paths.get(filePath).getFileName().toString();
         String outputFilePath = new File(Constants.OutputPath, "DeleteTextAfterSearch\\"+ fileName).getPath();
@@ -44,7 +44,7 @@ public class DeleteTextAfterSearch {
             // collect signatures to delete
             for (TextSignature temp : signatures)
             {
-                if (temp.getText().contains("JS"))
+                if (temp.getText().contains("Text signature"))
                 {
                     signaturesToDelete.add(temp);
                 }

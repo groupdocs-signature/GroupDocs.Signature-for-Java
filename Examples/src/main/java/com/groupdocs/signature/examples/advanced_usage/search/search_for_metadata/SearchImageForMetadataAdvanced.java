@@ -26,33 +26,18 @@ public class SearchImageForMetadataAdvanced {
             List<ImageMetadataSignature> signatures = signature.search(ImageMetadataSignature.class, SignatureType.Metadata);
             // try to get each Image signature with proper data type added in Basic usage example SignImageWithMetadata
             // specify Id we started to sign
-            int imgsMetadataId = 41996;
+            int imgsMetadataId = 41997;
             ImageMetadataSignature mdSignature;
             // See example SignImageWithMetadata with added various data type values to signatures
             try
             {
                 mdSignature = firstOrDefault(signatures, imgsMetadataId);
                 System.out.print("\t["+mdSignature.getId()+"] as String = "+mdSignature.toString());
-                ++imgsMetadataId;
-                mdSignature = firstOrDefault(signatures, imgsMetadataId);
-                System.out.print("\t["+mdSignature.getId()+"] as DateTime = "+mdSignature.toDateTime());
-                ++imgsMetadataId;
-                mdSignature = firstOrDefault(signatures, imgsMetadataId);
-                System.out.print("\t["+mdSignature.getId()+"] as Integer = "+mdSignature.toInteger());
-                ++imgsMetadataId;
-                mdSignature = firstOrDefault(signatures, imgsMetadataId);
-                System.out.print("\t["+mdSignature.getId()+"] as Double = "+mdSignature.toDouble());
-                ++imgsMetadataId;
-                mdSignature = firstOrDefault(signatures, imgsMetadataId);
-                System.out.print("\t["+mdSignature.getId()+"] as Decimal = "+mdSignature.toDecimal());
-                ++imgsMetadataId;
-                mdSignature = firstOrDefault(signatures, imgsMetadataId);
-                System.out.print("\t["+mdSignature.getId()+"] as Float = "+mdSignature.toSingle());
-                ++imgsMetadataId;
+
             }
             catch(Exception ex)
             {
-                System.out.print("Error obtaining signature: {ex.Message}");
+                System.out.print("Error obtaining signature: "+ex.getMessage());
             }
         }
     }

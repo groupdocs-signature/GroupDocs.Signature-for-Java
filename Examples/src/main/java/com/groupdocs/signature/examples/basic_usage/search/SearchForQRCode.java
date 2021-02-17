@@ -2,10 +2,8 @@ package com.groupdocs.signature.examples.basic_usage.search;
 
 
 import com.groupdocs.signature.Signature;
-import com.groupdocs.signature.domain.signatures.DigitalSignature;
 import com.groupdocs.signature.domain.signatures.QrCodeSignature;
 import com.groupdocs.signature.examples.Constants;
-import com.groupdocs.signature.options.search.DigitalSearchOptions;
 import com.groupdocs.signature.options.search.QrCodeSearchOptions;
 
 import java.util.List;

@@ -3,7 +3,6 @@ package com.groupdocs.signature.examples.advanced_usage.crud;
 
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.*;
-import com.groupdocs.signature.domain.barcodes.BarcodeTypes;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.domain.qrcodes.QrCodeTypes;
@@ -33,7 +32,7 @@ public class ProcessingQrCodeSignatureOverCRUD {
         System.out.print("[Example Advanced Usage] # ProcessingQrCodeSignatureOverCRUD : Process QR-Code Signature over all signature life-cycle\n");
 
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX;
+        String filePath = Constants.SAMPLE_WORDPROCESSING;
         String fileName = Paths.get(filePath).getFileName().toString();
 
         String outputFilePath = new File(Constants.OutputPath, "ProcessingQRCodeSignatureOverCRUD\\"+ fileName).getPath();

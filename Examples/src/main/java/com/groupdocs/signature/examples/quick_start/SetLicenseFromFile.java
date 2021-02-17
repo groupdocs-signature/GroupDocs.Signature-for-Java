@@ -5,7 +5,6 @@ import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.licensing.License;
 
 import java.io.File;
-import java.nio.file.Files;
 
 public class SetLicenseFromFile {
     /**

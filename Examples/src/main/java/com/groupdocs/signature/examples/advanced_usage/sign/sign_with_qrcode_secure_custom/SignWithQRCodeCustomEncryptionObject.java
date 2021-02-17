@@ -14,7 +14,6 @@ import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.options.sign.QrCodeSignOptions;
 
 import java.io.File;
-import java.nio.file.Paths;
 
 public class SignWithQRCodeCustomEncryptionObject {
     // Define custom data signature class
@@ -47,7 +46,7 @@ public class SignWithQRCodeCustomEncryptionObject {
     /**
     * Sign document with QR-Code signature applying specific options
     */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;

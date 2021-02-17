@@ -5,11 +5,8 @@ import com.groupdocs.signature.domain.signatures.TextSignature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.options.search.TextSearchOptions;
-import org.apache.commons.io.IOUtils;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.nio.file.Paths;
 import java.util.List;
 
@@ -21,7 +18,7 @@ public class UpdateText {
      */
     public static void run() throws Exception {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_SPREADSHEET_SIGNED;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
         // copy source file since Update method works with same Document
         String fileName = Paths.get(filePath).getFileName().toString();
         String outputFilePath = new File(Constants.OutputPath, "UpdateText\\" + fileName).getPath();

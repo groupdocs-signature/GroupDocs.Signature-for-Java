@@ -3,16 +3,11 @@ package com.groupdocs.signature.examples.advanced_usage.common;
 
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.VerificationResult;
-import com.groupdocs.signature.domain.qrcodes.QrCodeTypes;
-import com.groupdocs.signature.domain.signatures.QrCodeSignature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.handler.events.ProcessProgressEventArgs;
 import com.groupdocs.signature.handler.events.ProcessProgressEventHandler;
-import com.groupdocs.signature.options.search.QrCodeSearchOptions;
 import com.groupdocs.signature.options.verify.TextVerifyOptions;
-
-import java.util.List;
 
 public class CancellationVerifyProcess {
     /**
@@ -29,7 +24,7 @@ public class CancellationVerifyProcess {
         }
     }
 
-    public static void run() {
+    public static void run() throws Exception {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
 

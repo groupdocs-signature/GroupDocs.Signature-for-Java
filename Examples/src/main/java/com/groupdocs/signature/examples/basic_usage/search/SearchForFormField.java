@@ -3,10 +3,8 @@ package com.groupdocs.signature.examples.basic_usage.search;
 
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.signatures.formfield.FormFieldSignature;
-import com.groupdocs.signature.domain.signatures.metadata.MetadataSignature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.options.search.FormFieldSearchOptions;
-import com.groupdocs.signature.options.search.MetadataSearchOptions;
 
 import java.util.List;
 

@@ -2,18 +2,14 @@ package com.groupdocs.signature.examples.advanced_usage.common;
 
 
 import com.groupdocs.signature.Signature;
-import com.groupdocs.signature.domain.qrcodes.QrCodeTypes;
-import com.groupdocs.signature.domain.signatures.QrCodeSignature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.handler.events.ProcessProgressEventArgs;
 import com.groupdocs.signature.handler.events.ProcessProgressEventHandler;
-import com.groupdocs.signature.options.search.QrCodeSearchOptions;
 import com.groupdocs.signature.options.sign.TextSignOptions;
 
 import java.io.File;
 import java.nio.file.Paths;
-import java.util.List;
 
 public class CancellationSignProcess {
     /**
@@ -33,7 +29,7 @@ public class CancellationSignProcess {
     /**
      * Sign document with text signature applying specific options
      */
-    public static void run() {
+    public static void run() throws Exception {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
         String fileName = Paths.get(filePath).getFileName().toString();

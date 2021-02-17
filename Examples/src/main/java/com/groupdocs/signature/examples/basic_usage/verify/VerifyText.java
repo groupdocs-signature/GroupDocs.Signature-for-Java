@@ -5,7 +5,6 @@ import com.groupdocs.signature.domain.VerificationResult;
 import com.groupdocs.signature.domain.enums.TextMatchType;
 import com.groupdocs.signature.domain.enums.TextSignatureImplementation;
 import com.groupdocs.signature.examples.Constants;
-import com.groupdocs.signature.options.verify.QrCodeVerifyOptions;
 import com.groupdocs.signature.options.verify.TextVerifyOptions;
 
 
@@ -16,15 +15,14 @@ public class VerifyText {
     public static void run()
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_SPREADSHEET_TEXT_SIGNED;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
 
         try {
             Signature signature = new Signature(filePath);
             TextVerifyOptions options = new TextVerifyOptions();
-            options.setAllPages(false); // this value is set by default
             options.setSignatureImplementation(TextSignatureImplementation.Native);
-            options.setText("John Smith");
-            //options.setMatchType(TextMatchType.Contains);
+            options.setText("signature");
+            options.setMatchType(TextMatchType.Contains);
 
             // verify document signatures
             VerificationResult result = signature.verify(options);

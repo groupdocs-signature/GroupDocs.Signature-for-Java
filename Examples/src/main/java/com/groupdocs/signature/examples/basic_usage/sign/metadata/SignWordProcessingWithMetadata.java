@@ -15,7 +15,7 @@ public class SignWordProcessingWithMetadata {
     /**
      * Sign word-processing document with metadata signature
      */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_DOCX;

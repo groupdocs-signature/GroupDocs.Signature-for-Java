@@ -25,7 +25,7 @@ public class SignWithTextWatermarkNative
         System.out.print("[Example Advanced Usage] # SignWithTextWatermarkNative : Sign WordProcessing document with text watermark signature using document specific implementation\n");
 
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX;
+        String filePath = Constants.SAMPLE_WORDPROCESSING;
         String fileName = Paths.get(filePath).getFileName().toString();
 
         String outputFilePath = new File(Constants.OutputPath, "SignWithTextWatermarkNative\\"+ fileName).getPath();

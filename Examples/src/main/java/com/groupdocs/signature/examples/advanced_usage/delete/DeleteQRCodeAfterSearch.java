@@ -27,7 +27,7 @@ public class DeleteQRCodeAfterSearch {
         System.out.print("[Example Advanced Usage] # DeleteQRCodeAfterSearch : Delete QR-code signature from the document\n");
 
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX_BARCODE_SIGNED;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
         // copy source file since Update method works with same Document
         String fileName = Paths.get(filePath).getFileName().toString();
         String outputFilePath = new File(Constants.OutputPath, "DeleteQRCodeAfterSearch\\"+ fileName).getPath();

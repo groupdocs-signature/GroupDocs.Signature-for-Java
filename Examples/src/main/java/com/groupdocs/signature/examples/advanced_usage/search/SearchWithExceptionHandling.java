@@ -16,7 +16,7 @@ public class SearchWithExceptionHandling {
      */
     public static void run() {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_SIGNED_PWD_PDF;
+        String filePath = Constants.SAMPLE_PDF_SIGNED_PWD;
         try {
             LoadOptions loadOptions = new LoadOptions();
             Signature signature = new Signature(filePath,loadOptions);

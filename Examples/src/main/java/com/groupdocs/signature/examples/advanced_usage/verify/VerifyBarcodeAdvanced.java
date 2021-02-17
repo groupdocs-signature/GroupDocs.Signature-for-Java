@@ -4,11 +4,8 @@ package com.groupdocs.signature.examples.advanced_usage.verify;
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.VerificationResult;
 import com.groupdocs.signature.domain.enums.TextMatchType;
-import com.groupdocs.signature.domain.qrcodes.QrCodeTypes;
 import com.groupdocs.signature.examples.Constants;
-import com.groupdocs.signature.options.PagesSetup;
 import com.groupdocs.signature.options.verify.BarcodeVerifyOptions;
-import com.groupdocs.signature.options.verify.QrCodeVerifyOptions;
 
 public class VerifyBarcodeAdvanced {
     /**
@@ -17,12 +14,12 @@ public class VerifyBarcodeAdvanced {
     public static void run()
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_PDF_SIGNED;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
         try {
             Signature signature = new Signature(filePath);
             BarcodeVerifyOptions options = new BarcodeVerifyOptions();
             options.setAllPages(true); // this value is set by default
-            options.setText("John");
+            options.setText("12345");
             options.setMatchType(TextMatchType.Contains);
 
             // verify document signatures

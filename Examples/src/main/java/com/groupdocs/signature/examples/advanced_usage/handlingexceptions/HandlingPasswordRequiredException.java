@@ -16,11 +16,11 @@ public class HandlingPasswordRequiredException {
      * Sign document with qr-code signature
      * </p>
      */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory
         // This file is secured with password
-        String filePath = Constants.SAMPLE_SIGNED_PWD_PDF;
+        String filePath = Constants.SAMPLE_PDF_SIGNED_PWD;
         String fileName = Paths.get(filePath).getFileName().toString();
         String outputFilePath = new File(Constants.OutputPath, "\\HandlingExceptions" + fileName).getPath();
         // skip initialization of LoadOptions with Password

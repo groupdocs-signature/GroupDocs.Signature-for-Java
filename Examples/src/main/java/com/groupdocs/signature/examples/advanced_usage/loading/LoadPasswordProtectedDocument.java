@@ -15,10 +15,10 @@ public class LoadPasswordProtectedDocument {
     /**
      * Sign document with qr-code signature
      */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_SIGNED_PWD_PDF;
+        String filePath = Constants.SAMPLE_PDF_SIGNED_PWD;
         String fileName = Paths.get(filePath).getFileName().toString();
 
         String outputFilePath = new File(Constants.OutputPath, "LoadPasswordProtected\\"+ fileName).getPath();

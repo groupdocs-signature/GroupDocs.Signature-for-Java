@@ -20,7 +20,7 @@ public class GeneratePreviewAdvanced {
      * Generate document pages preview with using HideSignature feature
      * </p>
      */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF_SIGNED;
@@ -68,7 +68,7 @@ public class GeneratePreviewAdvanced {
 
             return new FileOutputStream(filePath);
         }catch (Exception e){
-            throw new GroupDocsSignatureException(e.getMessage());
+            throw new RuntimeException(e.getMessage());
         }
 
     }
@@ -80,7 +80,7 @@ public class GeneratePreviewAdvanced {
             String imageFilePath = new File(Constants.OutputPath + "\\GeneratePreviewHideSignatures", "image-" +pageNumber +  ".jpg").getPath();
             System.out.print("Image file "+imageFilePath+" is ready for preview");
         }catch (Exception e){
-            throw new GroupDocsSignatureException(e.getMessage());
+            throw new RuntimeException(e.getMessage());
         }
     }
 }

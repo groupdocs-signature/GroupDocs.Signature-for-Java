@@ -12,7 +12,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 
 public class LoadDocumentFromStream {
-    public static void run()
+    public static void run() throws Exception
     {
         String outputFilePath = new File(Constants.OutputPath, "SignFromStream\\signedSample.pdf").getPath();
 

@@ -42,7 +42,7 @@ public class SearchForMetadataCustomSerializationObject {
     /**
      * Search document for metadata signature with applying specific options
      */
-    public static void run()
+    public static void run() throws Exception
     {
     // The path to the documents directory.
     String filePath = Constants.SAMPLE_DOCX_METADATA_CUSTOM_SERIALIZATION_OBJECT;

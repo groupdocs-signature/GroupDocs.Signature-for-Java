@@ -4,7 +4,6 @@ import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.signatures.TextSignature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
-
 import com.groupdocs.signature.options.search.TextSearchOptions;
 import org.apache.commons.io.IOUtils;
 

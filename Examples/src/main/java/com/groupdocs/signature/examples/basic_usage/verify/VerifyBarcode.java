@@ -4,12 +4,8 @@ package com.groupdocs.signature.examples.basic_usage.verify;
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.VerificationResult;
 import com.groupdocs.signature.domain.enums.TextMatchType;
-import com.groupdocs.signature.domain.signatures.formfield.FormFieldSignature;
 import com.groupdocs.signature.examples.Constants;
-import com.groupdocs.signature.options.search.FormFieldSearchOptions;
 import com.groupdocs.signature.options.verify.BarcodeVerifyOptions;
-
-import java.util.List;
 
 public class VerifyBarcode {
     /**
@@ -18,7 +14,7 @@ public class VerifyBarcode {
     public static void run()
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX_BARCODE_SIGNED;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
 
         try {
             Signature signature = new Signature(filePath);

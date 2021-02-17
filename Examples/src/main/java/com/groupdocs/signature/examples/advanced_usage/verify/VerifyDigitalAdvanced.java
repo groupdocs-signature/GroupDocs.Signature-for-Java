@@ -15,13 +15,11 @@ public class VerifyDigitalAdvanced {
     public static void run()
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_PDF_SIGNED;
-        String certificate = Constants.CertificateCer;
+        String filePath = Constants.SAMPLE_PDF_SIGNED_DIGITAL;
         try {
             Signature signature = new Signature(filePath);
-            DigitalVerifyOptions options = new DigitalVerifyOptions(certificate);
-                options.setComments("Test1");
-                options.setSignDateTimeFrom(new Date(2019, 5, 1));
+            DigitalVerifyOptions options = new DigitalVerifyOptions();
+            options.setComments("Approved");
 
             // verify document signatures
 

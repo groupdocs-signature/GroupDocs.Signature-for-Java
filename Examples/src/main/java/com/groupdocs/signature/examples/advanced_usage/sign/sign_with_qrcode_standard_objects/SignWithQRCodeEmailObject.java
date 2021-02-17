@@ -10,7 +10,6 @@ import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.options.sign.QrCodeSignOptions;
 
 import java.io.File;
-import java.nio.file.Paths;
 
 
 public class SignWithQRCodeEmailObject {

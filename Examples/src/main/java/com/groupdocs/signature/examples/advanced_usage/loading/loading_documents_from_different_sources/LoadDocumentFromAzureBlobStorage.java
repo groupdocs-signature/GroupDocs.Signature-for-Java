@@ -13,7 +13,6 @@ import com.microsoft.azure.storage.blob.CloudBlobContainer;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.InputStream;
 
 /**
  * This example demonstrates how to download document from Azure Blob storage and render document.

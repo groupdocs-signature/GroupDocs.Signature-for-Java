@@ -29,7 +29,7 @@ public class DeleteMultipleAdvanced {
         System.out.print("[Example Advanced Usage] # DeleteMultipleAdvanced : Delete multiple signatures in the document\n");
 
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_PDF_SIGNED;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
         String fileName = Paths.get(filePath).getFileName().toString();
         String outputFilePath = new File(Constants.OutputPath, "DeleteMultipleAdvanced\\"+ fileName).getPath();
         Constants.checkDir(outputFilePath);

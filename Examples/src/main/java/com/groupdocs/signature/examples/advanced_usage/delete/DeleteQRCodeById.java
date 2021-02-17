@@ -27,7 +27,7 @@ public class DeleteQRCodeById {
         System.out.print("[Example Advanced Usage] # DeleteQRCodeById : Delete QR-code signature in the document by known SignatureId\n");
 
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX_BARCODE_SIGNED;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
         String fileName = Paths.get(filePath).getFileName().toString();
         String outputFilePath = new File(Constants.OutputPath, "DeleteQRCodeById\\"+ fileName).getPath();
         Constants.checkDir(outputFilePath);
@@ -38,8 +38,7 @@ public class DeleteQRCodeById {
             // read from some data source signature Id value
             String[] signatureIdList = new String[]
                 {
-                        "1a5fbc08-4b96-43d9-b650-578b16fbb877",
-                        "b0123987-b0d4-4004-86ec-30ab5c41ac7e"
+                        "eff64a14-dad9-47b0-88e5-2ee4e3604e71"
                 };
             // create list of QR-code Signature by known SignatureId
             List<BaseSignature> signatures = new ArrayList<BaseSignature>();

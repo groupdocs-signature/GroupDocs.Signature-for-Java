@@ -15,10 +15,10 @@ public class SaveSignedWordProcessingWithDifferentOutputFileType {
     /**
     * Sign document with qr-code signature
     */
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX;
+        String filePath = Constants.SAMPLE_WORDPROCESSING;
 
         String outputFilePath = new File(Constants.OutputPath, "SaveSignedOutputType//SampleDocX.odt").getPath();
 

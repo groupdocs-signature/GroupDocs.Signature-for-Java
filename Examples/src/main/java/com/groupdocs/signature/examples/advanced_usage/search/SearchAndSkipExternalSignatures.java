@@ -6,7 +6,6 @@ import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.options.loadoptions.LoadOptions;
 import com.groupdocs.signature.options.search.TextSearchOptions;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class SearchAndSkipExternalSignatures {
@@ -18,11 +17,9 @@ public class SearchAndSkipExternalSignatures {
     public static void run()
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_SPREADSHEET;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
 
-        LoadOptions loadOptions = new LoadOptions();
-        loadOptions.setPassword("1234567890");
-        final Signature signature = new Signature(filePath, loadOptions);
+        final Signature signature = new Signature(filePath);
         try /*JAVA: was using*/
         {
             TextSearchOptions options = new TextSearchOptions();

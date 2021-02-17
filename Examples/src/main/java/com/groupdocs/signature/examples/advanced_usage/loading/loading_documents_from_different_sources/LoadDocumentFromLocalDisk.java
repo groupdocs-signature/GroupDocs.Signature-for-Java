@@ -10,9 +10,9 @@ import java.io.File;
 import java.nio.file.Paths;
 
 public class LoadDocumentFromLocalDisk {
-    public static void run()
+    public static void run() throws Exception
     {
-        String filePath = Constants.SAMPLE_DOCX;
+        String filePath = Constants.SAMPLE_WORDPROCESSING;
         String fileName = Paths.get(filePath).getFileName().toString();
 
         String outputFilePath = new File(Constants.OutputPath, "SignWithText\\"+ fileName).getPath();

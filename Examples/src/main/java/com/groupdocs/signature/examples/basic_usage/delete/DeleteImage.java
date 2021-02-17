@@ -22,7 +22,7 @@ public class DeleteImage {
     public static void run() throws Exception
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX_BARCODE_SIGNED;
+        String filePath = Constants.SAMPLE_SIGNED_MULTI;
         String fileName = Paths.get(filePath).getFileName().toString();
         // copy source file since Delete method works with same Document
         String outputFilePath = new File(Constants.OutputPath, "DeleteImage\\" + fileName).getPath();

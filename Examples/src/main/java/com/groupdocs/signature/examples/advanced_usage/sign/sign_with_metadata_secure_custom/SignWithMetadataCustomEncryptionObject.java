@@ -43,10 +43,10 @@ public class SignWithMetadataCustomEncryptionObject {
     /// <summary>
     /// Sign pdf document with metadata signature with customer object and encryption
     /// </summary>
-    public static void run()
+    public static void run() throws Exception
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX;
+        String filePath = Constants.SAMPLE_WORDPROCESSING;
 
         String outputFilePath = new File(Constants.OutputPath, "SignWithMetadataSecureCustom//MetadataCustomEncryptionObject.docx").getPath();
 
