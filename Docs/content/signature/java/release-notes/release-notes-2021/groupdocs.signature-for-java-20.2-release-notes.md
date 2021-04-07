@@ -1,6 +1,6 @@
 ---
 id: groupdocs-signature-for-java-21-2-release-notes
-url: signature/java/groupdocs-signature-for-net-21-2-release-notes
+url: signature/java/groupdocs-signature-for-java-21-2-release-notes
 title: GroupDocs.Signature for Java 21.2 Release Notes
 weight: 50
 description: ""
