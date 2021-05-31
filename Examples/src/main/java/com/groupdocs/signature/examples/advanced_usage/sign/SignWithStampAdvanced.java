@@ -28,7 +28,7 @@ public class SignWithStampAdvanced {
         String filePath = Constants.SAMPLE_PDF;
         String fileName = Paths.get(filePath).getFileName().toString();
 
-        String outputFilePath = new File(Constants.OutputPath, "SignWithBarcodeAdvanced\\" + fileName).getPath();
+        String outputFilePath = new File(Constants.OutputPath, "SignWithStampAdvanced\\" + fileName).getPath();
 
         try {
             Signature signature = new Signature(filePath);

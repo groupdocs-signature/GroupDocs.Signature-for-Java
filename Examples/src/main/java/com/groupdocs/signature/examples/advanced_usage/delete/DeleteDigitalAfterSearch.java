@@ -41,6 +41,7 @@ public class DeleteDigitalAfterSearch
         try /*JAVA: was using*/
         {
             List<DigitalSignature> signatures = signature.search(DigitalSignature.class, SignatureType.Digital);
+
             final List<BaseSignature> signaturesToDelete = new ArrayList<BaseSignature>() ;
             // collect signatures to delete
             signaturesToDelete.addAll(signatures);

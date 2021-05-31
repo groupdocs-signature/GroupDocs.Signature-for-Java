@@ -18,7 +18,7 @@ public class SignWordProcessingWithMetadata {
     public static void run() throws Exception
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_DOCX;
+        String filePath = Constants.SAMPLE_WORDPROCESSING;
         String fileName = Paths.get(filePath).getFileName().toString();
 
         String outputFilePath = new File(Constants.OutputPath, "SignWordWithMetadata//"+ fileName).getPath();

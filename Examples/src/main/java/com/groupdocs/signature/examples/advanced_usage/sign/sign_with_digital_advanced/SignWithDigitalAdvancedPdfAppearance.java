@@ -2,15 +2,20 @@ package com.groupdocs.signature.examples.advanced_usage.sign.sign_with_digital_a
 
 
 import com.groupdocs.signature.Signature;
+import com.groupdocs.signature.domain.Border;
+import com.groupdocs.signature.domain.Padding;
 import com.groupdocs.signature.domain.SignResult;
+import com.groupdocs.signature.domain.enums.DashStyle;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.domain.signatures.PdfDigitalSignature;
 import com.groupdocs.signature.domain.structs.TimeStamp;
 import com.groupdocs.signature.examples.Constants;
+import com.groupdocs.signature.options.appearances.PdfDigitalSignatureAppearance;
 import com.groupdocs.signature.options.sign.DigitalSignOptions;
 
+import java.awt.*;
 import java.io.File;
 
 public class SignWithDigitalAdvancedPdfAppearance
@@ -29,40 +34,61 @@ public class SignWithDigitalAdvancedPdfAppearance
         String filePath = Constants.SAMPLE_PDF;
         String certificatePath = Constants.CertificatePfx;
 
-        String outputFilePathSigned = new File(Constants.OutputPath, "SignWithDigitalAdvancedPdf\\digitallySignedTimeStamp.pdf").getPath();
+        String outputFilePathSigned = new File(Constants.OutputPath, "SignWithDigitalAdvancedPdf\\digitallySignedPdfAppearance.pdf").getPath();
         String outputFilePathCertified = new File(Constants.OutputPath, "SignWithDigitalAdvancedPdf\\digitallyCertified.pdf").getPath();
 
         //Sign pdf document with digital signature and time stamp
         Signature signature = new Signature(filePath);
-        {
-            PdfDigitalSignature pdfDigitalSignature = new PdfDigitalSignature();
-            pdfDigitalSignature.setContactInfo("Contact");
-            pdfDigitalSignature.setLocation("Location");
-            pdfDigitalSignature.setReason("Reason");
 
+        //Create digital signing options
+        DigitalSignOptions options = new DigitalSignOptions(certificatePath);
+        // certificate password
+        options.setPassword("1234567890");
+        // digital certificate details
+        options.setReason("Approved");
+        options.setLocation("New York");
 
-            // Setting data for getting time stamp from third-party site for pdf digital signature
-            pdfDigitalSignature.setTimeStamp(new TimeStamp("https://freetsa.org/tsr", "", ""));
+        // apply custom PDF signature appearance
+        PdfDigitalSignatureAppearance appearance = new PdfDigitalSignatureAppearance();
 
-            //Create digital signing options
-            DigitalSignOptions options = new DigitalSignOptions(certificatePath);
-            // certificate password
-            options.setPassword("1234567890");
-            // Setting document-specific options
-            options.setSignature(pdfDigitalSignature);
-            // Page position
-            options.setVerticalAlignment(VerticalAlignment.Bottom);
-            options.setHorizontalAlignment(HorizontalAlignment.Right);
+        // do now show contact details
+        appearance.setContactInfoLabel("");
+        // simplify reason label
+        appearance.setReasonLabel("R:");
+        // change location label
+        appearance.setLocationLabel("@=>");
+        appearance.setDigitalSignedLabel("By:");
+        appearance.setDateSignedAtLabel("On");
+        // apply custom appearance color
+        appearance.setBackground(Color.red);
+        // apply custom font settings
+        appearance.setFontFamilyName("Courier");
+        appearance.setFontSize(8);
 
+        options.setAppearance(appearance);
+        //
+        options.setAllPages(true);
+        options.setWidth(160);
+        options.setHeight(80);
+        options.setVerticalAlignment(VerticalAlignment.Center);
+        options.setHorizontalAlignment(HorizontalAlignment.Left);
+        options.setMargin(new Padding(0, 10,0, 10));
 
-            SignResult signResult = signature.sign(outputFilePathSigned, options);
-            System.out.print("\nSource document signed successfully with "+signResult.getSucceeded().size()+" signature(s).\nFile saved at "+outputFilePathSigned);
+        // setup signature border
+        Border border = new Border();
+        border.setVisible(true);
+        border.setColor(Color.red);
+        border.setDashStyle(DashStyle.DashDot);
+        border.setWeight(2);
+        options.setBorder(border);
 
-            System.out.print("\nList of newly created signatures:");
-            int number = 1;
-            for (BaseSignature temp : signResult.getSucceeded()) {
-                System.out.print("Signature # " + number++ + ": Type: " + temp.getSignatureType() + " Id:" + temp.getSignatureId() + ", Location: " + temp.getLeft() + "x" + temp.getTop() + ". Size: " + temp.getWidth() + "x" + temp.getHeight());
-            }
+        SignResult signResult = signature.sign(outputFilePathSigned, options);
+        System.out.print("\nSource document signed successfully with "+signResult.getSucceeded().size()+" signature(s).\nFile saved at "+outputFilePathSigned);
+
+        System.out.print("\nList of newly created signatures:");
+        int number = 1;
+        for (BaseSignature temp : signResult.getSucceeded()) {
+            System.out.print("Signature # " + number++ + ": Type: " + temp.getSignatureType() + " Id:" + temp.getSignatureId() + ", Location: " + temp.getLeft() + "x" + temp.getTop() + ". Size: " + temp.getWidth() + "x" + temp.getHeight());
         }
     }
 }

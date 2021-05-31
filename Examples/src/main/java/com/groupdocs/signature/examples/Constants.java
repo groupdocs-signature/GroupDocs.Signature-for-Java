@@ -5,15 +5,15 @@ import java.io.File;
 public class Constants {
 
 	// Storage path
-	public static final String SamplesPath = (System.getProperty("user.dir") + "\\Resources\\SampleFiles\\");
+	public static final String SamplesPath = (System.getProperty("user.dir") + "\\Examples\\Resources\\SampleFiles\\");
 	// License path
-	public static final String LicensePath = "E:\\Lisbon\\Java_products\\License_Unlimited\\Conholdate.Total.Product.Family.lic";
+	public static final String LicensePath = "E:\\GroupDocs.Signature.Product.Family.lic";
 	// Output path
-	public static final String OutputPath = (System.getProperty("user.dir") + "\\Resources\\Output\\");
+	public static final String OutputPath = (System.getProperty("user.dir") + "\\Examples\\Resources\\Output\\");
 	//Certificates path
-	public static final String CertificatesPath = (System.getProperty("user.dir") + "\\Resources\\SampleFiles\\Certificates\\");
+	public static final String CertificatesPath = (System.getProperty("user.dir") + "\\Examples\\Resources\\SampleFiles\\Certificates\\");
 	// Image path
-	public static final String ImagesPath = (System.getProperty("user.dir") + "\\Resources\\SampleFiles\\Images\\");
+	public static final String ImagesPath = (System.getProperty("user.dir") + "\\Examples\\Resources\\SampleFiles\\Images\\");
 
     // Images
     public static String ImageHandwrite = new File(ImagesPath, "signature_handwrite.jpg").getPath();
