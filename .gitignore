@@ -3,3 +3,4 @@ Examples\target
 Examples\Resources\Output
 Examples\*.iml
 deploy_key
+*.lic

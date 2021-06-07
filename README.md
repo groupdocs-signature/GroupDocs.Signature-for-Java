@@ -11,7 +11,8 @@ GroupDocs.Signature for Java is an [Digital Signature API](https://products.grou
 
 Directory | Description
 --------- | -----------
-[Docs](https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java/tree/master/Docs)  | Product documentation containing the Developer's Guide, Release Notes and more.
+[Docs](https://github.com/groupdocs-signature/GroupDocs.Signature-for-Docs)  | Product documentation containing the Developer's Guide, Release Notes and more.
+[Demos](https://github.com/groupdocs-conversion/GroupDocs.Signature-for-Java/tree/master/Demos)  | Build document eSign applications using GroupDocs.Signature for Java. 
 [Examples](https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java/tree/master/Examples)  | Java examples and sample documents for you to get started quickly. 
 
 ## Electronic Signature Management via Java

@@ -1,0 +1,27 @@
+{
+  "name": "groupdocs.signature-for-java-servlet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java-Servlet.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java-Servlet/issues"
+  },
+  "homepage": "https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java-Servlet#readme",
+  "dependencies": {
+    "@groupdocs.examples.jquery/common": "^0.8.0",
+    "@groupdocs.examples.jquery/signature": "^0.8.0",
+    "@groupdocs.examples.jquery/viewer": "^0.8.0"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.0"
+  }
+}
