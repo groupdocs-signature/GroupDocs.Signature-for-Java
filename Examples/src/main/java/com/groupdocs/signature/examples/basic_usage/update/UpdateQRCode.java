@@ -25,7 +25,7 @@ public class UpdateQRCode {
         String filePath = Constants.SAMPLE_PDF_SIGNED;
         // copy source file since Update method works with same Document
         String fileName = Paths.get(filePath).getFileName().toString();
-        String outputFilePath = new File(Constants.OutputPath, "UpdateQRCode"+ fileName).getPath();
+        String outputFilePath = new File(Constants.OutputPath, "UpdateQRCode//"+ fileName).getPath();
         Constants.checkDir(outputFilePath);
         IOUtils.copy(new FileInputStream(filePath), new FileOutputStream(outputFilePath, true));
         // initialize Signature instance

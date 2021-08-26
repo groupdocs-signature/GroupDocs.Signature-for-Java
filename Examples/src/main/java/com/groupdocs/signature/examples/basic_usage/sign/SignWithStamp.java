@@ -22,7 +22,7 @@ public class SignWithStamp {
         String filePath = Constants.SAMPLE_PDF;
         String fileName = Paths.get(filePath).getFileName().toString();
 
-        String outputFilePath = new File(Constants.OutputPath, "SignWithStamp-"+ fileName).getPath();
+        String outputFilePath = new File(Constants.OutputPath, "SignWithStamp//"+ fileName).getPath();
         try {
             Signature signature = new Signature(filePath);
 

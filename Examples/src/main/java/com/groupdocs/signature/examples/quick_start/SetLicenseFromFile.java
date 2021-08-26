@@ -5,6 +5,8 @@ import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.licensing.License;
 
 import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
 
 public class SetLicenseFromFile {
     /**

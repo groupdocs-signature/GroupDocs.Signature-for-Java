@@ -28,7 +28,7 @@ public class SignWithTextAdvanced {
         String filePath = Constants.SAMPLE_WORDPROCESSING;
         String fileName = Paths.get(filePath).getFileName().toString();
 
-        String outputFilePath = new File(Constants.OutputPath, "SignWithTextAdvanced-"+ fileName).getPath();
+        String outputFilePath = new File(Constants.OutputPath, "SignWithTextAdvanced\\"+ fileName).getPath();
         try {
             Signature signature = new Signature(filePath);
 

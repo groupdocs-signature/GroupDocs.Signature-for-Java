@@ -27,7 +27,7 @@ public class SignWithDigitalAdvanced {
         String imagePath = Constants.ImageHandwrite;
         String certificatePath = Constants.CertificatePfx;
 
-        String outputFilePath = new File(Constants.OutputPath, "SignWithDigital-" + fileName).getPath();
+        String outputFilePath = new File(Constants.OutputPath, "SignWithDigital\\" + fileName).getPath();
         try {
             Signature signature = new Signature(filePath);
 

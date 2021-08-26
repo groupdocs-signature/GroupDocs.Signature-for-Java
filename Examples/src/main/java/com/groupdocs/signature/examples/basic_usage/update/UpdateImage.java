@@ -25,7 +25,7 @@ public class UpdateImage {
         String filePath = Constants.SAMPLE_SIGNED_MULTI;
         // copy source file since Update method works with same Document
         String fileName = Paths.get(filePath).getFileName().toString();
-        String outputFilePath = new File(Constants.OutputPath, "UpdateImage"+ fileName).getPath();
+        String outputFilePath = new File(Constants.OutputPath, "UpdateImage//"+ fileName).getPath();
         Constants.checkDir(outputFilePath);
         IOUtils.copy(new FileInputStream(filePath), new FileOutputStream(outputFilePath, true));
         // initialize Signature instance

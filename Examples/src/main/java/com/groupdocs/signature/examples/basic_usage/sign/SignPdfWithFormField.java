@@ -24,7 +24,7 @@ public class SignPdfWithFormField {
         String filePath = Constants.SAMPLE_PDF;
         String fileName = Paths.get(filePath).getFileName().toString();
 
-        String outputFilePath = new File(Constants.OutputPath, "SignPdfWithFormField-"+ fileName).getPath();
+        String outputFilePath = new File(Constants.OutputPath, "SignPdfWithFormField//"+ fileName).getPath();
         try {
             Signature signature = new Signature(filePath);
 

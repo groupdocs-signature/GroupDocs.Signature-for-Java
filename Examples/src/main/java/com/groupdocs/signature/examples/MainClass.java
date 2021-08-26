@@ -8,6 +8,16 @@ import com.groupdocs.signature.examples.advanced_usage.crud.ProcessingQrCodeSign
 import com.groupdocs.signature.examples.advanced_usage.crud.ProcessingTextSignatureOverCRUD;
 import com.groupdocs.signature.examples.advanced_usage.custom_serialization.OptionsSerialization;
 import com.groupdocs.signature.examples.advanced_usage.delete.*;
+import com.groupdocs.signature.examples.advanced_usage.documentpreview.GeneratePreviewAdvanced;
+import com.groupdocs.signature.examples.advanced_usage.documentpreview.GetDocumentInfoAdvanced;
+import com.groupdocs.signature.examples.advanced_usage.documentpreview.GetDocumentProcessHistoryAdvanced;
+import com.groupdocs.signature.examples.advanced_usage.documentpreview.GetDocumentSignaturesInfo;
+import com.groupdocs.signature.examples.advanced_usage.handlingexceptions.HandlingIncorrectPasswordException;
+import com.groupdocs.signature.examples.advanced_usage.handlingexceptions.HandlingPasswordRequiredException;
+import com.groupdocs.signature.examples.advanced_usage.saving.SaveDocumentWithPassword;
+import com.groupdocs.signature.examples.advanced_usage.saving.SaveSignedDocumentsAsImages;
+import com.groupdocs.signature.examples.advanced_usage.saving.SaveSignedImageWithVariousOutputTypes;
+import com.groupdocs.signature.examples.advanced_usage.saving.save_documents_with_different_output_types.*;
 import com.groupdocs.signature.examples.advanced_usage.search.*;
 import com.groupdocs.signature.examples.advanced_usage.search.search_for_metadata.*;
 import com.groupdocs.signature.examples.advanced_usage.search.search_for_metadata_secure_custom.SearchForMetadataCustomEncryptionObject;
@@ -19,13 +29,55 @@ import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_
 import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_secure_custom.SearchForQRCodeEncryptedObject;
 import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_secure_custom.SearchForQRCodeEncryptedText;
 import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_standard_objects.*;
+import com.groupdocs.signature.examples.advanced_usage.sign.*;
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_digital_advanced.SignWithDigitalAdvancedPdfAppearance;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_digital_advanced.SignWithDigitalAdvancedPdfCertificate;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_digital_advanced.SignWithDigitalAdvancedPdfTimestamp;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_form_fields_advanced.SignPdfWithFormFieldAdvanced;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_form_fields_advanced.SignPdfWithFormFieldAdvancedCombobox;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_form_fields_advanced.SignPdfWithFormFieldAdvancedRadio;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_advanced.SignImageWithCustomMetadata;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_advanced.SignPdfWithCustomMetadata;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataCustomEncryptionObject;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataCustomSerializationObject;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataEncryptedObject;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataEncryptedText;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_qrcode_secure_custom.SignWithQRCodeCustomEncryptionObject;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_qrcode_secure_custom.SignWithQRCodeCustomSerializationObject;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_qrcode_secure_custom.SignWithQRCodeEncryptedObject;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_qrcode_secure_custom.SignWithQRCodeEncryptedText;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_qrcode_standard_objects.*;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_signature_implementation.*;
+import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithDigitalAppearance;
+import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithImageAppearance;
+import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithPdfTextAnnotation;
+import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithPdfTextSticker;
+import com.groupdocs.signature.examples.advanced_usage.sign.signature_positions.SignWithAlignments;
+import com.groupdocs.signature.examples.advanced_usage.sign.signature_positions.SignWithMillimeters;
+import com.groupdocs.signature.examples.advanced_usage.sign.signature_positions.SignWithPercents;
+import com.groupdocs.signature.examples.advanced_usage.sign.signature_positions.SignWithStretchMode;
 import com.groupdocs.signature.examples.advanced_usage.sign.signin_with_brushes.SignWithLinearGradientBrush;
 import com.groupdocs.signature.examples.advanced_usage.sign.signin_with_brushes.SignWithRadialGradientBrush;
 import com.groupdocs.signature.examples.advanced_usage.sign.signin_with_brushes.SignWithSolidBrush;
 import com.groupdocs.signature.examples.advanced_usage.sign.signin_with_brushes.SignWithTextureBrush;
+import com.groupdocs.signature.examples.advanced_usage.signature_preview.GenerateSignaturePreviewAdvanced;
 import com.groupdocs.signature.examples.advanced_usage.update.*;
 import com.groupdocs.signature.examples.advanced_usage.verify.*;
+import com.groupdocs.signature.examples.basic_usage.common.GetSupportedFileFormats;
+import com.groupdocs.signature.examples.basic_usage.delete.*;
+import com.groupdocs.signature.examples.basic_usage.document_preview.GeneratePreview;
+import com.groupdocs.signature.examples.basic_usage.document_preview.GetDocumentInfo;
+import com.groupdocs.signature.examples.basic_usage.document_preview.GetDocumentProcessHistory;
+import com.groupdocs.signature.examples.basic_usage.search.*;
+import com.groupdocs.signature.examples.basic_usage.search.metadata.*;
+import com.groupdocs.signature.examples.basic_usage.sign.*;
+import com.groupdocs.signature.examples.basic_usage.sign.metadata.*;
+import com.groupdocs.signature.examples.basic_usage.signature_preview.GenerateSignaturePreview;
+import com.groupdocs.signature.examples.basic_usage.update.UpdateBarcode;
+import com.groupdocs.signature.examples.basic_usage.update.UpdateImage;
+import com.groupdocs.signature.examples.basic_usage.update.UpdateQRCode;
+import com.groupdocs.signature.examples.basic_usage.update.UpdateText;
+import com.groupdocs.signature.examples.basic_usage.verify.*;
 import com.groupdocs.signature.examples.quick_start.SetLicenseFromFile;
 
 public class MainClass {
@@ -236,6 +288,7 @@ public class MainClass {
         //GeneratePreviewAdvanced.run();
         //GetDocumentInfoAdvanced.run();
         //GetDocumentProcessHistoryAdvanced.run();
+        //GetDocumentSignaturesInfo.run();
             //endregion
 
             //region Advanced Signature Preview
@@ -262,7 +315,7 @@ public class MainClass {
         //SignWithDigitalAdvancedPdfCertificate.run();
 
         //Sign Pdf document with digital certificate and custom appearance settings
-        SignWithDigitalAdvancedPdfAppearance.run();
+        //SignWithDigitalAdvancedPdfAppearance.run();
 
         //Sign document with image signature applying specific options
         //SignWithImageAdvanced.run();
@@ -347,140 +400,139 @@ public class MainClass {
         //SignWithExceptionHandling.run();
 
             //region Signing with different brush styles
-        SignWithSolidBrush.run();
-        SignWithTextureBrush.run();
-        SignWithLinearGradientBrush.run();
-        SignWithRadialGradientBrush.run();
+        //SignWithSolidBrush.run();
+        //SignWithTextureBrush.run();
+        //SignWithLinearGradientBrush.run();
+        //SignWithRadialGradientBrush.run();
             //endregion
 
             //region Search signed documents for different signature types with additional options
 
         //Search document for Text signature with applying specific options
-        SearchForTextAdvanced.run();
+        //SearchForTextAdvanced.run();
 
         //Search document for Image signature with applying specific options
-        SearchForImageAdvanced.run();
+        //SearchForImageAdvanced.run();
 
         //Search document for Barcode signature with applying specific options
-        SearchForBarcodeAdvanced.run();
+        //SearchForBarcodeAdvanced.run();
 
         //Search document for encrypted QR-Code signature with applying specific options
-        SearchForQRCodeAdvanced.run();
+        //SearchForQRCodeAdvanced.run();
 
         //Search document for digital signature with applying specific options
-        SearchForDigitalAdvanced.run();
+        //SearchForDigitalAdvanced.run();
 
         //Search document for form-field signature with applying specific options
-        SearchForFormFieldAdvanced.run();
+        //SearchForFormFieldAdvanced.run();
 
         //Advanced search image document for metadata signatures
-        SearchImageForMetadataAdvanced.run();
+        //SearchImageForMetadataAdvanced.run();
 
         //Advanced search PDF document for metadata signatures
-        SearchPdfForMetadataAdvanced.run();
+        //SearchPdfForMetadataAdvanced.run();
 
         //Advanced search Presentation document for metadata signatures
-        SearchPresentationForMetadataAdvanced.run();
+        //SearchPresentationForMetadataAdvanced.run();
 
         //Advanced search Spreadsheet document for metadata signatures
-        SearchSpreadsheetForMetadataAdvanced.run();
+        //SearchSpreadsheetForMetadataAdvanced.run();
 
         //Advanced search WordProcessing document for metadata signatures
-        SearchWordProcessingForMetadataAdvanced.run();
+        //SearchWordProcessingForMetadataAdvanced.run();
 
             //region Search for QR-Code Encryption, Custom encryption, custom serialization
-        SearchForMetadataEncryptedText.run();
-        SearchForMetadataEncryptedObject.run();
-        SearchForMetadataCustomEncryptionObject.run();
-        SearchForMetadataCustomSerializationObject.run();
+        //SearchForMetadataEncryptedText.run();
+        //SearchForMetadataEncryptedObject.run();
+        //SearchForMetadataCustomEncryptionObject.run();
+        //SearchForMetadataCustomSerializationObject.run();
             //endregion
 
             //region Search for QR-Code standard objects
-        SearchForQRCodeAddressObject.run();
-        SearchForQRCodeEmailObject.run();
-        SearchForQRCodeVCardObject.run();
-        SearchForQRCodeEPCObject.run();
-        SearchForQRCodeEventObject.run();
-        SearchForQRCodeMeCardObject.run();
+        //SearchForQRCodeAddressObject.run();
+        //SearchForQRCodeEmailObject.run();
+        //SearchForQRCodeVCardObject.run();
+        //SearchForQRCodeEPCObject.run();
+        //SearchForQRCodeEventObject.run();
+        //SearchForQRCodeMeCardObject.run();
             //endregion
 
-        SearchWithExceptionHandling.run();
+        //SearchWithExceptionHandling.run();
             //endregion // Search signed documents for different signature types with additional options
 
             //region Search for QR-Code Encryption, custom encryption, custom serialization
-        SearchForQRCodeEncryptedText.run();
-        SearchForQRCodeEncryptedObject.run();
-        SearchForQRCodeCustomEncryptionObject.run();
-        SearchForQRCodeCustomSerializationObject.run();
+        //SearchForQRCodeEncryptedText.run();
+        //SearchForQRCodeEncryptedObject.run();
+        //SearchForQRCodeCustomEncryptionObject.run();
+        //SearchForQRCodeCustomSerializationObject.run();
             //endregion
 
-        SearchAndSkipExternalSignatures.run();
+        //SearchAndSkipExternalSignatures.run();
 
             //region Verify signed documents with additional options
 
         //Verify document with Text signature with applying specific options
-        VerifyTextAdvanced.run();
+        //VerifyTextAdvanced.run();
 
         //Verify document with Barcode signature with applying specific options
-        VerifyBarcodeAdvanced.run();
+        //VerifyBarcodeAdvanced.run();
 
         //Verify document with QR-Code signature with applying specific options
-        VerifyQRCodeAdvanced.run();
+        //VerifyQRCodeAdvanced.run();
 
         //Verify document with digital signature with applying specific options
-        VerifyDigitalAdvanced.run();
+        //VerifyDigitalAdvanced.run();
 
             //endregion // Verify signed documents with additional options
 
             //region Subscribing for signing, verification, searching events
-        SubscribeSignEvents.run();
-        SubscribeVerifyEvents.run();
-        SubscribeSearchEvents.run();
+        //SubscribeSignEvents.run();
+        //SubscribeVerifyEvents.run();
+        //SubscribeSearchEvents.run();
             //endregion
 
             //region Cancellation of signing, verification, searching process
-        CancellationSignProcess.run();
-        CancellationVerifyProcess.run();
-        CancellationSearchProcess.run();
+        //CancellationSignProcess.run();
+        //CancellationVerifyProcess.run();
+        //CancellationSearchProcess.run();
             //endregion
 
-        VerifyWithExceptionHandling.run();
+        //VerifyWithExceptionHandling.run();
 
             //region Updating document signatures
-        UpdateTextAfterSearch.run();
-        UpdateTextById.run();
-        UpdateImageAfterSearch.run();
-        UpdateImageById.run();
-        UpdateBarcodeAfterSearch.run();
-        UpdateBarcodeById.run();
-        UpdateQRCodeAfterSearch.run();
-        UpdateQRCodeById.run();
-        UpdateMultipleAdvanced.run();
+        //UpdateTextAfterSearch.run();
+        //UpdateTextById.run();
+        //UpdateImageAfterSearch.run();
+        //UpdateImageById.run();
+        //UpdateBarcodeAfterSearch.run();
+        //UpdateBarcodeById.run();
+        //UpdateQRCodeAfterSearch.run();
+        //UpdateQRCodeById.run();
+        //UpdateMultipleAdvanced.run();
             //endregion
 
             //region Delete signatures from the document
-        DeleteTextAfterSearch.run();
-        DeleteTextById.run();
-        DeleteImageAfterSearch.run();
-        DeleteImageById.run();
-        DeleteBarcodeAfterSearch.run();
-        DeleteBarcodeById.run();
-        DeleteQRCodeAfterSearch.run();
-        DeleteQRCodeById.run();
-        DeleteDigitalAfterSearch.run();
-        DeleteDigitalById.run();
-        DeleteMultipleAdvanced.run();
-        DeleteBySignatureTypes.run();
+        // DeleteTextAfterSearch.run();
+        //DeleteTextById.run();
+        //DeleteImageAfterSearch.run();
+        //DeleteImageById.run();
+        //DeleteBarcodeAfterSearch.run();
+        //DeleteBarcodeById.run();
+        //DeleteQRCodeAfterSearch.run();
+        //DeleteQRCodeById.run();
+        //DeleteDigitalAfterSearch.run();
+        //DeleteDigitalById.run();
+        //DeleteMultipleAdvanced.run();
+        //DeleteBySignatureTypes.run();
             //endregion
 
             //region Processing signatures over all CRUD operation to show full signature process life-cycle
-        ProcessingTextSignatureOverCRUD.run();
-        ProcessingImageSignatureOverCRUD.run();
-        ProcessingBarcodeSignatureOverCRUD.run();
-        ProcessingQrCodeSignatureOverCRUD.run();
+        //ProcessingTextSignatureOverCRUD.run();
+        //ProcessingImageSignatureOverCRUD.run();
+        //ProcessingBarcodeSignatureOverCRUD.run();
+        //ProcessingQrCodeSignatureOverCRUD.run();
             //endregion
-
-        OptionsSerialization.run();
+        //OptionsSerialization.run();
 
             //endregion 
         // Advanced Usage

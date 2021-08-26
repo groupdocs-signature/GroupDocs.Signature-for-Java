@@ -64,6 +64,7 @@ public class GenerateSignaturePreviewAdvanced
                 pdfDigSignAppearance.setFontFamilyName("Courier");
                 pdfDigSignAppearance.setFontSize(8);
             }
+            signOptions.setAppearance(pdfDigSignAppearance);
             //
             signOptions.setAllPages(false);
             signOptions.setWidth(200);
