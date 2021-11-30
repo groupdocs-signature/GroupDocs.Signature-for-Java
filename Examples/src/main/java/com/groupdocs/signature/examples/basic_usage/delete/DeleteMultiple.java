@@ -33,7 +33,6 @@ public class DeleteMultiple {
         // copy source file since Delete method works with same Document
         String outputFilePath = new File(Constants.OutputPath, "DeleteMultiple//" + fileName).getPath();
         Constants.checkDir(outputFilePath);
-        IOUtils.copy(new FileInputStream(filePath), new FileOutputStream(outputFilePath, true));
         // processing signatures
         final Signature signature = new Signature(filePath);
         try /*JAVA: was using*/

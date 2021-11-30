@@ -25,7 +25,7 @@ public class SignWithResultAnalysis {
         String filePath = Constants.SAMPLE_PDF;
         String fileName = Paths.get(filePath).getFileName().toString();
 
-        String outputFilePath = new File(Constants.OutputPath, "SignWithQRCode\\"+ fileName).getPath();
+        String outputFilePath = new File(Constants.OutputPath, "SignWithResultAnalysis\\"+ fileName).getPath();
 
         final Signature signature = new Signature(filePath);
         try /*JAVA: was using*/

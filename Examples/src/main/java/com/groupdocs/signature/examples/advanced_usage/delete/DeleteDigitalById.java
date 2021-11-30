@@ -51,7 +51,7 @@ public class DeleteDigitalById
                 signatures.add(new DigitalSignature(item));
             }
             // delete required signatures
-            boolean result = signature.delete(new ByteArrayOutputStream(),dsSignature);
+            boolean result = signature.delete(outputFilePath,dsSignature);
             if (result)
             {
                 System.out.print("All signatures were successfully deleted!");

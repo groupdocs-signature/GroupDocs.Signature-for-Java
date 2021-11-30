@@ -93,7 +93,7 @@ public class SignWithBarcodeAdvanced {
                 System.out.print("Signature #" + number++ + ": Type: " + barcodeSignature.getSignatureType() + " Id:" + barcodeSignature.getSignatureId() +
                         ",Location: " + barcodeSignature.getLeft() + "x" + barcodeSignature.getTop() + ". Size: " + barcodeSignature.getWidth() + "x" + barcodeSignature.getHeight());
 
-                String outputImagePath = new File(Constants.OutputPath, "image" + number + barcodeSignature.getFormat().getExtension()).getPath();
+                String outputImagePath = new File(Constants.OutputPath, "SignWithBarcodeAdvanced\\image" + number + barcodeSignature.getFormat().getExtension()).getPath();
                 OutputStream os = new FileOutputStream(outputImagePath);
                 // Starts writing the bytes in it
                 os.write(barcodeSignature.getContent());

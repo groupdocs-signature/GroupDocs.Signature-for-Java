@@ -23,7 +23,7 @@ public class SearchForFormFieldAdvanced {
             FormFieldSearchOptions options = new FormFieldSearchOptions();
             options.setValue("Value1");
             options.setAllPages(true);
-            options.setName("TestField");
+            options.setName("FieldText");
             options.setType(FormFieldType.Text);
 
             // search for signatures in document

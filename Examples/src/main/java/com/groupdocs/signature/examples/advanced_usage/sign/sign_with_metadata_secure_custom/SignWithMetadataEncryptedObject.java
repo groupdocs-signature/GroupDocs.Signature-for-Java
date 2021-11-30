@@ -48,7 +48,7 @@ public class SignWithMetadataEncryptedObject {
     {
         String filePath = Constants.SAMPLE_WORDPROCESSING;
 
-        String outputFilePath = new File(Constants.OutputPath, "SignWithMetadataSecureCustom//MetadataEncryptedText.docx").getPath();
+        String outputFilePath = new File(Constants.OutputPath, "SignWithMetadataSecureCustom//MetadataEncryptedObject.docx").getPath();
         try{
             Signature signature = new Signature(filePath);
 

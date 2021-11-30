@@ -99,7 +99,7 @@ public class SignWithQRCodeAdvanced {
                 System.out.print("Signature #"+ number++ +": Type: "+qrSignature.getSignatureType()+" Id:"+qrSignature.getSignatureId()+
                         ",Location: "+qrSignature.getLeft()+"x"+qrSignature.getTop()+". Size: "+qrSignature.getWidth()+"x"+qrSignature.getHeight());
 
-                String outputImagePath = new File(Constants.OutputPath, "image" + number + qrSignature.getFormat().getExtension()).getPath();
+                String outputImagePath = new File(Constants.OutputPath, "SignWithQRCodeAdvanced\\image" + number + qrSignature.getFormat().getExtension()).getPath();
                 OutputStream os = new FileOutputStream(outputImagePath);
                 // Starts writing the bytes in it
                 os.write(qrSignature.getContent());

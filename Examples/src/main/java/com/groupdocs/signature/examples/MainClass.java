@@ -531,8 +531,7 @@ public class MainClass {
         //ProcessingImageSignatureOverCRUD.run();
         //ProcessingBarcodeSignatureOverCRUD.run();
         //ProcessingQrCodeSignatureOverCRUD.run();
-            //endregion
-        //OptionsSerialization.run();
+            //endregion       
 
             //endregion 
         // Advanced Usage

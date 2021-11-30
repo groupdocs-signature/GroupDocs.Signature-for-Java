@@ -27,8 +27,7 @@ public class DeleteDigital {
         // copy source file since Delete method works with same Document
         String outputFilePath = new File(Constants.OutputPath, "DeleteDigital\\"+ fileName).getPath();
         Constants.checkDir(outputFilePath);
-        IOUtils.copy(new FileInputStream(filePath), new FileOutputStream(outputFilePath, true));
-        Signature signature = new Signature(outputFilePath);
+        Signature signature = new Signature(filePath);
         {
             // search for electronic Digital signatures in the document
             List<DigitalSignature> signatures = signature.search(DigitalSignature.class, SignatureType.Digital);

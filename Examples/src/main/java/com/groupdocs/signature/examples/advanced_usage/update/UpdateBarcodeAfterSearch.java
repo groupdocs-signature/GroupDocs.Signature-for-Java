@@ -32,9 +32,8 @@ public class UpdateBarcodeAfterSearch {
         String fileName = Paths.get(filePath).getFileName().toString();
         String outputFilePath = new File(Constants.OutputPath, "UpdateBarcodeAfterSearch\\"+ fileName).getPath();
         Constants.checkDir(outputFilePath);
-        IOUtils.copy(new FileInputStream(filePath), new FileOutputStream(outputFilePath, true));
         // initialize Signature instance
-        Signature signature = new Signature(outputFilePath);
+        Signature signature = new Signature(filePath);
         BarcodeSearchOptions options = new BarcodeSearchOptions();
 
         List<BarcodeSignature> signatures = signature.search(BarcodeSignature.class, options);

@@ -27,8 +27,7 @@ public class DeleteText {
         // copy source file since Delete method works with same Document
         String outputFilePath = new File(Constants.OutputPath, "DeleteText\\"+ fileName).getPath();
         Constants.checkDir(outputFilePath);
-        IOUtils.copy(new FileInputStream(filePath), new FileOutputStream(outputFilePath, true));
-        final Signature signature = new Signature(outputFilePath);
+        final Signature signature = new Signature(filePath);
         try /*JAVA: was using*/
         {
             TextSearchOptions options = new TextSearchOptions();

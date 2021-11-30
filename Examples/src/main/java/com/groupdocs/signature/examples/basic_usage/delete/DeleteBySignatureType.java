@@ -28,9 +28,9 @@ public class DeleteBySignatureType {
         // copy source file since Delete method works with same Document
         String outputFilePath = new File(Constants.OutputPath, "DeleteByType\\"+ fileName).getPath();
         Constants.checkDir(outputFilePath);
-        IOUtils.copy(new FileInputStream(filePath), new FileOutputStream(outputFilePath, true));
+
         // processing QR-Code signatures
-        Signature signature = new Signature(outputFilePath);
+        Signature signature = new Signature(filePath);
         {
             // deleting QR-Code signatures from the document
             DeleteResult result = signature.delete(outputFilePath, SignatureType.QrCode);

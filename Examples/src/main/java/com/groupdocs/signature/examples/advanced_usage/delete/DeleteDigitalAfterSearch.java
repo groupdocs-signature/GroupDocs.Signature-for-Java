@@ -46,7 +46,8 @@ public class DeleteDigitalAfterSearch
             // collect signatures to delete
             signaturesToDelete.addAll(signatures);
             // delete signatures
-            DeleteResult deleteResult = signature.delete(new ByteArrayOutputStream(), signaturesToDelete);
+            DeleteResult deleteResult = signature.delete(outputFilePath, signaturesToDelete);
+
             if (deleteResult.getSucceeded().size() == signaturesToDelete.size())
             {
                 System.out.print("All signatures were successfully deleted!");

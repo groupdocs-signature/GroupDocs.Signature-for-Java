@@ -1,8 +1,8 @@
 package com.groupdocs.signature.examples.advanced_usage.custom_serialization;
 
 
+
 import com.google.gson.*;
-import com.google.gson.stream.JsonReader;
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.SignResult;
 import com.groupdocs.signature.domain.barcodes.BarcodeType;
@@ -17,6 +17,7 @@ import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.options.PagesSetup;
 import com.groupdocs.signature.options.sign.*;
+import org.json.JSONObject;
 
 import java.awt.*;
 import java.io.File;
@@ -37,6 +38,8 @@ public class OptionsSerialization
         List<SignOptions> collection = new ArrayList<SignOptions>();
 
         TextSignOptions textSignOptions = getTextSignOptions();
+
+
         collection.add(textSignOptions);
 
         ImageSignOptions imageSignOptions = getImageSignOptions();
@@ -50,17 +53,33 @@ public class OptionsSerialization
 
         QrCodeSignOptions qrCodeSignOptions = getQrCodeSignOptions();
         collection.add(qrCodeSignOptions);
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String serialized = gson.toJson(collection);;
 
+
+
+
+        //Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        //String serialized = gson.toJson(collection);;
+
+
+            String json = "";
+            boolean first = true;
+            for(SignOptions option : collection ){
+               JSONObject obj = new JSONObject(option);
+                String serialized = obj.toString();
+                if(first) {
+                    json+=serialized;
+                    first=false;
+                } else {
+                    json+=","+serialized;
+                }
+            }
         GsonBuilder builder = new GsonBuilder();
-        Object[] converters = { new SignOptionsJsonConverter(), new BarcodeTypeJsonConverter(), new QrCodeTypeJsonConverter() };
+        builder.registerTypeAdapter(SignOptions.class, new SignOptionsJsonConverter());
 
-        builder.registerTypeAdapter(SignOptions.class, converters);
         Gson gsonAdapt = builder.create();
 
 
-        SignOptions deserialized = gsonAdapt.fromJson(serialized, SignOptions.class);
+        SignOptions deserialized = gsonAdapt.fromJson(json, SignOptions.class);
 
         //System.out.print(deserialized.size());
 
@@ -249,56 +268,65 @@ public class OptionsSerialization
 
         return result;
     }
-    //<<<<<<<< #endregion 
+    //<<<<<<<< #endregion
 
-    abstract static class JsonCreationAdapter<T> //extends JsonConverter
-    {
-             
+    static class SignOptionsJsonConverter implements JsonDeserializer<SignOptions> {
+        @Override
+        public SignOptions deserialize(JsonElement json, Type type,
+                                       JsonDeserializationContext context) throws JsonParseException {
 
-        protected abstract T create(Type objectType, JsonObject jObject);
+            SignOptions result = null;
+            JsonObject jsonObject = json.getAsJsonObject();
+            int signatureType = getSignatureType(jsonObject);
 
-        public /*override*/ boolean canConvert(Type objectType, Class<T> clazz)
-        {
-            return clazz.getClass().isAssignableFrom(objectType.getClass());
+            // check SignatureType
+            // check for Barcode options
+            if (signatureType == SignatureType.Barcode) {
+                result = new BarcodeSignOptions();
+            }
+            // check for QrCode options
+            if (result == null && signatureType == SignatureType.QrCode) {
+                result = new QrCodeSignOptions();
+            }
+            // check for digital options
+            if (result == null && signatureType == SignatureType.Digital) {
+                result = new DigitalSignOptions();
+            }
+            // check for text options
+            if (result == null && signatureType == SignatureType.Text) {
+                result = new TextSignOptions();
+            }
+            // check for image options
+            if (result == null && signatureType == SignatureType.Image) {
+                result = new ImageSignOptions();
+            }
+            // check for stamp options
+            if (result == null && signatureType == SignatureType.Stamp) {
+                result = new StampSignOptions();
+            }
+
+            return result;
+
         }
 
-        public /*override*/ Object readJson(JsonReader reader, Type objectType, Object existingValue, JsonSerializer<T> serializer)
-        {
-           // JsonObject jObject = JObject.Load(reader);
-            JsonParser parser = new JsonParser();
-            JsonElement jsonElement = parser.parse(reader);
-            T target = create(objectType, jsonElement.getAsJsonObject());
-            //serializer.serialize(jObject.CreateReader(), target);
-            return target;
-        }
-
-        protected final int getSignatureType(JsonObject  jObject)
-        {
+        protected final int getSignatureType(JsonObject jObject) {
             int result = SignatureType.Unknown;
 
-            if (result == SignatureType.Unknown)
-            {
-                boolean hasItem = jObject.has("EncodeType");
-                if (hasItem)
-                {
-                    JsonElement encodeType = jObject.get("EncodeType");
-                    if (encodeType!=null)
-                    {
+            if (result == SignatureType.Unknown) {
+                boolean hasItem = jObject.has("encodeType");
+                if (hasItem) {
+                    JsonElement encodeType = jObject.get("encodeType");
+                    if (encodeType != null) {
                         String encodeTypeName = encodeType.toString();
-                        if (encodeTypeName != null && !encodeTypeName.isEmpty())
-                        {
-                            for (BarcodeType item : BarcodeTypes.getAllTypes())
-                            {
-                                if (item.getTypeName() == encodeTypeName)
-                                {
+                        if (encodeTypeName != null && !encodeTypeName.isEmpty()) {
+                            for (BarcodeType item : BarcodeTypes.getAllTypes()) {
+                                if (item.getTypeName() == encodeTypeName) {
                                     result = SignatureType.Barcode;
                                     break;
                                 }
                             }
-                            for (QrCodeType item : QrCodeTypes.getAllTypes())
-                            {
-                                if (item.getTypeName() == encodeTypeName)
-                                {
+                            for (QrCodeType item : QrCodeTypes.getAllTypes()) {
+                                if (item.getTypeName() == encodeTypeName) {
                                     result = SignatureType.QrCode;
                                     break;
                                 }
@@ -306,26 +334,36 @@ public class OptionsSerialization
                         }
                     }
                 }
-            }                
-            if (result == SignatureType.Unknown)
-            {
-                boolean hasItem = jObject.has("Password");
+            }
+            if (result == SignatureType.Unknown) {
+                boolean hasItem = jObject.has("password");
                 result = hasItem ? SignatureType.Digital : SignatureType.Unknown;
             }
-            if (result == SignatureType.Unknown)
-            {
-                boolean hasItem = jObject.has("ImageFilePath");
+            if (result == SignatureType.Unknown) {
+                boolean hasItem = jObject.has("imageFilePath");
                 result = hasItem ? SignatureType.Image : SignatureType.Unknown;
             }
-            if (result == SignatureType.Unknown)
-            {
-                boolean hasItem = jObject.has("Font");
+            if (result == SignatureType.Unknown) {
+                boolean hasItem = jObject.has("font");
                 result = hasItem ? SignatureType.Text : SignatureType.Unknown;
             }
 
             return result;
+
         }
 
+    }
+    static class BarcodeTypeJsonConverter implements JsonDeserializer<BarcodeType>
+    {
+        @Override
+        public BarcodeType deserialize(JsonElement json, Type type,
+                                       JsonDeserializationContext context) throws JsonParseException {
+
+            JsonObject jsonObject = json.getAsJsonObject();
+            BarcodeType result = getBarcodeType(jsonObject);
+
+            return result;
+        }
         protected final BarcodeType getBarcodeType(JsonObject  jObject)
         {
             BarcodeType result = null;
@@ -350,6 +388,20 @@ public class OptionsSerialization
                     }
                 }
             }
+
+            return result;
+        }
+
+    }
+
+    static class QrCodeTypeJsonConverter implements JsonDeserializer<QrCodeType>
+    {
+        @Override
+        public QrCodeType deserialize(JsonElement json, Type type,
+                                      JsonDeserializationContext context) throws JsonParseException {
+
+            JsonObject jsonObject = json.getAsJsonObject();
+            QrCodeType result = getQrCodeType(jsonObject);
 
             return result;
         }
@@ -382,69 +434,6 @@ public class OptionsSerialization
             return result;
         }
 
-    }
-
-    static class BarcodeTypeJsonConverter extends JsonCreationAdapter<BarcodeType>
-    {
-        protected /*override*/ BarcodeType create(Type objectType, JsonObject  jObject)
-        {
-            BarcodeType result = getBarcodeType(jObject);
-
-            return result;
-        }
-    }
-
-    static class QrCodeTypeJsonConverter extends JsonCreationAdapter<QrCodeType>
-    {
-        protected /*override*/ QrCodeType create(Type objectType, JsonObject  jObject)
-        {
-            QrCodeType result = getQrCodeType(jObject);
-
-            return result;
-        }
-    }
-
-    static class SignOptionsJsonConverter extends JsonCreationAdapter<SignOptions>
-    {
-        protected /*override*/ SignOptions create(Type objectType, JsonObject  jObject)
-        {
-            SignOptions result = null;
-            int signatureType = getSignatureType(jObject);
-
-            // check SignatureType
-            // check for Barcode options
-            if (signatureType == SignatureType.Barcode)
-            {
-                result = new BarcodeSignOptions();
-            }
-            // check for QrCode options
-            if (result == null && signatureType == SignatureType.QrCode)
-            {
-                result = new QrCodeSignOptions();
-            }
-            // check for digital options
-            if (result == null && signatureType == SignatureType.Digital)
-            {
-                result = new DigitalSignOptions();
-            }
-            // check for text options
-            if (result == null && signatureType == SignatureType.Text)
-            {
-                result = new TextSignOptions();
-            }
-            // check for image options
-            if (result == null && signatureType == SignatureType.Image)
-            {
-                result = new ImageSignOptions();
-            }
-            // check for stamp options
-            if (result == null && signatureType == SignatureType.Stamp)
-            {
-                result = new StampSignOptions();
-            }
-
-            return result;
-        }
     }
 
 }

@@ -32,9 +32,8 @@ public class UpdateImageAfterSearch {
         String fileName = Paths.get(filePath).getFileName().toString();
         String outputFilePath = new File(Constants.OutputPath, "UpdateImageAfterSearch\\"+ fileName).getPath();
         Constants.checkDir(outputFilePath);
-        IOUtils.copy(new FileInputStream(filePath), new FileOutputStream(outputFilePath, true));
         // initialize Signature instance
-        Signature signature = new Signature(outputFilePath);
+        Signature signature = new Signature(filePath);
         ImageSearchOptions options = new ImageSearchOptions();
         // search for image signatures in document
         List<ImageSignature> signatures = signature.search(ImageSignature.class,options);

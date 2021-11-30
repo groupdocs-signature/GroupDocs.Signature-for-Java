@@ -33,9 +33,8 @@ public class UpdateQRCodeAfterSearch {
         String fileName = Paths.get(filePath).getFileName().toString();
         String outputFilePath = new File(Constants.OutputPath, "UpdateQRCodeAfterSearch\\" + fileName).getPath();
         Constants.checkDir(outputFilePath);
-        IOUtils.copy(new FileInputStream(filePath), new FileOutputStream(outputFilePath, true));
         // initialize Signature instance
-        Signature signature = new Signature(outputFilePath);
+        Signature signature = new Signature(filePath);
         QrCodeSearchOptions options = new QrCodeSearchOptions();
 
         List<QrCodeSignature> signatures = signature.search(QrCodeSignature.class, options);

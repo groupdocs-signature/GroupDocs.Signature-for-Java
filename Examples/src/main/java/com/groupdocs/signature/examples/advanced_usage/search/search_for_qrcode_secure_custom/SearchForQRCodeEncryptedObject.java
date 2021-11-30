@@ -47,7 +47,7 @@ public class SearchForQRCodeEncryptedObject {
     public static void run() throws Exception
     {
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_PDF_QRCODE_CUSTOM_ENCRYPTION_OBJECT;
+        String filePath = Constants.SAMPLE_PDF_QRCODE_ENCRYPTED_OBJECT;
 
         try {
             Signature signature = new Signature(filePath);
