@@ -36,7 +36,7 @@ public class DeleteBySignatureType {
             DeleteResult result = signature.delete(outputFilePath, SignatureType.QrCode);
             if (result.getSucceeded().size() > 0)
             {
-                System.out.print("Following QR-Code signatures were deleted:");
+                System.out.print("\nFollowing QR-Code signatures were deleted: ");
                 int number = 1;
                 for (BaseSignature temp : result.getSucceeded())
                 {

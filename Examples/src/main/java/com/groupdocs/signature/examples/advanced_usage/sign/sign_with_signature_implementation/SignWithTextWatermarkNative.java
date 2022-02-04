@@ -57,7 +57,7 @@ public class SignWithTextWatermarkNative
 
             // sign document to file
             SignResult signResult = signature.sign(outputFilePath, options);
-            System.out.print("\nSource document signed successfully with {signResult.Succeeded.Count} signature(s).\nFile saved at {outputFilePath}.");
+            System.out.print("\nSource document signed successfully with "+signResult.getSucceeded().size()+" signature(s).\nFile saved at "+outputFilePath);
 
             System.out.print("\nList of newly created signatures:");
             int number = 1;

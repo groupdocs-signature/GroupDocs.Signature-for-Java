@@ -28,7 +28,7 @@ public class SubscribeSignEvents {
      */
     private static void onSignProgress(Signature sender, ProcessProgressEventArgs args)
     {
-        System.out.print("Sign progress. Processed "+args.getProcessedSignatures()+" signatures. Time spent "+args.getTicks()+" mlsec");
+        System.out.print("\nSign progress. Processed "+args.getProcessedSignatures()+" signatures. Time spent "+args.getTicks()+" mlsec");
     }
 
     /**

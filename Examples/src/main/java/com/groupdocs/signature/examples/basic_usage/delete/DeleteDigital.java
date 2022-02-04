@@ -37,11 +37,11 @@ public class DeleteDigital {
                 boolean result = signature.delete(outputFilePath,digitalSignature);
                 if (result)
                 {
-                            System.out.print("Digital signature #"+digitalSignature.getThumbprint()+" from the "+digitalSignature.getSignTime()+" was deleted from document ['"+fileName+"'].");
+                    System.out.print("\nDigital signature #"+digitalSignature.getThumbprint()+" from the "+digitalSignature.getSignTime()+" was deleted from document ['"+fileName+"'].");
                 }
                 else
                 {
-                    System.out.print("Signature was not deleted from the document! Signature# "+digitalSignature.getThumbprint()+" was not found!");
+                    System.out.print("\nSignature was not deleted from the document! Signature# "+digitalSignature.getThumbprint()+" was not found!");
                 }
             }
         }

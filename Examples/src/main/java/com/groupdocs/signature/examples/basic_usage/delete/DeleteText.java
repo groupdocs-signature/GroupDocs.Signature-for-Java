@@ -40,11 +40,11 @@ public class DeleteText {
                 boolean result = signature.delete(outputFilePath,textSignature);
                 if(result)
                 {
-                    System.out.print("Signature with Text " + textSignature.getText() + " was deleted from document [" + fileName + "].");
+                    System.out.print("\nSignature with Text " + textSignature.getText() + " was deleted from document [" + fileName + "].");
                 }
                 else
                 {
-                    System.out.print("Signature was not deleted from the document! Signature with Text " + textSignature.getText() + " was not found!");
+                    System.out.print("\nSignature was not deleted from the document! Signature with Text " + textSignature.getText() + " was not found!");
                 }
             }
         } catch (Exception e) {

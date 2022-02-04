@@ -42,11 +42,11 @@ public class UpdateQRCode {
                 boolean result = signature.update(outputFilePath,qrCodeSignature);
                 if (result)
                 {
-                    System.out.print("Signature with QR-Code '"+qrCodeSignature.getText()+"' and encode type '"+qrCodeSignature.getEncodeType().getTypeName()+"' was deleted from document ['"+fileName+"'].");
+                    System.out.print("\nSignature with QR-Code '"+qrCodeSignature.getText()+"' and encode type '"+qrCodeSignature.getEncodeType().getTypeName()+"' was deleted from document ['"+fileName+"'].");
                 }
                 else
                 {
-                    System.out.print("Signature was not deleted from the document! Signature with Barcode '"+qrCodeSignature.getText()+"' and encode type '"+qrCodeSignature.getEncodeType().getTypeName()+"' was not found!");
+                    System.out.print("\nSignature was not deleted from the document! Signature with Barcode '"+qrCodeSignature.getText()+"' and encode type '"+qrCodeSignature.getEncodeType().getTypeName()+"' was not found!");
                 }
             }
         } catch (Exception e) {

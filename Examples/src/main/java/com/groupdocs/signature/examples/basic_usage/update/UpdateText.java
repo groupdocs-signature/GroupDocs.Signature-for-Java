@@ -42,9 +42,9 @@ public class UpdateText {
 
                 boolean result = signature.update(outputFilePath,textSignature);
                 if (result) {
-                    System.out.print("Signature with Text '" + textSignature.getText() + "' was updated in the document ['{" + fileName + "'].");
+                    System.out.print("\nSignature with Text '" + textSignature.getText() + "' was updated in the document ['{" + fileName + "'].");
                 } else {
-                    System.out.print("Signature was not updated in  the document! Signature with Text '" + textSignature.getText() + "' was not found!");
+                    System.out.print("\nSignature was not updated in  the document! Signature with Text '" + textSignature.getText() + "' was not found!");
                 }
             }
         } catch (Exception e) {

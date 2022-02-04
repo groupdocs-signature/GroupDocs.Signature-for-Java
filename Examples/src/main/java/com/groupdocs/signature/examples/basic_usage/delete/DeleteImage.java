@@ -41,11 +41,11 @@ public class DeleteImage {
                 boolean result = signature.delete(outputFilePath,imageSignature);
                 if (result)
                 {
-                    System.out.print("Image signature at location "+imageSignature.getLeft() + "x"+imageSignature.getTop()+" and Size "+imageSignature.getSize()+" was deleted from document ["+fileName+"].");
+                    System.out.print("\nImage signature at location "+imageSignature.getLeft() + "x"+imageSignature.getTop()+" and Size "+imageSignature.getSize()+" was deleted from document ["+fileName+"].");
                 }
                 else
                 {
-                    System.out.print("Signature was not deleted from the document! Signature at location "+imageSignature.getLeft()+"x"+imageSignature.getTop()+" and Size "+imageSignature.getSize()+" was not found!");
+                    System.out.print("\nSignature was not deleted from the document! Signature at location "+imageSignature.getLeft()+"x"+imageSignature.getTop()+" and Size "+imageSignature.getSize()+" was not found!");
                 }
             }
         } catch (Exception e) {

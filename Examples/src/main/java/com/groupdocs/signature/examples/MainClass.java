@@ -36,6 +36,9 @@ import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_digital_ad
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_form_fields_advanced.SignPdfWithFormFieldAdvanced;
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_form_fields_advanced.SignPdfWithFormFieldAdvancedCombobox;
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_form_fields_advanced.SignPdfWithFormFieldAdvancedRadio;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_images_advanced.SignWithBase64ImageAdvanced;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_images_advanced.SignWithBase64ImageSample;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_images_advanced.SignWithImageAdvanced;
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_advanced.SignImageWithCustomMetadata;
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_advanced.SignPdfWithCustomMetadata;
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataCustomEncryptionObject;
@@ -320,6 +323,12 @@ public class MainClass {
         //Sign document with image signature applying specific options
         //SignWithImageAdvanced.run();
 
+        //Sign document with image from the base64 string
+        //SignWithBase64ImageSample.run();
+
+        //Sign document with image from the base64 string created in SignImageOptions
+        //SignWithBase64ImageAdvanced.run();
+
         //Sign document with Barcode signature applying specific options
         //SignWithBarcodeAdvanced.run();
 
@@ -362,6 +371,7 @@ public class MainClass {
 
             //region Sign QR-Code standard objects
         //SignWithQRCodeAddressObject.run();
+        //SignWithQRCodeCryptoCurrencyObject.run();
         //SignWithQRCodeEmailObject.run();
         //SignWithQRCodeVCardObject.run();
         //SignWithQRCodeEPCObject.run();
@@ -512,7 +522,7 @@ public class MainClass {
             //endregion
 
             //region Delete signatures from the document
-        // DeleteTextAfterSearch.run();
+        //DeleteTextAfterSearch.run();
         //DeleteTextById.run();
         //DeleteImageAfterSearch.run();
         //DeleteImageById.run();
@@ -531,10 +541,7 @@ public class MainClass {
         //ProcessingImageSignatureOverCRUD.run();
         //ProcessingBarcodeSignatureOverCRUD.run();
         //ProcessingQrCodeSignatureOverCRUD.run();
-            //endregion       
-
-            //endregion 
-        // Advanced Usage
+            //endregion
 
         //System.out.print("\nAll done.");
 

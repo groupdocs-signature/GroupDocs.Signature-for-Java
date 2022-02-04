@@ -43,11 +43,11 @@ public class UpdateBarcode {
                 boolean result = signature.update(outputFilePath,barcodeSignature);
                 if (result)
                 {
-                    System.out.print("Signature with Barcode '"+barcodeSignature.getText()+"' and encode type '"+barcodeSignature.getEncodeType().getTypeName()+"' was updated in the document ['"+fileName+"'].");
+                    System.out.print("\nSignature with Barcode '"+barcodeSignature.getText()+"' and encode type '"+barcodeSignature.getEncodeType().getTypeName()+"' was updated in the document ['"+fileName+"'].");
                 }
                 else
                 {
-                    System.out.print("Signature was not updated in the document! Signature with Barcode"+barcodeSignature.getText()+"' and encode type '"+barcodeSignature.getEncodeType().getTypeName()+"' was not found!");
+                    System.out.print("\nSignature was not updated in the document! Signature with Barcode"+barcodeSignature.getText()+"' and encode type '"+barcodeSignature.getEncodeType().getTypeName()+"' was not found!");
                 }
             }
 

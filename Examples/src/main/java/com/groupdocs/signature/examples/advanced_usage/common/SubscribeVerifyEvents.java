@@ -16,7 +16,7 @@ public class SubscribeVerifyEvents {
      */
     private static void onVerifyStarted(Signature sender, ProcessStartEventArgs args)
     {
-        System.out.print("Verify process started at "+args.getStarted()+" with "+args.getTotalSignatures()+" total signatures to be put in document");
+        System.out.print("\nVerify process started at "+args.getStarted()+" with "+args.getTotalSignatures()+" total signatures to be put in document");
     }
 
     /**

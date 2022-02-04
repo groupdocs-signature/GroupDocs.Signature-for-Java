@@ -22,7 +22,7 @@ public class SubscribeSearchEvents {
      */
     private static void onSearchStarted(Signature sender, ProcessStartEventArgs args)
     {
-        System.out.print("search process started at "+args.getStarted()+" with "+args.getTotalSignatures()+" total signatures to be put in document");
+        System.out.print("\nSearch process started at "+args.getStarted()+" with "+args.getTotalSignatures()+" total signatures to be put in document");
     }
 
     /**
@@ -32,7 +32,7 @@ public class SubscribeSearchEvents {
      */
     private static void onSearchProgress(Signature sender, ProcessProgressEventArgs args)
     {
-        System.out.print("search progress. Processed "+args.getProcessedSignatures()+" signatures. Time spent "+args.getTicks()+" mlsec");
+        System.out.print("Search progress. Processed "+args.getProcessedSignatures()+" signatures. Time spent "+args.getTicks()+" mlsec");
     }
 
     /**
@@ -42,7 +42,7 @@ public class SubscribeSearchEvents {
      */
     private static void onSearchCompleted(Signature sender, ProcessCompleteEventArgs args)
     {
-        System.out.print("search process completed at "+args.getCompleted()+" with "+args.getTotalSignatures()+" total signatures. Process took "+args.getTicks()+" mlsec");
+        System.out.print("Search process completed at "+args.getCompleted()+" with "+args.getTotalSignatures()+" total signatures. Process took "+args.getTicks()+" mlsec");
     }
 
 

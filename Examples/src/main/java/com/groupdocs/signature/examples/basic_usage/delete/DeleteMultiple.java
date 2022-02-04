@@ -59,8 +59,8 @@ public class DeleteMultiple {
                 }
                 else
                 {
-                    System.out.print("Successfully deleted signatures : "+deleteResult.getSucceeded().size());
-                    System.out.print("Not deleted signatures : "+deleteResult.getFailed().size());
+                    System.out.print("\nSuccessfully deleted signatures : "+deleteResult.getSucceeded().size());
+                    System.out.print("\nNot deleted signatures : "+deleteResult.getFailed().size());
                 }
                 System.out.print("\nList of deleted signatures:");
                 int number = 1;
