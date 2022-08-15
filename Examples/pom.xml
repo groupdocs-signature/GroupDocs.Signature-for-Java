@@ -51,7 +51,7 @@
 		<repository>
             <id>GroupDocs Artifact Repository</id>
             <name>GroupDocs Artifact Repository</name>
-            <url>https://repository-qa.groupdocs.com/repo/</url>
+            <url>https://repository.groupdocs.com/repo/</url>
 		</repository>
            <repository>
                <id>maven-apache-central</id>
