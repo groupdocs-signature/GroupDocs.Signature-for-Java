@@ -8,6 +8,7 @@ import com.groupdocs.signature.domain.SignResult;
 import com.groupdocs.signature.domain.enums.DashStyle;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
+import com.groupdocs.signature.domain.extensions.SpreadsheetPosition;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
@@ -40,27 +41,18 @@ public class SignWithDigitalAdvanced
         final Signature signature = new Signature(filePath);
         try /*JAVA: was using*/
         {
-             Padding tmp0 = new  Padding();
-            tmp0.setBottom(10);
-            tmp0.setRight(10);
-             Border tmp1 = new  Border();
-            tmp1.setVisible(true);
-            tmp1.setColor(Color.red);
-            tmp1.setDashStyle(DashStyle.DashDot);
-            tmp1.setWeight(2);
             DigitalSignOptions options = new DigitalSignOptions(certificatePath);
-            options.setPassword("1234567890");
-            options.setReason("Approved");
-            options.setContact("John Smith");
-            options.setLocation("New York");
+
+            // optional: setup image file path
             options.setImageFilePath(imagePath);
-            options.setAllPages(true);
-            options.setWidth(160);
-            options.setHeight(80);
-            options.setVerticalAlignment(VerticalAlignment.Center);
-            options.setHorizontalAlignment(HorizontalAlignment.Left);
-            options.setMargin(tmp0);
-            options.setBorder(tmp1);
+            options.setLeft(100);
+            options.setTop(100);
+            options.setPageNumber(1);
+            options.setPassword("1234567890");
+            options.getExtensions().add(new SpreadsheetPosition(10,10));
+            // sign document to file
+            //signature.sign("E://signed.pdf", options);
+            System.out.print(" Done ");
 
             SignResult signResult = signature.sign(outputFilePath, options);
             System.out.print("\nSource document signed successfully with "+signResult.getSucceeded().size()+" signature(s).\nFile saved at "+outputFilePath);

@@ -6,14 +6,16 @@ import com.groupdocs.signature.examples.advanced_usage.crud.ProcessingBarcodeSig
 import com.groupdocs.signature.examples.advanced_usage.crud.ProcessingImageSignatureOverCRUD;
 import com.groupdocs.signature.examples.advanced_usage.crud.ProcessingQrCodeSignatureOverCRUD;
 import com.groupdocs.signature.examples.advanced_usage.crud.ProcessingTextSignatureOverCRUD;
-import com.groupdocs.signature.examples.advanced_usage.custom_serialization.OptionsSerialization;
 import com.groupdocs.signature.examples.advanced_usage.delete.*;
 import com.groupdocs.signature.examples.advanced_usage.documentpreview.GeneratePreviewAdvanced;
 import com.groupdocs.signature.examples.advanced_usage.documentpreview.GetDocumentInfoAdvanced;
 import com.groupdocs.signature.examples.advanced_usage.documentpreview.GetDocumentProcessHistoryAdvanced;
-import com.groupdocs.signature.examples.advanced_usage.documentpreview.GetDocumentSignaturesInfo;
 import com.groupdocs.signature.examples.advanced_usage.handlingexceptions.HandlingIncorrectPasswordException;
 import com.groupdocs.signature.examples.advanced_usage.handlingexceptions.HandlingPasswordRequiredException;
+import com.groupdocs.signature.examples.advanced_usage.loading.LoadPasswordProtectedDocument;
+import com.groupdocs.signature.examples.advanced_usage.loading.loading_documents_from_different_sources.LoadDocumentFromLocalDisk;
+import com.groupdocs.signature.examples.advanced_usage.loading.loading_documents_from_different_sources.LoadDocumentFromStream;
+import com.groupdocs.signature.examples.advanced_usage.loading.loading_documents_from_different_sources.LoadDocumentFromUrl;
 import com.groupdocs.signature.examples.advanced_usage.saving.SaveDocumentWithPassword;
 import com.groupdocs.signature.examples.advanced_usage.saving.SaveSignedDocumentsAsImages;
 import com.groupdocs.signature.examples.advanced_usage.saving.SaveSignedImageWithVariousOutputTypes;
@@ -81,6 +83,7 @@ import com.groupdocs.signature.examples.basic_usage.update.UpdateImage;
 import com.groupdocs.signature.examples.basic_usage.update.UpdateQRCode;
 import com.groupdocs.signature.examples.basic_usage.update.UpdateText;
 import com.groupdocs.signature.examples.basic_usage.verify.*;
+import com.groupdocs.signature.examples.quick_start.HelloWorld;
 import com.groupdocs.signature.examples.quick_start.SetLicenseFromFile;
 
 public class MainClass {
@@ -96,21 +99,20 @@ public class MainClass {
         SetLicenseFromFile.run();
         //QuickStart.SetLicenseFromStream.run();
         //QuickStart.SetMeteredLicense.run();
+
         //HelloWorld.run();
             //endregion // Quick Start
 
             //region Basic Usage
 
             //region Common
-
         //GetSupportedFileFormats.run();
-
             //endregion
 
             //region Document Preview
 
-        //GetDocumentInfo.run();
-        //GeneratePreview.run();
+        GetDocumentInfo.run();
+        GeneratePreview.run();
         //GetDocumentProcessHistory.run();
             //endregion
 
@@ -185,7 +187,7 @@ public class MainClass {
         //SearchPdfForMetadata.run();
 
         //Search Presentation document for metadata signatures
-        //SearchPresentationForMetadata.run();
+       // SearchPresentationForMetadata.run();
 
         //Search Spreadsheet document for metadata signatures
         //SearchSpreadsheetForMetadata.run();
@@ -233,6 +235,7 @@ public class MainClass {
 
         //Update QR-code signature in the document after Search method
         //UpdateQRCode.run();
+
             //endregion
 
             //region Delete signatures from document
@@ -257,6 +260,10 @@ public class MainClass {
 
         //Delete signature from the document by certain type
         //DeleteBySignatureType.run();
+
+        //Delete signature from the document by known signature id
+        //DeleteById.run();
+
             //endregion
 
             //endregion // Basic Usage
@@ -264,12 +271,13 @@ public class MainClass {
             //region Advanced Usage
 
             //region Loading
+
         //LoadDocumentFromLocalDisk.run();
         //LoadDocumentFromStream.run();
         //LoadDocumentFromUrl.run();
         //LoadDocumentFromAmazonS3.run();
         //LoadDocumentFromAzureBlobStorage.run();
-        //LoadDocumentFromFtp.run();            
+        //LoadDocumentFromFtp.run();
         //LoadPasswordProtectedDocument.run();
 
             //endregion
@@ -285,13 +293,13 @@ public class MainClass {
 
         //SaveDocumentWithPassword.run();
         //SaveSignedDocumentsAsImages.run();
+
             //endregion
 
             //region Document Preview with hiding signatures
         //GeneratePreviewAdvanced.run();
         //GetDocumentInfoAdvanced.run();
         //GetDocumentProcessHistoryAdvanced.run();
-        //GetDocumentSignaturesInfo.run();
             //endregion
 
             //region Advanced Signature Preview
@@ -304,7 +312,6 @@ public class MainClass {
             //endregion
 
             //region Sign document with different signature types with additional options
-
         //Sign document with text signature applying specific options
         //SignWithTextAdvanced.run();
 
@@ -345,7 +352,6 @@ public class MainClass {
 
         // Sign Spreadsheet document with XAdes signature
         //SignWithXAdESTypes.run();
-
             //endregion
 
             //region Sign with further result analysis
@@ -370,13 +376,14 @@ public class MainClass {
             //endregion
 
             //region Sign QR-Code standard objects
-        //SignWithQRCodeAddressObject.run();
         //SignWithQRCodeCryptoCurrencyObject.run();
+        //SignWithQRCodeAddressObject.run();
         //SignWithQRCodeEmailObject.run();
         //SignWithQRCodeVCardObject.run();
         //SignWithQRCodeEPCObject.run();
         //SignWithQRCodeEventObject.run();
         //SignWithQRCodeMeCardObject.run();
+        //SignWithQRCodeWiFiObject.run();
             //endregion
 
             //region Sign Metadata advanced
@@ -384,7 +391,6 @@ public class MainClass {
         //SignPdfWithStandardMetadata.run();
         //SignPdfWithCustomMetadata.run();
         //SignImageWithCustomMetadata.run();
-
         //SignWithMetadataEncryptedText.run();
         //SignWithMetadataEncryptedObject.run();
         //SignWithMetadataCustomEncryptionObject.run();
@@ -396,13 +402,14 @@ public class MainClass {
         //SignWithPdfTextSticker.run();
         //SignWithImageAppearance.run();
         //SignWithDigitalAppearance.run();
-
             //endregion
 
             //region Sign with different measure type
+
         //SignWithMillimeters.run();
         //SignWithPercents.run();
         //SignWithAlignments.run();
+
             //endregion
 
         //SignWithStretchMode.run();
@@ -503,11 +510,13 @@ public class MainClass {
 
             //region Cancellation of signing, verification, searching process
         //CancellationSignProcess.run();
+
         //CancellationVerifyProcess.run();
         //CancellationSearchProcess.run();
             //endregion
 
         //VerifyWithExceptionHandling.run();
+
 
             //region Updating document signatures
         //UpdateTextAfterSearch.run();
@@ -518,6 +527,7 @@ public class MainClass {
         //UpdateBarcodeById.run();
         //UpdateQRCodeAfterSearch.run();
         //UpdateQRCodeById.run();
+
         //UpdateMultipleAdvanced.run();
             //endregion
 
@@ -534,6 +544,7 @@ public class MainClass {
         //DeleteDigitalById.run();
         //DeleteMultipleAdvanced.run();
         //DeleteBySignatureTypes.run();
+        //DeleteByListIds.run();
             //endregion
 
             //region Processing signatures over all CRUD operation to show full signature process life-cycle
@@ -542,6 +553,9 @@ public class MainClass {
         //ProcessingBarcodeSignatureOverCRUD.run();
         //ProcessingQrCodeSignatureOverCRUD.run();
             //endregion
+
+        SignWithOrdering.run();
+            //endregion    // Advanced Usage
 
         //System.out.print("\nAll done.");
 
