@@ -96,7 +96,7 @@ public class MainClass {
         // Please uncomment the example you want to try out
             //region Quick Start
 
-        SetLicenseFromFile.run();
+        //SetLicenseFromFile.run();
         //QuickStart.SetLicenseFromStream.run();
         //QuickStart.SetMeteredLicense.run();
 
@@ -111,8 +111,8 @@ public class MainClass {
 
             //region Document Preview
 
-        GetDocumentInfo.run();
-        GeneratePreview.run();
+        //GetDocumentInfo.run();
+        //GeneratePreview.run();
         //GetDocumentProcessHistory.run();
             //endregion
 
@@ -187,7 +187,7 @@ public class MainClass {
         //SearchPdfForMetadata.run();
 
         //Search Presentation document for metadata signatures
-       // SearchPresentationForMetadata.run();
+        //SearchPresentationForMetadata.run();
 
         //Search Spreadsheet document for metadata signatures
         //SearchSpreadsheetForMetadata.run();
@@ -384,6 +384,7 @@ public class MainClass {
         //SignWithQRCodeEventObject.run();
         //SignWithQRCodeMeCardObject.run();
         //SignWithQRCodeWiFiObject.run();
+        //SignWithQRCodeSMSObject.run();
             //endregion
 
             //region Sign Metadata advanced
@@ -472,6 +473,8 @@ public class MainClass {
         //SearchForQRCodeEPCObject.run();
         //SearchForQRCodeEventObject.run();
         //SearchForQRCodeMeCardObject.run();
+        //SearchForQRCodeWiFiObject.run();
+        //SearchForQRCodeSMSObject.run();
             //endregion
 
         //SearchWithExceptionHandling.run();
@@ -554,7 +557,7 @@ public class MainClass {
         //ProcessingQrCodeSignatureOverCRUD.run();
             //endregion
 
-        SignWithOrdering.run();
+        //SignWithOrdering.run();
             //endregion    // Advanced Usage
 
         //System.out.print("\nAll done.");
