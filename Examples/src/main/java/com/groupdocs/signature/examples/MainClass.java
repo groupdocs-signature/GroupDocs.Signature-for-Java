@@ -96,7 +96,7 @@ public class MainClass {
         // Please uncomment the example you want to try out
             //region Quick Start
 
-        //SetLicenseFromFile.run();
+        SetLicenseFromFile.run();
         //QuickStart.SetLicenseFromStream.run();
         //QuickStart.SetMeteredLicense.run();
 
@@ -337,6 +337,7 @@ public class MainClass {
         //SignWithBase64ImageAdvanced.run();
 
         //Sign document with Barcode signature applying specific options
+        //SignWithBarcode_GS1CompositeBar.run();
         //SignWithBarcodeAdvanced.run();
 
         //Sign document with QR-Code signature applying specific options
@@ -557,7 +558,7 @@ public class MainClass {
         //ProcessingQrCodeSignatureOverCRUD.run();
             //endregion
 
-        //SignWithOrdering.run();
+        SignWithOrdering.run();
             //endregion    // Advanced Usage
 
         //System.out.print("\nAll done.");

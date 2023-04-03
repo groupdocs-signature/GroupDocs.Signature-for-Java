@@ -38,6 +38,10 @@ public class SignWithResultAnalysis {
 
             // sign document to file
             SignResult signResult = signature.sign(outputFilePath, options);
+            System.out.print("Sign-process was executed for "+signResult.getProcessingTime()+" mls");
+            System.out.print("Input document size "+signResult.getSourceDocumentSize()+" bytes");
+            System.out.print("Output document size "+signResult.getDestinDocumentSize()+" bytes");
+            System.out.print("Total processed signatures "+signResult.getTotalSignatures());
             if (signResult.getFailed().size() == 0)
             {
                 System.out.print("\nAll signatures were successfully created!");
