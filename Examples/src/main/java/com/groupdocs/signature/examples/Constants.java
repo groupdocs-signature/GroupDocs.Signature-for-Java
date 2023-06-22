@@ -7,7 +7,7 @@ public class Constants {
 	// Storage path
 	public static final String SamplesPath = (System.getProperty("user.dir") + "\\Resources\\SampleFiles\\");
 	// License path
-	public static final String LicensePath = "E:\\GroupDocs.Signature.Product.Family.lic";
+	public static final String LicensePath = "C:\\GroupDocs.Signature.Java.lic";
 	// Output path
 	public static final String OutputPath = (System.getProperty("user.dir") + "\\Resources\\Output\\");
 	//Certificates path
@@ -102,6 +102,29 @@ public class Constants {
             = getSampleFilePath("sample_qrcode_wifi_object.pdf");
     public static String SAMPLE_PDF_QRCODE_SMS_OBJECT
             = getSampleFilePath("sample_qrcode_sms_object.pdf");
+
+    // Sample PDF with complex QR-Code data
+    public static String SAMPLE_PDF_QRCODE_HIBCLICPRIMARY_OBJECT
+            = getSampleFilePath("sample_qrcode_hibclic_prmdata.pdf");
+    public static String SAMPLE_PDF_QRCODE_HIBCLICPSECONDARY_OBJECT
+            = getSampleFilePath("sample_qrcode_hibclic_secdata.pdf");
+    public static String SAMPLE_PDF_QRCODE_HIBCLICCOMBINED_OBJECT
+            = getSampleFilePath("sample_qrcode_hibclic_cmbdata.pdf");
+    public static String SAMPLE_PDF_QRCODE_HIBCLICMAILMARK2DTYPE07_OBJECT
+            = getSampleFilePath("sample_qrcode_mailmark2d_type07.pdf");
+    public static String SAMPLE_PDF_QRCODE_HIBCLICMAILMARK2DTYPE09_OBJECT
+            = getSampleFilePath("sample_qrcode_mailmark2d_type09.pdf");
+    public static String SAMPLE_PDF_QRCODE_HIBCLICMAILMARK2DTYPE29_OBJECT
+            = getSampleFilePath("sample_qrcode_mailmark2d_type29.pdf");
+    public static String SAMPLE_PDF_QRCODE_HIBCPASDATA_OBJECT
+            = getSampleFilePath("sample_qrcode_hibcpasdata.pdf");
+    // Archive Documents
+    public static String SAMPLE_ZIP
+            = getSampleFilePath("sample.zip");
+    public static String SAMPLE_TAR
+            = getSampleFilePath("sample.tar");
+
+
 
     public static void checkDir(String filePath) throws Exception
     {

@@ -53,6 +53,8 @@ import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_qrcode_sec
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_qrcode_secure_custom.SignWithQRCodeEncryptedText;
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_qrcode_standard_objects.*;
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_signature_implementation.*;
+import com.groupdocs.signature.examples.advanced_usage.sign.signarchives.SignTARArchiveDocuments;
+import com.groupdocs.signature.examples.advanced_usage.sign.signarchives.SignZIPArchiveDocuments;
 import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithDigitalAppearance;
 import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithImageAppearance;
 import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithPdfTextAnnotation;
@@ -264,15 +266,21 @@ public class MainClass {
         //Delete signature from the document by known signature id
         //DeleteById.run();
 
-            //endregion
+        //endregion
 
+        //region Sign the different archive file types
+        //SignZIPArchiveDocuments.run();
+        //SignTARArchiveDocuments.run();
+        //endregion
+
+        //endregion
             //endregion // Basic Usage
 
             //region Advanced Usage
 
             //region Loading
 
-        //LoadDocumentFromLocalDisk.run();
+        LoadDocumentFromLocalDisk.run();
         //LoadDocumentFromStream.run();
         //LoadDocumentFromUrl.run();
         //LoadDocumentFromAmazonS3.run();
@@ -316,7 +324,7 @@ public class MainClass {
         //SignWithTextAdvanced.run();
 
         //Sign document with digital signature applying specific options
-        //SignWithDigitalAdvanced.run();
+        SignWithDigitalAdvanced.run();
 
         //Sign Pdf document with digital time stamp
         //SignWithDigitalAdvancedPdfTimestamp.run();

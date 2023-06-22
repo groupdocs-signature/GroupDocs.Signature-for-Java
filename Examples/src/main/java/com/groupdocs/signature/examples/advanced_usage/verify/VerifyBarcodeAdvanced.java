@@ -4,6 +4,7 @@ package com.groupdocs.signature.examples.advanced_usage.verify;
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.VerificationResult;
 import com.groupdocs.signature.domain.enums.TextMatchType;
+import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.options.verify.BarcodeVerifyOptions;
 
@@ -23,11 +24,15 @@ public class VerifyBarcodeAdvanced {
             options.setMatchType(TextMatchType.Contains);
 
             // verify document signatures
-
             VerificationResult result = signature.verify(options);
             if (result.isValid())
             {
                 System.out.print("\nDocument was verified successfully!");
+                System.out.print("\nList of Succeded sigantures:");
+                for(BaseSignature temp : result.getSucceeded())
+                {
+                    System.out.print(" -#"+temp.getSignatureId()+"-"+temp.getSignatureType()+" at: "+temp.getLeft()+"x"+temp.getTop()+". Size: "+temp.getWidth()+"x"+temp.getHeight());
+                }
             }
             else
             {
