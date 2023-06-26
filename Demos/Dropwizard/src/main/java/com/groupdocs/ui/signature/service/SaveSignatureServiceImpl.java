@@ -2,9 +2,12 @@ package com.groupdocs.ui.signature.service;
 
 
 import com.groupdocs.signature.Signature;
+import com.groupdocs.signature.domain.SignResult;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
-import com.groupdocs.signature.options.OutputType;
+import com.groupdocs.signature.options.PageStreamFactory;
+import com.groupdocs.signature.options.PreviewFormats;
+import com.groupdocs.signature.options.PreviewOptions;
 import com.groupdocs.signature.options.saveoptions.SaveOptions;
 import com.groupdocs.signature.options.sign.SignOptions;
 import com.groupdocs.ui.common.config.GlobalConfiguration;
@@ -31,7 +34,6 @@ import javax.xml.bind.JAXBException;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -220,16 +222,13 @@ public class SaveSignatureServiceImpl implements SaveSignatureService {
     private String signWithImageToStream(List<SignOptions> collection, InputStream inputStream) {
         try {
             final SaveOptions saveOptions = new SaveOptions();
-            saveOptions.setOutputType(OutputType.Stream);
+
             // sign generated image with signature
-            //SignatureConfig config = new SignatureConfig();
-            //config.setOutputPath(FileSystems.getDefault().getPath("").toAbsolutePath().toString());
-            //SignatureHandler<OutputStream> imgSignatureHandler = new SignatureHandler<>(config);
-            //ByteArrayOutputStream bos = (ByteArrayOutputStream) imgSignatureHandler.sign(inputStream, collection, saveOptions);
-            //byte[] bytes = bos.toByteArray();
-            // encode ByteArray into String
-            //return Base64.getEncoder().encodeToString(bytes);
-            return Base64.getEncoder().encodeToString(new byte[]{});
+            Signature imgSignatureHandler = new Signature(inputStream);
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            SignResult result = imgSignatureHandler.sign(outputStream, collection, saveOptions);
+
+            return Base64.getEncoder().encodeToString(outputStream.toByteArray());
         } catch (Exception ex) {
             logger.error("Exception occurred while saving optical code signature", ex);
             throw new TotalGroupDocsException(ex.getMessage(), ex);
@@ -247,22 +246,32 @@ public class SaveSignatureServiceImpl implements SaveSignatureService {
      */
     private String signWithImageToFile(String previewPath, XmlEntityWithImage signatureData, List<SignOptions> collection, String path) {
         try {
+            final String[] out = {""};
             // set signing save options
             final SaveOptions saveOptions = new SaveOptions();
-            //saveOptions.setOutputType(OutputType.String);
-            //saveOptions.setOutputFileName(FilenameUtils.getName(path));
             saveOptions.setOverwriteExistingFiles(true);
             // set temporary signed documents path to image previews folder
+            signatureHandler = new Signature(path);
             //signatureHandler.getSignatureConfig().setOutputPath(previewPath);
             // sign generated image with signature
             signatureHandler.sign(path, collection, saveOptions);
             // set data for response
             signatureData.setImageGuid(path);
-            // get signature preview as Base64 String
-            //byte[] bytes = signatureHandler.getPageImage(path, 1, "", null, 100);
-            // encode ByteArray into String
-            //return Base64.getEncoder().encodeToString(bytes);
-            return Base64.getEncoder().encodeToString(new byte[]{});
+
+            PreviewOptions previewOptions = new PreviewOptions(new PageStreamFactory() {
+                @Override
+                public OutputStream createPageStream(int pageNumber) {
+                    return new ByteArrayOutputStream();
+                }
+
+                @Override
+                public void closePageStream(int pageNumber, OutputStream pageStream) {
+                    out[0] = Base64.getEncoder().encodeToString(((ByteArrayOutputStream)pageStream).toByteArray());
+                }
+            });
+            previewOptions.setPreviewFormat(PreviewFormats.PNG);
+            signatureHandler.generatePreview(previewOptions);
+            return out[0];
         } catch (Exception ex) {
             logger.error("Exception occurred while saving optical code signature", ex);
             throw new TotalGroupDocsException(ex.getMessage(), ex);

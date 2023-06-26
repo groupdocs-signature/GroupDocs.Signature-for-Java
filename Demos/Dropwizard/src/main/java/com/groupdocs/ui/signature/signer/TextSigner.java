@@ -113,7 +113,7 @@ public class TextSigner extends Signer {
     @Override
     public TextSignOptions signWord() {
         TextSignOptions signOptions = new TextSignOptions(textData.getText());
-        signOptions.setPageNumber(signatureData.getPageNumber()-1);
+        signOptions.setPageNumber(signatureData.getPageNumber());
         fillTextOptions(signOptions);
         //signOptions.setSignatureImplementation(TextSignatureImplementation.Image);
         return signOptions;
@@ -127,7 +127,7 @@ public class TextSigner extends Signer {
     @Override
     public TextSignOptions signCells() {
         TextSignOptions signOptions = new TextSignOptions(textData.getText());
-        signOptions.setPageNumber(signatureData.getPageNumber()-1);
+        signOptions.setPageNumber(signatureData.getPageNumber());
         fillTextOptions(signOptions);
         Border border = new Border();
         border.setVisible(true);
@@ -145,7 +145,7 @@ public class TextSigner extends Signer {
     @Override
     public TextSignOptions signSlides() {
         TextSignOptions signOptions = new TextSignOptions(textData.getText());
-        signOptions.setPageNumber(signatureData.getPageNumber()-1);
+        signOptions.setPageNumber(signatureData.getPageNumber());
         fillTextOptions(signOptions);
         //type of implementation
         signOptions.setSignatureImplementation(TextSignatureImplementation.Image);

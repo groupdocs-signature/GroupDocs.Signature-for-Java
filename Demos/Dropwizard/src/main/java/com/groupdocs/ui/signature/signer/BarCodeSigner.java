@@ -1,5 +1,6 @@
 package com.groupdocs.ui.signature.signer;
 
+import com.groupdocs.signature.domain.Background;
 import com.groupdocs.signature.domain.barcodes.BarcodeTypes;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.options.sign.BarcodeSignOptions;
@@ -57,7 +58,9 @@ public class BarCodeSigner extends Signer {
 
     private void fillProperties(BarcodeSignOptions signOptions) {
         signOptions.setEncodeType(BarcodeTypes.Code39Standard);
-        //signOptions.setBackgroundColor(Color.WHITE);
+        Background background = new Background();
+        background.setColor(Color.WHITE);
+        signOptions.setBackground(background);
         signOptions.setHorizontalAlignment(signatureData.getHorizontalAlignment());
         signOptions.setVerticalAlignment(VerticalAlignment.None);
         signOptions.setWidth(signatureData.getImageWidth());
