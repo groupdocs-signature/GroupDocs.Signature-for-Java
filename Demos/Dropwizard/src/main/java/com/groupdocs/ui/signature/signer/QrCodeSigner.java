@@ -1,7 +1,7 @@
 package com.groupdocs.ui.signature.signer;
 
-import com.groupdocs.signature.domain.qrcodes.QRCodeTypes;
-import com.groupdocs.signature.options.qrcodesignature.*;
+import com.groupdocs.signature.domain.qrcodes.QrCodeTypes;
+import com.groupdocs.signature.options.sign.QrCodeSignOptions;
 import com.groupdocs.ui.signature.entity.web.SignatureDataEntity;
 import com.groupdocs.ui.signature.entity.xml.OpticalXmlEntity;
 
@@ -33,9 +33,9 @@ public class QrCodeSigner extends Signer {
      * @return PdfQRCodeSignOptions
      */
     @Override
-    public PdfQRCodeSignOptions signPdf() {
+    public QrCodeSignOptions signPdf() {
         // setup options
-        PdfQRCodeSignOptions signOptions = new PdfQRCodeSignOptions(qrCodeData.getText());
+        QrCodeSignOptions signOptions = new QrCodeSignOptions(qrCodeData.getText());
         fillProperties(signOptions);
         return signOptions;
     }
@@ -46,9 +46,9 @@ public class QrCodeSigner extends Signer {
      * @return ImageQRCodeSignOptions
      */
     @Override
-    public ImagesQRCodeSignOptions signImage() {
+    public QrCodeSignOptions signImage() {
         // setup options
-        ImagesQRCodeSignOptions signOptions = new ImagesQRCodeSignOptions(qrCodeData.getText());
+        QrCodeSignOptions signOptions = new QrCodeSignOptions(qrCodeData.getText());
         fillProperties(signOptions);
         return signOptions;
     }
@@ -59,9 +59,9 @@ public class QrCodeSigner extends Signer {
      * @return WordsQRCodeSignOptions
      */
     @Override
-    public WordsQRCodeSignOptions signWord() {
+    public QrCodeSignOptions signWord() {
         // setup options
-        WordsQRCodeSignOptions signOptions = new WordsQRCodeSignOptions(qrCodeData.getText());
+        QrCodeSignOptions signOptions = new QrCodeSignOptions(qrCodeData.getText());
         fillProperties(signOptions);
         return signOptions;
     }
@@ -72,9 +72,9 @@ public class QrCodeSigner extends Signer {
      * @return CellsQRCodeSignOptions
      */
     @Override
-    public CellsQRCodeSignOptions signCells() {
+    public QrCodeSignOptions signCells() {
         // setup options
-        CellsQRCodeSignOptions signOptions = new CellsQRCodeSignOptions(qrCodeData.getText());
+        QrCodeSignOptions signOptions = new QrCodeSignOptions(qrCodeData.getText());
         fillProperties(signOptions);
         return signOptions;
     }
@@ -85,23 +85,23 @@ public class QrCodeSigner extends Signer {
      * @return SlidesQRCodeSignOptions
      */
     @Override
-    public SlidesQRCodeSignOptions signSlides() {
+    public QrCodeSignOptions signSlides() {
         // setup options
-        SlidesQRCodeSignOptions signOptions = new SlidesQRCodeSignOptions(qrCodeData.getText());
+        QrCodeSignOptions signOptions = new QrCodeSignOptions(qrCodeData.getText());
         fillProperties(signOptions);
         return signOptions;
     }
 
-    private void fillProperties(QRCodeSignOptions signOptions) {
-        signOptions.setEncodeType(QRCodeTypes.QR);
-        signOptions.setBackgroundColor(Color.WHITE);
+    private void fillProperties(QrCodeSignOptions signOptions) {
+        signOptions.setEncodeType(QrCodeTypes.QR);
+        //signOptions.setBackgroundColor(Color.WHITE);
         signOptions.setHorizontalAlignment(signatureData.getHorizontalAlignment());
         signOptions.setVerticalAlignment(signatureData.getVerticalAlignment());
         signOptions.setWidth(signatureData.getImageWidth());
         signOptions.setHeight(signatureData.getImageHeight());
         signOptions.setTop(signatureData.getTop());
         signOptions.setLeft(signatureData.getLeft());
-        signOptions.setDocumentPageNumber(signatureData.getPageNumber());
+        signOptions.setPageNumber(signatureData.getPageNumber());
         if (signatureData.getAngle() != 0) {
             signOptions.setRotationAngle(signatureData.getAngle());
         }

@@ -6,7 +6,7 @@
 
     <groupId>com.groupdocs.ui</groupId>
     <artifactId>signature-spring</artifactId>
-    <version>1.7.27</version>
+    <version>23.6</version>
     <packaging>${packaging.type}</packaging>
 
     <name>GroupDocs.Signature for Java Spring Sample</name>
@@ -15,8 +15,19 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.4.RELEASE</version>
+        <version>2.5.5</version>
     </parent>
+
+    <properties>
+        <start-class>com.groupdocs.ui.Application</start-class>
+        <java.version>1.8</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.version>2.5.12</spring.version>
+        <groupdocs.signature>${project.version}</groupdocs.signature>
+    </properties>
 
     <profiles>
         <!--mvn package -P jar-->
@@ -83,17 +94,20 @@
         </profile>
     </profiles>
 
-    <properties>
-        <start-class>com.groupdocs.ui.Application</start-class>
-        <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+
 
     <dependencies>
         <dependency>
+            <groupId>com.groupdocs</groupId>
+            <artifactId>groupdocs-signature</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>2.0.4.RELEASE</version>
+            <version>${spring.version}</version>
             <!-- For using tomcat please remove this exclusion-->
             <exclusions>
                 <exclusion>
@@ -113,20 +127,20 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jetty</artifactId>
-            <version>2.0.4.RELEASE</version>
+            <version>${spring.version}</version>
             <scope>${scope}</scope>
         </dependency>
         <!-- the end of jetty dependency -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>2.0.4.RELEASE</version>
+            <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <version>2.0.4.RELEASE</version>
+            <version>${spring.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.xml.bind</groupId>
@@ -146,16 +160,8 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.7</version>
+            <version>2.8.0</version>
         </dependency>
-
-        <dependency>
-            <groupId>com.groupdocs</groupId>
-            <artifactId>groupdocs-signature</artifactId>
-            <version>23.4</version>
-            <type>jar</type>
-        </dependency>
-
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
@@ -167,7 +173,11 @@
         <repository>
             <id>GroupDocsJavaAPI</id>
             <name>GroupDocs Java API</name>
-            <url>http://artifact.groupdocs.com/repo/</url>
+            <url>https://releases.groupdocs.com/java/repo/</url>
+        </repository>
+        <repository>
+            <id>maven-central</id>
+            <url>https://repo1.maven.org/maven2</url>
         </repository>
     </repositories>
 

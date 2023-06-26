@@ -2,7 +2,7 @@ package com.groupdocs.ui.signature.signer;
 
 import com.groupdocs.signature.domain.barcodes.BarcodeTypes;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
-import com.groupdocs.signature.options.barcodesignature.*;
+import com.groupdocs.signature.options.sign.BarcodeSignOptions;
 import com.groupdocs.ui.signature.entity.web.SignatureDataEntity;
 import com.groupdocs.ui.signature.entity.xml.OpticalXmlEntity;
 
@@ -34,11 +34,11 @@ public class BarCodeSigner extends Signer {
      * @return PdfBarcodeSignOptions
      */
     @Override
-    public PdfBarcodeSignOptions signPdf() {
+    public BarcodeSignOptions signPdf() {
         // setup options
-        PdfBarcodeSignOptions signOptions = new PdfBarcodeSignOptions(barCodeData.getText());
+        BarcodeSignOptions signOptions = new BarcodeSignOptions(barCodeData.getText());
         fillProperties(signOptions);
-        signOptions.setDocumentPageNumber(signatureData.getPageNumber());
+        signOptions.setPageNumber(signatureData.getPageNumber());
         return signOptions;
     }
 
@@ -48,16 +48,16 @@ public class BarCodeSigner extends Signer {
      * @return ImageBarcodeSignOptions
      */
     @Override
-    public ImagesBarcodeSignOptions signImage() {
+    public BarcodeSignOptions signImage() {
         // setup options
-        ImagesBarcodeSignOptions signOptions = new ImagesBarcodeSignOptions(barCodeData.getText());
+        BarcodeSignOptions signOptions = new BarcodeSignOptions(barCodeData.getText());
         fillProperties(signOptions);
         return signOptions;
     }
 
     private void fillProperties(BarcodeSignOptions signOptions) {
         signOptions.setEncodeType(BarcodeTypes.Code39Standard);
-        signOptions.setBackgroundColor(Color.WHITE);
+        //signOptions.setBackgroundColor(Color.WHITE);
         signOptions.setHorizontalAlignment(signatureData.getHorizontalAlignment());
         signOptions.setVerticalAlignment(VerticalAlignment.None);
         signOptions.setWidth(signatureData.getImageWidth());
@@ -75,11 +75,11 @@ public class BarCodeSigner extends Signer {
      * @return WordsBarcodeSignOptions
      */
     @Override
-    public WordsBarcodeSignOptions signWord() {
+    public BarcodeSignOptions signWord() {
         // setup options
-        WordsBarcodeSignOptions signOptions = new WordsBarcodeSignOptions(barCodeData.getText());
+        BarcodeSignOptions signOptions = new BarcodeSignOptions(barCodeData.getText());
         fillProperties(signOptions);
-        signOptions.setDocumentPageNumber(signatureData.getPageNumber());
+        signOptions.setPageNumber(signatureData.getPageNumber());
         return signOptions;
     }
 
@@ -89,11 +89,11 @@ public class BarCodeSigner extends Signer {
      * @return CellsBarcodeSignOptions
      */
     @Override
-    public CellsBarcodeSignOptions signCells() {
+    public BarcodeSignOptions signCells() {
         // setup options
-        CellsBarcodeSignOptions signOptions = new CellsBarcodeSignOptions(barCodeData.getText());
+        BarcodeSignOptions signOptions = new BarcodeSignOptions(barCodeData.getText());
         fillProperties(signOptions);
-        signOptions.setDocumentPageNumber(signatureData.getPageNumber());
+        signOptions.setPageNumber(signatureData.getPageNumber());
         return signOptions;
     }
 
@@ -103,11 +103,11 @@ public class BarCodeSigner extends Signer {
      * @return SlidesBarcodeSignOptions
      */
     @Override
-    public SlidesBarcodeSignOptions signSlides() {
+    public BarcodeSignOptions signSlides() {
         // setup options
-        SlidesBarcodeSignOptions signOptions = new SlidesBarcodeSignOptions(barCodeData.getText());
+        BarcodeSignOptions signOptions = new BarcodeSignOptions(barCodeData.getText());
         fillProperties(signOptions);
-        signOptions.setDocumentPageNumber(signatureData.getPageNumber());
+        signOptions.setPageNumber(signatureData.getPageNumber());
         return signOptions;
     }
 

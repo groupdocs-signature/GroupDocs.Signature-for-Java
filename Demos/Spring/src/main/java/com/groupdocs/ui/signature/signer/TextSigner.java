@@ -1,14 +1,12 @@
 package com.groupdocs.ui.signature.signer;
 
+import com.groupdocs.signature.domain.Background;
+import com.groupdocs.signature.domain.Border;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
+import com.groupdocs.signature.domain.enums.TextSignatureImplementation;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
-import com.groupdocs.signature.domain.enums.PdfTextSignatureImplementation;
-import com.groupdocs.signature.domain.enums.ImagesTextSignatureImplementation;
-import com.groupdocs.signature.domain.enums.WordsTextSignatureImplementation;
-import com.groupdocs.signature.domain.enums.CellsTextSignatureImplementation;
-import com.groupdocs.signature.domain.enums.SlidesTextSignatureImplementation;
 import com.groupdocs.signature.options.appearances.PdfTextAnnotationAppearance;
-import com.groupdocs.signature.options.textsignature.*;
+import com.groupdocs.signature.options.sign.TextSignOptions;
 import com.groupdocs.ui.signature.model.web.SignatureDataEntity;
 import com.groupdocs.ui.signature.model.xml.TextXmlEntity;
 
@@ -38,11 +36,11 @@ public class TextSigner extends Signer {
      * @return PdfSignTextOptions
      */
     @Override
-    public PdfSignTextOptions signPdf() {
-        PdfSignTextOptions signOptions = new PdfSignTextOptions(textData.getText());
-        signOptions.setDocumentPageNumber(signatureData.getPageNumber());
+    public TextSignOptions signPdf() {
+        TextSignOptions signOptions = new TextSignOptions(textData.getText());
+        signOptions.setPageNumber(signatureData.getPageNumber());
         fillTextOptions(signOptions);
-        signOptions.setSignatureImplementation(PdfTextSignatureImplementation.Image);
+        signOptions.setSignatureImplementation(TextSignatureImplementation.Image);
         // specify extended appearance options
         PdfTextAnnotationAppearance appearance = new PdfTextAnnotationAppearance();
         signOptions.setAppearance(appearance);
@@ -68,15 +66,15 @@ public class TextSigner extends Signer {
      * @return ImagesSignTextOptions
      */
     @Override
-    public ImagesSignTextOptions signImage() {
-        ImagesSignTextOptions signOptions = new ImagesSignTextOptions(textData.getText());
+    public TextSignOptions signImage() {
+        TextSignOptions signOptions = new TextSignOptions(textData.getText());
         fillTextOptions(signOptions);
         //type of implementation
-        signOptions.setSignatureImplementation(ImagesTextSignatureImplementation.TextAsImage);
+        signOptions.setSignatureImplementation(TextSignatureImplementation.Image);
         return signOptions;
     }
 
-    private void fillTextOptions(SignTextOptions signOptions) {
+    private void fillTextOptions(TextSignOptions signOptions) {
         signOptions.setLeft(signatureData.getLeft());
         signOptions.setTop(signatureData.getTop());
         int imageHeight = signatureData.getImageHeight();
@@ -85,8 +83,10 @@ public class TextSigner extends Signer {
         signOptions.setRotationAngle(signatureData.getAngle());
         signOptions.setVerticalAlignment(VerticalAlignment.None);
         signOptions.setHorizontalAlignment(HorizontalAlignment.None);
+        Background background = new Background();
+        background.setColor(getColor(textData.getBackgroundColor()));
         // setup colors settings
-        signOptions.setBackgroundColor(getColor(textData.getBackgroundColor()));
+        signOptions.setBackground(background);
         // setup text color
         signOptions.setForeColor(getColor(textData.getFontColor()));
         // setup Font options
@@ -94,10 +94,10 @@ public class TextSigner extends Signer {
             signOptions.getFont().setBold(textData.getBold());
             signOptions.getFont().setItalic(textData.getItalic());
             signOptions.getFont().setUnderline(textData.getUnderline());
-            signOptions.getFont().setFontFamily(textData.getFont());
+            signOptions.getFont().setFamilyName(textData.getFont());
             // set reduction size - required to recalculate font size after signature resizing in the UI
             int reductionSize = getReductionSize(imageHeight);
-            signOptions.getFont().setFontSize(textData.getFontSize() / reductionSize);
+            signOptions.getFont().setSize(textData.getFontSize() / reductionSize);
         }
     }
 
@@ -107,11 +107,11 @@ public class TextSigner extends Signer {
      * @return WordsSignTextOptions
      */
     @Override
-    public WordsSignTextOptions signWord() {
-        WordsSignTextOptions signOptions = new WordsSignTextOptions(textData.getText());
-        signOptions.setDocumentPageNumber(signatureData.getPageNumber());
+    public TextSignOptions signWord() {
+        TextSignOptions signOptions = new TextSignOptions(textData.getText());
+        signOptions.setPageNumber(signatureData.getPageNumber());
         fillTextOptions(signOptions);
-        signOptions.setSignatureImplementation(WordsTextSignatureImplementation.TextAsImage);
+        //signOptions.setSignatureImplementation(TextSignatureImplementation.Image);
         return signOptions;
     }
 
@@ -121,13 +121,15 @@ public class TextSigner extends Signer {
      * @return CellsSignTextOptions
      */
     @Override
-    public CellsSignTextOptions signCells() {
-        CellsSignTextOptions signOptions = new CellsSignTextOptions(textData.getText());
-        signOptions.setSheetNumber(signatureData.getPageNumber());
+    public TextSignOptions signCells() {
+        TextSignOptions signOptions = new TextSignOptions(textData.getText());
+        signOptions.setPageNumber(signatureData.getPageNumber());
         fillTextOptions(signOptions);
-        signOptions.setBorderVisiblity(true);
+        Border border = new Border();
+        border.setVisible(true);
+        signOptions.setBorder(border);
         //type of implementation
-        signOptions.setSignatureImplementation(CellsTextSignatureImplementation.TextAsImage);
+        signOptions.setSignatureImplementation(TextSignatureImplementation.Image);
         return signOptions;
     }
 
@@ -137,12 +139,12 @@ public class TextSigner extends Signer {
      * @return SlidesSignTextOptions
      */
     @Override
-    public SlidesSignTextOptions signSlides() {
-        SlidesSignTextOptions signOptions = new SlidesSignTextOptions(textData.getText());
-        signOptions.setDocumentPageNumber(signatureData.getPageNumber());
+    public TextSignOptions signSlides() {
+        TextSignOptions signOptions = new TextSignOptions(textData.getText());
+        signOptions.setPageNumber(signatureData.getPageNumber());
         fillTextOptions(signOptions);
         //type of implementation
-        signOptions.setSignatureImplementation(SlidesTextSignatureImplementation.TextAsImage);
+        signOptions.setSignatureImplementation(TextSignatureImplementation.Image);
         return signOptions;
     }
 }

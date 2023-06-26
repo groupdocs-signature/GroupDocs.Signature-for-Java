@@ -1,6 +1,7 @@
 package com.groupdocs.ui.signature.signer;
 
-import com.groupdocs.signature.options.SignOptions;
+
+import com.groupdocs.signature.options.sign.SignOptions;
 import com.groupdocs.ui.signature.model.web.SignatureDataEntity;
 
 import java.awt.*;

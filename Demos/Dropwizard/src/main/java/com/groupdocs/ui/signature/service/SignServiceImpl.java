@@ -1,11 +1,12 @@
 package com.groupdocs.ui.signature.service;
 
 import com.google.common.collect.Lists;
-import com.groupdocs.signature.handler.SignatureHandler;
+import com.groupdocs.signature.Signature;
+import com.groupdocs.signature.domain.SignResult;
 import com.groupdocs.signature.options.OutputType;
-import com.groupdocs.signature.options.SignatureOptionsCollection;
 import com.groupdocs.signature.options.loadoptions.LoadOptions;
 import com.groupdocs.signature.options.saveoptions.SaveOptions;
+import com.groupdocs.signature.options.sign.SignOptions;
 import com.groupdocs.ui.common.config.GlobalConfiguration;
 import com.groupdocs.ui.common.exception.TotalGroupDocsException;
 import com.groupdocs.ui.signature.config.SignatureConfiguration;
@@ -21,13 +22,11 @@ import com.groupdocs.ui.signature.util.XMLReaderWriter;
 import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.io.*;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static com.groupdocs.ui.signature.service.SignatureHandlerFactory.createStreamHandler;
 import static com.groupdocs.ui.signature.service.SignatureHandlerFactory.getFullDataPathStr;
 import static com.groupdocs.ui.signature.util.SignatureType.QR_CODE;
 import static com.groupdocs.ui.signature.util.directory.SignatureDirectory.*;
@@ -37,27 +36,30 @@ public class SignServiceImpl implements SignService {
 
     private static final List<String> supportedImageFormats = Arrays.asList("bmp", "jpeg", "jpg", "tiff", "tif", "png");
 
-    private SignatureHandler signatureHandler;
+    private Signature signatureHandler;
     private SignatureConfiguration signatureConfiguration;
 
     public SignServiceImpl(GlobalConfiguration globalConfiguration) {
         this.signatureConfiguration = globalConfiguration.getSignature();
-        signatureHandler = SignatureHandlerFactory.createHandler(signatureConfiguration.getFilesDirectory(), signatureConfiguration.getDataDirectory());
+        //signatureHandler = SignatureHandlerFactory.createHandler(signatureConfiguration.getFilesDirectory(), signatureConfiguration.getDataDirectory());
     }
 
     @Override
     public SignedDocumentEntity sign(SignDocumentRequest signDocumentRequest) {
         String documentGuid = signDocumentRequest.getGuid();
-        SignatureOptionsCollection signsCollection = buildSignOptions(signDocumentRequest);
+        LoadOptions loadOptions = new LoadOptions();
+        loadOptions.setPassword(signDocumentRequest.getPassword());
+        signatureHandler = new Signature(documentGuid,loadOptions);
+        List<SignOptions> signsCollection = buildSignOptions(signDocumentRequest);
         return signDocument(documentGuid, signDocumentRequest.getPassword(), signsCollection);
     }
 
-    private SignatureOptionsCollection buildSignOptions(SignDocumentRequest signDocumentRequest) {
+    private List<SignOptions> buildSignOptions(SignDocumentRequest signDocumentRequest) {
         String documentGuid = signDocumentRequest.getGuid();
         String documentType = getDocumentType(signDocumentRequest.getDocumentType(), documentGuid, FilenameUtils.getExtension(documentGuid));
         List<SignatureDataEntity> signaturesData = signDocumentRequest.getSignaturesData();
         SortedSignaturesData sortedSignaturesData = new SortedSignaturesData(signaturesData).sort();
-        SignatureOptionsCollection signsCollection = new SignatureOptionsCollection();
+        List<SignOptions> signsCollection = new ArrayList<SignOptions>();
         if (!sortedSignaturesData.digital.isEmpty()) {
             signDigital(signDocumentRequest.getPassword(), sortedSignaturesData.digital, documentType, signsCollection);
         }
@@ -79,11 +81,11 @@ public class SignServiceImpl implements SignService {
     @Override
     public InputStream signByStream(SignDocumentRequest signDocumentRequest) {
         String documentGuid = signDocumentRequest.getGuid();
-        SignatureOptionsCollection signsCollection = buildSignOptions(signDocumentRequest);
+        List<SignOptions> signsCollection = buildSignOptions(signDocumentRequest);
         return signDocumentByStream(documentGuid, signDocumentRequest.getPassword(), signsCollection);
     }
 
-    private InputStream signDocumentByStream(String documentGuid, String password, SignatureOptionsCollection signsCollection) {
+    private InputStream signDocumentByStream(String documentGuid, String password, List<SignOptions> signsCollection) {
         // set save options
         final SaveOptions saveOptions = new SaveOptions();
         saveOptions.setOutputType(OutputType.Stream);
@@ -93,11 +95,10 @@ public class SignServiceImpl implements SignService {
         if (password != null && !password.isEmpty()) {
             loadOptions.setPassword(password);
         }
-
-        SignatureHandler<OutputStream> streamSignatureHandler = createStreamHandler();
-
         try {
-            ByteArrayOutputStream bos = (ByteArrayOutputStream) streamSignatureHandler.sign(new FileInputStream(documentGuid), signsCollection, loadOptions, saveOptions);
+            Signature signature = new Signature(documentGuid,loadOptions);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            signature.sign(bos, signsCollection, saveOptions);
             return new ByteArrayInputStream(bos.toByteArray());
         } catch (Exception ex) {
             logger.error("Exception occurred while signing document", ex);
@@ -112,7 +113,7 @@ public class SignServiceImpl implements SignService {
      * @param documentType
      * @param signsCollection
      */
-    private void signDigital(String password, List<SignatureDataEntity> digital, String documentType, SignatureOptionsCollection signsCollection) {
+    private void signDigital(String password, List<SignatureDataEntity> digital, String documentType, List<SignOptions> signsCollection) {
         try {
             for (int i = 0; i < digital.size(); i++) {
                 SignatureDataEntity signatureDataEntity = digital.get(i);
@@ -146,7 +147,7 @@ public class SignServiceImpl implements SignService {
      * @param signsCollection
      * @return
      */
-    private void signImage(String documentType, List<SignatureDataEntity> images, SignatureOptionsCollection signsCollection) {
+    private void signImage(String documentType, List<SignatureDataEntity> images, List<SignOptions> signsCollection) {
         try {
             for (int i = 0; i < images.size(); i++) {
                 SignatureDataEntity signatureDataEntity = images.get(i);
@@ -169,7 +170,7 @@ public class SignServiceImpl implements SignService {
      * @param signsCollection
      * @return
      */
-    private void signStamp(String documentType, List<SignatureDataEntity> stamps, SignatureOptionsCollection signsCollection) {
+    private void signStamp(String documentType, List<SignatureDataEntity> stamps, List<SignOptions> signsCollection) {
         String xmlPath = getFullDataPathStr(signatureConfiguration.getDataDirectory(), STAMP_DATA_DIRECTORY.getXMLPath());
         try {
             for (int i = 0; i < stamps.size(); i++) {
@@ -197,7 +198,7 @@ public class SignServiceImpl implements SignService {
      * @param signsCollection
      * @return
      */
-    private void signOptical(String documentType, List<SignatureDataEntity> codes, SignatureOptionsCollection signsCollection) {
+    private void signOptical(String documentType, List<SignatureDataEntity> codes, List<SignOptions> signsCollection) {
         try {
             // prepare signing options and sign document
             for (int i = 0; i < codes.size(); i++) {
@@ -229,7 +230,7 @@ public class SignServiceImpl implements SignService {
      * @param signsCollection
      * @return
      */
-    private void signText(String documentType, List<SignatureDataEntity> texts, SignatureOptionsCollection signsCollection) {
+    private void signText(String documentType, List<SignatureDataEntity> texts, List<SignOptions> signsCollection) {
         try {
             // prepare signing options and sign document
             for (int i = 0; i < texts.size(); i++) {
@@ -275,7 +276,7 @@ public class SignServiceImpl implements SignService {
      * @param signer
      * @throws ParseException
      */
-    private void addSignOptions(String documentType, SignatureOptionsCollection signsCollection, Signer signer) throws ParseException {
+    private void addSignOptions(String documentType, List<SignOptions> signsCollection, Signer signer) throws ParseException {
         switch (documentType) {
             case "Portable Document Format":
                 signsCollection.add(signer.signPdf());
@@ -306,24 +307,17 @@ public class SignServiceImpl implements SignService {
      * @return signed document
      * @throws Exception
      */
-    private SignedDocumentEntity signDocument(String documentGuid, String password, SignatureOptionsCollection signsCollection) {
+    private SignedDocumentEntity signDocument(String documentGuid, String password, List<SignOptions> signsCollection) {
         // set save options
         final SaveOptions saveOptions = new SaveOptions();
-        saveOptions.setOutputType(OutputType.String);
-        saveOptions.setOutputFileName(FilenameUtils.getName(documentGuid));
+        saveOptions.setPassword(password);
         saveOptions.setOverwriteExistingFiles(true);
-
-        // set password
-        LoadOptions loadOptions = new LoadOptions();
-        if (password != null && !password.isEmpty()) {
-            loadOptions.setPassword(password);
-        }
 
         // sign document
         SignedDocumentEntity signedDocument = new SignedDocumentEntity();
         try {
-            signatureHandler.getSignatureConfig().setOutputPath(FilenameUtils.getFullPath(documentGuid));
-            signedDocument.setGuid(signatureHandler.sign(documentGuid, signsCollection, loadOptions, saveOptions).toString());
+            SignResult result =  signatureHandler.sign(documentGuid, signsCollection, saveOptions);
+            signedDocument.setGuid(documentGuid);
         } catch (Exception ex) {
             logger.error("Exception occurred while signing document", ex);
             throw new TotalGroupDocsException(ex.getMessage(), ex);

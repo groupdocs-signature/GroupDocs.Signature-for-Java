@@ -1,11 +1,8 @@
 package com.groupdocs.ui.signature.signer;
 
-import com.groupdocs.signature.options.SignOptions;
-import com.groupdocs.signature.options.digitalsignature.CellsSignDigitalOptions;
-import com.groupdocs.signature.options.digitalsignature.PdfSignDigitalOptions;
-import com.groupdocs.signature.options.digitalsignature.WordsSignDigitalOptions;
+import com.groupdocs.signature.options.sign.DigitalSignOptions;
+import com.groupdocs.signature.options.sign.SignOptions;
 import com.groupdocs.ui.signature.entity.web.SignatureDataEntity;
-
 import javax.ws.rs.NotSupportedException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -36,16 +33,16 @@ public class DigitalSigner extends Signer {
      * @return PdfSignDigitalOptions
      */
     @Override
-    public PdfSignDigitalOptions signPdf() throws ParseException {
+    public DigitalSignOptions signPdf() throws ParseException {
         // initiate date formatter
         SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yy");
         // setup digital signature options
-        PdfSignDigitalOptions pdfSignOptions = new PdfSignDigitalOptions(signatureData.getSignatureGuid());
+        DigitalSignOptions pdfSignOptions = new DigitalSignOptions(signatureData.getSignatureGuid());
         pdfSignOptions.setReason(signatureData.getReason());
         pdfSignOptions.setContact(signatureData.getContact());
         pdfSignOptions.setLocation(signatureData.getAddress());
-        pdfSignOptions.setPassword(password);
-        pdfSignOptions.setSignAllPages(true);
+        pdfSignOptions.setPassword(signatureData.getSignaturePassword());
+        //pdfSignOptions.setSignAllPages(true);
         if (signatureData.getDate() != null && !signatureData.getDate().isEmpty()) {
             pdfSignOptions.getSignature().setSignTime(formatter.parse(signatureData.getDate()));
         }
@@ -68,16 +65,16 @@ public class DigitalSigner extends Signer {
      * @return WordsSignDigitalOptions
      */
     @Override
-    public WordsSignDigitalOptions signWord() throws ParseException {
+    public DigitalSignOptions signWord() throws ParseException {
         // initiate date formatter
         SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yy");
         // setup digital signature options
-        WordsSignDigitalOptions wordsSignOptions = new WordsSignDigitalOptions(signatureData.getSignatureGuid());
+        DigitalSignOptions wordsSignOptions = new DigitalSignOptions(signatureData.getSignatureGuid());
         if (signatureData.getDate() != null && !signatureData.getDate().isEmpty()) {
             wordsSignOptions.getSignature().setSignTime(formatter.parse(signatureData.getDate()));
         }
-        wordsSignOptions.setPassword(password);
-        wordsSignOptions.setSignAllPages(true);
+        wordsSignOptions.setPassword(signatureData.getSignaturePassword());
+        //wordsSignOptions.setSignAllPages(true);
         return wordsSignOptions;
     }
 
@@ -87,15 +84,15 @@ public class DigitalSigner extends Signer {
      * @return CellsSignDigitalOptions
      */
     @Override
-    public CellsSignDigitalOptions signCells() throws ParseException {
+    public DigitalSignOptions signCells() throws ParseException {
         // initiate date formatter
         SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yy");
-        CellsSignDigitalOptions cellsSignOptions = new CellsSignDigitalOptions(signatureData.getSignatureGuid());
+        DigitalSignOptions cellsSignOptions = new DigitalSignOptions(signatureData.getSignatureGuid());
         if (signatureData.getDate() != null && !signatureData.getDate().isEmpty()) {
             cellsSignOptions.getSignature().setSignTime(formatter.parse(signatureData.getDate()));
         }
-        cellsSignOptions.setPassword(password);
-        cellsSignOptions.setSignAllPages(true);
+        cellsSignOptions.setPassword(signatureData.getSignaturePassword());
+        //cellsSignOptions.setSignAllPages(true);
         return cellsSignOptions;
     }
 

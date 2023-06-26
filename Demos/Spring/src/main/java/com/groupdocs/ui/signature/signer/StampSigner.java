@@ -3,7 +3,7 @@ package com.groupdocs.ui.signature.signer;
 import com.groupdocs.signature.domain.stamps.StampBackgroundCropType;
 import com.groupdocs.signature.domain.stamps.StampLine;
 import com.groupdocs.signature.domain.stamps.StampTextRepeatType;
-import com.groupdocs.signature.options.stampsignature.*;
+import com.groupdocs.signature.options.sign.StampSignOptions;
 import com.groupdocs.ui.signature.model.web.SignatureDataEntity;
 import com.groupdocs.ui.signature.model.xml.StampXmlEntity;
 
@@ -35,9 +35,9 @@ public class StampSigner extends Signer {
      * @return PdfStampSignOptions
      */
     @Override
-    public PdfStampSignOptions signPdf() {
+    public StampSignOptions signPdf() {
         // setup options
-        PdfStampSignOptions signOptions = new PdfStampSignOptions();
+        StampSignOptions signOptions = new StampSignOptions();
         fillStampOptions(signOptions);
         return signOptions;
     }
@@ -47,7 +47,7 @@ public class StampSigner extends Signer {
         signOptions.setWidth(signatureData.getImageWidth() - 20);
         signOptions.setTop(signatureData.getTop());
         signOptions.setLeft(signatureData.getLeft());
-        signOptions.setDocumentPageNumber(signatureData.getPageNumber());
+        signOptions.setPageNumber(signatureData.getPageNumber());
         signOptions.setRotationAngle(signatureData.getAngle());
         signOptions.setBackgroundColor(getColor(stampData.get(stampData.size() - 1).getBackgroundColor()));
         signOptions.setBackgroundColorCropType(StampBackgroundCropType.OuterArea);
@@ -60,9 +60,9 @@ public class StampSigner extends Signer {
      * @return ImageStampSignOptions
      */
     @Override
-    public ImagesStampSignOptions signImage() {
+    public StampSignOptions signImage() {
         // setup options
-        ImagesStampSignOptions signOptions = new ImagesStampSignOptions();
+        StampSignOptions signOptions = new StampSignOptions();
         fillStampOptions(signOptions);
         return signOptions;
     }
@@ -73,9 +73,9 @@ public class StampSigner extends Signer {
      * @return WordsStampSignOptions
      */
     @Override
-    public WordsStampSignOptions signWord() {
+    public StampSignOptions signWord() {
         // setup options
-        WordsStampSignOptions signOptions = new WordsStampSignOptions();
+        StampSignOptions signOptions = new StampSignOptions();
         fillStampOptions(signOptions);
         return signOptions;
     }
@@ -86,9 +86,9 @@ public class StampSigner extends Signer {
      * @return CellsStampSignOptions
      */
     @Override
-    public CellsStampSignOptions signCells() {
+    public StampSignOptions signCells() {
         // setup options
-        CellsStampSignOptions signOptions = new CellsStampSignOptions();
+        StampSignOptions signOptions = new StampSignOptions();
         fillStampOptions(signOptions);
         return signOptions;
     }
@@ -99,9 +99,9 @@ public class StampSigner extends Signer {
      * @return SlidesStampSignOptions
      */
     @Override
-    public SlidesStampSignOptions signSlides() {
+    public StampSignOptions signSlides() {
         // setup options
-        SlidesStampSignOptions signOptions = new SlidesStampSignOptions();
+        StampSignOptions signOptions = new StampSignOptions();
         fillStampOptions(signOptions);
         return signOptions;
     }
@@ -152,7 +152,7 @@ public class StampSigner extends Signer {
 
     private void fillTextAndFont(StampXmlEntity stampXmlEntity, String text, int reductionSize, StampLine squareLine) {
         squareLine.setText(text);
-        squareLine.getFont().setFontSize(stampXmlEntity.getFontSize() / reductionSize);
+        squareLine.getFont().setSize(stampXmlEntity.getFontSize() / reductionSize);
         squareLine.getFont().setBold(stampXmlEntity.getBold());
         squareLine.getFont().setItalic(stampXmlEntity.getItalic());
         squareLine.getFont().setUnderline(stampXmlEntity.getUnderline());

@@ -1,10 +1,16 @@
 package com.groupdocs.ui.signature.service;
 
-import com.aspose.words.IncorrectPasswordException;
-import com.groupdocs.signature.domain.DocumentDescription;
-import com.groupdocs.signature.handler.SignatureHandler;
+
+import com.groupdocs.signature.Signature;
+import com.groupdocs.signature.domain.PageInfo;
+import com.groupdocs.signature.domain.documentpreview.IDocumentInfo;
+import com.groupdocs.signature.exception.IncorrectPasswordException;
 import com.groupdocs.signature.internal.c.a.s.InvalidPasswordException;
 import com.groupdocs.signature.licensing.License;
+import com.groupdocs.signature.options.PageStreamFactory;
+import com.groupdocs.signature.options.PreviewFormats;
+import com.groupdocs.signature.options.PreviewOptions;
+import com.groupdocs.signature.options.loadoptions.LoadOptions;
 import com.groupdocs.ui.config.GlobalConfiguration;
 import com.groupdocs.ui.exception.TotalGroupDocsException;
 import com.groupdocs.ui.model.request.LoadDocumentPageRequest;
@@ -28,9 +34,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.PostConstruct;
 import java.awt.*;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -47,7 +51,7 @@ public class SignatureServiceImpl implements SignatureService {
 
     public static final String PNG = "png";
 
-    private SignatureHandler signatureHandler;
+    private Signature signatureHandler;
 
     @Autowired
     private SignatureLoader signatureLoader;
@@ -76,7 +80,6 @@ public class SignatureServiceImpl implements SignatureService {
         if (StringUtils.isEmpty(signatureConfiguration.getDataDirectory())) {
             signatureConfiguration.setDataDirectory(filesDirectory + DATA_FOLDER);
         }
-        signatureHandler = SignatureHandlerFactory.createHandler(filesDirectory, signatureConfiguration.getDataDirectory());
     }
 
     /**
@@ -146,16 +149,40 @@ public class SignatureServiceImpl implements SignatureService {
         String documentGuid = loadDocumentRequest.getGuid();
         String password = loadDocumentRequest.getPassword();
         try {
+            LoadOptions loadOptions = new LoadOptions();
+            loadOptions.setPassword(password);
+            signatureHandler = new Signature(documentGuid,loadOptions);
             // get document info container
-            DocumentDescription documentDescription = signatureHandler.getDocumentDescription(documentGuid,
-                    password);
+            IDocumentInfo documentDescription = signatureHandler.getDocumentInfo();
             List<PageDescriptionEntity> pagesDescription = new ArrayList<>();
             // get info about each document page
             boolean loadData = signatureConfiguration.getPreloadPageCount() == 0;
-            for (int i = 1; i <= documentDescription.getPageCount(); i++) {
-                PageDescriptionEntity description = getPageDescriptionEntity(documentGuid, password, i, loadData);
+
+            for (PageInfo pageInfo : documentDescription.getPages()) {
+                PageDescriptionEntity description = new PageDescriptionEntity();
+                // set current page info for result
+                description.setHeight(pageInfo.getHeight());
+                description.setWidth(pageInfo.getWidth());
+                description.setNumber(pageInfo.getPageNumber()+1);
                 pagesDescription.add(description);
             }
+
+            if (loadData) {
+                PreviewOptions previewOptions = new PreviewOptions(new PageStreamFactory() {
+                    @Override
+                    public OutputStream createPageStream(int pageNumber) {
+                        return new ByteArrayOutputStream();
+                    }
+
+                    @Override
+                    public void closePageStream(int pageNumber, OutputStream pageStream) {
+                        pagesDescription.get(pageNumber).setData(new String(Base64.getEncoder().encode(((ByteArrayOutputStream)pageStream).toByteArray())));
+                    }
+                });
+                previewOptions.setPreviewFormat(PreviewFormats.PNG);
+                signatureHandler.generatePreview(previewOptions);
+            }
+
             LoadDocumentEntity loadDocumentEntity = new LoadDocumentEntity();
             loadDocumentEntity.setGuid(loadDocumentRequest.getGuid());
             loadDocumentEntity.setPages(pagesDescription);
@@ -190,11 +217,14 @@ public class SignatureServiceImpl implements SignatureService {
 
     private PageDescriptionEntity getPageDescriptionEntity(String documentGuid, String password, int i, boolean withImage) throws Exception {
         PageDescriptionEntity description = new PageDescriptionEntity();
+        LoadOptions loadOptions = new LoadOptions();
+        loadOptions.setPassword(password);
+        signatureHandler = new Signature(documentGuid,loadOptions);
+
+        IDocumentInfo docInfo = signatureHandler.getDocumentInfo();
         // get current page size
-        Dimension pageSize = signatureHandler.getDocumentPageSize(documentGuid, i, password, (double)0, (double)0, null);
-        // set current page info for result
-        description.setHeight(pageSize.getHeight());
-        description.setWidth(pageSize.getWidth());
+        description.setHeight(docInfo.getPages().get(i).getHeight());
+        description.setWidth(docInfo.getPages().get(i).getWidth());
         description.setNumber(i);
         if (withImage) {
             loadImage(documentGuid, password, i, description);
@@ -203,7 +233,8 @@ public class SignatureServiceImpl implements SignatureService {
     }
 
     private void loadImage(String documentGuid, String password, int i, PageDescriptionEntity description) throws Exception {
-        byte[] pageImage = signatureHandler.getPageImage(documentGuid, i, password, null, 100);
+        //byte[] pageImage = signatureHandler.getPageImage(documentGuid, i, password, null, 100);
+        byte[] pageImage = {};
         description.setData(new String(Base64.getEncoder().encode(pageImage)));
     }
 

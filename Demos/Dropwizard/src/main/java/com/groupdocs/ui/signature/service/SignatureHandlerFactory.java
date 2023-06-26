@@ -1,22 +1,19 @@
 package com.groupdocs.ui.signature.service;
 
-import com.groupdocs.signature.config.SignatureConfig;
-import com.groupdocs.signature.handler.SignatureHandler;
+import com.groupdocs.signature.Signature;
 import com.groupdocs.ui.common.config.DefaultDirectories;
 import org.apache.commons.lang3.StringUtils;
-
 import java.io.OutputStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import static com.groupdocs.ui.signature.util.directory.PathConstants.DATA_FOLDER;
 import static com.groupdocs.ui.signature.util.directory.SignatureDirectory.*;
 
 public class SignatureHandlerFactory {
 
-    public static SignatureHandler instance;
-    public static SignatureHandler streamInstance;
+    public static Signature instance;
+    public static Signature streamInstance;
 
     /**
      * Create instance of SignatureHandler
@@ -25,19 +22,19 @@ public class SignatureHandlerFactory {
      * @param dataDirectory
      * @return
      */
-    public synchronized static SignatureHandler createHandler(String filesDirectory, String dataDirectory) {
+    public synchronized static Signature createHandler(String filesDirectory, String dataDirectory) {
         if (instance == null) {
             String directory = StringUtils.isEmpty(dataDirectory) ? filesDirectory + DATA_FOLDER : dataDirectory;
             // create directories
             createDirectories(directory);
 
             // create signature application configuration
-            SignatureConfig config = new SignatureConfig();
-            config.setStoragePath(filesDirectory);
-            config.setCertificatesPath(getFullDataPathStr(directory, CERTIFICATE_DATA_DIRECTORY.getPath()));
-            config.setImagesPath(getFullDataPathStr(directory, IMAGE_DATA_DIRECTORY.getPath()));
+            //SignatureConfig config = new SignatureConfig();
+            //config.setStoragePath(filesDirectory);
+            //config.setCertificatesPath(getFullDataPathStr(directory, CERTIFICATE_DATA_DIRECTORY.getPath()));
+            //config.setImagesPath(getFullDataPathStr(directory, IMAGE_DATA_DIRECTORY.getPath()));
 
-            instance = new SignatureHandler(config);
+            //instance = new SignatureHandler(config);
         }
         return instance;
     }
@@ -47,12 +44,12 @@ public class SignatureHandlerFactory {
      *
      * @return
      */
-    public synchronized static SignatureHandler createStreamHandler() {
+    public synchronized static Signature createStreamHandler() {
         if (streamInstance == null) {
-            SignatureConfig config = new SignatureConfig();
-            config.setOutputPath(FileSystems.getDefault().getPath("").toAbsolutePath().toString());
-            SignatureHandler<OutputStream> streamSignatureHandler = new SignatureHandler<>(config);
-            streamInstance = streamSignatureHandler;
+            //SignatureConfig config = new SignatureConfig();
+            //config.setOutputPath(FileSystems.getDefault().getPath("").toAbsolutePath().toString());
+            //SignatureHandler<OutputStream> streamSignatureHandler = new SignatureHandler<>(config);
+            //streamInstance = streamSignatureHandler;
         }
         return streamInstance;
     }

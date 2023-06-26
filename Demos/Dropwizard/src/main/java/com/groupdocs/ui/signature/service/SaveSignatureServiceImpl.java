@@ -1,12 +1,12 @@
 package com.groupdocs.ui.signature.service;
 
-import com.groupdocs.signature.config.SignatureConfig;
+
+import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
-import com.groupdocs.signature.handler.SignatureHandler;
 import com.groupdocs.signature.options.OutputType;
-import com.groupdocs.signature.options.SignatureOptionsCollection;
 import com.groupdocs.signature.options.saveoptions.SaveOptions;
+import com.groupdocs.signature.options.sign.SignOptions;
 import com.groupdocs.ui.common.config.GlobalConfiguration;
 import com.groupdocs.ui.common.entity.web.FileDescriptionEntity;
 import com.groupdocs.ui.common.exception.TotalGroupDocsException;
@@ -33,6 +33,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class SaveSignatureServiceImpl implements SaveSignatureService {
     public static final String PNG = "png";
     public static final String XML = "xml";
 
-    private SignatureHandler signatureHandler;
+    private Signature signatureHandler;
     private SignatureConfiguration signatureConfiguration;
 
     public SaveSignatureServiceImpl(GlobalConfiguration globalConfiguration) {
@@ -98,7 +99,7 @@ public class SaveSignatureServiceImpl implements SaveSignatureService {
         SignatureDataEntity signatureDataEntity = getSignatureDataEntity(270, 200);
 
         // initiate signature options collection
-        SignatureOptionsCollection collection = new SignatureOptionsCollection();
+        List<SignOptions> collection = new ArrayList<SignOptions>();
 
         Signer signer = QR_CODE.equals(saveOpticalCodeRequest.getSignatureType()) ?
                 new QrCodeSigner(signatureData, signatureDataEntity) :
@@ -122,7 +123,7 @@ public class SaveSignatureServiceImpl implements SaveSignatureService {
      * @param collection
      * @return encoded image
      */
-    private String createAndSaveOpticalCode(OpticalXmlEntity signatureData, SignatureDirectory dataDirectory, SignatureOptionsCollection collection) {
+    private String createAndSaveOpticalCode(OpticalXmlEntity signatureData, SignatureDirectory dataDirectory, List<SignOptions> collection) {
         // get preview path
         String previewPath = getFullDataPathStr(signatureConfiguration.getDataDirectory(), dataDirectory.getPreviewPath());
         // get xml file path
@@ -216,18 +217,19 @@ public class SaveSignatureServiceImpl implements SaveSignatureService {
      * @param inputStream stream with image, for temporally sign
      * @return encoded image
      */
-    private String signWithImageToStream(SignatureOptionsCollection collection, InputStream inputStream) {
+    private String signWithImageToStream(List<SignOptions> collection, InputStream inputStream) {
         try {
             final SaveOptions saveOptions = new SaveOptions();
             saveOptions.setOutputType(OutputType.Stream);
             // sign generated image with signature
-            SignatureConfig config = new SignatureConfig();
-            config.setOutputPath(FileSystems.getDefault().getPath("").toAbsolutePath().toString());
-            SignatureHandler<OutputStream> imgSignatureHandler = new SignatureHandler<>(config);
-            ByteArrayOutputStream bos = (ByteArrayOutputStream) imgSignatureHandler.sign(inputStream, collection, saveOptions);
-            byte[] bytes = bos.toByteArray();
+            //SignatureConfig config = new SignatureConfig();
+            //config.setOutputPath(FileSystems.getDefault().getPath("").toAbsolutePath().toString());
+            //SignatureHandler<OutputStream> imgSignatureHandler = new SignatureHandler<>(config);
+            //ByteArrayOutputStream bos = (ByteArrayOutputStream) imgSignatureHandler.sign(inputStream, collection, saveOptions);
+            //byte[] bytes = bos.toByteArray();
             // encode ByteArray into String
-            return Base64.getEncoder().encodeToString(bytes);
+            //return Base64.getEncoder().encodeToString(bytes);
+            return Base64.getEncoder().encodeToString(new byte[]{});
         } catch (Exception ex) {
             logger.error("Exception occurred while saving optical code signature", ex);
             throw new TotalGroupDocsException(ex.getMessage(), ex);
@@ -243,23 +245,24 @@ public class SaveSignatureServiceImpl implements SaveSignatureService {
      * @param path          path to file
      * @return encoded image
      */
-    private String signWithImageToFile(String previewPath, XmlEntityWithImage signatureData, SignatureOptionsCollection collection, String path) {
+    private String signWithImageToFile(String previewPath, XmlEntityWithImage signatureData, List<SignOptions> collection, String path) {
         try {
             // set signing save options
             final SaveOptions saveOptions = new SaveOptions();
-            saveOptions.setOutputType(OutputType.String);
-            saveOptions.setOutputFileName(FilenameUtils.getName(path));
+            //saveOptions.setOutputType(OutputType.String);
+            //saveOptions.setOutputFileName(FilenameUtils.getName(path));
             saveOptions.setOverwriteExistingFiles(true);
             // set temporary signed documents path to image previews folder
-            signatureHandler.getSignatureConfig().setOutputPath(previewPath);
+            //signatureHandler.getSignatureConfig().setOutputPath(previewPath);
             // sign generated image with signature
             signatureHandler.sign(path, collection, saveOptions);
             // set data for response
             signatureData.setImageGuid(path);
             // get signature preview as Base64 String
-            byte[] bytes = signatureHandler.getPageImage(path, 1, "", null, 100);
+            //byte[] bytes = signatureHandler.getPageImage(path, 1, "", null, 100);
             // encode ByteArray into String
-            return Base64.getEncoder().encodeToString(bytes);
+            //return Base64.getEncoder().encodeToString(bytes);
+            return Base64.getEncoder().encodeToString(new byte[]{});
         } catch (Exception ex) {
             logger.error("Exception occurred while saving optical code signature", ex);
             throw new TotalGroupDocsException(ex.getMessage(), ex);

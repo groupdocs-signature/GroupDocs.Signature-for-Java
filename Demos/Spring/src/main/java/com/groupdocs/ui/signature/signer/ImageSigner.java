@@ -1,6 +1,6 @@
 package com.groupdocs.ui.signature.signer;
 
-import com.groupdocs.signature.options.imagesignature.*;
+import com.groupdocs.signature.options.sign.ImageSignOptions;
 import com.groupdocs.ui.signature.model.web.SignatureDataEntity;
 
 /**
@@ -26,20 +26,20 @@ public class ImageSigner extends Signer {
      * @return PdfSignImageOptions
      */
     @Override
-    public PdfSignImageOptions signPdf() {
+    public ImageSignOptions signPdf() {
         // setup options
         // setup image signature options
-        PdfSignImageOptions signOptions = new PdfSignImageOptions(signatureData.getSignatureGuid());
+        ImageSignOptions signOptions = new ImageSignOptions(signatureData.getSignatureGuid());
         fillImageOptions(signOptions);
         return signOptions;
     }
 
-    private void fillImageOptions(SignImageOptions signOptions) {
+    private void fillImageOptions(ImageSignOptions signOptions) {
         signOptions.setLeft(signatureData.getLeft());
         signOptions.setTop(signatureData.getTop());
         signOptions.setWidth(signatureData.getImageWidth());
         signOptions.setHeight(signatureData.getImageHeight());
-        signOptions.setDocumentPageNumber(signatureData.getPageNumber());
+        signOptions.setPageNumber(signatureData.getPageNumber());
         signOptions.setRotationAngle(signatureData.getAngle());
     }
 
@@ -49,9 +49,9 @@ public class ImageSigner extends Signer {
      * @return ImageSignImageOptions
      */
     @Override
-    public ImagesSignImageOptions signImage() {
+    public ImageSignOptions signImage() {
         // setup image signature options with relative path - image file stores in config.ImagesPath folder
-        ImagesSignImageOptions signOptions = new ImagesSignImageOptions(signatureData.getSignatureGuid());
+        ImageSignOptions signOptions = new ImageSignOptions(signatureData.getSignatureGuid());
         fillImageOptions(signOptions);
         return signOptions;
     }
@@ -62,9 +62,9 @@ public class ImageSigner extends Signer {
      * @return WordsSignImageOptions
      */
     @Override
-    public WordsSignImageOptions signWord() {
+    public ImageSignOptions signWord() {
         // setup image signature options with relative path - image file stores in config.ImagesPath folder
-        WordsSignImageOptions signOptions = new WordsSignImageOptions(signatureData.getSignatureGuid());
+        ImageSignOptions signOptions = new ImageSignOptions(signatureData.getSignatureGuid());
         fillImageOptions(signOptions);
         return signOptions;
     }
@@ -75,9 +75,9 @@ public class ImageSigner extends Signer {
      * @return CellsSignImageOptions
      */
     @Override
-    public CellsSignImageOptions signCells() {
+    public ImageSignOptions signCells() {
         // setup image signature options
-        CellsSignImageOptions signOptions = new CellsSignImageOptions(signatureData.getSignatureGuid());
+        ImageSignOptions signOptions = new ImageSignOptions(signatureData.getSignatureGuid());
         fillImageOptions(signOptions);
         return signOptions;
     }
@@ -88,9 +88,9 @@ public class ImageSigner extends Signer {
      * @return SlidesSignImageOptions
      */
     @Override
-    public SlidesSignImageOptions signSlides() {
+    public ImageSignOptions signSlides() {
         // setup image signature options with relative path - image file stores in config.ImagesPath folder
-        SlidesSignImageOptions signOptions = new SlidesSignImageOptions(signatureData.getSignatureGuid());
+        ImageSignOptions signOptions = new ImageSignOptions(signatureData.getSignatureGuid());
         fillImageOptions(signOptions);
         return signOptions;
     }
