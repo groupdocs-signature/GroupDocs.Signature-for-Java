@@ -16,6 +16,8 @@ import com.groupdocs.ui.modules.tree.TreeController
 import com.groupdocs.ui.modules.tree.TreeControllerImpl
 import com.groupdocs.ui.modules.upload.UploadController
 import com.groupdocs.ui.modules.upload.UploadControllerImpl
+import com.groupdocs.ui.signature.ktor.modules.deletesignaturefile.DeleteSignatureController
+import com.groupdocs.ui.signature.ktor.modules.deletesignaturefile.DeleteSignatureControllerImpl
 import com.groupdocs.ui.usecase.*
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.singleOf
@@ -30,6 +32,7 @@ object ModulesInjection {
         singleOf(::DownloadControllerImpl) { bind<DownloadController>() }
         singleOf(::UploadControllerImpl) { bind<UploadController>() }
         singleOf(::LoadSignatureImageControllerImpl) { bind<LoadSignatureImageController>() }
+        singleOf(::DeleteSignatureControllerImpl) { bind<DeleteSignatureController>() }
     }
 
 

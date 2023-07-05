@@ -12,6 +12,7 @@ import com.groupdocs.ui.modules.loadsignatureimage.loadSignatureImageModule
 import com.groupdocs.ui.modules.sign.signModule
 import com.groupdocs.ui.modules.tree.treeModule
 import com.groupdocs.ui.modules.upload.uploadModule
+import com.groupdocs.ui.signature.ktor.modules.deletesignaturefile.deleteSignatureModule
 import com.typesafe.config.ConfigFactory
 import io.github.config4k.extract
 import io.javalin.Javalin
@@ -67,6 +68,7 @@ fun main(args: Array<String>) {
         downloadModule()
         loadSignatureImageModule()
         uploadModule()
+        deleteSignatureModule()
     }
     app.exception(Exception::class.java) { e, ctx ->
         e.printStackTrace()
