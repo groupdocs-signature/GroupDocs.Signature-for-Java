@@ -17,6 +17,9 @@ public class SignWordProcessingWithMetadata {
      */
     public static void run() throws Exception
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Basic Usage] # SignWordProcessingWithMetadata : Sign word-processing document with metadata signature.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_WORDPROCESSING;
         String fileName = Paths.get(filePath).getFileName().toString();

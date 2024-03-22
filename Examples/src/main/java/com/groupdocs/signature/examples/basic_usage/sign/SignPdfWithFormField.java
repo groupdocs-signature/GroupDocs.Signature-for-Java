@@ -20,6 +20,9 @@ public class SignPdfWithFormField {
      */
     public static void run() throws Exception
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Basic Usage] # SignPdfWithFormField : Sign pdf document with form-field signature.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
         String fileName = Paths.get(filePath).getFileName().toString();

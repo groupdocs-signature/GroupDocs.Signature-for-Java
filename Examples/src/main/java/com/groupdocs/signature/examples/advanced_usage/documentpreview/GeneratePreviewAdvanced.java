@@ -4,9 +4,8 @@ import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
 import com.groupdocs.signature.options.PageStreamFactory;
-import com.groupdocs.signature.options.PreviewFormats;
-import com.groupdocs.signature.options.PreviewOptions;
-
+import com.groupdocs.signature.options.preview.PreviewFormats;
+import com.groupdocs.signature.options.preview.PreviewOptions;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
@@ -15,6 +14,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class GeneratePreviewAdvanced {
+
+
+
     /**
      * <p>
      * Generate document pages preview with using HideSignature feature
@@ -22,6 +24,9 @@ public class GeneratePreviewAdvanced {
      */
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # GeneratePreviewAdvanced : Generate document pages preview with using HideSignature feature\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF_SIGNED;
 

@@ -17,6 +17,10 @@ import java.io.File;
 
 public class SignWithSolidBrush {
     public static void run() throws Exception {
+
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SignWithSolidBrush : Sign document with text image signature using solid brush.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
 

@@ -26,6 +26,9 @@ public class UpdateMultipleAdvanced {
      */
     public static void run() throws Exception
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # UpdateMultipleAdvanced : Update multiple signatures in the document over known Signature Id property.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_SIGNED_MULTI;
         // copy source file since Update method works with same Document

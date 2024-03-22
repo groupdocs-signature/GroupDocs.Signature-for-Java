@@ -19,6 +19,9 @@ public class SearchForQRCodeEncryptedText {
      */
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SearchForQRCodeEncryptedText : Search document for QR-Code signature with applying specific options.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF_QRCODE_ENCRYPTED_TEXT;
 

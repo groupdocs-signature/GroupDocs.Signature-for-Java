@@ -8,8 +8,8 @@ import com.groupdocs.signature.domain.extensions.serialization.Address;
 import com.groupdocs.signature.domain.qrcodes.QrCodeTypes;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.options.PageSignatureStreamFactory;
-import com.groupdocs.signature.options.PreviewFormats;
 import com.groupdocs.signature.options.PreviewSignatureOptions;
+import com.groupdocs.signature.options.preview.PreviewFormats;
 import com.groupdocs.signature.options.sign.QrCodeSignOptions;
 
 import java.io.File;

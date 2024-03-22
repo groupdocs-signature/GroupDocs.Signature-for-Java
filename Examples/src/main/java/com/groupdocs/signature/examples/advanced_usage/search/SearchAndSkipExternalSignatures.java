@@ -16,6 +16,9 @@ public class SearchAndSkipExternalSignatures {
      */
     public static void run()
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SearchAndSkipExternalSignatures : Search document for Text signature.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_SIGNED_MULTI;
 

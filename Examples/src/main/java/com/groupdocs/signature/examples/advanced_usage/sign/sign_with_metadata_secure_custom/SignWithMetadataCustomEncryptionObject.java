@@ -40,11 +40,14 @@ public class SignWithMetadataCustomEncryptionObject {
         public java.math.BigDecimal DataFactor = new java.math.BigDecimal(0.01);
     }
 
-    /// <summary>
-    /// Sign pdf document with metadata signature with customer object and encryption
-    /// </summary>
+    /**
+    * Sign pdf document with metadata signature with customer object and encryption
+    */
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SignWithMetadataCustomEncryptionObject : Sign pdf document with metadata signature with customer object and encryption.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_WORDPROCESSING;
 

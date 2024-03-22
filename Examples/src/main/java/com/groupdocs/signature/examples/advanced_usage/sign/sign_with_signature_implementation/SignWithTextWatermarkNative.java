@@ -16,9 +16,9 @@ import java.nio.file.Paths;
 
 public class SignWithTextWatermarkNative
 {
-    /// <summary>
-    /// Sign WordProcessing document with text watermark signature using document specific implementation.
-    /// </summary>
+    /**
+    * Sign WordProcessing document with text watermark signature using document specific implementation.
+    */
     public static void run() throws Exception
     {
         System.out.print("\n--------------------------------------------------------------------------------------------------------------------");

@@ -13,6 +13,9 @@ public class VerifyWithExceptionHandling {
      */
     public static void run()
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # VerifyWithExceptionHandling : Verify document with digital signature applying specific options.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
         try {
@@ -22,7 +25,6 @@ public class VerifyWithExceptionHandling {
             options.setCertificateFilePath(Constants.CertificatePfx);
             // skip password specification
             //options.setPassword("1234567890");
-
 
             // sign document to file
             VerificationResult result = signature.verify(options);

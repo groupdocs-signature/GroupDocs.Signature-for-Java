@@ -15,6 +15,9 @@ public class SignImageWithMetadata {
      * Sign image document with metadata signature
      */
     public static void run() throws Exception{
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Basic Usage] # SignImageWithMetadata : Sign image document with metadata signature.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_IMAGE_JPG;
         String fileName = Paths.get(filePath).getFileName().toString();

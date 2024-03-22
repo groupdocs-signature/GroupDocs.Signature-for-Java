@@ -16,6 +16,8 @@ public class SignWithExceptionHandling {
      */
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SignWithExceptionHandling : Sign document with text signature applying specific options.\n");
 
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_WORDPROCESSING;

@@ -13,6 +13,9 @@ public class VerifyQRCode {
      */
     public static void run()
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Basic Usage] # VerifyQRCode : Verify document with QR-Code signature.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_SIGNED_MULTI;
 

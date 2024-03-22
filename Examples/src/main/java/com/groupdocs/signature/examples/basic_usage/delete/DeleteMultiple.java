@@ -27,6 +27,9 @@ public class DeleteMultiple {
      */
     public static void run() throws Exception
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Basic Usage] # DeleteMultiple : Delete multiple signatures from the document.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_SIGNED_MULTI;
         String fileName = Paths.get(filePath).getFileName().toString();

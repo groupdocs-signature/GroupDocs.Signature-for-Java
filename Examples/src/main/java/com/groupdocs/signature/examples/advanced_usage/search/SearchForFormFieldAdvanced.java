@@ -15,6 +15,9 @@ public class SearchForFormFieldAdvanced {
      */
     public static void run()
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SearchForFormFieldAdvanced : Search document for form-field signature with applying specific options.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF_SIGNED_FORMFIELD;
 

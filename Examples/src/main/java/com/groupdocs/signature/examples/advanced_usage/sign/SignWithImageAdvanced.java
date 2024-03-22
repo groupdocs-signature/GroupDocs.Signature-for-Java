@@ -24,6 +24,9 @@ public class SignWithImageAdvanced {
      */ 
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SignWithImageAdvanced : Sign document with image signature applying specific options.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_WORDPROCESSING;
         String fileName = Paths.get(filePath).getFileName().toString();

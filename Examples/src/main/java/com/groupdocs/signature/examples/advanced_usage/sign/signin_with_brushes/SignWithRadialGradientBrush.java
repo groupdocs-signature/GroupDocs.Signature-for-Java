@@ -18,6 +18,9 @@ import java.io.File;
 public class SignWithRadialGradientBrush {
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SignWithRadialGradientBrush : Sign document with text image signature using radial gradient brush.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
 

@@ -17,6 +17,9 @@ public class SetLicenseFromFile {
      */
     public static void run()
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Quick Start] # SetLicenseFromFile : How to set license from file.");
+
         File file = new File(Constants.LicensePath);
         if (file.exists())
         {

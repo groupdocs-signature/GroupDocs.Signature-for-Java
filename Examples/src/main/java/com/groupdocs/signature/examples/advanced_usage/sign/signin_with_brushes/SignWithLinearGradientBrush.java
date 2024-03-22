@@ -18,6 +18,9 @@ import java.io.File;
 public class SignWithLinearGradientBrush {
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SignWithLinearGradientBrush : Sign document with text image signature using linear g radient brush.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
         String outputFilePath = new File(Constants.OutputPath, "SignWithBrushes\\SignedLinearGradientBrush.pdf").getPath();

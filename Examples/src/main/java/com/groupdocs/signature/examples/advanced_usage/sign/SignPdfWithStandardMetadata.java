@@ -19,6 +19,9 @@ public class SignPdfWithStandardMetadata {
      */
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SignPdfWithStandardMetadata : Sign pdf document with metadata signature.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
         String fileName = Paths.get(filePath).getFileName().toString();

@@ -16,6 +16,9 @@ public class SignWithQRCode {
      */
     public static void run() throws Exception
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Basic Usage] # SignWithQRCode : Sign document with qr-code signature.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
         String fileName = Paths.get(filePath).getFileName().toString();

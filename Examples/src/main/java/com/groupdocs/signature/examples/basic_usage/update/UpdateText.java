@@ -17,6 +17,9 @@ public class UpdateText {
      * </p>
      */
     public static void run() throws Exception {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Basic Usage] # UpdateText : Update Text signature in the document.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_SIGNED_MULTI;
         // copy source file since Update method works with same Document

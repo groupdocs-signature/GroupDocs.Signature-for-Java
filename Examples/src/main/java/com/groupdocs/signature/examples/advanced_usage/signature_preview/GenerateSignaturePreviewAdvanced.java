@@ -9,9 +9,10 @@ import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.options.PageSignatureStreamFactory;
-import com.groupdocs.signature.options.PreviewFormats;
+
 import com.groupdocs.signature.options.PreviewSignatureOptions;
 import com.groupdocs.signature.options.appearances.PdfDigitalSignatureAppearance;
+import com.groupdocs.signature.options.preview.PreviewFormats;
 import com.groupdocs.signature.options.sign.DigitalSignOptions;
 
 import java.awt.*;

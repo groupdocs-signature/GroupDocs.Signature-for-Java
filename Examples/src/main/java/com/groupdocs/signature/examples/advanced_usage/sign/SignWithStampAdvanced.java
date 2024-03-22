@@ -24,6 +24,9 @@ public class SignWithStampAdvanced {
     */
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SignWithStampAdvanced : Sign document with Bar-Code signature applying specific options.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
         String fileName = Paths.get(filePath).getFileName().toString();

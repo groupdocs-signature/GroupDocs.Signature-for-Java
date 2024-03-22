@@ -18,9 +18,15 @@ import com.groupdocs.signature.options.sign.QrCodeSignOptions;
 import java.io.File;
 import java.io.InputStream;
 
+/**
+* This example demonstrates how to download document from Amazon S3 storage and render document.
+*/
 public class LoadDocumentFromAmazonS3 {
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # LoadDocumentFromAmazonS3 : Download document from Amazon S3 storage and render document.\n");
+
         String key = "sample.docx";
         String outputFilePath = new File(Constants.OutputPath, "SignFromStream//signedSample.docx").getPath();
         try {

@@ -17,6 +17,9 @@ public class SearchForImageAdvanced {
      */
     public static void run()
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SearchForImageAdvanced : Search document for Image signature.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_SIGNED_MULTI;
         String fileName = Paths.get(filePath).getFileName().toString();

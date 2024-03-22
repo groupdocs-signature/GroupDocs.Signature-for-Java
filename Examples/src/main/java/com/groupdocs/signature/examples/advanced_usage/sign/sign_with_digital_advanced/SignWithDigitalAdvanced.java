@@ -2,13 +2,8 @@ package com.groupdocs.signature.examples.advanced_usage.sign.sign_with_digital_a
 
 
 import com.groupdocs.signature.Signature;
-import com.groupdocs.signature.domain.Border;
-import com.groupdocs.signature.domain.Padding;
 import com.groupdocs.signature.domain.SignResult;
-import com.groupdocs.signature.domain.enums.DashStyle;
-import com.groupdocs.signature.domain.enums.HorizontalAlignment;
-import com.groupdocs.signature.domain.enums.VerticalAlignment;
-import com.groupdocs.signature.domain.extensions.SpreadsheetPosition;
+import com.groupdocs.signature.domain.extensions.signoptions.SpreadsheetPosition;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;

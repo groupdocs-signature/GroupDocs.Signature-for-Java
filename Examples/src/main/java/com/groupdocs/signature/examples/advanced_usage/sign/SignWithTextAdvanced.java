@@ -8,7 +8,7 @@ import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.TextSignatureImplementation;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.domain.extensions.LinearGradientBrush;
-import com.groupdocs.signature.domain.extensions.TextShadow;
+import com.groupdocs.signature.domain.extensions.signoptions.TextShadow;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
@@ -24,6 +24,9 @@ public class SignWithTextAdvanced {
      */
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SignWithTextAdvanced : Sign document with text signature applying specific options.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_WORDPROCESSING;
         String fileName = Paths.get(filePath).getFileName().toString();

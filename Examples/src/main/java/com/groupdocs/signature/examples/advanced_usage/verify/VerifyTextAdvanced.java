@@ -14,6 +14,9 @@ public class VerifyTextAdvanced {
      */
     public static void run()
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # VerifyTextAdvanced : Verify document with Text signature with applying specific options.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_SIGNED_MULTI;
         try {

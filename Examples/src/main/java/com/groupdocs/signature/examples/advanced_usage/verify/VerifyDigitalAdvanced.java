@@ -14,6 +14,9 @@ public class VerifyDigitalAdvanced {
      */
     public static void run()
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # VerifyDigitalAdvanced : Verify document with digital signature with applying specific options.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF_SIGNED_DIGITAL;
         try {

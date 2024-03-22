@@ -14,6 +14,9 @@ public class VerifyBarcodeAdvanced {
      */
     public static void run()
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # VerifyBarcodeAdvanced : Verify document with Bar-Code signature with applying specific options.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_SIGNED_MULTI;
         try {

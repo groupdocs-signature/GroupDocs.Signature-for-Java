@@ -7,7 +7,7 @@ public class Constants {
 	// Storage path
 	public static final String SamplesPath = (System.getProperty("user.dir") + "\\Resources\\SampleFiles\\");
 	// License path
-	public static final String LicensePath = "C:\\GroupDocs.Signature.Java.lic";
+	public static final String LicensePath = "E:\\GroupDocs.Signature.Java.lic";
 	// Output path
 	public static final String OutputPath = (System.getProperty("user.dir") + "\\Resources\\Output\\");
 	//Certificates path
@@ -53,15 +53,24 @@ public class Constants {
     public static String SAMPLE_SPREADSHEET
             = getSampleFilePath("sample.xlsx");
 
+    public static String SAMPLE_SPREADSHEET_MACRO_SUPPORT
+            = getSampleFilePath("sample.xlsm");
+
     // Presentations
     public static String SAMPLE_PRESENTATION
             = getSampleFilePath("sample.pptx");
+    public static String SAMPLE_PRESENTATION2
+            = getSampleFilePath("sample2.pptx");
 
     // Images
     public static String SAMPLE_IMAGE
             = getSampleFilePath("sample.png");
     public static String SAMPLE_IMAGE_JPG
             = getSampleFilePath("sample.jpg");
+
+    // Multi-layer images
+    public static String SAMPLE_DICOM = getSampleFilePath("sample.dcm");
+    public static String SAMPLE_DICOM_SIGNED = getSampleFilePath("sample_signed.dcm");
 
     //Metadata
     public static String SAMPLE_PDF_SIGNED_METADATA = getSampleFilePath("sample_signed_metadata.pdf");
@@ -118,11 +127,17 @@ public class Constants {
             = getSampleFilePath("sample_qrcode_mailmark2d_type29.pdf");
     public static String SAMPLE_PDF_QRCODE_HIBCPASDATA_OBJECT
             = getSampleFilePath("sample_qrcode_hibcpasdata.pdf");
+
     // Archive Documents
     public static String SAMPLE_ZIP
             = getSampleFilePath("sample.zip");
     public static String SAMPLE_TAR
             = getSampleFilePath("sample.tar");
+
+    public static String SAMPLE_SIGNED_ZIP
+            = getSampleFilePath("signed.zip");
+    public static String SAMPLE_SIGNED_TAR
+            = getSampleFilePath("signed.tar");
 
 
 

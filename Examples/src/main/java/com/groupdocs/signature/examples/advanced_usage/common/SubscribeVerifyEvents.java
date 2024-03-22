@@ -45,6 +45,9 @@ public class SubscribeVerifyEvents {
      */
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SubscribeVerifyEvents : Verify document with text signature applying specific options and subscribe for events.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
 

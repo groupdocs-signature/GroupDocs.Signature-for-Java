@@ -17,6 +17,9 @@ public class SignSpreadsheetWithMetadata {
      */
     public static void run() throws Exception
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Basic Usage] # SignSpreadsheetWithMetadata : Sign spreadsheets document with metadata signature.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_SPREADSHEET;
         String fileName = Paths.get(filePath).getFileName().toString();

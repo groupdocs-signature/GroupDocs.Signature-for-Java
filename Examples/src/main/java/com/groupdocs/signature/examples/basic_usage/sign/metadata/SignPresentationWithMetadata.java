@@ -17,8 +17,11 @@ public class SignPresentationWithMetadata {
      */
     public static void run() throws Exception
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Basic Usage] # SignPresentationWithMetadata : Sign presentation document with metadata signature.");
+
         // The path to the documents directory.
-        String filePath = Constants.SAMPLE_PRESENTATION;
+        String filePath = Constants.SAMPLE_PRESENTATION2;
         String fileName = Paths.get(filePath).getFileName().toString();
 
         String outputFilePath = new File(Constants.OutputPath, "SignPresentationWithMetadata//"+ fileName).getPath();

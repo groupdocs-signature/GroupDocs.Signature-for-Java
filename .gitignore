@@ -1,6 +1,9 @@
-Examples\.idea
-Examples\target
-Examples\Resources\Output
-Examples\*.iml
+Examples/.idea
+Demos/Javalin/.idea
+Demos/Javalin/.gradle
+Demos/Ktor/.gradle
+Examples/target
+Examples/Resources/Output
+Examples/*.iml
 deploy_key
 *.lic

@@ -15,6 +15,9 @@ public class SearchForBarcode {
      */
     public static void run()
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Basic Usage] # SearchForBarcode : Search document for Bar-Code signature.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF_SIGNED;
         String fileName = Paths.get(filePath).getFileName().toString();

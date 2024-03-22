@@ -1,91 +1,17 @@
 package com.groupdocs.signature.examples;
 
 
-import com.groupdocs.signature.examples.advanced_usage.common.*;
-import com.groupdocs.signature.examples.advanced_usage.crud.ProcessingBarcodeSignatureOverCRUD;
-import com.groupdocs.signature.examples.advanced_usage.crud.ProcessingImageSignatureOverCRUD;
-import com.groupdocs.signature.examples.advanced_usage.crud.ProcessingQrCodeSignatureOverCRUD;
-import com.groupdocs.signature.examples.advanced_usage.crud.ProcessingTextSignatureOverCRUD;
-import com.groupdocs.signature.examples.advanced_usage.delete.*;
-import com.groupdocs.signature.examples.advanced_usage.documentpreview.GeneratePreviewAdvanced;
-import com.groupdocs.signature.examples.advanced_usage.documentpreview.GetDocumentInfoAdvanced;
-import com.groupdocs.signature.examples.advanced_usage.documentpreview.GetDocumentProcessHistoryAdvanced;
-import com.groupdocs.signature.examples.advanced_usage.handlingexceptions.HandlingIncorrectPasswordException;
-import com.groupdocs.signature.examples.advanced_usage.handlingexceptions.HandlingPasswordRequiredException;
-import com.groupdocs.signature.examples.advanced_usage.loading.LoadPasswordProtectedDocument;
-import com.groupdocs.signature.examples.advanced_usage.loading.loading_documents_from_different_sources.LoadDocumentFromLocalDisk;
-import com.groupdocs.signature.examples.advanced_usage.loading.loading_documents_from_different_sources.LoadDocumentFromStream;
-import com.groupdocs.signature.examples.advanced_usage.loading.loading_documents_from_different_sources.LoadDocumentFromUrl;
-import com.groupdocs.signature.examples.advanced_usage.saving.SaveDocumentWithPassword;
-import com.groupdocs.signature.examples.advanced_usage.saving.SaveSignedDocumentsAsImages;
-import com.groupdocs.signature.examples.advanced_usage.saving.SaveSignedImageWithVariousOutputTypes;
-import com.groupdocs.signature.examples.advanced_usage.saving.save_documents_with_different_output_types.*;
-import com.groupdocs.signature.examples.advanced_usage.search.*;
-import com.groupdocs.signature.examples.advanced_usage.search.search_for_metadata.*;
-import com.groupdocs.signature.examples.advanced_usage.search.search_for_metadata_secure_custom.SearchForMetadataCustomEncryptionObject;
-import com.groupdocs.signature.examples.advanced_usage.search.search_for_metadata_secure_custom.SearchForMetadataCustomSerializationObject;
-import com.groupdocs.signature.examples.advanced_usage.search.search_for_metadata_secure_custom.SearchForMetadataEncryptedObject;
-import com.groupdocs.signature.examples.advanced_usage.search.search_for_metadata_secure_custom.SearchForMetadataEncryptedText;
-import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_secure_custom.SearchForQRCodeCustomEncryptionObject;
-import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_secure_custom.SearchForQRCodeCustomSerializationObject;
-import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_secure_custom.SearchForQRCodeEncryptedObject;
-import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_secure_custom.SearchForQRCodeEncryptedText;
-import com.groupdocs.signature.examples.advanced_usage.search.search_for_qrcode_standard_objects.*;
+import com.groupdocs.signature.examples.advanced_usage.search.SearchCertificateAdvanced;
+import com.groupdocs.signature.examples.advanced_usage.search.SearchForTextAdvanced;
 import com.groupdocs.signature.examples.advanced_usage.sign.*;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_digital_advanced.SignWithDigitalAdvancedPdfAppearance;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_digital_advanced.SignWithDigitalAdvancedPdfCertificate;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_digital_advanced.SignWithDigitalAdvancedPdfTimestamp;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_form_fields_advanced.SignPdfWithFormFieldAdvanced;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_form_fields_advanced.SignPdfWithFormFieldAdvancedCombobox;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_form_fields_advanced.SignPdfWithFormFieldAdvancedRadio;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_images_advanced.SignWithBase64ImageAdvanced;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_images_advanced.SignWithBase64ImageSample;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_multilayers_images.SignDicomImageAdvanced;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_digital_advanced.SignWithDigitalAdvancedSpreadSheets;
+import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_digital_advanced.SignWithDigitalUsingCertificateStore;
 import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_images_advanced.SignWithImageAdvanced;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_advanced.SignImageWithCustomMetadata;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_advanced.SignPdfWithCustomMetadata;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataCustomEncryptionObject;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataCustomSerializationObject;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataEncryptedObject;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_metadata_secure_custom.SignWithMetadataEncryptedText;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_qrcode_secure_custom.SignWithQRCodeCustomEncryptionObject;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_qrcode_secure_custom.SignWithQRCodeCustomSerializationObject;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_qrcode_secure_custom.SignWithQRCodeEncryptedObject;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_qrcode_secure_custom.SignWithQRCodeEncryptedText;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_qrcode_standard_objects.*;
-import com.groupdocs.signature.examples.advanced_usage.sign.sign_with_signature_implementation.*;
-import com.groupdocs.signature.examples.advanced_usage.sign.signarchives.SignTARArchiveDocuments;
-import com.groupdocs.signature.examples.advanced_usage.sign.signarchives.SignZIPArchiveDocuments;
-import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithDigitalAppearance;
-import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithImageAppearance;
-import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithPdfTextAnnotation;
-import com.groupdocs.signature.examples.advanced_usage.sign.signature_appearances.SignWithPdfTextSticker;
-import com.groupdocs.signature.examples.advanced_usage.sign.signature_positions.SignWithAlignments;
-import com.groupdocs.signature.examples.advanced_usage.sign.signature_positions.SignWithMillimeters;
-import com.groupdocs.signature.examples.advanced_usage.sign.signature_positions.SignWithPercents;
-import com.groupdocs.signature.examples.advanced_usage.sign.signature_positions.SignWithStretchMode;
-import com.groupdocs.signature.examples.advanced_usage.sign.signin_with_brushes.SignWithLinearGradientBrush;
-import com.groupdocs.signature.examples.advanced_usage.sign.signin_with_brushes.SignWithRadialGradientBrush;
-import com.groupdocs.signature.examples.advanced_usage.sign.signin_with_brushes.SignWithSolidBrush;
-import com.groupdocs.signature.examples.advanced_usage.sign.signin_with_brushes.SignWithTextureBrush;
-import com.groupdocs.signature.examples.advanced_usage.signature_preview.GenerateSignaturePreviewAdvanced;
-import com.groupdocs.signature.examples.advanced_usage.update.*;
-import com.groupdocs.signature.examples.advanced_usage.verify.*;
-import com.groupdocs.signature.examples.basic_usage.common.GetSupportedFileFormats;
-import com.groupdocs.signature.examples.basic_usage.delete.*;
-import com.groupdocs.signature.examples.basic_usage.document_preview.GeneratePreview;
-import com.groupdocs.signature.examples.basic_usage.document_preview.GetDocumentInfo;
-import com.groupdocs.signature.examples.basic_usage.document_preview.GetDocumentProcessHistory;
-import com.groupdocs.signature.examples.basic_usage.search.*;
-import com.groupdocs.signature.examples.basic_usage.search.metadata.*;
-import com.groupdocs.signature.examples.basic_usage.sign.*;
-import com.groupdocs.signature.examples.basic_usage.sign.metadata.*;
+import com.groupdocs.signature.examples.basic_usage.search.SearchForDigital;
+import com.groupdocs.signature.examples.basic_usage.sign.metadata.SignPresentationWithMetadata;
 import com.groupdocs.signature.examples.basic_usage.signature_preview.GenerateSignaturePreview;
-import com.groupdocs.signature.examples.basic_usage.update.UpdateBarcode;
-import com.groupdocs.signature.examples.basic_usage.update.UpdateImage;
-import com.groupdocs.signature.examples.basic_usage.update.UpdateQRCode;
-import com.groupdocs.signature.examples.basic_usage.update.UpdateText;
-import com.groupdocs.signature.examples.basic_usage.verify.*;
-import com.groupdocs.signature.examples.quick_start.HelloWorld;
+import com.groupdocs.signature.examples.basic_usage.verify.VerifyWithMultipleOptions;
 import com.groupdocs.signature.examples.quick_start.SetLicenseFromFile;
 
 public class MainClass {
@@ -119,7 +45,7 @@ public class MainClass {
             //endregion
 
             //region Signature Preview
-        //GenerateSignaturePreview.run();
+        GenerateSignaturePreview.run();
             //endregion
 
             //region Sign document with different signature types
@@ -280,7 +206,7 @@ public class MainClass {
 
             //region Loading
 
-        LoadDocumentFromLocalDisk.run();
+        //LoadDocumentFromLocalDisk.run();
         //LoadDocumentFromStream.run();
         //LoadDocumentFromUrl.run();
         //LoadDocumentFromAmazonS3.run();
@@ -324,7 +250,7 @@ public class MainClass {
         //SignWithTextAdvanced.run();
 
         //Sign document with digital signature applying specific options
-        SignWithDigitalAdvanced.run();
+        //SignWithDigitalAdvanced.run();
 
         //Sign Pdf document with digital time stamp
         //SignWithDigitalAdvancedPdfTimestamp.run();
@@ -334,6 +260,12 @@ public class MainClass {
 
         //Sign Pdf document with digital certificate and custom appearance settings
         //SignWithDigitalAdvancedPdfAppearance.run();
+
+        //Sign SpreadSheets document with digital signature
+        //SignWithDigitalAdvancedSpreadSheets.run();
+
+        //Sign document with digital signatures got from one of certificate stores
+        //SignWithDigitalUsingCertificateStore.run();
 
         //Sign document with image signature applying specific options
         //SignWithImageAdvanced.run();
@@ -362,7 +294,10 @@ public class MainClass {
         // Sign Spreadsheet document with XAdes signature
         //SignWithXAdESTypes.run();
             //endregion
-
+        // Sign Spreadsheet document with advanced Barcodes and QR-Codes
+        SignWithAdvancedBarAndQRCodeTypes.run();
+        // Sign Spreadsheet document and VBA Project in it
+        SignSpreadsheetsVBAProject.run();
             //region Sign with further result analysis
         //SignWithResultAnalysis.run();
             //endregion
@@ -433,10 +368,14 @@ public class MainClass {
         //SignWithRadialGradientBrush.run();
             //endregion
 
+            //region Sign multi-layer image documents
+        //SignDicomImageAdvanced.run();
+            //endregion
+
             //region Search signed documents for different signature types with additional options
 
         //Search document for Text signature with applying specific options
-        //SearchForTextAdvanced.run();
+        SearchForTextAdvanced.run();
 
         //Search document for Image signature with applying specific options
         //SearchForImageAdvanced.run();
@@ -489,6 +428,8 @@ public class MainClass {
         //SearchWithExceptionHandling.run();
             //endregion // Search signed documents for different signature types with additional options
 
+        // search certificate files for the particular string
+        //SearchCertificateAdvanced.run();
             //region Search for QR-Code Encryption, custom encryption, custom serialization
         //SearchForQRCodeEncryptedText.run();
         //SearchForQRCodeEncryptedObject.run();
@@ -566,10 +507,10 @@ public class MainClass {
         //ProcessingQrCodeSignatureOverCRUD.run();
             //endregion
 
-        SignWithOrdering.run();
+        //SignWithOrdering.run();
             //endregion    // Advanced Usage
 
-        //System.out.print("\nAll done.");
+        System.out.print("\nAll done.");
 
 	}
 }

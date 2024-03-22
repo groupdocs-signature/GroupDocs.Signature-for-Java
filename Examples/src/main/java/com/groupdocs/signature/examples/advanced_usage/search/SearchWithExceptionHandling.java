@@ -15,6 +15,9 @@ public class SearchWithExceptionHandling {
      * Search document with digital signature applying specific options
      */
     public static void run() {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SearchWithExceptionHandling : Search document with digital signature applying specific options.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF_SIGNED_PWD;
         try {

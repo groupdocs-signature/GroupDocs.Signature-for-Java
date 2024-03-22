@@ -19,6 +19,9 @@ public class SignWithDigitalAppearance {
      */
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SignWithDigitalAppearance : Sign document with digital signature.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_WORDPROCESSING;
         String imagePath = Constants.ImageHandwrite;

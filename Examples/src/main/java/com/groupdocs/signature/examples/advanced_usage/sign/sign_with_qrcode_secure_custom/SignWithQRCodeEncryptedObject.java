@@ -44,11 +44,14 @@ public class SignWithQRCodeEncryptedObject {
         public java.math.BigDecimal DataFactor = new java.math.BigDecimal(0.01);
     }
 
-    /// <summary>
-    /// Sign document with QR-Code signature applying specific options
-    /// </summary>
+    /**
+    * Sign document with QR-Code signature applying specific options
+    */
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SignWithQRCodeEncryptedObject : Sign document with QR-Code signature applying specific options.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
         String outputFilePath = new File(Constants.OutputPath, "SignWithQRCodeSecureCustom\\QRCodeEncryptedObject.pdf").getPath();

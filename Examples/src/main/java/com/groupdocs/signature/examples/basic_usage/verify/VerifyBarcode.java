@@ -13,6 +13,9 @@ public class VerifyBarcode {
      */
     public static void run()
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Basic Usage] # VerifyBarcode : Verify document with Bar-Code signature.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_SIGNED_MULTI;
 

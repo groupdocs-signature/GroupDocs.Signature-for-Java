@@ -9,6 +9,9 @@ import com.groupdocs.signature.examples.Constants;
 public class GetDocumentInfo {
     public static void run() throws Exception
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Basic Usage] # GetDocumentInfo : Get document information.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
 

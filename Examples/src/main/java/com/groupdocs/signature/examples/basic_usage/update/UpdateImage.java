@@ -21,6 +21,9 @@ public class UpdateImage {
      */
     public static void run() throws Exception
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Basic Usage] # UpdateImage : Update Image signature from the document.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_SIGNED_MULTI;
         // copy source file since Update method works with same Document

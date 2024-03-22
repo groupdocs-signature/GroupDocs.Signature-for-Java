@@ -1,5 +1,6 @@
 package com.groupdocs.signature.examples.advanced_usage.sign.sign_with_images_advanced;
 
+
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.domain.Border;
 import com.groupdocs.signature.domain.Padding;
@@ -10,6 +11,7 @@ import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.domain.signatures.BaseSignature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.exception.GroupDocsSignatureException;
+
 import com.groupdocs.signature.internal.c.a.ms.System.IO.Path;
 import com.groupdocs.signature.options.sign.ImageSignOptions;
 import org.apache.commons.codec.binary.Base64;

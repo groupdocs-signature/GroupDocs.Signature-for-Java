@@ -30,6 +30,10 @@ public class CancellationSignProcess {
      * Sign document with text signature applying specific options
      */
     public static void run() throws Exception {
+
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # CancellationSignProcess : Defines on progress event.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
         String fileName = Paths.get(filePath).getFileName().toString();

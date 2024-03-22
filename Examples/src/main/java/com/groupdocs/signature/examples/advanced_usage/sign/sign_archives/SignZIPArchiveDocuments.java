@@ -1,4 +1,4 @@
-package com.groupdocs.signature.examples.advanced_usage.sign.signarchives;
+package com.groupdocs.signature.examples.advanced_usage.sign.sign_archives;
 
 
 import com.groupdocs.signature.Signature;

@@ -18,6 +18,9 @@ public class SearchForMetadataEncryptedText {
      */
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SearchForMetadataEncryptedText : Search document for metadata signature with applying specific options.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_DOCX_METADATA_ENCRYPTED_TEXT;
 

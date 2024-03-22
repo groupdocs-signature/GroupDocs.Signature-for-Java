@@ -18,6 +18,9 @@ public class HandlingPasswordRequiredException {
      */
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # HandlingPasswordRequiredException : Sign document with qr-code signature.\n");
+
         // The path to the documents directory
         // This file is secured with password
         String filePath = Constants.SAMPLE_PDF_SIGNED_PWD;

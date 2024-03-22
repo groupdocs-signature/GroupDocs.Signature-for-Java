@@ -4,8 +4,8 @@ package com.groupdocs.signature.examples.basic_usage.document_preview;
 import com.groupdocs.signature.Signature;
 import com.groupdocs.signature.examples.Constants;
 import com.groupdocs.signature.options.PageStreamFactory;
-import com.groupdocs.signature.options.PreviewFormats;
-import com.groupdocs.signature.options.PreviewOptions;
+import com.groupdocs.signature.options.preview.PreviewFormats;
+import com.groupdocs.signature.options.preview.PreviewOptions;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,6 +16,9 @@ public class GeneratePreview {
 
     public static void run() throws Exception
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Basic Usage] # GeneratePreview : Generate document pages preview.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
         // instantiating the signature object

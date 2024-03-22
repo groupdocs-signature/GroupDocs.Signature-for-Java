@@ -47,6 +47,9 @@ public class SignImageWithCustomMetadata {
     */
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SignImageWithCustomMetadata : Sign Image document with metadata signature with customer object and encryption.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_IMAGE_JPG;
         String fileName = Paths.get(filePath).getFileName().toString();

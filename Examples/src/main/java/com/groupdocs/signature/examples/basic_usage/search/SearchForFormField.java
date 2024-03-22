@@ -14,6 +14,9 @@ public class SearchForFormField {
      */
     public static void run()
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Basic Usage] # SearchForFormField : Search document for form-field signature.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF_SIGNED_FORMFIELD;
 

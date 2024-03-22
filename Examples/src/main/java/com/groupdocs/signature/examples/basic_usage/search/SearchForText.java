@@ -15,6 +15,9 @@ public class SearchForText {
      * </p>
      */
     public static void run() {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Basic Usage] # SearchForText : Search document for Text signature.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_SIGNED_MULTI;
         String fileName = Paths.get(filePath).getFileName().toString();

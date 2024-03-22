@@ -22,6 +22,9 @@ public class SearchForMultiple {
      */
     public static void run()
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Basic Usage] # SearchForMultiple : Search document for Multiple signature.");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF_SIGNED;
 

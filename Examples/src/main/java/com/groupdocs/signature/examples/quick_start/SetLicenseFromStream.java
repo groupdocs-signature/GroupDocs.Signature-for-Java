@@ -13,6 +13,9 @@ public class SetLicenseFromStream {
      */
     public static void run() throws Exception
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Quick Start] # SetLicenseFromStream : This example demonstrates how to set license from stream.");
+
         File file = new File(Constants.LicensePath);
         if (file.exists())
         {

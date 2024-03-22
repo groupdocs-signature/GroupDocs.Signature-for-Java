@@ -21,6 +21,9 @@ public class SignWithDigitalAdvanced {
  */
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SignWithDigitalAdvanced : Sign document with digital signature.\n");
+
         // The path to the documents directory.            
         String filePath = Constants.SAMPLE_WORDPROCESSING;
         String fileName = Paths.get(filePath).getFileName().toString();

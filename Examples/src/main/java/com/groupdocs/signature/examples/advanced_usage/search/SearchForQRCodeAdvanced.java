@@ -17,6 +17,9 @@ public class SearchForQRCodeAdvanced {
      */
     public static void run()
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SearchForQRCodeAdvanced : Search document for QR-Code signature with applying specific options.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF_SIGNED;
 

@@ -47,10 +47,13 @@ public class SubscribeSearchEvents {
 
 
     /**
-     * search document for barcode sigantures and subscribe for events
+     * Search document for barcode signatures and subscribe for events
      */
     public static void run() throws Exception
     {
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # SubscribeSearchEvents : Search document for barcode signatures and subscribe for events.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_SIGNED_MULTI;
 

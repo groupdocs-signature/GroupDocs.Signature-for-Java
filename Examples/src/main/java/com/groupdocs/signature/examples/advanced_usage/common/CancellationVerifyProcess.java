@@ -25,6 +25,10 @@ public class CancellationVerifyProcess {
     }
 
     public static void run() throws Exception {
+
+        System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Advanced Usage] # CancellationVerifyProcess : Defines on progress event.\n");
+
         // The path to the documents directory.
         String filePath = Constants.SAMPLE_PDF;
 

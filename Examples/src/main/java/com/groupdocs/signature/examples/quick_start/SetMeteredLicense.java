@@ -9,6 +9,9 @@ public class SetMeteredLicense {
      */
     public static void run() throws Exception
     {
+        System.out.print("--------------------------------------------------------------------------------------------------------------------");
+        System.out.print("[Example Quick Start] # SetMeteredLicense : This example demonstrates how to set license from stream.");
+
         String publicKey = "*****";
         String privateKey = "*****";
 

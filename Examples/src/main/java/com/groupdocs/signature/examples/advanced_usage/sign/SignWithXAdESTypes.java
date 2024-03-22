@@ -12,9 +12,9 @@ import java.io.File;
 import java.nio.file.Paths;
 
 public class SignWithXAdESTypes {
-    /// <summary>
-    /// Sign document with XML Advanced Electronic Signatures (XAdES)
-    /// </summary>
+    /**
+    * Sign document with XML Advanced Electronic Signatures (XAdES)
+    */
     public static void run() throws Exception
     {
         System.out.print("\n--------------------------------------------------------------------------------------------------------------------");
