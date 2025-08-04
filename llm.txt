@@ -1,0 +1,32 @@
+# GroupDocs.Signature for Java
+
+> A Java library to create, apply, verify, and remove digital and electronic signatures from documents including PDFs, Word, Excel, Images, and more. Supports text, image, barcode, QR code, stamp, metadata, and certificate-based digital signatures.
+
+## About
+
+This repository contains examples and demos for GroupDocs.Signature for Java, a powerful and flexible digital signature API for Java applications. It supports more than 90 document formats and enables developers to build robust signature workflows in enterprise systems.
+
+**Key Features:**
+- Digital signatures using X.509 certificates (PKCS#12, PKCS#7)
+- Text, image, barcode, and QR code signature support
+- Add stamp, metadata, and form field signatures
+- Signature verification and removal capabilities
+- Cross-platform compatibility (Windows, Linux, macOS)
+
+## Documentation
+
+- [README.md](https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java/blob/master/README.md) – Overview and quick start
+- [Official Documentation](https://docs.groupdocs.com/signature/java/) – Full feature and API guide
+- [Code Examples](https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java/tree/master/Examples) – Practical examples with source code
+- [API Reference](https://apireference.groupdocs.com/signature/java) – Javadoc-style API documentation
+
+## Resources
+
+- [Maven Package](https://repository.groupdocs.com/webapp/#/artifacts/browse/tree/General/repo/com/groupdocs/groupdocs-signature) – Install using Maven or Gradle
+- [Free Support Forum](https://forum.groupdocs.com/c/signature) – Ask questions and get help
+- [License Information](https://purchase.groupdocs.com/policies/license) – GroupDocs EULA and licensing terms
+- [Release Notes](https://docs.groupdocs.com/signature/java/release-notes/) – What’s new in each release
+
+## Tags
+
+digital signature, e-sign, sign pdf, signature api, image signature, Java signature library, verify signature, electronic signature, document signing, sign documents in Java, create signature, QR code remover, signature from image, barcode signature
