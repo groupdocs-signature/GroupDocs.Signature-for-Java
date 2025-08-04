@@ -8,7 +8,7 @@
 This repository provides usage examples and demos for **GroupDocs.Signature for Java**, a powerful API for adding and verifying signatures in Java-based applications. It supports **over 90 document formats**, enabling developers to streamline digital signing workflows across platforms.
 
 
-### 🔑 Key Features
+## 🔑 Key Features
 
 - Apply and verify digital signatures with X.509 certificates
 - Add text, image, barcode, QR code, and stamp signatures
@@ -110,7 +110,7 @@ for (BaseSignature temp : signResult.getSucceeded()) {
 ```
 
 
-### 📚 Documentation and Resources
+## 📚 Documentation and Resources
 
 - [Official Documentation](https://docs.groupdocs.com/signature/java/)
 - [Free Support Forum](https://forum.groupdocs.com/c/signature)
@@ -125,7 +125,7 @@ for (BaseSignature temp : signResult.getSucceeded()) {
 <!-- SEO Keywords: digital signature, create digital signature, document sign, document signature, e sign, e sign process, e signature, e signature from image, electronic sign, electronic signature, signature e sign, groupdocs signature, sign documents online, sign pdf doc, sign pdf document, sign the pdf, sign to pdf, signature app, signature pdf, signing pdf document, csv file signature, remove barcode from pdf, qr code remover from pdf, signature valid png, get a signature, signature api, signature java, esign pdf, file signature, verify signature, create signature, image signature -->
 
 
-### 🔖 Tags
+## 🔖 Tags
 
 `java digital signature` `sign pdf java` `e-sign java` `signature api java` `groupdocs signature java`  
 `image signature java` `verify signature java` `electronic signature java` `document signing java`  
