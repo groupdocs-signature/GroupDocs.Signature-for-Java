@@ -2,13 +2,11 @@
 
 > A Java library to create, apply, verify, and remove digital and electronic signatures from documents, including PDFs, Word, Excel, Images, and more. Supports text, image, barcode, QR code, stamp, metadata, and certificate-based digital signatures.
 
----
 
 ## About
 
 This repository provides usage examples and demos for **GroupDocs.Signature for Java**, a powerful API for adding and verifying signatures in Java-based applications. It supports **over 90 document formats**, enabling developers to streamline digital signing workflows across platforms.
 
----
 
 ### 🔑 Key Features
 
@@ -18,7 +16,6 @@ This repository provides usage examples and demos for **GroupDocs.Signature for 
 - Search for or remove existing signatures from documents
 - Compatible with Java SE, EE, and Spring-based applications
 
----
 
 ## 🔧 Supported Signature Types
 
@@ -33,7 +30,6 @@ This repository provides usage examples and demos for **GroupDocs.Signature for 
 | **Metadata Signatures** | Hidden signatures for document tracking & authentication |
 | **Form Field Signatures** | Interactive signature fields for workflows |
 
----
 
 ## 📁 Supported Document Formats (90+)
 
@@ -53,7 +49,6 @@ This repository provides usage examples and demos for **GroupDocs.Signature for 
 - Web formats (HTML, HTM)
 - And many more...
 
----
 
 ## 💻 Code Examples
 
@@ -73,7 +68,6 @@ for (DigitalSignature digitalSignature : signatures) {
 }
 ```
 
----
 
 ### ✍️ Digitally Sign a PDF with Certificate
 ```java
@@ -114,7 +108,7 @@ for (BaseSignature temp : signResult.getSucceeded()) {
                      ". Size: " + temp.getWidth() + "x" + temp.getHeight());
 }
 ```
----
+
 
 ### 📚 Documentation and Resources
 
@@ -123,7 +117,6 @@ for (BaseSignature temp : signResult.getSucceeded()) {
 - [License Terms](https://purchase.groupdocs.com/policies/license) – Commercial licensing
 - [Release Notes](https://releases.groupdocs.com/signature/java/) – Latest updates and changelog
 
----
 
 ## Looking for GroupDocs.Signature for .NET?
 
@@ -131,7 +124,6 @@ for (BaseSignature temp : signResult.getSucceeded()) {
 
 <!-- SEO Keywords: digital signature, create digital signature, document sign, document signature, e sign, e sign process, e signature, e signature from image, electronic sign, electronic signature, signature e sign, groupdocs signature, sign documents online, sign pdf doc, sign pdf document, sign the pdf, sign to pdf, signature app, signature pdf, signing pdf document, csv file signature, remove barcode from pdf, qr code remover from pdf, signature valid png, get a signature, signature api, signature java, esign pdf, file signature, verify signature, create signature, image signature -->
 
----
 
 ### 🔖 Tags
 
