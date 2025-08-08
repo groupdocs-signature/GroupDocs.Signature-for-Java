@@ -10,10 +10,10 @@ This repository provides usage examples and demos for **GroupDocs.Signature for 
 
 ## 🔑 Key Features
 
-- Apply and verify digital signatures with X.509 certificates
-- Add text, image, barcode, QR code, and stamp signatures
-- Insert metadata, form field, and timestamp signatures
-- Search for or remove existing signatures from documents
+- [Apply](https://docs.groupdocs.com/signature/java/electronic-signature-types/) and [verify](https://docs.groupdocs.com/signature/java/verify-barcode-signatures-in-the-document/) digital signatures with X.509 certificates
+- [Add](https://docs.groupdocs.com/signature/java/esign-document-with-text-signature/) text, image, barcode, QR code, and stamp signatures
+- Insert [metadata](https://docs.groupdocs.com/signature/java/esign-document-with-metadata-signature/), form field, and timestamp signatures
+- [Search](https://docs.groupdocs.com/signature/java/search-for-electronic-signatures-in-document/) for or remove existing signatures from documents
 - Compatible with Java SE, EE, and Spring-based applications
 
 
@@ -47,7 +47,7 @@ This repository provides usage examples and demos for **GroupDocs.Signature for 
 - OpenDocument (ODT, ODS, ODP)
 - Text files (TXT, RTF, CSV)
 - Web formats (HTML, HTM)
-- And many more...
+- And many [more...](https://docs.groupdocs.com/signature/java/supported-document-formats/)
 
 
 ## 💻 Code Examples
