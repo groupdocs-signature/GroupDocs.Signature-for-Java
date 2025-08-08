@@ -52,7 +52,7 @@ This repository provides usage examples and demos for **GroupDocs.Signature for 
 
 ## 💻 Code Examples
 
-### ✅ Search for Digital Signatures in Excel XLSX
+### Search for Digital Signatures in Excel XLSX
 
 ```java
 Signature signature = new Signature("spreadsheet.xlsx");
@@ -69,7 +69,7 @@ for (DigitalSignature digitalSignature : signatures) {
 ```
 
 
-### ✍️ Digitally Sign a PDF with Certificate
+### Digitally Sign a PDF with Certificate
 ```java
 Signature signature = new Signature("sample.pdf");
 DigitalSignOptions options = new DigitalSignOptions("certificate.pfx");
