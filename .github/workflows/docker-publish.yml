@@ -30,7 +30,7 @@ jobs:
 
       - name: Render Docker Hub overview
         run: |
-          sed "s/{{VERSION}}/${{ inputs.version }}/g" docs/docker-hub-overview.md > /tmp/docker-hub-overview.md
+          sed "s/{{VERSION}}/${{ inputs.version }}/g" Docs/docker-hub-overview.md > /tmp/docker-hub-overview.md
 
       - name: Update Docker Hub description
         uses: peter-evans/dockerhub-description@v5

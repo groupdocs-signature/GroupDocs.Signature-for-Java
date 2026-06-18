@@ -64,7 +64,7 @@ Available image tags follow the pattern `{version}-java-{jdk}-bullseye-{framewor
 
 The `latest` tag points to the `openjdk18-bullseye-spring` variant.
 
-The [Docker Hub repository overview](https://hub.docker.com/r/groupdocs/signature) is generated from [`docs/docker-hub-overview.md`](docs/docker-hub-overview.md) when the [Publish Docker Images](.github/workflows/docker-publish.yml) workflow runs with **Push** enabled.
+The [Docker Hub repository overview](https://hub.docker.com/r/groupdocs/signature) is generated from [`Docs/docker-hub-overview.md`](Docs/docker-hub-overview.md) when the [Publish Docker Images](.github/workflows/docker-publish.yml) workflow runs with **Push** enabled.
 
 ## Getting Started
 
