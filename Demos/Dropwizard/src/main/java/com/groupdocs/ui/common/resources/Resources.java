@@ -3,6 +3,7 @@ package com.groupdocs.ui.common.resources;
 import com.google.common.collect.Lists;
 import com.groupdocs.ui.common.config.GlobalConfiguration;
 import com.groupdocs.ui.common.exception.TotalGroupDocsException;
+import com.groupdocs.ui.common.util.PathSecurityUtils;
 import io.dropwizard.jetty.ConnectorFactory;
 import io.dropwizard.jetty.HttpConnectorFactory;
 import io.dropwizard.server.SimpleServerFactory;
@@ -66,31 +67,28 @@ public abstract class Resources {
         try {
             String fileName;
             if (StringUtils.isEmpty(documentUrl)) {
-                // get the InputStream to store the file
                 uploadedInputStream = inputStream;
-                fileName = fileDetail.getFileName();
+                fileName = PathSecurityUtils.sanitizeFileName(fileDetail.getFileName());
             } else {
-                // get the InputStream from the URL
-                URL url =  new URL(documentUrl);
+                if (!documentUrl.startsWith("http://") && !documentUrl.startsWith("https://")) {
+                    throw new TotalGroupDocsException("Only HTTP and HTTPS URLs are allowed");
+                }
+                URL url = new URL(documentUrl);
                 uploadedInputStream = url.openStream();
-                fileName = FilenameUtils.getName(url.getPath());
+                fileName = PathSecurityUtils.sanitizeFileName(FilenameUtils.getName(url.getPath()));
             }
-            // get documents storage path
             String documentStoragePath = getStoragePath(params);
-            // save the file
-            pathname = String.format("%s%s%s", documentStoragePath, File.separator, fileName);
-            File file = new File(pathname);
-            // check rewrite mode
+            Path targetPath = PathSecurityUtils.resolveInsideBaseDirectory(documentStoragePath, fileName);
+            File file = targetPath.toFile();
             if (rewrite) {
-                // save file with rewrite if exists
-                Files.copy(uploadedInputStream, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                Files.copy(uploadedInputStream, targetPath, StandardCopyOption.REPLACE_EXISTING);
+                pathname = targetPath.toString();
             } else {
-                if (file.exists()){
-                    // get file with new name
+                if (file.exists()) {
                     file = getFreeFileName(documentStoragePath, fileName);
                 }
-                // save file with out rewriting
                 Path path = file.toPath();
+                PathSecurityUtils.resolveInsideBaseDirectory(documentStoragePath, path.getFileName().toString());
                 Files.copy(uploadedInputStream, path);
                 pathname = path.toString();
             }
@@ -98,7 +96,9 @@ public abstract class Resources {
             throw new TotalGroupDocsException(ex.getMessage(), ex);
         } finally {
             try {
-                uploadedInputStream.close();
+                if (uploadedInputStream != null) {
+                    uploadedInputStream.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

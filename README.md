@@ -2,6 +2,89 @@
 
 > A Java library to create, apply, verify, and remove digital and electronic signatures from documents, including PDFs, Word, Excel, Images, and more. Supports text, image, barcode, QR code, stamp, metadata, and certificate-based digital signatures.
 
+## Important: Demo Applications Only
+
+The projects in the [Demos](https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java/tree/master/Demos) folder and the Docker images published as [`groupdocs/signature`](https://hub.docker.com/r/groupdocs/signature) are **sample applications** intended to demonstrate [GroupDocs.Signature for Java](https://products.groupdocs.com/signature/java) features.
+
+They are **not** production-ready services and must **not** be exposed to the public internet without additional hardening.
+
+Before using a demo in any shared or production-like environment:
+
+- Run it on `localhost` or a trusted private network only
+- Do not publish Docker containers directly to the internet without authentication, a reverse proxy, and network restrictions
+- Treat file upload, browse, and download features as untrusted input — validate and sandbox file paths in your own integration
+- Add authentication, authorization, rate limiting, and logging appropriate for your security requirements
+- Keep GroupDocs.Signature and all dependencies up to date
+
+For production integrations, use the library ([Examples](Examples), [documentation](https://docs.groupdocs.com/signature/java/)) and implement your own secure document storage and API layer instead of deploying these demos as-is.
+
+## Repository Structure
+
+Directory | Description
+--------- | -----------
+[Demos](Demos) | Demo projects for Spring, Dropwizard, Javalin, Ktor, Micronaut, and Compose Desktop.
+[Examples](Examples) | Java API usage examples with sample documents.
+
+## Demos
+
+All web demos run on `http://localhost:8080/signature/` and provide document signing with digital certificates, images, text, stamps, barcodes, and QR codes.
+
+| Demo | Framework | Language | Build | Version |
+|------|-----------|----------|-------|---------|
+| [Spring](Demos/Spring) | Spring Boot 2.5 | Java | `mvn clean spring-boot:run` | 26.5 |
+| [Dropwizard](Demos/Dropwizard) | Dropwizard 1.3 | Java | `mvn clean compile exec:java` | 26.5 |
+| [Javalin](Demos/Javalin) | Javalin 4.6 | Kotlin | `./gradlew run` | 26.5 |
+| [Ktor](Demos/Ktor) | Ktor | Kotlin | `./gradlew run` | 26.5 |
+| [Micronaut](Demos/Micronaut) | Micronaut 3.4 | Kotlin | `./gradlew run` | 26.5 |
+| [Compose](Demos/Compose) | Compose Desktop | Kotlin | `./gradlew run` | 26.5 |
+
+The [Compose](Demos/Compose) demo is a standalone desktop application (not a web app).
+
+## Docker
+
+Pre-built Docker images are available on [Docker Hub](https://hub.docker.com/r/groupdocs/signature).
+
+```bash
+docker pull groupdocs/signature:latest
+docker run -p 8080:8080 groupdocs/signature:latest
+```
+
+**Security notice:** Docker images ship with demo defaults (e.g. upload and browse enabled, no authentication). Use them for local evaluation only. Do not expose port `8080` to untrusted networks without adding authentication, path validation, and other security controls required by your organization.
+
+Available image tags follow the pattern `{version}-java-{jdk}-bullseye-{framework}`:
+
+| Tag | JDK | Framework |
+|-----|-----|-----------|
+| `{ver}-java-openjdk8-bullseye-spring` | Eclipse Temurin 8 | Spring |
+| `{ver}-java-openjdk11-bullseye-spring` | Eclipse Temurin 11 | Spring |
+| `{ver}-java-openjdk18-bullseye-spring` | Eclipse Temurin 21 | Spring |
+| `{ver}-java-openjdk8-bullseye-dropwizard` | Eclipse Temurin 8 | Dropwizard |
+| `{ver}-java-openjdk11-bullseye-dropwizard` | Eclipse Temurin 11 | Dropwizard |
+| `{ver}-java-openjdk18-bullseye-dropwizard` | Eclipse Temurin 21 | Dropwizard |
+
+The `latest` tag points to the `openjdk18-bullseye-spring` variant.
+
+The [Docker Hub repository overview](https://hub.docker.com/r/groupdocs/signature) is generated from [`docs/docker-hub-overview.md`](docs/docker-hub-overview.md) when the [Publish Docker Images](.github/workflows/docker-publish.yml) workflow runs with **Push** enabled.
+
+## Getting Started
+
+GroupDocs.Signature for Java requires J2SE 8.0 (1.8) or above.
+
+Add the [GroupDocs repository](https://releases.groupdocs.com/java/repo/) to your Maven project:
+
+```xml
+<repository>
+    <id>GroupDocs Artifact Repository</id>
+    <url>https://releases.groupdocs.com/java/repo/</url>
+</repository>
+
+<dependency>
+    <groupId>com.groupdocs</groupId>
+    <artifactId>groupdocs-signature</artifactId>
+    <version>26.5</version>
+</dependency>
+```
+
 
 ## About
 

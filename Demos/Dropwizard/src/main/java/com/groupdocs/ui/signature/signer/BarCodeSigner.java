@@ -1,13 +1,9 @@
 package com.groupdocs.ui.signature.signer;
 
-import com.groupdocs.signature.domain.Background;
 import com.groupdocs.signature.domain.barcodes.BarcodeTypes;
-import com.groupdocs.signature.domain.enums.VerticalAlignment;
 import com.groupdocs.signature.options.sign.BarcodeSignOptions;
 import com.groupdocs.ui.signature.entity.web.SignatureDataEntity;
 import com.groupdocs.ui.signature.entity.xml.OpticalXmlEntity;
-
-import java.awt.*;
 
 /**
  * BarCodeSigner
@@ -36,7 +32,6 @@ public class BarCodeSigner extends Signer {
      */
     @Override
     public BarcodeSignOptions signPdf() {
-        // setup options
         BarcodeSignOptions signOptions = new BarcodeSignOptions(barCodeData.getText());
         fillProperties(signOptions);
         signOptions.setPageNumber(signatureData.getPageNumber());
@@ -50,26 +45,27 @@ public class BarCodeSigner extends Signer {
      */
     @Override
     public BarcodeSignOptions signImage() {
-        // setup options
         BarcodeSignOptions signOptions = new BarcodeSignOptions(barCodeData.getText());
         fillProperties(signOptions);
+        signOptions.setPageNumber(signatureData.getPageNumber());
         return signOptions;
     }
 
     private void fillProperties(BarcodeSignOptions signOptions) {
         signOptions.setEncodeType(BarcodeTypes.Code39Standard);
-        Background background = new Background();
-        background.setColor(Color.WHITE);
-        signOptions.setBackground(background);
         signOptions.setHorizontalAlignment(signatureData.getHorizontalAlignment());
-        signOptions.setVerticalAlignment(VerticalAlignment.None);
-        signOptions.setWidth(signatureData.getImageWidth());
-        signOptions.setHeight(signatureData.getImageHeight());
+        signOptions.setVerticalAlignment(signatureData.getVerticalAlignment());
+        signOptions.setWidth(resolveDimension(signatureData.getImageWidth()));
+        signOptions.setHeight(resolveDimension(signatureData.getImageHeight()));
         signOptions.setTop(signatureData.getTop());
         signOptions.setLeft(signatureData.getLeft());
         if (signatureData.getAngle() != 0) {
             signOptions.setRotationAngle(signatureData.getAngle());
         }
+    }
+
+    private int resolveDimension(int value) {
+        return value > 0 ? value : 200;
     }
 
     /**
@@ -79,7 +75,6 @@ public class BarCodeSigner extends Signer {
      */
     @Override
     public BarcodeSignOptions signWord() {
-        // setup options
         BarcodeSignOptions signOptions = new BarcodeSignOptions(barCodeData.getText());
         fillProperties(signOptions);
         signOptions.setPageNumber(signatureData.getPageNumber());
@@ -93,7 +88,6 @@ public class BarCodeSigner extends Signer {
      */
     @Override
     public BarcodeSignOptions signCells() {
-        // setup options
         BarcodeSignOptions signOptions = new BarcodeSignOptions(barCodeData.getText());
         fillProperties(signOptions);
         signOptions.setPageNumber(signatureData.getPageNumber());
@@ -107,7 +101,6 @@ public class BarCodeSigner extends Signer {
      */
     @Override
     public BarcodeSignOptions signSlides() {
-        // setup options
         BarcodeSignOptions signOptions = new BarcodeSignOptions(barCodeData.getText());
         fillProperties(signOptions);
         signOptions.setPageNumber(signatureData.getPageNumber());

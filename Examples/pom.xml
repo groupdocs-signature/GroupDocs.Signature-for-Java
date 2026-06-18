@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 	<groupId>GroupDocs.Signature-for-Java</groupId>
 	<artifactId>GroupDocs.Signature-for-Java</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>26.5</version>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -14,7 +14,7 @@
 		<dependency>
     		<groupId>com.groupdocs</groupId>
    			<artifactId>groupdocs-signature</artifactId>
-    		<version>24.3</version>
+    		<version>${project.version}</version>
 		</dependency>
         <dependency>
             <groupId>com.microsoft.azure</groupId>

@@ -1,10 +1,20 @@
 ![Create digital signature with GroupDocs.Signature](https://raw.githubusercontent.com/groupdocs-signature/groupdocs-signature.github.io/master/resources/image/banner.png "GroupDocs.Signature")
 # GroupDocs.Signature for Java Dropwizard Example
-###### version 1.10.24
+###### version 26.5
 
 [![Build Status](https://travis-ci.org/groupdocs-signature/GroupDocs.Signature-for-Java-Dropwizard.svg?branch=master)](https://travis-ci.org/groupdocs-signature/GroupDocs.Signature-for-Java-Dropwizard)
 [![Maintainability](https://api.codeclimate.com/v1/badges/1fe7f997911527bd80c6/maintainability)](https://codeclimate.com/github/groupdocs-signature/GroupDocs.Signature-for-Java-Dropwizard/maintainability)
 [![GitHub license](https://img.shields.io/github/license/groupdocs-signature/GroupDocs.Signature-for-Java-Dropwizard.svg)](https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java-Dropwizard/blob/master/LICENSE)
+
+## Security Notice
+
+This Dropwizard sample is a **demonstration application**. It is provided to show how GroupDocs.Signature can be integrated with a web UI.
+
+- Intended for **local development and evaluation** only
+- **Not** audited or hardened for production deployment
+- File upload, download, and document path handling must be reviewed and adapted before any external exposure
+
+When integrating GroupDocs.Signature into your product, implement your own secure file storage, input validation, and access control — do not copy this demo directly into a public-facing service.
 
 ## System Requirements
 - Java 8 (JDK 1.8)
@@ -120,7 +130,24 @@ java -jar signature-1.10.24.jar configuration.yaml
 ## Open http://localhost:8080/signature/ in your favorite browser.
 ```
 
-#### Docker image
+#### Docker
+
+Build and run locally, or use pre-built images from [Docker Hub](https://hub.docker.com/r/groupdocs/signature). See the [main README](../../README.md#docker) for available tags.
+
+```bash
+docker build -t groupdocs-signature-dropwizard .
+mkdir -p DocumentSamples Licenses
+```
+
+```bash
+docker run -p 8080:8080 \
+  --env application.hostAddress=localhost \
+  -v $(pwd)/DocumentSamples:/home/groupdocs/app/DocumentSamples \
+  -v $(pwd)/Licenses:/home/groupdocs/app/Licenses \
+  groupdocs-signature-dropwizard
+```
+
+#### Docker image (legacy)
 Use [docker](https://hub.docker.com/u/groupdocs) image.
 
 ```bash

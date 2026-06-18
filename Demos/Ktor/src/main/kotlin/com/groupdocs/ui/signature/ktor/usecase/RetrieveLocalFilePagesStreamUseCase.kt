@@ -3,7 +3,7 @@ package com.groupdocs.ui.signature.ktor.usecase
 
 import com.groupdocs.signature.Signature
 import com.groupdocs.signature.options.PageStreamFactory
-import com.groupdocs.signature.options.PreviewOptions
+import com.groupdocs.signature.options.preview.PreviewOptions
 import com.groupdocs.signature.options.loadoptions.LoadOptions
 import com.groupdocs.ui.signature.ktor.manager.PathManager
 import com.groupdocs.ui.signature.ktor.status.InternalServerException

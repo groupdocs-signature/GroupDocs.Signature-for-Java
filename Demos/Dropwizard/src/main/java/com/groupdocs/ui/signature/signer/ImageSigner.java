@@ -38,10 +38,14 @@ public class ImageSigner extends Signer {
     private void fillImageOptions(ImageSignOptions signOptions) {
         signOptions.setLeft(signatureData.getLeft());
         signOptions.setTop(signatureData.getTop());
-        signOptions.setWidth(signatureData.getImageWidth());
-        signOptions.setHeight(signatureData.getImageHeight());
-        signOptions.setPageNumber(signatureData.getPageNumber());
+        signOptions.setWidth(resolveDimension(signatureData.getImageWidth()));
+        signOptions.setHeight(resolveDimension(signatureData.getImageHeight()));
+        signOptions.setPageNumber(signatureData.getPageNumber() > 0 ? signatureData.getPageNumber() : 1);
         signOptions.setRotationAngle(signatureData.getAngle());
+    }
+
+    private int resolveDimension(int value) {
+        return value > 0 ? value : 200;
     }
 
     /**

@@ -7,6 +7,7 @@ import com.groupdocs.ui.common.entity.web.PageDescriptionEntity;
 import com.groupdocs.ui.common.entity.web.request.LoadDocumentPageRequest;
 import com.groupdocs.ui.common.entity.web.request.LoadDocumentRequest;
 import com.groupdocs.ui.common.exception.TotalGroupDocsException;
+import com.groupdocs.ui.common.util.PathSecurityUtils;
 import com.groupdocs.ui.common.resources.Resources;
 import com.groupdocs.ui.signature.config.SignatureConfiguration;
 import com.groupdocs.ui.signature.config.SignatureConfigurationModel;
@@ -140,7 +141,12 @@ public class SignatureResources extends Resources {
     @Produces(APPLICATION_OCTET_STREAM)
     public void downloadDocument(@QueryParam("path") String documentGuid,
                                  @Context HttpServletResponse response) throws IOException {
-        downloadFile(response, documentGuid);
+        String documentPath = PathSecurityUtils.resolveInsideBaseDirectoryAsString(
+                globalConfiguration.getSignature().getFilesDirectory(), documentGuid);
+        if (!Files.isRegularFile(java.nio.file.Paths.get(documentPath))) {
+            throw new TotalGroupDocsException(PathSecurityUtils.ACCESS_DENIED);
+        }
+        downloadFile(response, documentPath);
     }
 
     /**

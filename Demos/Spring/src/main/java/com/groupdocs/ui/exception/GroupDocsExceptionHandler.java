@@ -1,6 +1,7 @@
 package com.groupdocs.ui.exception;
 
 import com.groupdocs.ui.model.response.ExceptionEntity;
+import com.groupdocs.ui.util.PathSecurityUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -19,6 +20,9 @@ public class GroupDocsExceptionHandler extends ResponseEntityExceptionHandler {
         String message = exception.getMessage();
         exceptionEntity.setMessage(message);
         if (PASSWORD_REQUIRED.equals(message) || INCORRECT_PASSWORD.equals(message)) {
+            return new ResponseEntity<>(exceptionEntity, HttpStatus.FORBIDDEN);
+        }
+        if (PathSecurityUtils.ACCESS_DENIED.equals(message)) {
             return new ResponseEntity<>(exceptionEntity, HttpStatus.FORBIDDEN);
         }
         if (logger.isDebugEnabled()) {

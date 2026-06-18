@@ -35,7 +35,7 @@ class DescriptionControllerImpl(
                     previewWidth = previewPageWidth,
                     previewRatio = previewPageRatio
                 ) { pageNumber, pageInputStream ->
-                    val data = Base64.getEncoder().encodeToString(pageInputStream.readAllBytes())
+                    val data = Base64.getEncoder().encodeToString(pageInputStream.readBytes())
                     entity.pages.add(
                         PageDescriptionEntity(
                             number = pageNumber + 1,

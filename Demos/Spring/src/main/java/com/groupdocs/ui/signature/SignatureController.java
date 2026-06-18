@@ -17,6 +17,7 @@ import com.groupdocs.ui.signature.model.xml.TextXmlEntity;
 import com.groupdocs.ui.signature.service.SaveSignatureService;
 import com.groupdocs.ui.signature.service.SignService;
 import com.groupdocs.ui.signature.service.SignatureService;
+import com.groupdocs.ui.util.PathSecurityUtils;
 import com.groupdocs.ui.util.Utils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
@@ -34,6 +35,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
@@ -134,15 +137,17 @@ public class SignatureController {
     @RequestMapping(method = RequestMethod.GET, value = "/downloadDocument")
     public void downloadDocument(@RequestParam(name = "path") String documentGuid,
                                  HttpServletResponse response) {
-        // get document path
-        String fileName = FilenameUtils.getName(documentGuid);
-        // set response content info
+        String documentPath = PathSecurityUtils.resolveInsideBaseDirectoryAsString(
+                signatureService.getSignatureConfiguration().getFilesDirectory(), documentGuid);
+        if (!Files.isRegularFile(Paths.get(documentPath))) {
+            throw new TotalGroupDocsException(PathSecurityUtils.ACCESS_DENIED);
+        }
+        String fileName = FilenameUtils.getName(documentPath);
         Utils.addFileDownloadHeaders(response, fileName, null);
 
         long length;
-        try (InputStream inputStream = new BufferedInputStream(new FileInputStream(documentGuid));
+        try (InputStream inputStream = new BufferedInputStream(new FileInputStream(documentPath));
              ServletOutputStream outputStream = response.getOutputStream()) {
-            // download the document
             length = IOUtils.copyLarge(inputStream, outputStream);
         } catch (Exception ex) {
             logger.error("Exception in downloading document", ex);

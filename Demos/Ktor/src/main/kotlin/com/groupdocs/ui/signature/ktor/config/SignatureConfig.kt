@@ -59,11 +59,11 @@ data class Local(
 ) {
 
     val filesDirectoryOrDefault: Path
-        get() = Path.of(filesDirectory.ifBlank { Defaults.Local.DEFAULT_FILES_DIRECTORY })
+        get() = Paths.get(filesDirectory.ifBlank { Defaults.Local.DEFAULT_FILES_DIRECTORY })
 
     val resultDirectoryOrDefault: Path
-        get() = Path.of(resultDirectory.ifBlank { Defaults.Local.DEFAULT_RESULT_DIRECTORY })
+        get() = Paths.get(resultDirectory.ifBlank { Defaults.Local.DEFAULT_RESULT_DIRECTORY })
 
     val dataDirectoryOrDefault: Path
-        get() = Path.of(dataDirectory.ifBlank { Defaults.Local.DEFAULT_DATA_DIRECTORY })
+        get() = Paths.get(dataDirectory.ifBlank { Defaults.Local.DEFAULT_DATA_DIRECTORY })
 }

@@ -2,6 +2,7 @@ package com.groupdocs.ui.common.util;
 
 
 import com.groupdocs.ui.common.exception.TotalGroupDocsException;
+import com.groupdocs.ui.common.util.PathSecurityUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -27,12 +28,13 @@ public class Utils {
     public static File getFreeFileName(String directory, String fileName) {
         File file = null;
         try {
+            String safeFileName = PathSecurityUtils.sanitizeFileName(fileName);
             File folder = new File(directory);
             File[] listOfFiles = folder.listFiles();
             for (int i = 0; i < listOfFiles.length; i++) {
                 int number = i + 1;
-                String newFileName = FilenameUtils.removeExtension(fileName) + "-Copy(" + number + ")." + FilenameUtils.getExtension(fileName);
-                file = new File(directory + File.separator + newFileName);
+                String newFileName = FilenameUtils.removeExtension(safeFileName) + "-Copy(" + number + ")." + FilenameUtils.getExtension(safeFileName);
+                file = PathSecurityUtils.resolveInsideBaseDirectory(directory, newFileName).toFile();
                 if (file.exists()) {
                     continue;
                 } else {
@@ -57,10 +59,13 @@ public class Utils {
     public static File getFileWithUniqueName(String previewPath, String imageGuid, String ext) {
         if (!StringUtils.isEmpty(imageGuid) && new File(imageGuid).exists()) {
             return new File(imageGuid);
-        } else {
-            File[] listOfFiles = new File(previewPath).listFiles();
-            return createUniqueFile(previewPath, listOfFiles, ext);
         }
+        File previewDir = new File(previewPath);
+        File[] listOfFiles = previewDir.exists() ? previewDir.listFiles() : new File[0];
+        if (listOfFiles == null) {
+            listOfFiles = new File[0];
+        }
+        return createUniqueFile(previewPath, listOfFiles, ext);
     }
 
     private static File createUniqueFile(String previewPath, File[] listOfFiles, String ext) {
@@ -86,24 +91,12 @@ public class Utils {
      * @return
      */
     public static BufferedImage getBufferedImage(int width, int height) {
-        BufferedImage bufImage = null;
-        try {
-            bufImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-            // Create a graphics contents on the buffered image
-            Graphics2D g2d = bufImage.createGraphics();
-            // Draw graphics
-            g2d.setColor(Color.WHITE);
-            g2d.fillRect(0, 0, width, height);
-            // Graphics context no longer needed so dispose it
-            g2d.dispose();
-            return bufImage;
-        } catch (Exception ex) {
-            throw new TotalGroupDocsException(ex.getMessage(), ex);
-        } finally {
-            if (bufImage != null) {
-                bufImage.flush();
-            }
-        }
+        BufferedImage bufImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g2d = bufImage.createGraphics();
+        g2d.setColor(Color.WHITE);
+        g2d.fillRect(0, 0, width, height);
+        g2d.dispose();
+        return bufImage;
     }
 
     /**

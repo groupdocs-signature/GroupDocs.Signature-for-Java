@@ -2,8 +2,17 @@ Examples/.idea
 Demos/Javalin/.idea
 Demos/Javalin/.gradle
 Demos/Ktor/.gradle
+Demos/Micronaut/.gradle
+Demos/Compose/.gradle
 Examples/target
 Examples/Resources/Output
 Examples/*.iml
 deploy_key
 *.lic
+
+# Build outputs
+**/target/
+Demos/Compose/build/
+Demos/Javalin/build/
+Demos/Ktor/build/
+Demos/Micronaut/build/

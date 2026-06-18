@@ -11,8 +11,8 @@ import com.groupdocs.signature.domain.enums.HorizontalAlignment
 import com.groupdocs.signature.domain.enums.VerticalAlignment
 import com.groupdocs.signature.licensing.License
 import com.groupdocs.signature.options.PageStreamFactory
-import com.groupdocs.signature.options.PreviewFormats
-import com.groupdocs.signature.options.PreviewOptions
+import com.groupdocs.signature.options.preview.PreviewFormats
+import com.groupdocs.signature.options.preview.PreviewOptions
 import com.groupdocs.signature.options.sign.ImageSignOptions
 import com.groupdocs.ui.common.NavigationException
 import com.groupdocs.ui.common.Screen

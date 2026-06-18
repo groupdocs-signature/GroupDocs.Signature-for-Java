@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "com.groupdocs.ui.signature.ktor"
-version = "23.6"
+version = "26.5"
 
 repositories {
     mavenLocal()
@@ -27,6 +27,15 @@ application {
 
 tasks {
     create("stage").dependsOn("installDist")
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions.jvmTarget = "11"
 }
 
 dependencies {

@@ -9,8 +9,8 @@ import com.groupdocs.signature.internal.c.a.pd.DocumentInfo;
 import com.groupdocs.signature.internal.c.a.s.InvalidPasswordException;
 import com.groupdocs.signature.licensing.License;
 import com.groupdocs.signature.options.PageStreamFactory;
-import com.groupdocs.signature.options.PreviewFormats;
-import com.groupdocs.signature.options.PreviewOptions;
+import com.groupdocs.signature.options.preview.PreviewFormats;
+import com.groupdocs.signature.options.preview.PreviewOptions;
 import com.groupdocs.signature.options.loadoptions.LoadOptions;
 import com.groupdocs.ui.common.config.GlobalConfiguration;
 import com.groupdocs.ui.common.entity.web.LoadDocumentEntity;
@@ -34,12 +34,16 @@ import java.awt.*;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.OutputStream;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
 import static com.groupdocs.ui.common.util.Utils.getExceptionMessage;
 import static com.groupdocs.ui.signature.service.SignatureHandlerFactory.getFullDataPathStr;
+import static com.groupdocs.ui.common.util.PathSecurityUtils.ACCESS_DENIED;
+import static com.groupdocs.ui.common.util.PathSecurityUtils.resolveInsideBaseDirectoryAsString;
+import static com.groupdocs.ui.common.util.PathSecurityUtils.resolveInsideBaseDirectoryOrRoot;
 import static com.groupdocs.ui.signature.util.SignatureType.*;
 import static com.groupdocs.ui.signature.util.directory.PathConstants.DATA_FOLDER;
 
@@ -82,23 +86,25 @@ public class SignatureServiceImpl implements SignatureService {
     public List<SignatureFileDescriptionEntity> getFileList(SignatureFileTreeRequest fileTreeRequest) {
         try {
             String signatureType = fileTreeRequest.getSignatureType() == null ? "" : fileTreeRequest.getSignatureType();
-            // get file list from storage path
-            String signatureTypePath = SignatureDirectory.getPathFromSignatureType(signatureType);
-            String rootDirectory = StringUtils.isEmpty(signatureTypePath) ?
-                    signatureConfiguration.getFilesDirectory() :
-                    getFullDataPathStr(signatureConfiguration.getDataDirectory(), signatureTypePath);
-            // get all the files from a directory
-            String relDirPath = fileTreeRequest.getPath();
-            if (StringUtils.isEmpty(relDirPath)) {
-                relDirPath = rootDirectory;
-            } else {
-                relDirPath = String.format("%s%s%s", rootDirectory, File.separator, relDirPath);
+            String rootDirectory = resolveRootDirectory(signatureType);
+            Path dirPath = resolveInsideBaseDirectoryOrRoot(rootDirectory, fileTreeRequest.getPath());
+            if (!dirPath.toFile().isDirectory()) {
+                throw new TotalGroupDocsException(ACCESS_DENIED);
             }
-            return loadFiles(signatureType, relDirPath);
+            return loadFiles(signatureType, dirPath.toString());
+        } catch (TotalGroupDocsException ex) {
+            throw ex;
         } catch (Exception ex) {
             logger.error("Exception occurred while getting file list", ex);
             throw new TotalGroupDocsException(ex.getMessage(), ex);
         }
+    }
+
+    private String resolveRootDirectory(String signatureType) {
+        String signatureTypePath = SignatureDirectory.getPathFromSignatureType(signatureType);
+        return StringUtils.isEmpty(signatureTypePath) ?
+                signatureConfiguration.getFilesDirectory() :
+                getFullDataPathStr(signatureConfiguration.getDataDirectory(), signatureTypePath);
     }
 
     /**
@@ -138,8 +144,8 @@ public class SignatureServiceImpl implements SignatureService {
      */
     @Override
     public LoadDocumentEntity getDocumentDescription(LoadDocumentRequest loadDocumentRequest) {
-        // get/set parameters
-        String documentGuid = loadDocumentRequest.getGuid();
+        String documentGuid = resolveInsideBaseDirectoryAsString(
+                signatureConfiguration.getFilesDirectory(), loadDocumentRequest.getGuid());
         String password = loadDocumentRequest.getPassword();
         try {
 
@@ -178,7 +184,7 @@ public class SignatureServiceImpl implements SignatureService {
             }
 
             LoadDocumentEntity loadDocumentEntity = new LoadDocumentEntity();
-            loadDocumentEntity.setGuid(loadDocumentRequest.getGuid());
+            loadDocumentEntity.setGuid(documentGuid);
             loadDocumentEntity.setPages(pagesDescription);
             // return document description
             return loadDocumentEntity;
@@ -197,8 +203,8 @@ public class SignatureServiceImpl implements SignatureService {
     @Override
     public PageDescriptionEntity loadDocumentPage(LoadDocumentPageRequest loadDocumentPageRequest) {
         try {
-            // get/set parameters
-            String documentGuid = loadDocumentPageRequest.getGuid();
+            String documentGuid = resolveInsideBaseDirectoryAsString(
+                    signatureConfiguration.getFilesDirectory(), loadDocumentPageRequest.getGuid());
             int pageNumber = loadDocumentPageRequest.getPage();
             String password = loadDocumentPageRequest.getPassword();
             // get page data
@@ -235,6 +241,9 @@ public class SignatureServiceImpl implements SignatureService {
 
     @Override
     public void deleteSignatureFile(DeleteSignatureFileRequest deleteSignatureFileRequest) {
+        String safePath = resolveInsideBaseDirectoryAsString(
+                signatureConfiguration.getDataDirectory(), deleteSignatureFileRequest.getGuid());
+        deleteSignatureFileRequest.setGuid(safePath);
         signatureLoader.deleteSignatureFile(deleteSignatureFileRequest);
     }
 
@@ -256,6 +265,9 @@ public class SignatureServiceImpl implements SignatureService {
 
     @Override
     public SignaturePageEntity loadSignatureImage(LoadSignatureImageRequest loadSignatureImageRequest) {
+        String safePath = resolveInsideBaseDirectoryAsString(
+                signatureConfiguration.getDataDirectory(), loadSignatureImageRequest.getGuid());
+        loadSignatureImageRequest.setGuid(safePath);
         return signatureLoader.loadImage(loadSignatureImageRequest);
     }
 }

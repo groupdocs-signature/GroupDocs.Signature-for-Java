@@ -15,6 +15,8 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
 
 import javax.xml.bind.JAXBException;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -213,23 +215,53 @@ public class SignatureLoader {
     public SignaturePageEntity loadImage(LoadSignatureImageRequest loadSignatureImageRequest) {
         try {
             SignaturePageEntity loadedPage = new SignaturePageEntity();
-            // get page image
             File file = new File(loadSignatureImageRequest.getGuid());
             byte[] bytes = Files.readAllBytes(file.toPath());
-            // encode ByteArray into String
-            String encodedImage = new String(Base64.getEncoder().encode(bytes));
-            loadedPage.setData(encodedImage);
-            if (TEXT.equals(loadSignatureImageRequest.getSignatureType())) {
+            loadedPage.setData(Base64.getEncoder().encodeToString(bytes));
+
+            int[] dimensions = readImageDimensions(file);
+            if (dimensions[0] > 0) {
+                loadedPage.setWidth(dimensions[0]);
+                loadedPage.setHeight(dimensions[1]);
+            }
+
+            String signatureType = loadSignatureImageRequest.getSignatureType();
+            if (TEXT.equals(signatureType)) {
                 String fileName = getXmlFilePath(file);
                 TextXmlEntity textXmlEntity = new XMLReaderWriter<TextXmlEntity>().read(fileName, TextXmlEntity.class);
                 textXmlEntity.setImageGuid(loadSignatureImageRequest.getGuid());
                 loadedPage.setProps(textXmlEntity);
+                applyXmlDimensions(loadedPage, textXmlEntity.getWidth(), textXmlEntity.getHeight());
+            } else if (QR_CODE.equals(signatureType) || BAR_CODE.equals(signatureType)) {
+                String fileName = getXmlFilePath(file);
+                OpticalXmlEntity opticalXmlEntity = new XMLReaderWriter<OpticalXmlEntity>().read(fileName, OpticalXmlEntity.class);
+                opticalXmlEntity.setImageGuid(loadSignatureImageRequest.getGuid());
+                loadedPage.setProps(opticalXmlEntity);
+                applyXmlDimensions(loadedPage, opticalXmlEntity.getWidth(), opticalXmlEntity.getHeight());
             }
-            // return loaded page object
             return loadedPage;
         } catch (Exception ex) {
             throw new TotalGroupDocsException(ex.getMessage(), ex);
         }
+    }
+
+    private void applyXmlDimensions(SignaturePageEntity loadedPage, int width, int height) {
+        if (loadedPage.getWidth() <= 0 && width > 0) {
+            loadedPage.setWidth(width);
+            loadedPage.setHeight(height);
+        }
+    }
+
+    private int[] readImageDimensions(File file) {
+        try {
+            BufferedImage image = ImageIO.read(file);
+            if (image != null) {
+                return new int[]{image.getWidth(), image.getHeight()};
+            }
+        } catch (IOException ex) {
+            throw new TotalGroupDocsException(ex.getMessage(), ex);
+        }
+        return new int[]{0, 0};
     }
 
 

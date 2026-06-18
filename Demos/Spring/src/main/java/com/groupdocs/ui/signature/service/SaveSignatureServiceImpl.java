@@ -1,14 +1,13 @@
 package com.groupdocs.ui.signature.service;
 
 import com.groupdocs.signature.Signature;
-import com.groupdocs.signature.domain.SignResult;
 import com.groupdocs.signature.domain.enums.HorizontalAlignment;
 import com.groupdocs.signature.domain.enums.VerticalAlignment;
-import com.groupdocs.signature.options.PageStreamFactory;
-import com.groupdocs.signature.options.PreviewFormats;
-import com.groupdocs.signature.options.PreviewOptions;
-import com.groupdocs.signature.options.saveoptions.SaveOptions;
+import com.groupdocs.signature.options.PageSignatureStreamFactory;
+import com.groupdocs.signature.options.PreviewSignatureOptions;
+import com.groupdocs.signature.options.preview.PreviewFormats;
 import com.groupdocs.signature.options.sign.SignOptions;
+import com.groupdocs.ui.config.DefaultDirectories;
 import com.groupdocs.ui.exception.TotalGroupDocsException;
 import com.groupdocs.ui.model.response.FileDescriptionEntity;
 import com.groupdocs.ui.signature.SignatureConfiguration;
@@ -28,22 +27,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.PostConstruct;
-import javax.imageio.ImageIO;
 import javax.xml.bind.JAXBException;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.ArrayList;
+import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.List;
 
 import static com.groupdocs.ui.signature.SignatureType.QR_CODE;
 import static com.groupdocs.ui.signature.service.SignatureHandlerFactory.getFullDataPathStr;
-import static com.groupdocs.ui.util.Utils.getBufferedImage;
 import static com.groupdocs.ui.util.Utils.getFileWithUniqueName;
+import static com.groupdocs.ui.util.directory.PathConstants.DATA_FOLDER;
 import static com.groupdocs.ui.util.directory.SignatureDirectory.*;
 
 @Service
@@ -53,13 +51,12 @@ public class SaveSignatureServiceImpl implements SaveSignatureService {
     public static final String PNG = "png";
     public static final String XML = "xml";
 
-    private Signature signatureHandler;
     @Autowired
     private SignatureConfiguration signatureConfiguration;
 
     @PostConstruct
     public void init() {
-        signatureHandler = SignatureHandlerFactory.createHandler(signatureConfiguration.getFilesDirectory(), signatureConfiguration.getDataDirectory());
+        SignatureHandlerFactory.createHandler(signatureConfiguration.getFilesDirectory(), signatureConfiguration.getDataDirectory());
     }
 
     /**
@@ -101,22 +98,19 @@ public class SaveSignatureServiceImpl implements SaveSignatureService {
     public OpticalXmlEntity saveOpticalCode(SaveOpticalCodeRequest saveOpticalCodeRequest) {
         OpticalXmlEntity signatureData = saveOpticalCodeRequest.getProperties();
         // initiate signature data wrapper with default values
-        SignatureDataEntity signatureDataEntity = getSignatureDataEntity(270, 200);
-
-        // initiate signature options collection
-        List<SignOptions> collection = new ArrayList<SignOptions>();
+        SignatureDataEntity signatureDataEntity = getSignatureDataEntity(200, 200);
 
         Signer signer = QR_CODE.equals(saveOpticalCodeRequest.getSignatureType()) ?
                 new QrCodeSigner(signatureData, signatureDataEntity) :
                 new BarCodeSigner(signatureData, signatureDataEntity);
 
-        collection.add(signer.signImage());
+        SignOptions signOptions = signer.signImage();
 
         SignatureDirectory dataDirectory = QR_CODE.equals(saveOpticalCodeRequest.getSignatureType()) ? QRCODE_DATA_DIRECTORY : BARCODE_DATA_DIRECTORY;
-        String encodedImage = createAndSaveOpticalCode(signatureData, dataDirectory, collection);
-        signatureData.setEncodedImage(encodedImage);
         signatureData.setWidth(signatureDataEntity.getImageWidth());
         signatureData.setHeight(signatureDataEntity.getImageHeight());
+        String encodedImage = createAndSaveOpticalCode(signatureData, dataDirectory, signOptions);
+        signatureData.setEncodedImage(encodedImage);
         return signatureData;
     }
 
@@ -128,25 +122,26 @@ public class SaveSignatureServiceImpl implements SaveSignatureService {
      * @param collection
      * @return encoded image
      */
-    private String createAndSaveOpticalCode(OpticalXmlEntity signatureData, SignatureDirectory dataDirectory, List<SignOptions> collection) {
-        // get preview path
-        String previewPath = getFullDataPathStr(signatureConfiguration.getDataDirectory(), dataDirectory.getPreviewPath());
-        // get xml file path
-        String xmlPath = getFullDataPathStr(signatureConfiguration.getDataDirectory(), dataDirectory.getXMLPath());
+    private String createAndSaveOpticalCode(OpticalXmlEntity signatureData, SignatureDirectory dataDirectory,
+                                            SignOptions signOptions) {
+        String dataDir = resolveDataDirectory();
+        String previewPath = getFullDataPathStr(dataDir, dataDirectory.getPreviewPath());
+        String xmlPath = getFullDataPathStr(dataDir, dataDirectory.getXMLPath());
         try {
+            byte[] imageBytes = generateSignaturePreviewBytes(signOptions);
+            DefaultDirectories.makeDirs(Paths.get(previewPath));
+            File file = getFileWithUniqueName(previewPath, signatureData.getImageGuid(), PNG);
+            Files.write(file.toPath(), imageBytes);
+            String fileName = FilenameUtils.removeExtension(file.getName());
+            String xmlFilePath = String.format("%s%s%s.xml", xmlPath, File.separator, fileName);
+            new XMLReaderWriter<OpticalXmlEntity>().write(xmlFilePath, signatureData);
+            signatureData.setImageGuid(file.toPath().toString());
+            String encodedImage = Base64.getEncoder().encodeToString(imageBytes);
             if (signatureData.getTemp()) {
-                BufferedImage bufImage = getBufferedImage(200, 200);
-                ByteArrayOutputStream os = new ByteArrayOutputStream();
-                ImageIO.write(bufImage, PNG, os);
-                InputStream is = new ByteArrayInputStream(os.toByteArray());
-                return signWithImageToStream(collection, is);
-            } else {
-                File file = writeImageFile(signatureData.getImageGuid(), previewPath, 200, 200);
-                String fileName = FilenameUtils.removeExtension(file.getName());
-                // Save data to xml file
-                new XMLReaderWriter<OpticalXmlEntity>().write(String.format("%s%s%s.xml", xmlPath, File.separator, fileName), signatureData);
-                return signWithImageToFile(previewPath, signatureData, collection, file.toPath().toString());
+                Files.deleteIfExists(file.toPath());
+                Files.deleteIfExists(Paths.get(xmlFilePath));
             }
+            return encodedImage;
         } catch (Exception e) {
             logger.error("Exception occurred while saving optical code signature", e);
             throw new TotalGroupDocsException(e.getMessage(), e);
@@ -196,88 +191,41 @@ public class SaveSignatureServiceImpl implements SaveSignatureService {
     }
 
     /**
-     * Write image to file
-     *
-     * @param imageGuid      image file guid if it exists
-     * @param previewPath    path to file
-     * @return
+     * Generate QR/Barcode preview using GroupDocs.Signature preview API (26.5+).
      */
-    private File writeImageFile(String imageGuid, String previewPath, int width, int height) {
-        File file = getFileWithUniqueName(previewPath, imageGuid, PNG);
+    private byte[] generateSignaturePreviewBytes(SignOptions signOptions) {
         try {
-            BufferedImage bufImage = getBufferedImage(width, height);
-            // save BufferedImage to file
-            ImageIO.write(bufImage, PNG, file);
-        } catch (Exception ex) {
-            logger.error("Exception occurred while saving signatures image", ex);
-            throw new TotalGroupDocsException(ex.getMessage(), ex);
-        }
-        return file;
-    }
-
-    /**
-     * Sign image with signature data for saving in stream
-     *
-     * @param collection  signature options
-     * @param inputStream stream with image, for temporally sign
-     * @return encoded image
-     */
-    private String signWithImageToStream(List<SignOptions> collection, InputStream inputStream) {
-        try {
-            final SaveOptions saveOptions = new SaveOptions();
-            // sign generated image with signature
-            Signature imgSignatureHandler = new Signature(inputStream);
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            SignResult result = imgSignatureHandler.sign(outputStream, collection, saveOptions);
-
-            return Base64.getEncoder().encodeToString(outputStream.toByteArray());
-        } catch (Exception ex) {
-            logger.error("Exception occurred while saving optical code signature", ex);
-            throw new TotalGroupDocsException(ex.getMessage(), ex);
-        }
-    }
-
-    /**
-     * Sign image with signature data for saving in local storage
-     *
-     * @param previewPath   local storage path
-     * @param signatureData signature
-     * @param collection    signature options
-     * @param path          path to file
-     * @return encoded image
-     */
-    private String signWithImageToFile(String previewPath, XmlEntityWithImage signatureData, List<SignOptions> collection, String path) {
-        try {
-            final String[] out = {""};
-            // set signing save options
-            final SaveOptions saveOptions = new SaveOptions();
-            saveOptions.setOverwriteExistingFiles(true);
-            // set temporary signed documents path to image previews folder
-            signatureHandler = new Signature(path);
-            //signatureHandler.getSignatureConfig().setOutputPath(previewPath);
-            // sign generated image with signature
-            signatureHandler.sign(path, collection, saveOptions);
-            // set data for response
-            signatureData.setImageGuid(path);
-
-            PreviewOptions previewOptions = new PreviewOptions(new PageStreamFactory() {
+            final byte[][] out = {new byte[0]};
+            PreviewSignatureOptions previewOptions = new PreviewSignatureOptions(signOptions, new PageSignatureStreamFactory() {
                 @Override
-                public OutputStream createPageStream(int pageNumber) {
+                public OutputStream createSignatureStream(PreviewSignatureOptions previewOptions) {
                     return new ByteArrayOutputStream();
                 }
 
                 @Override
-                public void closePageStream(int pageNumber, OutputStream pageStream) {
-                    out[0] = Base64.getEncoder().encodeToString(((ByteArrayOutputStream)pageStream).toByteArray());
+                public void closeSignatureStream(PreviewSignatureOptions previewOptions, OutputStream pageStream) {
+                    out[0] = ((ByteArrayOutputStream) pageStream).toByteArray();
                 }
             });
             previewOptions.setPreviewFormat(PreviewFormats.PNG);
-            signatureHandler.generatePreview(previewOptions);
+            Signature.generateSignaturePreview(previewOptions);
+            if (out[0].length == 0) {
+                throw new TotalGroupDocsException("Optical code preview image is empty");
+            }
             return out[0];
         } catch (Exception ex) {
             logger.error("Exception occurred while saving optical code signature", ex);
             throw new TotalGroupDocsException(ex.getMessage(), ex);
         }
+    }
+
+    private String resolveDataDirectory() {
+        if (StringUtils.isEmpty(signatureConfiguration.getDataDirectory())) {
+            signatureConfiguration.setDataDirectory(
+                    signatureConfiguration.getFilesDirectory() + DATA_FOLDER);
+        }
+        SignatureHandlerFactory.createDirectories(signatureConfiguration.getDataDirectory());
+        return signatureConfiguration.getDataDirectory();
     }
 
     /**
@@ -293,6 +241,7 @@ public class SaveSignatureServiceImpl implements SaveSignatureService {
         signatureDataEntity.setVerticalAlignment(VerticalAlignment.Center);
         signatureDataEntity.setImageHeight(height);
         signatureDataEntity.setImageWidth(width);
+        signatureDataEntity.setPageNumber(1);
         signatureDataEntity.setLeft(0);
         signatureDataEntity.setTop(0);
         return signatureDataEntity;

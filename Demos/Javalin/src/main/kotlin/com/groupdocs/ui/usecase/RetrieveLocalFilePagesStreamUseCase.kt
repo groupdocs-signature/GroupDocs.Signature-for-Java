@@ -2,7 +2,7 @@ package com.groupdocs.ui.usecase
 
 import com.groupdocs.signature.Signature
 import com.groupdocs.signature.options.PageStreamFactory
-import com.groupdocs.signature.options.PreviewOptions
+import com.groupdocs.signature.options.preview.PreviewOptions
 import com.groupdocs.signature.options.loadoptions.LoadOptions
 import com.groupdocs.ui.manager.PathManager
 import com.groupdocs.ui.util.InternalServerException

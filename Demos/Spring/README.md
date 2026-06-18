@@ -6,6 +6,16 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/001a35ea4151759f0d2a/maintainability)](https://codeclimate.com/github/groupdocs-signature/GroupDocs.Signature-for-Java-Spring/maintainability)
 [![GitHub license](https://img.shields.io/github/license/groupdocs-signature/GroupDocs.Signature-for-Java-Spring.svg)](https://github.com/groupdocs-signature/GroupDocs.Signature-for-Java-Spring/blob/master/LICENSE)
 
+## Security Notice
+
+This Spring Boot sample is a **demonstration application**. It is provided to show how GroupDocs.Signature can be integrated with a web UI.
+
+- Intended for **local development and evaluation** only
+- **Not** audited or hardened for production deployment
+- File upload, download, and document path handling must be reviewed and adapted before any external exposure
+
+When integrating GroupDocs.Signature into your product, implement your own secure file storage, input validation, and access control — do not copy this demo directly into a public-facing service.
+
 ## System Requirements
 - Java 8 (JDK 1.8)
 - Maven 3
@@ -131,7 +141,26 @@ java -jar signature-spring-1.7.27.jar configuration.yml
 ## Open http://localhost:8080/signature/ in your favorite browser.
 ```
 
-#### Docker image
+#### Docker
+
+Build and run locally, or use pre-built images from [Docker Hub](https://hub.docker.com/r/groupdocs/signature). See the [main README](../../README.md#docker) for available tags.
+
+```bash
+docker build -t groupdocs-signature-spring .
+mkdir -p DocumentSamples Licenses
+```
+
+Linux / macOS:
+
+```bash
+docker run -p 8080:8080 \
+  --env application.hostAddress=localhost \
+  -v $(pwd)/DocumentSamples:/home/groupdocs/app/DocumentSamples \
+  -v $(pwd)/Licenses:/home/groupdocs/app/Licenses \
+  groupdocs-signature-spring
+```
+
+#### Docker image (legacy)
 Use [docker](https://hub.docker.com/u/groupdocs) image.
 
 ```bash

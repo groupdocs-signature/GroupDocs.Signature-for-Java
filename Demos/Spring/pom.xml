@@ -6,7 +6,7 @@
 
     <groupId>com.groupdocs.ui</groupId>
     <artifactId>signature-spring</artifactId>
-    <version>23.6</version>
+    <version>26.5</version>
     <packaging>${packaging.type}</packaging>
 
     <name>GroupDocs.Signature for Java Spring Sample</name>
@@ -27,6 +27,9 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.version>2.5.12</spring.version>
         <groupdocs.signature>${project.version}</groupdocs.signature>
+        <frontend.skip>false</frontend.skip>
+        <maven.compiler.fork>true</maven.compiler.fork>
+        <maven.compiler.compilerArgs>-J-Djdk.jar.maxSignatureFileSize=32000000</maven.compiler.compilerArgs>
     </properties>
 
     <profiles>
@@ -60,7 +63,7 @@
                                             <resource>META-INF/spring.handlers</resource>
                                         </transformer>
                                         <transformer
-                                                implementation="org.springframework.boot.maven.PropertiesMergingResourceTransformer">
+                                                implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
                                             <resource>META-INF/spring.factories</resource>
                                         </transformer>
                                         <transformer
@@ -145,17 +148,17 @@
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
-            <version>2.3.0</version>
+            <version>2.3.1</version>
         </dependency>
         <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-core</artifactId>
-            <version>2.3.0</version>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>2.3.9</version>
         </dependency>
         <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>2.3.0</version>
+            <groupId>javax.activation</groupId>
+            <artifactId>javax.activation-api</artifactId>
+            <version>1.2.0</version>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
@@ -190,6 +193,10 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                    <fork>true</fork>
+                    <compilerArgs>
+                        <arg>-J-Djdk.jar.maxSignatureFileSize=32000000</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
@@ -198,6 +205,7 @@
                 <version>1.6</version>
                 <configuration>
                     <workingDirectory>client</workingDirectory>
+                    <skip>${frontend.skip}</skip>
                 </configuration>
                 <executions>
                     <execution>
@@ -207,7 +215,7 @@
                             <goal>install-node-and-npm</goal>
                         </goals>
                         <configuration>
-                            <nodeVersion>v10.15.1</nodeVersion>
+                            <nodeVersion>v14.21.3</nodeVersion>
                         </configuration>
                     </execution>
                     <execution>
@@ -267,6 +275,11 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.5.0</version>
             </plugin>
             <!-- Example of usage tomcat7 plugin for deploying
              for deploying/undeploying use war profile '-P war',
