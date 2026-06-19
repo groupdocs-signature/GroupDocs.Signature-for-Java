@@ -12,11 +12,11 @@ FROM eclipse-temurin:11-jre
 RUN apt-get update && \
     apt-get install -y fontconfig ttf-mscorefonts-installer && \
     fc-cache -f && \
-    rm -rf /var/lib/apt/lists/*
-COPY /DocumentSamples /home/groupdocs/app/DocumentSamples
-COPY /Licenses /home/groupdocs/app/Licenses
-COPY /configuration.yml /home/groupdocs/app/configuration.yml
-COPY /logback-spring.xml /home/groupdocs/app/logback-spring.xml
+    rm -rf /var/lib/apt/lists/* && \
+    mkdir -p /home/groupdocs/app/DocumentSamples/Output && \
+    mkdir -p /home/groupdocs/app/Licenses
+COPY configuration.yml /home/groupdocs/app/configuration.yml
+COPY logback-spring.xml /home/groupdocs/app/logback-spring.xml
 COPY --from=builder /usr/local/build/target/signature-spring-*.jar /home/groupdocs/app/app.jar
 WORKDIR /home/groupdocs/app
 

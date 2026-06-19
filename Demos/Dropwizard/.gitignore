@@ -13,7 +13,14 @@ src/main/resources/assets/*
 node/
 etc/
 package-lock.json
+
+# Local license files (mount or copy at runtime)
 Licenses/*
 !Licenses/.gitkeep
-DocumentSamples/*
+
+# Local demo documents and signed output (mount or copy at runtime)
+DocumentSamples/**
 !DocumentSamples/.gitkeep
+!DocumentSamples/Output/
+DocumentSamples/Output/**
+!DocumentSamples/Output/.gitkeep

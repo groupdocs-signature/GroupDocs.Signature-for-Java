@@ -32,11 +32,10 @@ RUN apt-get update && \
     fc-cache -f && \
     rm -rf /var/lib/apt/lists/* && \
     mkdir -p /home/groupdocs/app && \
-    mkdir -p /home/groupdocs/app/DocumentSamples && \
+    mkdir -p /home/groupdocs/app/DocumentSamples/Output && \
     mkdir -p /home/groupdocs/app/Licenses
-COPY /DocumentSamples /home/groupdocs/app/DocumentSamples
-COPY /configuration.yml /home/groupdocs/app/configuration.yml
-COPY /logback-spring.xml /home/groupdocs/app/logback-spring.xml
+COPY configuration.yml /home/groupdocs/app/configuration.yml
+COPY logback-spring.xml /home/groupdocs/app/logback-spring.xml
 COPY --from=builder /usr/local/build/target/signature-spring-*.jar /home/groupdocs/app/app.jar
 WORKDIR /home/groupdocs/app
 
