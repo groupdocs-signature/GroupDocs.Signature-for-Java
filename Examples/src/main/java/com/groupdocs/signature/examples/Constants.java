@@ -21,6 +21,8 @@ public class Constants {
     //Certificate
     public static String CertificatePfx = new File(CertificatesPath, "MrSmithSignature.pfx").getPath();
     public static String CertificateCer = new File(CertificatesPath, "signtest.cer").getPath();
+    // Expired in 2016, no password
+    public static String CertificateExpiredPfx = new File(CertificatesPath, "acer.pfx").getPath();
 
 
     private static String getSampleFilePath(String filePath){
@@ -36,6 +38,9 @@ public class Constants {
             = getSampleFilePath("sample_multiple_signatures.docx");
     public static String SAMPLE_HISTORY
             = getSampleFilePath("sample_history.docx");
+    // links to a picture on GitHub instead of storing it
+    public static String SAMPLE_WORDPROCESSING_EXTERNAL_IMAGE
+            = getSampleFilePath("sample_external_image.docx");
 
     // PDF
     public static String SAMPLE_PDF

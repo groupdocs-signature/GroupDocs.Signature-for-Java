@@ -35,6 +35,7 @@ public class MainClass {
 
             //region Common
         //GetSupportedFileFormats.run();
+        //LicenceUsing.run();
             //endregion
 
             //region Document Preview
@@ -213,7 +214,17 @@ public class MainClass {
         //LoadDocumentFromAzureBlobStorage.run();
         //LoadDocumentFromFtp.run();
         //LoadPasswordProtectedDocument.run();
+        //SpecifyFileTypeWhenLoading.run();
+        //SkipExternalResourcesWhenLoading.run();
+        //LoadWhitelistedExternalResources.run();
 
+            //endregion
+
+            //region Logging
+        //ConsoleLogging.run();
+        //ConsoleLoggingWithLogLevels.run();
+        //CustomLogging.run();
+        //FileLogging.run();
             //endregion
 
             //region Saving
@@ -227,6 +238,7 @@ public class MainClass {
 
         //SaveDocumentWithPassword.run();
         //SaveSignedDocumentsAsImages.run();
+        //SaveWordProcessingWithOoxmlCompliance.run();
 
             //endregion
 
@@ -234,6 +246,8 @@ public class MainClass {
         //GeneratePreviewAdvanced.run();
         //GetDocumentInfoAdvanced.run();
         //GetDocumentProcessHistoryAdvanced.run();
+        //GetCertificateInfoAdvanced.run();
+        //PreviewArchiveDocuments.run();
             //endregion
 
             //region Advanced Signature Preview
@@ -249,8 +263,26 @@ public class MainClass {
         //Sign document with text signature applying specific options
         //SignWithTextAdvanced.run();
 
+        //Sign document with text signatures using different font styles
+        //SignWithTextFontStyles.run();
+
         //Sign document with digital signature applying specific options
         //SignWithDigitalAdvanced.run();
+
+        //Sign Pdf document with digital signature using SHA-512
+        //SignWithDigitalAdvancedPdfHashAlgorithm.run();
+
+        //Sign Pdf document with digital signature applying image and font settings
+        //SignWithDigitalAdvancedPdfImageAndFontSettings.run();
+
+        //Sign document with an expired certificate
+        //SignWithDigitalExpiredCertificate.run();
+
+        //Sign document incrementally with digital certificates
+        //SignWithDigitalIncrementalSaving.run();
+
+        //Sign image with digital signature
+        //SignImageWithDigital.run();
 
         //Sign Pdf document with digital time stamp
         //SignWithDigitalAdvancedPdfTimestamp.run();
@@ -278,6 +310,7 @@ public class MainClass {
 
         //Sign document with Barcode signature applying specific options
         //SignWithBarcode_GS1CompositeBar.run();
+        //SignWithBarcodeTypes.run();
         //SignWithBarcodeAdvanced.run();
 
         //Sign document with QR-Code signature applying specific options
@@ -439,6 +472,9 @@ public class MainClass {
 
         //SearchAndSkipExternalSignatures.run();
 
+        //Search document and filter the signatures with predicate function
+        //SearchSignaturesWithPredicate.run();
+
             //region Verify signed documents with additional options
 
         //Verify document with Text signature with applying specific options
@@ -452,6 +488,15 @@ public class MainClass {
 
         //Verify document with digital signature with applying specific options
         //VerifyDigitalAdvanced.run();
+
+        //Verify PDF document digital signature by certificate subject, issuer and reason
+        //VerifyPdfWithDigital.run();
+
+        //Verify digital signature on image
+        //VerifyImageWithDigital.run();
+
+        //Verify document and filter the signatures with predicate function
+        //VerifySignaturesWithPredicate.run();
 
             //endregion // Verify signed documents with additional options
 
@@ -505,6 +550,9 @@ public class MainClass {
         //ProcessingImageSignatureOverCRUD.run();
         //ProcessingBarcodeSignatureOverCRUD.run();
         //ProcessingQrCodeSignatureOverCRUD.run();
+        //ProcessingDigitalSignatureOverCRUD.run();
+        //ProcessingFormFieldSignatureOverCRUD.run();
+        //ProcessingMetadataSignatureOverCRUD.run();
             //endregion
 
         //SignWithOrdering.run();

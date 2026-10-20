@@ -31,7 +31,7 @@ public class SignWithBarcode_GS1CompositeBar
         try /*JAVA: was using*/
         {
             // setup options with text of signature
-            BarcodeSignOptions options = new BarcodeSignOptions("(01)03212345678906/(21)A1B2C3D4E5F6G7H8");
+            BarcodeSignOptions options = new BarcodeSignOptions("(01)03212345678906|(21)A1B2C3D4E5F6G7H8");
             // barcode type
             options.setEncodeType(BarcodeTypes.GS1CompositeBar);
             //Set signature position
