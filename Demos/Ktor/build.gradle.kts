@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "com.groupdocs.ui.signature.ktor"
-version = "26.5"
+version = "26.10"
 
 repositories {
     mavenLocal()

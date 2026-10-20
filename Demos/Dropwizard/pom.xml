@@ -6,7 +6,7 @@
 
     <groupId>com.groupdocs.ui</groupId>
     <artifactId>signature</artifactId>
-    <version>26.5</version>
+    <version>26.10</version>
     <packaging>jar</packaging>
 
     <name>GroupDocs.Signature Dropwizard</name>

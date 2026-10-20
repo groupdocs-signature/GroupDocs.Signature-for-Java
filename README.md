@@ -31,12 +31,12 @@ All web demos run on `http://localhost:8080/signature/` and provide document sig
 
 | Demo | Framework | Language | Build | Version |
 |------|-----------|----------|-------|---------|
-| [Spring](Demos/Spring) | Spring Boot 2.5 | Java | `mvn clean spring-boot:run` | 26.5 |
-| [Dropwizard](Demos/Dropwizard) | Dropwizard 1.3 | Java | `mvn clean compile exec:java` | 26.5 |
-| [Javalin](Demos/Javalin) | Javalin 4.6 | Kotlin | `./gradlew run` | 26.5 |
-| [Ktor](Demos/Ktor) | Ktor | Kotlin | `./gradlew run` | 26.5 |
-| [Micronaut](Demos/Micronaut) | Micronaut 3.4 | Kotlin | `./gradlew run` | 26.5 |
-| [Compose](Demos/Compose) | Compose Desktop | Kotlin | `./gradlew run` | 26.5 |
+| [Spring](Demos/Spring) | Spring Boot 2.5 | Java | `mvn clean spring-boot:run` | 26.10 |
+| [Dropwizard](Demos/Dropwizard) | Dropwizard 1.3 | Java | `mvn clean compile exec:java` | 26.10 |
+| [Javalin](Demos/Javalin) | Javalin 4.6 | Kotlin | `./gradlew run` | 26.10 |
+| [Ktor](Demos/Ktor) | Ktor | Kotlin | `./gradlew run` | 26.10 |
+| [Micronaut](Demos/Micronaut) | Micronaut 3.4 | Kotlin | `./gradlew run` | 26.10 |
+| [Compose](Demos/Compose) | Compose Desktop | Kotlin | `./gradlew run` | 26.10 |
 
 The [Compose](Demos/Compose) demo is a standalone desktop application (not a web app).
 
@@ -81,7 +81,7 @@ Add the [GroupDocs repository](https://releases.groupdocs.com/java/repo/) to you
 <dependency>
     <groupId>com.groupdocs</groupId>
     <artifactId>groupdocs-signature</artifactId>
-    <version>26.5</version>
+    <version>26.10</version>
 </dependency>
 ```
 

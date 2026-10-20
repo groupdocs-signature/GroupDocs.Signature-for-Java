@@ -46,7 +46,7 @@ ENV FILES_DIR="DocumentSamples"
 ENV HOST_ADDRESS=""
 ENV JAVA_TOOL_OPTIONS="-Djdk.jar.maxSignatureFileSize=32000000"
 
-LABEL version="26.5" \
+LABEL version="26.10" \
       maintainer="GroupDocs Team" \
       url="https://products.groupdocs.com/signature/java" \
       documentation="https://docs.groupdocs.com/signature/java" \
